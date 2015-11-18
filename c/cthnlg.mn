@@ -1,0 +1,31 @@
+
+
+#define xxx(yyyy) do {,,,,,}while(0)     这么定义主要是用来定义函数，让xxx宏函数被调用时，后面的分号不会引起错误如xxx(yyy);
+
+
+double check  主要是用第一个if只存在一次的情况。从而减少枷锁开销
+	if () {
+		lock;
+		if() {
+			return ;
+		}
+		return ;
+	}
+	
+__builtin_expect((x),1) 表示 x 的值为真的可能性更大； 
+__builtin_expect((x),0) 表示 x 的值为假的可能性更大。
+__thread是GCC内置的线程局部存储设施（thread local storage）。它只能用于修饰POD类型，因为无法自动调用构造函数和析构函数。可以用来修饰全局变量、函数内的静态变量。
+
+对于多线程对全局变量进行自加，我们就再也不用理线程锁了。下面这行代码，和上面被pthread_mutex保护的那行代码作用是一样的，而且也是线程安全的。在用gcc编译的时候要加上选项 -march=i686
+	type __sync_fetch_and_add (type *ptr, type value);
+	type __sync_fetch_and_sub (type *ptr, type value);
+	type __sync_fetch_and_or (type *ptr, type value);
+	type __sync_fetch_and_and (type *ptr, type value);
+	type __sync_fetch_and_xor (type *ptr, type value);
+	type __sync_fetch_and_nand (type *ptr, type value);
+	type __sync_add_and_fetch (type *ptr, type value);
+	type __sync_sub_and_fetch (type *ptr, type value);
+	type __sync_or_and_fetch (type *ptr, type value);
+	type __sync_and_and_fetch (type *ptr, type value);
+	type __sync_xor_and_fetch (type *ptr, type value);
+	type __sync_nand_and_fetch (type *ptr, type value);

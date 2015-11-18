@@ -1,0 +1,2 @@
+./bootstrap.sh
+./b2 install 默认安装到/usr/local/lib /usr/local/include

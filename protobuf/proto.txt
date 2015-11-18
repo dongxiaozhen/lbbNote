@@ -1,0 +1,32 @@
+
+protobuf
+http://naviwiki/index.php/%E9%A1%B9%E7%9B%AE:SmartAuto_Google_Protocol_Buffers%E7%9A%84%E4%BD%BF%E7%94%A8
+
+编译：
+protoc -I=$SRC_DIR --cpp_out=$DST_DIR $SRC_DIR/addressbook.proto
+
+
+Standard Message Methods
+Each message class also contains a number of other methods that let you check or manipulate the entire message, including:
+
+    bool IsInitialized() const;: checks if all the required fields have been set.
+    string DebugString() const;: returns a human-readable representation of the message, particularly useful for debugging.
+    void CopyFrom(const Person& from);: overwrites the message with the given message's values.
+    void Clear();: clears all the elements back to the empty state. 
+
+
+Parsing and Serialization
+Finally, each protocol buffer class has methods for writing and reading messages of your chosen type using the protocol buffer binary format. These include:
+
+    bool SerializeToString(string* output) const;: serializes the message and stores the bytes in the given string. Note that the bytes are binary, not text; we only use the string class as a convenient container.
+    bool ParseFromString(const string& data);: parses a message from the given string.
+    bool SerializeToOstream(ostream* output) const;: writes the message to the given C++ ostream.
+    bool ParseFromIstream(istream* input);: parses a message from the given C++ istream. 
+	
+	
+在网络编程中使用protobuf需要解决一下两个问题
+	1长度，protobuf打包的数据没有自带长度信息或终结符，需要由应用程序自己在发生和接受的时候做正确的切分。
+	2类型，protobuf打包的数据没有自带类型消息，需要有发送发把类型消息传给发送发，接收方创建具体的protobufMessage对象，再做发序列化。
+	
+根据type name发射自动创建Message对象
+	descriptorPool--->Desriptor----->MessageFactory-------->Message   (创建过程)

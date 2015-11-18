@@ -1,0 +1,41 @@
+第一种，数据流的方式，这里只说从QByteArray转向QString。
+
+
+QByteArray encodedString = "xxx";
+QTextCodec *codec = QTextCodec::codecForName("KOI8-R");
+QString string = codec->toUnicode(encodedString);
+
+
+第二种，常用的，网上看到的。
+
+
+//常用参数类型：char *字符串， QByteArray字符数组， QString字符串
+//需要转换：char * ---转--- QByteArray ---需要调用QByteArray类的构造函数
+char*     --------------QByteArray(const char*)-----------> QByteArray
+char* str;
+QByteArray byte(str);
+
+
+char*     --------------QString(const char*)-------------->QString
+char* str;
+QString string(str);
+
+
+QByteArray   -------------data()-------------------->char*
+QByteArray byte;
+char* str = byte.data();
+
+
+QByteArray ------------QString()------------------->QString
+QByteArray byte;
+QString string(byte);
+
+
+QString --------------toAscii()--------------------> QByteArray
+QString string;
+QByteArray byte = string.toAscii();
+
+
+QString -------------qPrintable()------------------>char*
+QString string;
+char* str = qPrintable(string);

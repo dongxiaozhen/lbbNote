@@ -1,0 +1,57 @@
+The Boost Tokenizer package provides a flexible and easy-to-use way to break a string or other character sequence into a series of tokens. Below is a simple example that will break up a phrase into words.
+
+// simple_example_1.cpp
+#include<iostream>
+#include<boost/tokenizer.hpp>
+#include<string>
+
+int main(){
+   using namespace std;
+   using namespace boost;
+   string s = "This is,  a test";
+   tokenizer<> tok(s);
+   for(tokenizer<>::iterator beg=tok.begin(); beg!=tok.end();++beg){
+       cout << *beg << "\n";
+   }
+}
+
+You can choose how the string gets parsed by using the TokenizerFunction. If you do not specify anything, the default TokenizerFunction is char_delimiters_separator<char> which defaults to breaking up a string based on space and punctuation. Here is an example using another TokenizerFunction called escaped_list_separator. This TokenizerFunction parses a superset of comma-separated value (CSV) lines. The format looks like this:
+
+Field 1,"putting quotes around fields, allows commas",Field 3
+
+Below is an example that will break the previous line into its three fields.
+
+// simple_example_2.cpp
+#include<iostream>
+#include<boost/tokenizer.hpp>
+#include<string>
+
+int main(){
+   using namespace std;
+   using namespace boost;
+   string s = "Field 1,\"putting quotes around fields, allows commas\",Field 3";
+   tokenizer<escaped_list_separator<char> > tok(s);
+   for(tokenizer<escaped_list_separator<char> >::iterator beg=tok.begin(); beg!=tok.end();++beg){
+       cout << *beg << "\n";
+   }
+}
+
+Finally, for some TokenizerFunctions you have to pass something into the constructor in order to do anything interesting. An example is the offset_separator. This class breaks a string into tokens based on offsets. For example, when 12252001 is parsed using offsets of 2,2,4 it becomes 12 25 2001. Below is the code used.
+
+// simple_example_3.cpp
+#include<iostream>
+#include<boost/tokenizer.hpp>
+#include<string>
+
+int main(){
+   using namespace std;
+   using namespace boost;
+   string s = "12252001";
+   int offsets[] = {2,2,4};
+   offset_separator f(offsets, offsets+3);
+   tokenizer<offset_separator> tok(s,f);
+   for(tokenizer<offset_separator>::iterator beg=tok.begin(); beg!=tok.end();++beg){
+       cout << *beg << "\n";
+   }
+}
+

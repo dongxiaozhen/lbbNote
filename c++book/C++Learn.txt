@@ -1,0 +1,8 @@
+
+注意事项
+	函数要小
+	参数中 基本类型不用加const 
+	字符串定义输出时不要换行
+	
+return value optimization  	优化返回值时调用拷贝构成函数
+typedef VOID (TRF_DP_ListManagerThread::*FUNC_CALLBACK)(VOID);       一个指向TRF_DP_ListManagerThread的参数和返回值为空的成员函数的指针。

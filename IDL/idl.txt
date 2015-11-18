@@ -1,0 +1,71 @@
+IDL 接口描述语言(Interface description language,缩写IDL)
+IDL代码生成工具介绍   http://review.iauto.net/develophelp/iAuto-IDL-generator-new
+
+Franca IDL
+
+1
+编写17Cy/framework/api/idl/ traffic.fidl     总文件，定义了
+	typeCollection{                           //数据类型
+		enumeration NITrfErrorCode {
+		struct NITrfJamCheck {
+
+	interface NITraffic {                      //方法函数
+		method getTimestamp {
+		broadcast trafficInfoUpdate {
+
+2 
+编写17Cy/framework/api/protofiles/      NDTrafficEventList.proto         //定义类型
+
+3
+有traffic.fidl 自动生成 17Cy/framework/api/idl-generated/ 目录
+	include
+		interface
+			NITraffic.h
+			NITrafficReplier.h
+			NITrafficTypeCollction.h
+		proxy
+			NITrafficProxy.h
+		stub
+			NITrafficStub.h                                                    proxy ------>stub           (get)
+			NITrafficStubReplier.h                                             proxy <------stubReplier    (reply)
+	src
+		pack
+			NITrafficPacker.h
+			NITrafficUnpacker.h
+		proto
+			NITrafficProto.proto
+		proxy
+			NITrafficProxy.cpp       // packXXX   onReceive  
+		stub
+			NITrafficStub.cpp         //onAsyncCall -->unpackXXX
+			NITrafficStubReplier.cpp    //  packXXX
+
+
+4
+编写17Cy/framework/service/navi/src/protofiles/Traffic             请求和回复数据proto
+	xxxxx.proto
+	yyyyy.proto
+
+5
+编写17Cy/framework/service/navi/src/stub/traffic
+	TrafficService.h/.cpp              // registerInterface(m_pTrafficStubImpl)
+	TrafficStubImpl.h/.cpp             //  EV_EventSender SendEvent  EV_REPCBBIND(绑定回复函数)
+
+6
+编写17Cy/framework/service/navi/src/traffic/traffic/TrafficModule
+	TrafficReceiver.cpp                // 处理请求    PostRequest
+	TrafficSender.cpp                  // 返回结果 EV_EventSender  
+	TrafficMouduleIF.cpp               //绑定 EV_EventReceiver 和 TrafficReceiver ,初始化TrafficSender
+
+
+1
+编写 17Cy/framework/functioncontrol/navi/traffic 
+	NaviTrafficFunctionControl.h/.cpp   //onRequest   onstart(connect(NaviTrafficProxyReplier) connect(NaviTrafficProxy))
+	implement
+		NaviTrafficProxy.h/.cpp            //调 NITrafficProxy
+		NaviTrafficProxyReplier.h/ .cpp     // emit notify  modelUpdate
+	include
+		xxxModel.h
+	model
+		xxxModel.cpp
+

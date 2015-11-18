@@ -1,0 +1,16 @@
+log4cplus
+	安装  ./configure 
+			make 
+			make check 
+			make install 
+	编译   g++ filetime.cpp -I /usr/local/log4cplus/include/ -L /usr/local/log4cplus/lib -llog4cplus -o filetime
+	
+### 构成要素介绍 ###	
+	Layouts      ：布局器，控制输出消息的格式.
+	Appenders    ：挂接器，与布局器紧密配合，将特定格式的消息输出到所挂接的设备终端
+				   （如屏幕，文件等等)。
+	Logger       ：记录器，保存并跟踪对象日志信息变更的实体，当你需要对一个对象进行
+				   记录时，就需要生成一个logger。
+	Categories   ：分类器，层次化（hierarchy）的结构，用于对被记录信息的分类，层次中
+				   每一个节点维护一个logger的所有信息。
+	Priorities   ：优先权，包括TRACE, DEBUG, INFO, WARNING, ERROR, FATAL。

@@ -1,0 +1,81 @@
+int--->string    itoa()      sprintf     stringstream        boost::lexical_cast<string>();
+string---->int               sscanf      stringstream        sboost::lexical_cast<int>(s);
+
+安装boost
+	自动安装 	sudo apt-get install libboost-dev libboost-test-dev
+	编译安装 	./bootstrap.sh
+				./b2 install 默认安装到/usr/local/lib /usr/local/include
+	
+typeid Base含有虚函数，注意看结果，指针仍然是Base*的，尽管他们指向的是底层对象Derived，而这些Base对象的类型却是Derived的。
+scoped_ptr
+	scoped_ptr也具有auto_ptr同样的缺陷-不能用作容器的元素，但原因不同；auto_ptr是因为它的转移语意，而scoped_ptr则是因为不支持拷贝和赋值，不符合容器对元素类型的要求
+	比起auto_ptr，scoped_ptr更明确的表明了代码原始编写者的意图：只能在定义的作用域使用，不可转让，
+shared_ptr
+	引用计数型智能指针，可以被自由地拷贝和赋值，在任意的地方共享它，当没有代码使用（引用计数为0）它时才删除被包装的动态分配的对象。
+	share_ptr也可以安全地放到标准容器中。
+	shared_ptr( Y * p, D d, A a ): px( p ), pn( p, d, a ) D destroy(删除器) A allocator
+weark_ptr
+	它不具有普通指针的行为，没有重载operator*和->。它的最大作用在于协助shared_ptr工作，像旁观者那样观测资源的使用情况。
+	它可以从shared_ptr或另一个weak_ptr对象构造，获得资源的观测权。但weak_ptr没有共享资源，它的构造不会引起指针引用计数的增加。
+	可以使用成员函数lock（）从被观测的shared_ptr获得一个可用的shared_ptr对象，从而操作资源。
+class enable_shared_form_this<T>  从shared_ptr 类型得到
+class noncopyable 不可拷贝，不可赋值
+BOOST_AUTO(X,EXPR)  自动识别EXPR生成值的类型，然后定义X
+optional<T> 采用了指针语义来访问内部保存的元素，这使得optional未初始化时的行为就像一个空指针。
+assign 在需要填入大量初始值得地方很有用。重载了 += , () 三种符号 ，仅限于STL定义的标准容器。
+result_of<FUN(T,,)>::type 确定函数FUN的返回值类型
+reference_wrapper<T>  引用  其实就是指针实现  
+	ref()返回的是类型T
+	cref()返回的是T const
+
+如果一个变量有名字，它就是 lvalue, 否则，它就是 rvalue
+c++11中的 move() 是这样一个函数，它接受一个参数，然后返回一个该参数对应的右值引用.
+forward() 函数的作用：它接受一个参数，然后返回该参数本来所对应的类型的引用。
+
+bind 绑定函数
+function 定义函数类型
+signals  观察者模式成为信号/槽(signal/slot) 当信号发出时，所有关联它的槽被执行
+	
+typename
+	一个 template（模板）中的依赖于一个 template parameter（模板参数）的名字被称为 dependent names（依赖名字）。当一个 dependent names（依赖名字）嵌套在
+一个 class（类）的内部时，我称它为 nested dependent name（嵌套依赖名字）.
+	template<typename C>
+	void print2nd(const C& container)
+	{
+　		C::const_iterator * x;
+		　...
+	}
+	通用的规则很简单：在你涉及到一个在 template（模板）中的 nested dependent type name（嵌套依赖类型名）的任何时候，你必须把单词 typename 放在紧挨着它的
+前面。（重申一下，我待会儿要描述一个例外。）
+	（“typename 必须前置于嵌套依赖类型名”）规则的例外是 typename 不必前置于在一个 list of base classes（基类列表）中的或者在一个 member initialization 
+list（成员初始化列表）中作为一个 base classes identifier（基类标识符）的 nested dependent type name（嵌套依赖类型名）。
+	template<typename T>
+	class Derived: public Base<T>::Nested { 
+	　// base class list: typename not
+	　public: // allowed
+	　　explicit Derived(int x)
+	　　: Base<T>::Nested(x) // base class identifier in mem
+	　　{ 
+	　　　// init. list: typename not allowed
+	　
+	　　　typename Base<T>::Nested temp; // use of nested dependent type
+	　　　... // name not in a base class list or
+	　　} // as a base class identifier in a
+	　　... // mem. init. list: typename required
+	};
+
+multi_index	
+	multi_index_container <
+		xxxx,
+		index_by< 
+		...
+		>,
+	>
+	(ordered_unique | ordered_non_unique)
+	  <[(tag)[,(key extractor)[,(comparison predicate)]]]>
+
+	(ordered_unique | ordered_non_unique)
+	  <[(key extractor)[,(comparison predicate)]]>
+	  
+addressof(x) 
+	 boost::addressof(x) returns the address of x.

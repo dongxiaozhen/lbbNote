@@ -1,0 +1,2 @@
+
+/libxxxx.so.6: error adding symbols: DSO missing from command line  出现错误的原因是动态库没有链接上，需要在链接时指出 -llibxxxx.so

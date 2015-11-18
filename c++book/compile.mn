@@ -1,0 +1,11 @@
+g++ 编译
+	visibility  有效避免so之间的符号冲突  编写大型程序时，可用-fvisibility=hidden设置符号默认隐藏，针对特定变量和函数，在代码中使用
+		__attribute__ ((visibility("default")))  使该符号外部可见
+		__attribute__ ((visibility("hidden")))  使该符号外部不可见（仅仅该.so 内部使用）
+		
+	#pragma once  只要在头文件的最开始加入这条杂注，就能够保证头文件只被编译一次。
+	
+	
+	
+	
+	

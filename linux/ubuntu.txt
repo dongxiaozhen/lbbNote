@@ -1,0 +1,53 @@
+sudo passwd root  使用su
+ubuntu 设置
+	sudo apt-get install build-essential
+	
+安装moc
+	add-apt-repository ppa:noobslab/themes
+	apt-get update
+	apt-get install mac-ithemes-v3
+	apt-get install mac-icons-v3
+	ubuntu软件中心搜索cairo-dock并安装
+	dash菜单中搜索cairo-dock并打开 
+		cairo-dock更换成mac主题 参照下面
+		http://jingyan.baidu.com/article/95c9d20dae5342ec4e75613b.html 
+	sudo apt-get install unity-tweak-tool 
+	dash菜单中搜索 unity-tweak-tool 并打开
+	进入 主题 选择 Mbuntu-x (或者其它的Mbuntu开头的主题)
+	进入   图标   同样选择Mbuntu开头的图标
+	进入  指针   选择Mac-cursors 或其它的Mac开头的指针
+	注销系统重新登陆  打开cairo-dock更换mac主题 查看效果
+
+工作路径 
+	~/.bashrc文件，在最后加上：export PS1='[\u@\h \W]\$ '即可。其中\u显示当前用户账号，\h显示当前主机名，\w显示当前完整工作路径（\W显示当前工作路径），\$显示'$'符号。
+
+屏幕截屏 screenShot
+
+terminator  分屏
+	sudo apt-get instal terminator
+	Ctrl+Shift+O		Split terminals Horizontally.			
+	Ctrl+Shift+E		Split terminals Vertically.
+	Ctrl+Shift+Right	Move parent dragbar Right.
+	Ctrl+Shift+Left		Move parent dragbar Left.
+	Ctrl+Shift+Up		Move parent dragbar Up.
+	Ctrl+Shift+Down		Move parent dragbar Down.
+	Alt+Up				Move to the terminal above the current one.
+	Alt+Down			Move to the terminal below the current one.
+	Alt+Left			Move to the terminal left of the current one.
+	Alt+Right			Move to the terminal right of the current one.
+	
+apt-file
+	sudo apt-get install apt-file -y
+	apt-file update
+
+	apt-file search 使用说明
+	apt-file search<filename>,就可以查询到某个文件属于哪个包了
+
+	apt-file search alsa/asoundlib.h
+	libasound2-dev: /usr/include/alsa/asoundlib.h
+	libdssialsacompat-dev: /usr/include/dssi/alsa/asoundlib.h
+
+	
+ctl + L  显示路径
+/run/user/xxx/gvfs/smb-share..........xxx               smb链接路径
+history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条命令] [!! 上一次命令] [!str 以str开头的最近的命令]           命令行历史

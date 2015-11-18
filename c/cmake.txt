@@ -1,0 +1,23 @@
+cmake
+cmake_minimum_required(VERSION major[.minor[.patch[.tweak]]] [FATAL_ERROR])
+
+add_definitions(-DFOO -DBAR ...)
+
+include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 ...)
+
+add_dependencies(target-name depend-target1 depend-target2 ...)
+
+add_executable(<name> [WIN32] [MACOSX_BUNDLE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
+	Adds an executable target called <name> to be built from the source files listed in the command invocation.
+	
+add_library(<name> [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
+	Adds a library target called <name> to be built from the source files listed in the command invocation.
+	
+add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])
+
+
+define_property(<GLOBAL | DIRECTORY | TARGET | SOURCE |
+                                 TEST | VARIABLE | CACHED_VARIABLE>
+                                 PROPERTY <name> [INHERITED]
+                                 BRIEF_DOCS <brief-doc> [docs...]
+                                 FULL_DOCS <full-doc> [docs...])

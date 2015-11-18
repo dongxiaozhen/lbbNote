@@ -1,0 +1,48 @@
+makefile        A target is out of date if it does not exist or if it is older than any of the prerequisites 
+				has no prerequisites, clean would always be considered up to date and its recipe would not be executed. 
+include filename  不同目录下的makefile 需要共享variable definition and pattern rules and generate prerequisites from source fies automatically
+	filename 的搜索路径 .
+						‘-I’ or ‘--include-dir’
+						/usr/local/include 
+						/usr/gnu/include
+						/usr/include
+						
+targets : normal-prerequisites | order-only-prerequisites			(order-only-prerequisites更新，不会引起targets更新)				
+						
+-  命令前面，表示忽略错误
+
+first Expansion
+	Variable Assignment
+		immediate = deferred
+		immediate ?= deferred
+		immediate := immediate
+		immediate ::= immediate
+		immediate += deferred or immediate
+			For the app end op erator, ‘+=’, the right-hand side is considered immediate if the variable was previously set as a simple variable (‘:=’ or ‘::=’), and deferred otherwise.
+			For the shell assignment operator, ‘!=’, the right-hand side is evaluated immediately and handed to the shell. The result is stored in the variable named on the left, and that variable becomes a simple variable 
+			
+	Conditional directives are parsed immediately.
+
+	Rule Defiition
+		immediate : immediate ; deferred
+			deferred
+		
+second Expansion
+	.SECONDEXPANSION
+	
+VPATH specifis a list of directories that make should search.		
+	VPATH = src:../headers  
+	
+vpath which allows you to specify a search path for a particular class of fie names: 
+	vpath pattern directories        Specify the search path directories for fie names that match pattern
+	vpath pattern                    Clear out the search path associated with pattern
+	vpath                            Clear all search paths previously specifid with vpath directives.
+Directory Search for Link Libraries
+		.LIBPATTERNS  default ‘lib%.so lib%.a’
+		
+P hony Targe ts	
+	A phony target is one that is not really the name of a fie;
+	The implicit rule search is skipped for .PHONY targets. 
+	‘$^’ is a list of all the prerequisites
+	‘$@’ is the target.
+	‘$<’ is just the fist prerequisite:

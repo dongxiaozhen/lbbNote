@@ -1,0 +1,138 @@
+awk
+
+	pattern {action}
+		A pattern can be:
+				  BEGIN
+				  END
+				  expression
+				  expression , expression
+
+				  
+				  
+				  
+				  
+	expr1 rel-op expr2           expr1和expr2比较，如果两个都是number类型，则按number类型比较，如果一个是string,才按string类型比较
+	y = x + 2                    y will be typed numeric, the value of x will be converted to number if necessary 
+	z = x  "hello"	             z will be typed string,	the value of x will be converted to string if necessary and concatenated with "hello".
+	if ( expr ) statement        a string expression evaluates true if and only if it is not the empty string ""; numeric values if and only if not numerically zero.
+	Regular expressions  egrep(1)
+		expr ~ /r/
+		
+		.   matches any character (including newline).
+
+        ^   matches the front of a string.
+
+        $   matches the back of a string.
+
+	    [c1c2c3...]  matches any character in the class c1c2c3... .  An interval of characters is denoted c1-c2 inside a class [...]
+		
+		[^c1c2c3...] matches any character not in the class c1c2c3...
+		
+		r*           matches r repeated zero or more times.
+
+		r+           matches r repeated one or more times.
+
+		r?           matches r zero or once.
+
+	
+	
+Records and fields
+	$0  Records are read in one at a time
+	$1, $2,,$NF
+	
+Expressions and operators
+	assignment          =  +=  -=  *=  /=  %=  ^=
+	conditional         ?  :
+	logical or          ||
+	logical and         &&
+	array membership    in
+	matching       ~   !~
+	relational          <  >   <=  >=  ==  !=
+	concatenation       (no explicit operator)
+	add ops             +  -
+	mul ops             *  /  %
+	unary               +  -
+	logical not         !
+	exponentiation      ^
+	inc and dec         ++ -- (both post and pre)
+	field               $
+
+Arrays    Awk provides one-dimensional arrays， Array elements are expressed as array[expr].  Expr is internally converted to  string  type, 
+	
+	for ( var in array ) statement                    loops over each index of an array.
+	delete array                                      which deletes all elements of
+	array[expr1,expr2] 								  equivalent to array[expr1 SUBSEP expr2].  example if ( (i, j) in A )  print A[i, j]
+	
+ Builtin-variables	
+	ARGC      number of command line arguments.
+
+	ARGV      array of command line arguments, 0..ARGC-1.
+
+	CONVFMT   format for internal conversion of numbers to string, initially = "%.6g".
+
+	ENVIRON   array indexed by environment variables.  An environment string, var=value is stored as ENVIRON[var] = value.
+
+	FILENAME  name of the current input file.
+
+	FNR       current record number in FILENAME.
+
+	FS        splits records into fields as a regular expression.
+
+	NF        number of fields in the current record.
+
+	NR        current record number in the total input stream.
+
+	OFMT      format for printing numbers; initially = "%.6g".
+
+	OFS       inserted between fields on output, initially = " ".
+
+	ORS       terminates each record on output, initially = "\n".
+
+	RLENGTH   length set by the last call to the built-in function, match().
+
+	RS        input record separator, initially = "\n".
+
+	RSTART    index set by the last call to match().
+
+	SUBSEP    used to build multiple array subscripts, initially = "\034".
+
+	
+build-in 
+String functions
+	gsub(r,s,t)  gsub(r,s)     every match of regular expression r in variable t is replaced by string s.  t里面&要替换为\&,\替换为\\
+	index(s,t)  If t is a substring of s, then the position where t starts is returned, else 0 is returned.  The first character of  s  is  in position 1.   
+	length(s)   Returns the length of string s
+	match(s,r)  Returns  the  index of the first longest match of regular expression r in string s。Returns 0 if no match.
+	split(s,A,r)  split(s,A)    String s is split into fields by regular expression r and the fields are loaded  into  array  A.
+	sprintf(format,expr-list)
+	substr(s,i,n)  substr(s,i)   Returns  the  substring  of  string  s,  starting at index i, of length n.
+	tolower(s)
+	toupper(s)
+Arithmetic functions
+	atan2(y,x)    cos(x)         exp(x)        int(x)         log(x)        rand()        sin(x)         sqrt(x)  srand(expr)  srand()
+
+Input and output
+	print  writes $0  ORS to standard output.
+    print expr1, expr2, ..., exprn   writes expr1 OFS expr2 OFS ... exprn ORS to standard output.  Numeric expressions are converted to string with OFMT.
+    printf format, expr-list
+	         redirected to a file or command by appending > file, >> file or | command to the end of the print statement. 
+			 
+	getline
+         reads into $0, updates the fields, NF, NR and FNR.
+	getline < file
+		 reads into $0 from file, updates the fields and NF.
+	getline var
+		 reads the next record into var, updates NR and FNR.
+	getline var < file
+		 reads the next record of file into var.
+	command | getline
+		 pipes a record from command into $0 and updates the fields and NF.
+	command | getline var
+		 pipes a record from command into var.
+		 
+close(expr) closes the file or pipe associated with expr.  Close returns 0 if expr is an open file, the exit status if expr  is a piped command, and -1 otherwise. 
+fflush(expr) flushes the output file or pipe associated with expr.  Fflush returns 0 if expr is an open output stream else  -1.		 
+system(expr) uses /bin/sh to execute expr and returns the exit status of the command expr. 
+
+User defined functions
+	function name( args ) { statements }

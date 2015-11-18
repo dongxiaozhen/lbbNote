@@ -1,0 +1,39 @@
+qt
+：http://qt-project.org/
+
+如何安装QT
+	sudo apt-get install qtcreator
+1Qt反射内幕小窥
+	Qt反射机制是基于moc(meta object compiler)实现的,在这里多插一句（可以说Qt所有C++没有的特性，几乎都和这个有关系）。但是需要注意的是Qt提供的反射式基本的反射，不支持类的反射，这个与Java，C#还是有差别的。
+moc讲解
+	通常C++的编译过程为 预处理->编译->链接->运行
+	Qt编译的过程中，有一个moc的过程,在Qt工程构建过程中的qmake其实就是干这个事的。moc->预处理->编译->链接->运行。
+	在moc过程中，需要处理的事情如下：
+		1、 识别一些特殊的宏Q_OBJECT、Q_PROPERTY、Q_INVOKABLE。。。; 如果碰到这些关键字，Qt自然就会去生成对应的moc文件。
+		2、 slot，signal自然也是如此。
+		3、 uidesigner，同样也是在这个阶段处理的;
+	反射前期准备
+		1、 首先得继承于Q_Object,同时需要在class中加入Q_OBJECT，但是Q_Object的构造函数默认是私有的不让继承。
+		2、 注册类成员变量需要使用Q_PROPERTY  Q_PROPERTY( type member READ get WRITE set)
+		3、 注册类成员函数  如果你希望这个函数能够被反射，那么很简单，只需要在类的函数声明前加入Q_INVOKABLE关键字。
+Q_DECLARE_METATYPE
+	如果要使自定义类型或其他非QMetaType内置类型在QVariant中使用，必须使用该宏。该类型必须有公有的 构造、析构、复制构造 函数
+	
+qRegisterMetaType
+	如果非QMetaType内置类型要在 Qt 的属性系统中使用, 如果非QMetaType内置类型要在 queued 信号与槽 中使用
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Q_EMUMS() 宏告诉moc在QMetaProperty中为该属性生成一些函数来辅助字符串到枚举值的转换。
+	
+	
+	
+error:
+	undefine vtable for xxx  qt的头文件（继承QObject,里面有Q_OBJECT,slots,signals等关键字）
+	

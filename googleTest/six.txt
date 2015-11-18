@@ -1,0 +1,185 @@
+一、前言
+使用gtest编写的测试案例通常本身就是一个可执行文件，因此运行起来非常方便。同时，gtest也为我们提供了一系列的运行参数（环境变量、命令行参数或代码里指定），使得我们可以对案例的执行进行一些有效的控制。
+
+
+二、基本介绍
+前面提到，对于运行参数，gtest提供了三种设置的途径：
+
+1. 系统环境变量
+
+
+2. 命令行参数
+
+3. 代码中指定FLAG
+
+
+因为提供了三种途径，就会有优先级的问题， 有一个原则是，最后设置的那个会生效。不过总结一下，通常情况下，比较理想的优先级为：
+
+
+命令行参数 > 代码中指定FLAG > 系统环境变量
+
+为什么我们编写的测试案例能够处理这些命令行参数呢？是因为我们在main函数中，将命令行参数交给了gtest，由gtest来搞定命令行参数的问题。
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+} 
+
+这样，我们就拥有了接收和响应gtest命令行参数的能力。如果需要在代码中指定FLAG，可以使用testing::GTEST_FLAG这个宏来设置。比如相对于命令行参数--gtest_output，可以使用testing::GTEST_FLAG(output) = "xml:";来设置。注意到了，不需要加--gtest前缀了。同时，推荐将这句放置InitGoogleTest之前，这样就可以使得对于同样的参数，命令行参数优先级高于代码中指定。
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    testing::GTEST_FLAG(output) = "xml:";
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+} 
+
+最后再来说下第一种设置方式-系统环境变量。如果需要gtest的设置系统环境变量，必须注意的是：
+
+
+1. 系统环境变量全大写，比如对于--gtest_output，响应的系统环境变量为：GTEST_OUTPUT
+
+
+2.  有一个命令行参数例外，那就是--gtest_list_tests，它是不接受系统环境变量的。（只是用来罗列测试案例名称）
+
+
+三、参数列表
+
+了解了上面的内容，我这里就直接将所有命令行参数总结和罗列一下。如果想要获得详细的命令行说明，直接运行你的案例，输入命令行参数：/? 或 --help 或 -help
+
+1. 测试案例集合
+
+
+命令行参数  说明  
+--gtest_list_tests 使用这个参数时，将不会执行里面的测试案例，而是输出一个案例的列表。
+ 
+--gtest_filter 对执行的测试案例进行过滤，支持通配符
+
+?    单个字符
+
+*    任意字符
+
+-    排除，如，-a 表示除了a
+
+
+:    取或，如，a:b 表示a或b
+
+
+比如下面的例子：
+
+./foo_test 没有指定过滤条件，运行所有案例
+./foo_test --gtest_filter=* 使用通配符*，表示运行所有案例
+./foo_test --gtest_filter=FooTest.* 运行所有“测试案例名称(testcase_name)”为FooTest的案例
+./foo_test --gtest_filter=*Null*:*Constructor* 运行所有“测试案例名称(testcase_name)”或“测试名称(test_name)”包含Null或Constructor的案例。
+./foo_test --gtest_filter=-*DeathTest.* 运行所有非死亡测试案例。
+./foo_test --gtest_filter=FooTest.*-FooTest.Bar 运行所有“测试案例名称(testcase_name)”为FooTest的案例，但是除了FooTest.Bar这个案例
+
+ 
+--gtest_also_run_disabled_tests 执行案例时，同时也执行被置为无效的测试案例。关于设置测试案例无效的方法为：
+
+在测试案例名称或测试名称中添加DISABLED前缀，比如：
+
+
+// Tests that Foo does Abc.
+TEST(FooTest, DISABLED_DoesAbc) {  }
+
+class DISABLED_BarTest : public testing::Test {  };
+
+// Tests that Bar does Xyz.
+TEST_F(DISABLED_BarTest, DoesXyz) {  }
+ 
+--gtest_repeat=[COUNT] 设置案例重复运行次数，非常棒的功能！比如：
+
+--gtest_repeat=1000      重复执行1000次，即使中途出现错误。
+--gtest_repeat=-1          无限次数执行。。。。
+--gtest_repeat=1000 --gtest_break_on_failure     重复执行1000次，并且在第一个错误发生时立即停止。这个功能对调试非常有用。
+--gtest_repeat=1000 --gtest_filter=FooBar     重复执行1000次测试案例名称为FooBar的案例。
+
+ 
+
+ 
+
+2. 测试案例输出
+
+命令行参数  说明  
+--gtest_color=(yes|no|auto) 输出命令行时是否使用一些五颜六色的颜色。默认是auto。
+ 
+--gtest_print_time 输出命令行时是否打印每个测试案例的执行时间。默认是不打印的。
+ 
+--gtest_output=xml[:DIRECTORY_PATH\|:FILE_PATH] 将测试结果输出到一个xml中。
+
+1.--gtest_output=xml:    不指定输出路径时，默认为案例当前路径。
+
+
+2.--gtest_output=xml:d:\ 指定输出到某个目录 
+
+
+3.--gtest_output=xml:d:\foo.xml 指定输出到d:\foo.xml
+
+
+如果不是指定了特定的文件路径，gtest每次输出的报告不会覆盖，而会以数字后缀的方式创建。xml的输出内容后面介绍吧。 
+
+ 
+
+ 
+
+3. 对案例的异常处理
+
+命令行参数  说明  
+--gtest_break_on_failure 调试模式下，当案例失败时停止，方便调试
+ 
+--gtest_throw_on_failure 当案例失败时以C++异常的方式抛出
+ 
+--gtest_catch_exceptions 是否捕捉异常。gtest默认是不捕捉异常的，因此假如你的测试案例抛了一个异常，很可能会弹出一个对话框，这非常的不友好，同时也阻碍了测试案例的运行。如果想不弹这个框，可以通过设置这个参数来实现。如将--gtest_catch_exceptions设置为一个非零的数。
+
+注意：这个参数只在Windows下有效。
+
+ 
+
+
+
+
+四、XML报告输出格式
+
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="1" errors="0" time="35" name="AllTests">
+  <testsuite name="MathTest" tests="2" failures="1"* errors="0" time="15">
+    <testcase name="Addition" status="run" time="7" classname="">
+      <failure message="Value of: add(1, 1)  Actual: 3 Expected: 2" type=""/>
+      <failure message="Value of: add(1, -1)  Actual: 1 Expected: 0" type=""/>
+    </testcase>
+    <testcase name="Subtraction" status="run" time="5" classname="">
+    </testcase>
+  </testsuite>
+  <testsuite name="LogicTest" tests="1" failures="0" errors="0" time="5">
+    <testcase name="NonContradiction" status="run" time="5" classname="">
+    </testcase>
+  </testsuite>
+</testsuites>
+
+从报告里可以看出，我们之前在TEST等宏中定义的测试案例名称(testcase_name)在xml测试报告中其实是一个testsuite name，而宏中的测试名称(test_name)在xml测试报告中是一个testcase name，概念上似乎有点混淆，就看你怎么看吧。
+
+当检查点通过时，不会输出任何检查点的信息。当检查点失败时，会有详细的失败信息输出来failure节点。
+
+
+在我使用过程中发现一个问题，当我同时设置了--gtest_filter参数时，输出的xml报告中还是会包含所有测试案例的信息，只不过那些不被执行的测试案例的status值为“notrun”。而我之前认为的输出的xml报告应该只包含我需要运行的测试案例的信息。不知是否可提供一个只输出需要执行的测试案例的xml报告。因为当我需要在1000个案例中执行其中1个案例时，在报告中很难找到我运行的那个案例，虽然可以查找，但还是很麻烦。
+
+
+五、总结 
+本篇主要介绍了gtest案例执行时提供的一些参数的使用方法，这些参数都非常有用。在实际编写gtest测试案例时肯定会需要用到的时候。至少我现在比较常用的就是：
+
+1. --gtest_filter 
+
+2. --gtest_output=xml[:DIRECTORY_PATH\|:FILE_PATH]
+
+3. --gtest_catch_exceptions 
+
+最后再总结一下我使用过程中遇到的几个问题:
+
+1. 同时使用--gtest_filter和--gtest_output=xml:时，在xml测试报告中能否只包含过滤后的测试案例的信息。
+
+
+2. 有时，我在代码中设置 testing::GTEST_FLAG(catch_exceptions) = 1和我在命令行中使用--gtest_catch_exceptions结果稍有不同，在代码中设置FLAG方式有时候捕捉不了某些异常，但是通过命令行参数的方式一般都不会有问题。这是我曾经遇到过的一个问题，最后我的处理办法是既在代码中设置FLAG，又在命令行参数中传入--gtest_catch_exceptions。不知道是gtest在catch_exceptions方面不够稳定，还是我自己测试案例的问题。

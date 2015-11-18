@@ -1,0 +1,91 @@
+git 
+git config --global user.name "xxx"
+git config --global user.email xxxxx
+git config --list
+git config --global --list
+
+github
+	github.com
+	1.开源软件点击fork就会在自己的账户下复制那个项目
+	2.clone地址，然后在本地执行git clone xxxxx(网址)
+	
+git remote -v 远程的git地址
+
+git rev-parse --git-dir         显示.git目录所在的位置
+git rev-parse --show-toplevel    显示工作区根目录
+git rev-parse --show-prefix      显示相对于工作区根目录的相对目录
+
+git stash list				显示所有stash
+git stash drop xxxx			清楚xxxx stash
+git stash drop clear        清楚所有的stash
+
+git checkout branch 切换分支
+git checkout -b branch 创建并切换分支
+git checkout  -b develop origin/master        // 创建并切换封装develop, 指向origin/master分支顶点端。
+
+git clean -f     删除未跟踪文件
+
+git cherry-pick xxxx 用于把另一个本地分支的commit修改应用到当前分支。     xxxx(commitID)
+
+git push origin master:refs/for/mybranch (在local repository中找到名字为master的branch，用他去更新remote repository下面名字为mybranch的branch)
+
+git fsck --lost-found  丢失分支和stash后，用来恢复
+	   
+重置（reset）一般用于重置暂存区(除非使用--hard参数，否则不重置工作区)，而检出（checkout）命令主要是覆盖工作区（如果<commt>不省略，也会替换暂存区中相应的文件）。
+	   git push origin master:refs/for/master
+
+（1丢弃B）	   
+----A---------B---------C----D---E-----F
+  start   discard     begin           end
+     
+	 git rebase --onto A B F   
+	 git rebase -i A  (然后去掉B的commit)
+ 	   
+	   
+（2 BC合并）
+----A---------B---------C----D---E-----F
+  start       begin    end
+  
+      git rebase -i A  (然后改C为squad)
+  
+  
+里程碑tag
+  git tag -m "xxx" name <commitID>创建
+  git tag -d name   删除
+  
+  
+ 分支管理branch
+	git branch name <start-point> 创建分支           （branch不能切换分支，需要checkout）
+	git branch -d name 检查name分支是否已经合并到其他分支，否则拒绝删除
+	git branch -D name 强制删除
+	git branch -m/-M oldname newname  重命名分支（拒绝/强制）
+	
+git rebase orign/master 和git merger的却别   （在develop分支放到orign/master分支后面）
+（原始结构）
+	c1--------c2---------c3--------c4（origin)
+	           -
+			     -------c5-------c6(develop)
+				 
+(rebase后的结构)
+	c1--------c2---------c3--------c4(origin)
+	                                 -
+			                          -------c5-------c6(develop)
+(merger后的结构)
+	c1--------c2---------c3--------c4(origin)
+	            --                     --
+			      -------c5-------c6     -
+				                    - ----c7(develop)
+补丁									
+   *git format-patch -s HEAD~3..HEAD或者SHA1ID   某次提交以后的所有patch 
+	git format-patch -M master         // 当前分支所有超前master的提交
+	git apply --stat newpatch.patch     // 先检查patch文件：# 
+    git apply --check  newpatch.patch    检查能否应用成功：# 
+   *git am xxx
+
+repo
+	repo init -u
+	repo sync 克隆或同步本地文件
+	repo start 实际上是对git checkout -b 命令的封装
+	
+git whatchanged  filename  显示某个文件的每个版本提交信息：提交日期，提交人员，版本号，提交备注
+gitk -- filename   gitk显示

@@ -1,0 +1,15 @@
+Try it!
+
+Build client and server:
+
+$ make
+
+Run the server, which will listen on port 50051:
+
+$ ./greeter_server
+
+Run the client (in a different terminal):
+
+$ ./greeter_client
+
+If things go smoothly, you will see the "Greeter received: Hello world" in the client side output.

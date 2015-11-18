@@ -1,0 +1,145 @@
+Chapter 3. 软件包管理工具
+
+Table of Contents
+
+3.1. apt-get
+3.2. apt-cache
+3.3. apt-file
+3.4. apt-key
+3.5. 建立一个混合系统
+3.6. 升级指定版本的软件包
+3.7. 保持指定软件包的版本
+3.1. apt-get
+
+软件包管理是区分不同发行版的一大特征，如RedHat使用RPM软件包来管理软件，Debian使用Deb软件包来管理软件。apt-get是Debian的Deb软件包管理工具，它的最低底层还是调用dpkg包管理程序，通过apt-get工具可使我们很好地解决软件包的依赖关系，方便软件的安装和升级。它是Debian发行版的最大特色，一定要好好掌握。
+
+要使用好apt-get就要配置好一个名为sources.list的资源列表，资源列表指向Debian系统的软件库，apt-get会从该软件库安装各种软件包。sources.list文件位于/etc/apt目录下，下面是Sarge、Etch和Sid三个版本的写法，你可任选一种，最好不要多版本混用：
+
+#sources.list for Sarge(stable):
+deb http://http.us.debian.org/debian stable main contrib non-free
+deb http://non-us.debian.org/debian-non-US stable/non-US main contrib non-free
+deb http://security.debian.org stable/updates main contrib non-free
+#Uncomment if you want the apt-get source function to work
+#deb-src http://http.us.debian.org/debian stable main contrib non-free
+#deb-src http://non-us.debian.org/debian-non-US stable/non-US main contrib non-free
+
+#sources.list for Etch(testing):
+deb http://http.us.debian.org/debian testing main contrib non-free
+deb http://non-us.debian.org/debian-non-US testing/non-US main contrib non-free
+deb http://security.debian.org testing/updates main contrib non-free
+#Uncomment if you want the apt-get source function to work
+#deb-src http://http.us.debian.org/debian testing main contrib non-free
+#deb-src http://non-us.debian.org/debian-non-US testing/non-US main contrib non-free
+
+#sources.list for Sid(unstable):
+deb ftp://ftp.us.debian.org/debian unstable main contrib non-free
+deb ftp://non-us.debian.org/debian-non-US unstable/non-US main contrib non-free
+#Uncomment if you want the apt-get source function to work
+#deb-src http://http.us.debian.org/debian unstable main contrib non-free
+#deb-src http://non-us.debian.org/debian-non-US unstable/non-US main contrib non-free
+sources.list文件的内容决定了Debian的版本。安全更新只存在于stable和testing版中，unstable没有安全更新。进入stable的软件都经过严格的依赖测试和安全测试，所以如果你想系统稳定，用于工作，最好使用stable，如果你想使用最新版的软件，就使用testing或unstable。Woody、Sarge和Sid是Debian 3.x三个版本中的代号，我们一般都是以代号来称呼debian不同版本。所有Debian发行版的代号全都取自电影Toy Story，Woody是那个牛仔，Sarge是绿色塑胶军队的领导，Sid是破坏玩具的小孩。
+
+apt-get update
+
+更新软件包信息库。在Debian中，软件包是通过一个数据库来管理的，通过这个数据库中可跟踪你系统中已安装、没有安装和现在可安装的软件包信息。apt-get安装软件包时就是依靠这个数据库来解决软件包间的依赖关系，从而可自动安装相关软件。我们需定期运行该命令，从而保持数据库的信息为最新。
+
+apt-get install package_name1 package_name2 package_name3 ...
+
+安装软件包。如果软件包需其它软件包支持，apt-get会通过搜索软件包数据库找到这种依赖关系，一起下载相关软件。在一个命令行中可同时安装多个软件包，中间用空格隔开即可。安装的软件包默认会存放在/var/cache/apt/archives目录下，以便以后重新安装。如果已安装的软件包损坏了，你可通过--reinstall选项来重新安装。如：
+
+# apt-get --reinstall install package_name
+[Note]	
+在需安装的软件包名后加一个减号会删除软件包，如：apt-get install package_name-。
+只是下载软件，不解包和安装使用-d选项，如：
+
+# apt-get -d install package_name
+使用--dry-run选项可使apt-get在安装软件包前进行测试，如：
+
+# apt-get install package_name --dry-run
+Debian软件包的名字和软件名不同，所以在安装前如不知道软件包的名字，可到Debian的官方软件库查询，网址是：http://www.debian.org/distrib/packages/。或者用下面介绍的apt-cache search package_name命令来查询。
+
+apt-get remove package_name1 package_name2 package_name3 ...
+
+删除软件包。如果你想删除没用的软件包，只要使用该命令即可。如果你想把该软件的配置文件也删除，可以用--purge选项，如：
+
+# apt-get --purge remove package_name
+[Note]	
+类似地，在删除软件包名后加一个加号会安装软件包，如：apt-get remove package_name+。
+apt-get source package_name1 package_name2 package_name3
+
+下载软件包的的源码版本。
+
+apt-get upgrade package_name1 package_name2 package_name3 ...
+
+软件包升级功能是APT系统这么成功的主要原因。通过该命令，我们就可把软件升级到最版本。在使用该命令前，最好先运行apt-get update命令，以更新软件包数据库。但该方案不是更新系统最好的方法，一些包会因为包依赖问题而保留(kept back)一些旧的软件包。Debian提供了一个更好的升级方案，就是用dis-upgrade。下面一节会详细介绍。
+
+apt-get dist-upgrade
+
+更新整个Debian系统。可从网络或本地更新整个系统。它会重新安排好包的依赖性。如果有些包由于一些原因实在不能更新，我们可通过以下命令查询原因：
+
+# apt-get -o Debug::pkgProblemResolver=yes dist-upgrade
+[Note]	
+用apt-show-versions -u可获得可升级软件包的列表。该命令还有一些有用的选项，可用-h选项查看详细帮助，了解更多功能。
+apt-get clean
+
+删除下载了的软件包，当我们通过apt-get安装软件包时，APT会把软件包下载到本地/var/cache/apt/archives/目录。该命令会删除该文件夹内的除锁住外的所有软件包。
+
+apt-get autoclean
+
+删除已下载的旧版本的软件包。该命令类似于上面的命令，但它会有选择地删除旧版本的软件包。
+
+apt-get dselect-upgrade
+
+通过dselect的“建议”和“推荐”功能更新系统。dselect是Debian中一个功能强大的包管理工具。它可帮助用户选择软件包来安装，其中一个有用功能是它会建议和推荐安装其它相关软件包。我们可在APT中使用它这个功能。
+
+apt-get check
+
+检查系统中已安装软件包的依赖性。
+
+[Note]	
+apt-get是命令行方式的dpkg前台程序，不喜欢命令行方式的朋友也可以试试aptitude和synaptic这两个软件包。aptitude是一个字符界面的dpkg前端程序，synaptic是一个GTK界面的dpkg前端程序。
+
+3.2. apt-cache
+
+apt-cache是一个apt软件包管理工具，它可查询apt的二进制软件包缓存文件。通过它我们可查询软件包的状态信息。
+
+apt-cache show package_name
+
+显示软件的信息，包括版本号，安装状态和包依赖关系等。
+
+apt-cache search package_name
+
+搜索软件包，可用正则表达式。
+
+apt-cache showpkg package_name
+
+显示软件包的依赖关系信息。
+
+apt-cache policy package_name
+
+显示软件包的安装状态和版本信息。
+
+apt-cache depends package_name
+
+显示指定软件包所依赖的软件包。
+
+apt-cache rdepends package_name
+
+显示软件包的反向依赖关系，即有什么软件包需依赖你所指定的软件包
+
+
+
+3.3. apt-file
+apt-file是一个软件包查找工具，可以查到软件包所含的文件和安装的位置。
+
+apt-file update
+
+更新软件包的文件库，第一次使用或apt-get update后都需运行一次。
+
+apt-file search file_name
+
+查找该文件存在于哪些软件包中。
+
+apt-file list package_name
+
+显示该软件包的文件。
