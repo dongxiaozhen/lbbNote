@@ -1,0 +1,21 @@
+int _vsnprintf(char* str, size_t size, const char* format, va_list ap);
+函数功能：将可变参数格式化输出到一个字符数组。
+参数说明:
+
+    char *str [out],把生成的格式化的字符串存放在这里.
+    size_t size [in], str可接受的最大字节数,防止产生数组越界.
+    const char *format [in], 指定输出格式的字符串，它决定了你需要提供的可变参数的类型、个数和顺序。
+    va_list ap [in], va_list变量. va:variable-argument:可变参数
+
+#include <stdio.h>
+#include <stdarg.h>
+int mon_log(char* format, ...)
+{
+    char str_tmp[50];
+    int i=0;
+    va_list vArgList; //定义一个va_list型的变量,这个变量是指向参数的指针.
+    va_start (vArgList, format); //用va_start宏初始化变量,这个宏的第二个参数是第一个可变参数的前一个参 //数,是一个固定的参数.
+    i = vsnprintf(str_tmp, 50, format, vArgList);
+    va_end(vArgList); //用va_end宏结束可变参数的获取
+    return i; //返回参数的字符个数中间有逗号间隔
+}
