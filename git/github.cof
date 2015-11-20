@@ -33,4 +33,14 @@ GitHub后台可以添加多个SSH Keys，但是同一个SSH Keys只能在添加�
     4.将GitHub SSH仓库地址中的git@github.com替换成新建的Host别名。
         git@github.com:dongxiaozhen/lbbNote.git  替换后应该是：github2:dongxiaozhen/lbbNote.git
         如果是新建的仓库，直接使用替换后的URL克隆即可。如果已经使用原地址克隆过了，可以使用命令修改：
-            git remote set-url origin github2:freehost/mail.git
+            git remote set-url origin github2:dongxiaozhen/lbbNote.git
+
+
+在github.com上 建立了一个小项目，可是在每次push  的时候，都要输入用户名和密码，很是麻烦,原因是使用了https方式 push
+    1.git remote -v
+        origin https://github.com/yuquan0821/demo.git (fetch)
+        origin https://github.com/yuquan0821/demo.git (push)
+    2.下面把它换成ssh方式的。
+        1. git remote rm origin
+        2. git remote add origin git@github.com:yuquan0821/demo.git
+        3. git push origin
