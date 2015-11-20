@@ -1,0 +1,48 @@
+
+
+ctrl + d                            Repeatedly click, select the nearest same phase
+alt  + f3                           Highlight all matching items in a file
+ctrl + shift + m                    Select the contents in brackets () {}
+ctrl + shift + Up/down arrow        Move the whole line
+ctrl + shift + d                    Copy selected rows
+ctrl + shift + k                    delete row
+ctrl + x                            Cut line
+ctrl + k + u/l                      Conversion of letter size
+shift + up/down                     select rows
+
+Ctrl+P：                             搜索项目中的文件
+Ctrl+G：                             跳转到第几行
+Ctrl+W：                             关闭当前打开文
+
+Ctrl+R：                              function select
+Ctrl+F：                             查找并替换查找内容
+Ctrl+Shift+F：                       查找并替换
+Ctrl+H：                             替换
+
+ctrl + z                             Revoke
+ctrl + u                             undo
+
+
+F11：                                全屏
+Shift+F11：                          全屏免打扰模式，只编辑当前文件
+
+
+Alt+数字：                             切换打开第N个文件
+Alt+Shift+1                           窗口分屏，恢复默认1屏（非小键盘的数字）
+Alt+Shift+1                         窗口分屏，恢复默认1屏（非小键盘的数字）
+
+Alt+Shift+2                         左右分屏-2列
+
+Alt+Shift+3                         左右分屏-3列
+
+Alt+Shift+4                         左右分屏-4列
+
+Alt+Shift+5                         等分4屏
+
+Alt+Shift+8                         垂直分屏-2屏
+
+Alt+Shift+9                         垂直分屏-3屏
+
+
+
+shift + Right mouse                  Column selection mode
