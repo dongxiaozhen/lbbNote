@@ -1,0 +1,27 @@
+动词
+动词代表了我们要进行的操作
+    d delete 删除
+    r replace 替代
+    c change 修改
+    y yank   复制
+    v visual select 选取
+
+名词
+名词代表了我们即将处理的文本
+    w word   单词
+    s sentence 句子
+    p paragraph 段落
+    t tag 标签
+
+介词
+介词界定了待编辑文本的范围或者位置
+    i inside 在...之内
+    a around 环绕...
+    t to 到...位置之前
+    f forward 到..位置上
+
+
+组合句子
+    动词 介词 名词      VIS  select inside sentence
+    动词 介词/数词 名词   数词指定了待编辑文本对象的范围   c3w
+    数次 动词 名词        数次表示将操作执行n次   2dw   twice delete word
