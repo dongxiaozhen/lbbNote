@@ -1,22 +1,22 @@
-高质量C/C++编程  apache源码   ACE 和 libevent   log4cpp  nedmalloc内存池库   memcache 缓存库  python  
+高质量C/C++编程  apache源码   ACE 和 libevent   log4cpp  nedmalloc内存池库   memcache 缓存库  python
 F:\libinbin\study\muduo\muduo\base
 
-call_traits 
+call_traits
 	模板类call_traits<T>封装了"最好的"方法来传递某种类型T的参数给函数，或从函数返回，它由下表所列的一组typedef定义所组成。call_traits的目的是，确保不会发
 生象" 引用的引用 "这样的情况，而且参数以最高效的方式传递
-	现有的习惯        	      call_traits 等价物                                          说明                 
- 
-	T (以值返回)     	    call_traits<T>::value_type           定义一个类型，表示类型T 的"值"。用于以值返回的函数，或保存类型T 的值。	
+	现有的习惯        	      call_traits 等价物                                          说明
 
-	T& (返回值)      	    call_traits<T>::reference            定义一个类型，表示类型T 的引用。用于返回T& 的函数。	
+	T (以值返回)     	    call_traits<T>::value_type           定义一个类型，表示类型T 的"值"。用于以值返回的函数，或保存类型T 的值。
 
-	const T& (返回值)	    call_traits<T>::const_reference	      定义一个类型，表示类型T 的常量引用。用于返回const T& 函数。	
+	T& (返回值)      	    call_traits<T>::reference            定义一个类型，表示类型T 的引用。用于返回T& 的函数。
 
-	const T& (函数参数)     call_traits<T>::param_type            定义一个类型，表示传递一个类型T 的参数给函数的"最好" 方法。	
+	const T& (返回值)	    call_traits<T>::const_reference	      定义一个类型，表示类型T 的常量引用。用于返回const T& 函数。
+
+	const T& (函数参数)     call_traits<T>::param_type            定义一个类型，表示传递一个类型T 的参数给函数的"最好" 方法。
 
 	下表列出了call_traits 对不同类型的作用，这里假定编译器支持偏特化：如果不支持的话，那么所有类型的行为与"myclass" 那行一样，且call_traits 不可用于引用或数组类型。
 
- 	
+
      原先的类型 T               value_type                    reference               const_reference            param_type
 
 	myclass 					myclass							myclass&				const myclass&			myclass const&
@@ -30,8 +30,8 @@ call_traits
 	const int&					const int &						const int &				const int &				const int &
 
 	int[3]						const int*						int(&)[3]				const int(&)[3]			const int* const
-	
-	const int[3]				const int* 						const int(&)[3]  		const int(&)[3]  		const int* const 
+
+	const int[3]				const int* 						const int(&)[3]  		const int(&)[3]  		const int* const
 
 T::const_iterator  == const T*
 
@@ -56,26 +56,39 @@ dynamic_cast<type_id>(expression) 只用于对象的指针和引用，
 	主要用于执行“安全的向下转型”, driver* <-- base*, {base * b = new driver; driver* pd = dynamic_cast<driver*>(b)}成功。 如果{base * b = new base; driver* pd = dynamic_cast<driver*>(b)} 则会失败，dynamic_cast返回NULL。
 	                              driver& <-- base, {driver d; base &b = d; driver pd = dynamic_cast<driver&>(b)}成功。 如果{base d; base &b = d; driver pd = dynamic_cast<driver&>(b)} 则会失败，dynamic_cast会抛出bad_cast异常
 	也可以用于向上转型， base* <---- driver *  这种情况都是可以的
-	
-static_cast < type-id > ( expression )	
+
+static_cast < type-id > ( expression )
 	1）用于基本数据类型之间的转换，如把int转换成char，non-const 对象转型为 const 对象（这里相反方向不可以，C++只有const_cast可以）。
 	2）把空指针转换成目标类型的指针。（之前的做法是用强制转换(type-id*)）
 	3）把任何类型的表达式转换成void类型。
 	4）应用到类的指针上，它允许子类类型的指针转换为父类类型的指针（upercasting这是一个有效的隐式转换）；也能够执行相反动作，即转换父类为它的子类（downcasting），这种转换的安全性需要开发人员来保证（主要是在非上下转型中）。
-	
-	
+
+
 const_cast<type_id> (expression)
 	用于修改类型的const或volatile属性。除了const 或volatile修饰之外，type_id和expression的类型是一样的，一般用于强制消除对象的常量性。
-	
-	
+
+
 reinpreter_cast<type-id> (expression)
 	type-id必须是一个指针、引用、算术类型、函数指针或者成员指针。它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针。
-	
-	
+
+
 namespace
 	重载函数集合中的全部函数都应在同一个域中声明。一个声明为局部的函数将隐藏而不是重载一个全局域中声明的函数。
 
 using
 	用户不能在 using 声明中为一个函数指定参数表
-	using 声明向一个域中引入了一个函数:  由 using 声明引入的函数重载了在该声明所出现的域中同名函数的其他声明 
-   *c11 定义别名 
+	using 声明向一个域中引入了一个函数:  由 using 声明引入的函数重载了在该声明所出现的域中同名函数的其他声明
+   *c11 定义别名
+
+
+operator
+
+	class UPInt {
+		// "unlimited p recision int"
+		public:
+		UPInt& operator++();           // ++ 前缀
+		const UPInt operator++(int);   // ++ 后缀
+		UPInt & operator--();          // -- 前缀
+		co nst UPInt operator--(int);  // -- 后缀
+		UPInt& operator+=(int);       // += 操作符,UPInts
+	};
