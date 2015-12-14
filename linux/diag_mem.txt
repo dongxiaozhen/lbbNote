@@ -31,6 +31,8 @@ Linux查看系统cpu个数(physical id)、核心书(core id)、线程数(process
 
 查看/proc/pid/status可以看到一些进程的当前状态：
 	/proc/6236/status
+最大可以打开文件的数目
+	cat /proc/sys/fs/file-max
 
 dos2unix  格式转换
 

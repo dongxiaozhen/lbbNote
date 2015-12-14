@@ -1,0 +1,5 @@
+
+
+基于IP虚拟主机
+    ifconfig eth0:1 192.168.8.43 broadcast 192.168.8.255 netmask 255.255.255.0 up
+    route add -host 192.168.8.43 dev eth0:1
