@@ -57,7 +57,7 @@ dynamic_cast<type_id>(expression) 只用于对象的指针和引用，
 	                              driver& <-- base, {driver d; base &b = d; driver pd = dynamic_cast<driver&>(b)}成功。 如果{base d; base &b = d; driver pd = dynamic_cast<driver&>(b)} 则会失败，dynamic_cast会抛出bad_cast异常
 	也可以用于向上转型， base* <---- driver *  这种情况都是可以的
 
-static_cast < type-id > ( expression )
+static_cast < type-id > ( expression )       “有关系” 才能转化
 	1）用于基本数据类型之间的转换，如把int转换成char，non-const 对象转型为 const 对象（这里相反方向不可以，C++只有const_cast可以）。
 	2）把空指针转换成目标类型的指针。（之前的做法是用强制转换(type-id*)）
 	3）把任何类型的表达式转换成void类型。

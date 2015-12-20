@@ -107,6 +107,7 @@ $gdb -tui
 
 这里，假设我使用"r yes"设置程序启动参数为yes，那么这里的set args会设置参数argv[1]为no。
 
+info args 当前函数的参数
 
 *显示缺省的参数列表：
 
@@ -364,63 +365,14 @@ f  按浮点数格式显示变量。
 
 
 *显示一个变量var的类型：
-
-(gdb) whatis var
-
-
+    (gdb) whatis var
 *以更详细的方式显示变量var的类型：
-
-(gdb) ptype var
+    (gdb) ptype var
 
 这里，会打印出var的结构定义。
 
-**
-
-
-[其他]
-
-=============
-
-*在Qt4.x环境中打印QString msg;的msg变量：
-
-步骤如下：
-
-1)定义一个宏printqstring
-
-define printqstring
-
-    printf "(QString)0x%x (length=%i): \"",&$arg0,$arg0.d->size
-
-    set $i=0
-
-    while $i < $arg0.d->size
-
-        set $c=$arg0.d->data[$i++]
-
-        if $c < 32 || $c > 127
-
-                printf "\\u0x%04x", $c
-
-        else
-
-                printf "%c", (char)$c
-
-        end
-
-    end
-
-    printf "\"\n"
-
-end
-
-2)(gdb) printqstring msg
-
-这里，这个宏可以在gdb中直接定义，据说也可以写到$HOME/.gdbinit,这样每次启动自动加载。
-
-
 *调试同时指明生成core文件：
-
-$gdb core
+    $gdb core
 
 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。当程序非法崩溃的时候会产生一个core文件，然后使用这个命令，会直接定位到发生程序崩溃的位置。注意：有时需要设置系统命令“ulimit -c
 unlimited”才能产生core文件。
@@ -428,3 +380,12 @@ unlimited”才能产生core文件。
 
 follow child process
     set follow-fork-mode child
+
+
+分割窗口
+    layout：用于分割窗口，可以一边查看代码，一边测试：
+    layout src：显示源代码窗口
+    layout asm：显示反汇编窗口
+    layout regs：显示源代码/反汇编和CPU寄存器窗口
+    layout split：显示源代码和反汇编窗口
+    Ctrl + L：刷新窗口
