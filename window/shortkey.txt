@@ -1,0 +1,6 @@
+快速关闭网站          ctl + w
+快速回复被关闭的网站    ctl + shift + T
+直接显示桌面          windows + D
+快速打开文件管理        windows + E
+快速打开命令行         windows + R
+屏幕录像功能          psr.exe

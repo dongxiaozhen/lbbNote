@@ -1,0 +1,58 @@
+
+        |                  |
+syn_sent|                  |
+        |                  |
+        |                  |syn_revd
+        |                  |
+        |                  |
+        |                  |
+establis|                  |
+        |                  |
+        |                  |
+        |                  |establis
+        |                  |
+
+
+            |                  |
+fin_wait_1  |                  |
+            |                  |
+            |                  |close_wait (wait last_ack)
+            |                  |
+            |                  |
+fin_wait_2  |                  |
+            |                  |
+            |                  |
+            |                  |last_ack
+            |                  |
+            |                  |
+            |                  |
+time_wait   |                  |
+            |                  |
+            |                  |closed
+            |                  |
+            |                  |
+
+netstat
+从整体上看，netstat的输出结果可以分为两个部分：
+
+    一个是Active Internet connections，称为有源TCP连接，其中"Recv-Q"和"Send-Q"指的是接收队列和发送队列。这些数字一般都应该是0。如果不是则表示软件包正在队列中堆积。这种情况只能在非常少的情况见到。
+
+    另一个是Active UNIX domain sockets，称为有源Unix域套接口(和网络套接字一样，但是只能用于本机通信，性能可以提高一倍)。
+
+Proto显示连接使用的协议,RefCnt表示连接到本套接口上的进程号,Types显示套接口的类型,State显示套接口当前的状态,Path表示连接到套接口的其它进程使用的路径名。
+
+套接口类型：
+
+-t ：TCP
+
+-u ：UDP
+
+-raw ：RAW类型
+
+--unix ：UNIX域类型
+
+--ax25 ：AX25类型
+
+--ipx ：ipx类型
+
+--netrom ：netrom类型

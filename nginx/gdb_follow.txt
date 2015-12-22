@@ -1,0 +1,8 @@
+
+    ./configure
+    vi obj/Makefile
+        -O0 -g3 -gdwarf-2
+    make
+    make install
+
+cgdb -args /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
