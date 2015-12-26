@@ -1,0 +1,4 @@
+＃define offsetof(struct_t,member) ((size_t)(char *)&((struct_t *)0)->member)
+    (struct_t *)0是一个指向struct_t类型的指针，其指针值为 0，所以其作用就是把从地址 0 开始的存储空间映射为一个 struct_t 类型的对象。((struct_t *)0)->member 是访问类型中的成员 member，相应地 &((struct_t *)0)->member) 就是返回这个成员的地址。由于对象的起始地址为 0，所以成员的地址其实就是相对于对象首地址的成员的偏移地址。然后在通过类型转换，转换为 size_t 类型（size_t一般是无符号整数）。
+
+ngx_get_options()  通过启动命令行参数来控制nginx

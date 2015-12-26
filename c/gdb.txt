@@ -391,19 +391,8 @@ follow child process
     layout split：显示源代码和反汇编窗口
     Ctrl + L：刷新窗口
 
-配置GDB以支持查看stl容器数据
+配置GDB以支持查看stl容器数据 pvector plist pmap pset pstack pdequeue pqueue pbitset pstring pwstring
     cat dbinit_stl_views-1.03.txt >> ~/.gdbinit  ,若正处于gdb中，运行命令:  (gdb) source ~/.gdbinit
 
-    std::vector             pvector         stl_variable
-    std::list               plist           stl_variable T
-    std::map                pmap            stl_variable
-    std::multimap           pmap            stl_variable
-    std::set                pset            stl_variable T
-    std::multiset           pset            stl_variable
-    std::deque              pdequeue        stl_variable
-    std::stack              pstack          stl_variable
-    std::queue              pqueue          stl_variable
-    std::priority_queue     ppqueue         stl_variable
-    std::bitset             pbitset         stl_variable
-    std::string             pstring         stl_variable
-    std::widestring         pwstring        stl_variable
+运行shell命令
+    (gdb) shell <CMD>

@@ -25,3 +25,13 @@
     动词 介词 名词      VIS  select inside sentence
     动词 介词/数词 名词   数词指定了待编辑文本对象的范围   c3w
     数次 动词 名词        数次表示将操作执行n次   2dw   twice delete word
+
+窗口竖直分割
+    vsp sp
+
+窗口切换
+    ctrl+w+ h/j/k/l/   或者方向箭头
+
+窗口
+    Ctrl-W +    扩大窗口(多个窗口整体扩大)
+    Ctrl-W -    缩小窗口(多个窗口整体缩小)

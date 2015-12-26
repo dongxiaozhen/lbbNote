@@ -1,0 +1,44 @@
+
+session
+    1 tmux new -s <name-of-my-session>
+
+    2 tmux attach-session -t 数字 #选择tmux
+
+    3 c-b s  列出sessiion
+
+----4 window
+        4.1  C-b c 创建一个新的窗口
+
+        4.2 C-b 数字 直接跳到你按的数字所在的窗口
+
+        4.3 c-b w 通过上下键选择当前窗口中打开的会话
+
+        4.4 C-b n 切换到下一个窗口
+
+        4.5 C-b p 切换到上一个窗口
+
+        4.6 C-b l 最后一个窗口,和上一个窗口的概念不一样哟,谁试谁知道
+
+        4.7 C-b & 退出当前窗口
+
+--------4.8  C-b " 分割出来一个窗口 水平
+
+            C-b % 分割出来一个窗口 垂直
+
+            C-b ! 关闭所有小窗口
+
+            C-b x 关闭当前光标处的小窗口
+
+            C-b o 在小窗口中切换
+
+        C-b t 钟表
+
+希望新的配置项能够立即生效
+     ~/.tmux.conf 中。
+        bind R source-file ~/.tmux.conf ; display-message "Config reloaded.."
+
+让复制文本的操作更像 Vim  v 键选择文本，用 y 键复制文本
+        # start selecting text typing 'v' key (once you are in copy mode)
+        bind-key -t vi-copy v begin-selection
+        # copy selected text to the system's clipboard
+        bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
