@@ -44,3 +44,22 @@ GitHub后台可以添加多个SSH Keys，但是同一个SSH Keys只能在添加�
         1. git remote rm origin
         2. git remote add origin git@github.com:yuquan0821/demo.git
         3. git push origin
+
+更新GitHub上自己 Fork 的代码与原作者的项目进度一致
+    1、先克隆项目到本地：
+    git clone https://github.com/iakuf/mojo
+    cd mojo
+    2、添加原作者项目的 remote 地址， 然后将代码 fetch 过来
+    git remote add sri https://github.com/kraih/mojo
+    git fetch sri
+    ‘sri’相当于一个别名
+    查看本地项目目录： git remote -v
+    3、合并
+    git checkout master
+    git merge sri/master
+    如果有冲突的话，需要丢掉本地分支：
+    git reset –hard sri/master
+    4、这时你的当前本地的项目变成和原作者的主项目一样了，可以把它提交到你的GitHub库
+    git commit -am ‘更新到原作者的主分支’
+    git push origin
+    git push -u origin master -f –强制提交
