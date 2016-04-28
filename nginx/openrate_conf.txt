@@ -1,0 +1,2 @@
+upstream 里面的keepalive 表示与后端服务器的连接时间
+keepalive_timeout 表示代理与客户端的连接时间
