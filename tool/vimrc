@@ -1,0 +1,159 @@
+
+" 开启语法高亮功能
+syntax enable
+" 自适应不同语言的智能缩进
+filetype indent on
+" 将制表符扩展为空格
+set expandtab
+" 设置编辑时制表符占用空格数
+set tabstop=2
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+" 高亮显示搜索结果
+set hlsearch
+" 配色方案
+set background=dark
+" 设置多彩配色方案
+" https://github.com/tomasr/molokai
+" colorscheme wells-colors
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+" 禁止显示滚动条
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+" 禁止显示菜单和工具条
+set guioptions-=m
+set guioptions-=T
+
+
+"""""""""""""""""""""""" Vundle Start """"""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+"""""""""""""""" My plugins here """""""""""""""""""""""" 
+
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'shougo/neocomplete.vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'mbbill/undotree'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'grep.vim'
+Plugin 'sh.vim--Cla'
+let g:go_disable_autoinstall = 0        " 禁止自动更新
+let g:go_fmt_fai_silently = 0
+let g:go_doc_keywordprg_enabled = 0
+let g:go_fmt_command = "goimports"
+
+autocmd FileType go autocmd BufWritePre <buffer> GoImports
+
+"""""""""""""""""""""""" My plugins end
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+"""""""""""""""""""""""" Vundle End """"""""""""""""""""""""""
+syntax on
+set ts=4
+set sw=4
+set number
+set cursorline
+set scrolloff=999
+set encoding=utf-8
+colorscheme molokai
+
+" plugin customizations
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+
+" vim go
+" disable open browser after posting snippet
+let g:go_play_open_browser = 0
+" enable goimports
+let g:go_fmt_command = "goimports"
+" enable additional highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+" vim-airline
+set laststatus=2
+let g:bufferline_echo = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'dark'
+
+" tagbar
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds' : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+
+" shortcuts remap
+nmap <F2> :tabnew<CR>
+nmap <F3> :tabclose<CR>
+nmap <F5> :UndotreeToggle<CR>
+nmap <F7> :NERDTreeTabsToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+nmap <C-Left> :tabprevious<CR>
+nmap <C-Right> :tabnext<CR>
+
+" show a list of interfaces which is implemented by the type under your cursor
+au FileType go nmap <Leader>s <Plug>(go-implements)
+" show type info for the word under your cursor
+au FileType go nmap <Leader>gi <Plug>(go-info)
+" open the relevant Godoc for the word under the cursor
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+" run Go commands
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>i <Plug>(go-install)
+" open the definition/declaration in a new vertical, horizontal or tab for the
+" word under your cursor
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" rename the identifier under the cursor to a new name
+au FileType go nmap <Leader>e <Plug>(go-rename)
