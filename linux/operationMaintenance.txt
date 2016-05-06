@@ -1,0 +1,20 @@
+scp file root@192.168.1.23:/root/develop/realm远程复制文件
+ssh root@192.168.1.23远程连接
+
+
+crond
+	sencond minutes hours dayofMonth Month dayofweek year
+
+
+
+
+serivce name cmd
+    name:自动要控制的服务名，即/etc/init.d/目录下的脚本文件名
+    cmd:status,start restart stop.....
+
+systemctl cmd name
+    cmd: start ..同service , enbale,disable 设置开机启动，关闭
+whoami
+    登陆用户
+
+

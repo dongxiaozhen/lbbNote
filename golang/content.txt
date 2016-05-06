@@ -1,0 +1,3 @@
+Timer定时完需要重置
+ticker 就是一直循环定时
+select 里面定时不要在里边写time.After(d)，原因就是select每次执行都会重新执行case语句,并重新注册到select中。

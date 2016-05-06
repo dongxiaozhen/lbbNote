@@ -8,3 +8,11 @@ shell 数组
 	追加 for i in {1..3};do
 		name+=($i)  //加()
 	     done 	
+
+
+
+grep -l 列出匹配的文件名
+     -r 递归遍历文件夹
+    -F 固定字符串的查找，
+
+sed -i 's/Event.UseCoin/Event.UseCoina/g' filename
