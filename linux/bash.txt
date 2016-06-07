@@ -15,4 +15,34 @@ grep -l 列出匹配的文件名
      -r 递归遍历文件夹
     -F 固定字符串的查找，
 
-sed -i 's/Event.UseCoin/Event.UseCoina/g' filename
+sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串
+	-i edit file in place 在文件中替换，sed默认是有缓存的
+
+curl
+	curl -o [文件名] www.sina.com
+	curl -L www.sina.com #有的网址是自动跳转的
+	curl -i www.sina.com #`-i`参数可以显示http response的头信息  `-I`参数则是只显示http response的头信息。
+	curl -v www.sina.com #`-v`参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。
+	curl --trace output.txt www.sina.com #更详细的通信过程
+	curl --trace-ascii output.txt www.sina.com
+	curl -X POST --data "data=xxx" example.com/form.cgi #Post
+	curl -X POST--data-urlencode "date=April 1" example.com/form.cgi #如果你的数据没有经过表单编码，还可以让curl为你编码
+	curl --cookie "name=xxx" www.example.com #使用`--cookie`参数，可以让curl发送cookie
+	curl -c cookies http://example.com #`-c cookie-file`可以保存服务器返回的cookie到文件
+	curl -b cookies http://example.com #`-b cookie-file`可以使用这个文件作为cookie信息，进行后续的请求
+	curl --header "Content-Type:application/json" http://example.com
+	curl URL --limit-rate 50k #--limit-rate限制curl的下载速度 k（千字节）和m（兆字节）指定下载速度限制。
+
+wget
+	-O 输出文件名
+	-c 需要继续中断下载的
+	-b 都台下载 （tail -f wget-log查看后台进度）
+	--limit-rate=50k 限速
+
+ab apache 性能测试工具
+	-n 4000 //request num
+    -c 3    //request concurrency
+
+du -s 当前目录的总大小
+
+column -s "分隔符" -t filename 格式化对其列 输出
