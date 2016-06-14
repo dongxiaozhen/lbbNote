@@ -10,7 +10,7 @@ docker commit -m "Added json gem" -a "Docker Newbee" 0b2616b0e5a8 ouruser/sinatr
     -v 标记来创建一个数据卷并挂载到容器里, 默认权限是读写,可以通过 :ro 指定为只读。  -v /src/webapp:/opt/webapp:ro
     -P 或 -p 参数来指定端口映射。
     --name 标记可以为容器自定义命名。
-    --link 参数可以让容器之间安全的进行交互
+    --link 参数可以让容器之间安全的进行交互 --link name:alias 与容器name连接
 
     之后是用来创建镜像的容器的 ID；最后指定目标镜像的仓库名和 tag 信息。创建成功后会返回这个镜像的 ID 信息。
 

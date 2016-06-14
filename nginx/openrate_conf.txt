@@ -1,2 +1,18 @@
-upstream 里面的keepalive 表示与后端服务器的连接时间
 keepalive_timeout 表示代理与客户端的连接时间
+
+upstream xx{
+	keepalive 表示与后端服务器的连接时间
+	server xxx.xxx.xxx.xxx //候选服务器 max_fails, max_timeout, slow_start
+	server xxx.xxx.xxx.xxx //候选服务器 weight=5(权重)
+   round-robin //默认的负载均衡方法，还有least_conn, leash_time, ip_hash, hash,
+}
+
+location xx{
+
+	proxy_pass http://xxxx
+
+	proxy_buffering off //关闭缓冲，直接将upsteam的返回数据返回给客户端
+	
+	proxy_buffers     16 4k // proxy request buffer set
+	proxy_buffer_size 2k  // proxy response buffer set
+}

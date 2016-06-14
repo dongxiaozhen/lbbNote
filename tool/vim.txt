@@ -35,3 +35,16 @@
 窗口
     Ctrl-W +    扩大窗口(多个窗口整体扩大)
     Ctrl-W -    缩小窗口(多个窗口整体缩小)
+	:resize +10 扩大窗口 水平切割的 ----
+    :vertical resize +10 扩大窗口 垂直切割的 |
+
+列模式 ctl+v
+	行首插入 I
+	行尾插入 A
+	删除     d
+	替换     c
+	输入     shift + i
+
+tab切换 					 tabn tabp
+buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的文件)
+搜索结果切换(:vim/xx/**) 	 cn cp cwindow

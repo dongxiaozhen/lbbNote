@@ -46,3 +46,5 @@ P hony Targe ts
 	‘$^’ is a list of all the prerequisites
 	‘$@’ is the target.
 	‘$<’ is just the fist prerequisite:
+
+$(wildcard *.c ./sub/*c ......)  通配符展开
