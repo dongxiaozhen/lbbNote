@@ -25,3 +25,5 @@
 topic 会把每一个数据都复制到每个channel中
 channel会把数据均衡的放到每一个注册的client中
 
+topic 的线程会把message复制到每一个channel的memoryMsgChan
+client 的线程messagepumb会监听channel的memoryMsgChan.
