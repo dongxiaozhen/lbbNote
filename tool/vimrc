@@ -1,37 +1,3 @@
-
-" 开启语法高亮功能
-syntax enable
-" 自适应不同语言的智能缩进
-filetype indent on
-" 将制表符扩展为空格
-set expandtab
-" 设置编辑时制表符占用空格数
-set tabstop=2
-" 高亮显示当前行/列
-set cursorline
-set cursorcolumn
-" 高亮显示搜索结果
-set hlsearch
-" 配色方案
-set background=dark
-" 设置多彩配色方案
-" https://github.com/tomasr/molokai
-" colorscheme wells-colors
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
-
-" 禁止显示滚动条
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-" 禁止显示菜单和工具条
-set guioptions-=m
-set guioptions-=T
-
-
-"""""""""""""""""""""""" Vundle Start """"""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -41,14 +7,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-"""""""""""""""" My plugins here """""""""""""""""""""""" 
 
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+" custom plugins
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'shougo/neocomplete.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -57,18 +21,13 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'grep.vim'
 Plugin 'sh.vim--Cla'
-let g:go_disable_autoinstall = 0        " 禁止自动更新
-let g:go_fmt_fai_silently = 0
-let g:go_doc_keywordprg_enabled = 0
-let g:go_fmt_command = "goimports"
+Plugin 'dyng/ctrlsf.vim'
 
-autocmd FileType go autocmd BufWritePre <buffer> GoImports
-
-"""""""""""""""""""""""" My plugins end
-
+" all of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-"""""""""""""""""""""""" Vundle End """"""""""""""""""""""""""
+
+" general customizations
 syntax on
 set ts=4
 set sw=4
@@ -76,7 +35,18 @@ set number
 set cursorline
 set scrolloff=999
 set encoding=utf-8
+" 高亮显示搜索结果
+set hlsearch
+
+"代码折叠
+set fdm=indent
+"启动vim时关闭折叠代码
+set nofoldenable
+
 colorscheme molokai
+
+" ctrlsf 使用 需要安装ag  sudo apt-get install silversearcher-ag
+let g:ctrlsf_ackprg='ag'
 
 " plugin customizations
 " neocomplete

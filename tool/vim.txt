@@ -48,3 +48,6 @@
 tab切换 					 tabn tabp
 buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的文件)
 搜索结果切换(:vim/xx/**) 	 cn cp cwindow
+搜索结果:CtrlSF o p t 
+
+代码折叠 za zo 
