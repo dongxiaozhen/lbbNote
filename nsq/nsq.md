@@ -8,7 +8,7 @@
 	|   ______________|____________		|
 	|   _|__     _|__   _|__      _|__
 	|  |   |    |   |  |   |      |   |	|
-	|  |_C_|    |_C_|  |_C_|      |_C_|	|
+	|  |_C_|    |_C_|  |_C_|      |_C_|	| Chan
 	|    |        |   				|   |
 	|    |     	  |    				|	|
 	|    |        |   				|	|
@@ -25,5 +25,5 @@
 topic 会把每一个数据都复制到每个channel中
 channel会把数据均衡的放到每一个注册的client中
 
-topic 的线程会把message复制到每一个channel的memoryMsgChan
-client 的线程messagepumb会监听channel的memoryMsgChan.
+新建一个topic,会启动一个messagePumb携程，负责把topic的数据复制到每一个channel中,以及对topic的控制。
+(tcp 协议)client链接上来,就会创建两个携程，一个读取客户的输入并执行命令，一个读取channel的memoryMsgChan(如果sub了一个channel)，把数据发送出去,以及对client的控制。
