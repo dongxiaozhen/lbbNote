@@ -43,6 +43,17 @@ ab apache 性能测试工具
 	-n 4000 //request num
     -c 3    //request concurrency
 
+wrk 
+	-c 400同时最大连接数
+	-t 12 线程数量
+	-d 20 测试时间，单位是秒
+
 du -s 当前目录的总大小
 
 column -s "分隔符" -t filename 格式化对其列 输出
+watch
+	-n 3 间隔时间
+	-d 高亮变化的信息
+
+seq -f"str%g" -s"`echo -e "\t"`" 1 5 100
+
