@@ -1,6 +1,6 @@
-	安装插件：BundleInstall"
-	更新插件“：BundleUpdate
-	清除不再使用的插件“：BundleClean"
-    列出所有插件":BundleList"
-    查找插件":BundleSearch"
+	安装插件：PluginInstall"
+	更新插件“：PluginUpdate
+	清除不再使用的插件“：PluginClean"
+    列出所有插件":PluginList"
+    查找插件":PluginSearch"
 
