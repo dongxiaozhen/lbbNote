@@ -9,20 +9,38 @@ github
 	1.开源软件点击fork就会在自己的账户下复制那个项目
 	2.clone地址，然后在本地执行git clone xxxxx(网址)
 
+添加文件.gitignore到根目录，里面填写要忽略的文件名 (项目全局共享)
+添加文件名到.git/info/exclude文件中      			(个人局部设置)
+git config --global core.excludesfile /home/lbb/.gitignore (个人全局)
+git status --ignored -s (显示忽略跟踪的文件名)
+
+
+git pull == git fetch + git merger
+git pull --rebase  = git fetch + git rebase 
+
 git remote -v 远程的git地址
 
 git rev-parse --git-dir         显示.git目录所在的位置
 git rev-parse --show-toplevel    显示工作区根目录
 git rev-parse --show-prefix      显示相对于工作区根目录的相对目录
 
+git stash save "mesage" == git stash ,但是可以写说明
 git stash list				显示所有stash
 git stash drop xxxx			清楚xxxx stash
 git stash drop clear        清楚所有的stash
 
-git checkout branch 切换分支
-git checkout -b branch 创建并切换分支
-git checkout  -b develop origin/master        // 创建并切换封装develop, 指向origin/master分支顶点端。
+git checkout 改变的事refs/HEAD文件里分支名称
+	git checkout -- filename 将取消work区的修改
+	git checkout branch 切换分支
+	git checkout -b branch 创建并切换分支
+	git checkout  -b develop origin/master        // 创建并切换封装develop, 指向origin/master分支顶点端。
 
+git reset 改变的是refs/head/branchName文件里的ID
+	git reset HEAD filename 将stage中的提价退回到work区，(只是从stage到work,数据还在)
+	git reset --soft commitID 将原先HEAD 到 commitID 之间的提交转到了stage中，refs/head/branchName指向commitID
+	git reset  commitID 将原先HEAD 到 commitID 之间的提交转到了work中，refs/head/brancNname指向commitID
+	git reset  commitID 将原先HEAD 到 commitID 之间的提交在work，stage中删除H，refs/head/branchName指向commitID
+	
 git clean -f     删除未跟踪文件
 
 git cherry-pick xxxx 用于把另一个本地分支的commit修改应用到当前分支。     xxxx(commitID)
@@ -38,7 +56,7 @@ git fsck --lost-found  丢失分支和stash后，用来恢复
 ----A---------B---------C----D---E-----F
   start   discard     begin           end
 
-	 git rebase --onto A B F
+	 git rebase --onto A B F((B,F]左开右闭)
 	 git rebase -i A  (然后去掉B的commit)
 
 
@@ -48,11 +66,18 @@ git fsck --lost-found  丢失分支和stash后，用来恢复
 
       git rebase -i A  (然后改C为squad)
 
+git rebase -i 
+	删除一行commit 就相当于将该次提交删除
+	reword 可以修改此次commit message
+	squad 此行提交和前一次合并
+	edit 此提交可以修改(添加，删除，修改内容到此提交)
 
 里程碑tag
   git tag -m "xxx" name <commitID>创建
   git tag -d name   删除
-
+  git discrible
+  git push origin tagName  创建远程tag
+  git push origin :tagName 删除远程的tag
 
  分支管理branch
 	git branch name <start-point> 创建分支           （branch不能切换分支，需要checkout）
@@ -93,3 +118,9 @@ repo
     git blame [file]
 git whatchanged  filename  显示某个文件的每个版本提交信息：提交日期，提交人员，版本号，提交备注
 gitk -- filename   gitk显示
+
+git diff 			work和stage的比较
+git diff --cached 	stage 与HEAD比较
+git diff HEAD 		work,stage中的内容和 HEAD比较
+
+
