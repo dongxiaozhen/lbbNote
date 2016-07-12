@@ -1,0 +1,4 @@
+npm install gitbook -g
+
+(新书需要创建目录和介绍，然后使用gitbook init)
+gitbook serve 编译预览书籍(首先调用gitbook build 编译，然后启动web预览:)

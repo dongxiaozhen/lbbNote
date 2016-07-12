@@ -11,6 +11,9 @@ shell 数组
 
 
 
+时间格式转换：date --date="@12345678"
+
+
 grep -l 列出匹配的文件名
      -r 递归遍历文件夹
     -F 固定字符串的查找，
@@ -57,3 +60,11 @@ watch
 
 seq -f"str%g" -s"`echo -e "\t"`" 1 5 100
 
+tr -d -c -s [seq1] [seq2] <input file 
+	-d 删除input中的seq1
+	-c 取代所有不属于seq1的字符(seq1的补集)
+	-s 把连续重复出现的字符以一个字符代替
+	eg: tr -d -c "xx" <input 删除input中的"xx"
+
+xargs 将单行输入转换为多行输入，将多行输入转化为单行输入(-n3 3个为一行，-dx 以x为頂界符)
+	ls *.jpg | xargs -n1 -I cp {} /data/images  {}替换字符串

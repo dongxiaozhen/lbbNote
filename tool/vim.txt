@@ -12,6 +12,7 @@
     s sentence 句子
     p paragraph 段落
     t tag 标签
+	b 括号
 
 介词
 介词界定了待编辑文本的范围或者位置
