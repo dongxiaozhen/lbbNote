@@ -15,4 +15,7 @@ version
 
 
 
+listern-client-url 2379 监听客户端的请求
+listern-peer-url 2380 etcd服务器之间交流端口
+
 

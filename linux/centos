@@ -1,0 +1,2 @@
+查看版本 cat /etc/redhat-release
+软件安装情况  rpm -qa xxx

@@ -1,1 +1,12 @@
 查询IP ip138.com
+
+iproute2
+	1. ip [link|addr|route] 链路层，网络层查看
+	2. ss 同netstat,速度快
+			-i interface
+			-t tcp
+			-u udp
+			-r route 路由
+			-l listen
+			-p 开启的命令
+			-s 统计数量

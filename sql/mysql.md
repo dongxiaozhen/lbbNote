@@ -1,4 +1,7 @@
 
+mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation 空密码输入'' systemctl start/enable mariadb.service
+MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快，
+InnoDB 支持事务
 
 1.显示MYSQL的版本
 mysql> select version(); 
@@ -26,4 +29,5 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 	修改表名
 		命令：rename table 原表名 to 新表名;
 	
-
+导出数据 mysqldump -u root -p database_name [table_name] > dump.sql
+倒入数据 mysql -u root -p database_name < dump.sql (database_name需要提前建立)
