@@ -10,3 +10,11 @@ iproute2
 			-l listen
 			-p 开启的命令
 			-s 统计数量
+			-o --options        显示计时器信息
+			ss dst ADDRESS_PATTERN 匹配远程地址和端口号
+			ss dport OP PORT 远程端口和一个数比较；ss  dport = :http
+
+			ss src ADDRESS_PATTERN 匹配本地地址和端口号
+			ss sport OP PORT 本地端口和一个数比较。ss  sport = :https
+	
+			state  用TCP 状态过滤Sockets :established syn-sent syn-recv fin-wait-1 fin-wait-2 time-wait closed close-wait last-ack listen closing

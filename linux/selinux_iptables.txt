@@ -1,0 +1,28 @@
+selinux 强制访问限制MAC，即规定了一个程序可以访问的文件，端口，借口，，，，访问控制策略包括：类型加强的(TE),基于角色的(RBAC),多级安全(MLS)
+
+yum install policycoreutils-python
+
+sestatus -v 查看selinux启动状态
+semanage node 节点设置
+		fcontext 文件设置
+		port 端口设置
+		
+chcon -t xx_t file/dir  设置selinux类型
+restorecon -Rv file/dir 回复selinux类型
+
+yum install setools-console
+seinfo 
+	-t type 
+	-u user
+	-r roule
+	-b boolean 
+sesearch [--all] [-s 主体类别] [-t 目标类别] [-b 布尔值]
+getsebool [-a] [布尔值条款]
+setsebool [-P] 布尔值=[0|1]
+
+
+
+
+iptables
+iptables -t [filter|nat|raw] <-A/I/D/R> [INPUT|OUTPUT|PREROUTING|POSTOUTING|FORWARD]  <-i/o 网卡名> -p 协议名 <-s 源IP/源子网> --sport 源端口 <-d 目标IP/目标子网> --dport 目标端口 -j [accept|drop|snat|dnat] 
+	

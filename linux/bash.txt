@@ -10,8 +10,10 @@ shell 数组
 	     done 	
 
 
-
-时间格式转换：date --date="@12345678"
+date
+	 --date="@12345678" 显示字符窜所指的日期和时间。@时间格式转换
+	-s 设置时间
+	+%xxxx 显示格式
 
 
 grep -l 列出匹配的文件名
@@ -68,3 +70,5 @@ tr -d -c -s [seq1] [seq2] <input file
 
 xargs 将单行输入转换为多行输入，将多行输入转化为单行输入(-n3 3个为一行，-dx 以x为頂界符)
 	ls *.jpg | xargs -n1 -I cp {} /data/images  {}替换字符串
+diff
+	-y 以并列的方式显示对比文件
