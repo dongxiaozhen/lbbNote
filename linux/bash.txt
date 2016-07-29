@@ -22,6 +22,7 @@ grep -l 列出匹配的文件名
 
 sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串
 	-i edit file in place 在文件中替换，sed默认是有缓存的
+	-n 'p' 组合，只答应命令输出行
 
 curl
 	curl -o [文件名] www.sina.com
@@ -55,13 +56,23 @@ wrk
 
 du -s 当前目录的总大小
 
-column -s "分隔符" -t filename 格式化对其列 输出
 watch
 	-n 3 间隔时间
 	-d 高亮变化的信息
 
 seq -f"str%g" -s"`echo -e "\t"`" 1 5 100
 
+column -s "分隔符" -t filename 格式化对其列 输出
+cut -d"分隔符" -[b|c|f}[1-2|1-|2-]  [--complement除此之外的意思]filename
+sort -f 大小写忽略
+	-r 反转
+	-n 数字比较，默认是字母
+	-t 列分割符
+	-k 排序的列号
+
+uniq -u 只显示没有重复的行
+	-c 重复次数
+				 
 tr -d -c -s [seq1] [seq2] <input file 
 	-d 删除input中的seq1
 	-c 取代所有不属于seq1的字符(seq1的补集)
