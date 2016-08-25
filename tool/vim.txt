@@ -53,3 +53,6 @@ buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的�
 
 代码折叠 za zo 
 保存:w !sudo tee %
+
+ma 'a 标记，返回到标记
+u <c-r> undo redo

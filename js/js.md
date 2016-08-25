@@ -21,7 +21,7 @@ XMLHttpRequest
 CORS 跨域请求
 	Access-Control-Allow-Origin 服务器返回的参数
 
-jquery
+jquery        $本质上是函数
 	$('#id'), $('p'), $('.red') $([name == 'xx'])
 	$('div' 'p')
 	$('div'>'p')
@@ -29,4 +29,7 @@ jquery
 	text, html
 	append after remove
 	$.ajax
- 
+
+	$(function(){....})  document对象的ready事件处理函数
+	数组 var cars=new Array() / var cars=['benchi','bmw','volvo']
+	对象 ar person={firstname:"Bill", lastname:"Gates", id:5566};

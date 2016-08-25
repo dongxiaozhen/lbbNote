@@ -1,0 +1,23 @@
+Close() error							Close() error
+							      >	CloseRead() error
+							      >	CloseWrite() error
+File() (f *os.File, err error)					File() (f *os.File, err error)
+LocalAddr() Addr						LocalAddr() Addr
+Read(b []byte) (int, error)					Read(b []byte) (int, error)
+ReadFrom(b []byte) (int, Addr, error)			      |	ReadFrom(r io.Reader) (int64, error)
+ReadFromUDP(b []byte) (int, *UDPAddr, error)		      <
+ReadMsgUDP(b, oob []byte) (n, oobn, flags int, addr *UDPAddr, <
+RemoteAddr() Addr						RemoteAddr() Addr
+SetDeadline(t time.Time) error					SetDeadline(t time.Time) error
+							      >	SetKeepAlive(keepalive bool) error
+							      >	SetKeepAlivePeriod(d time.Duration) error
+							      >	SetLinger(sec int) error
+							      >	SetNoDelay(noDelay bool) error
+SetReadBuffer(bytes int) error					SetReadBuffer(bytes int) error
+SetReadDeadline(t time.Time) error				SetReadDeadline(t time.Time) error
+SetWriteBuffer(bytes int) error					SetWriteBuffer(bytes int) error
+SetWriteDeadline(t time.Time) error				SetWriteDeadline(t time.Time) error
+Write(b []byte) (int, error)					Write(b []byte) (int, error)
+WriteMsgUDP(b, oob []byte, addr *UDPAddr) (n, oobn int, err e <
+WriteTo(b []byte, addr Addr) (int, error)		      <
+WriteToUDP(b []byte, addr *UDPAddr) (int, error)	      <
