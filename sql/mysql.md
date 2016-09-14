@@ -1,7 +1,7 @@
 
 mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation 空密码输入'' systemctl start/enable mariadb.service
-MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快，
-InnoDB 支持事务
+MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快， b+,保存索引
+InnoDB 支持事务 b+树，保存行号
 
 1.显示MYSQL的版本
 mysql> select version(); 

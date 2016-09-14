@@ -83,3 +83,6 @@ xargs 将单行输入转换为多行输入，将多行输入转化为单行输�
 	ls *.jpg | xargs -n1 -I cp {} /data/images  {}替换字符串
 diff
 	-y 以并列的方式显示对比文件
+
+运算  bc  
+	  expr
