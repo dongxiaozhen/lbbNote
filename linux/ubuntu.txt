@@ -1,4 +1,7 @@
 sudo passwd root  使用su
+ctrl+Alt+F{1,6} 图形界面切换到命令行界面
+Alt+ F7 命令行界面切换到图形界面
+
 ubuntu 设置
 	sudo apt-get install build-essential
 	
@@ -51,3 +54,6 @@ apt-file
 ctl + L  显示路径
 /run/user/xxx/gvfs/smb-share..........xxx               smb链接路径
 history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条命令] [!! 上一次命令] [!str 以str开头的最近的命令]           命令行历史
+
+将 Ubuntu 16.04 LTS 的 Unity 启动器移动到桌面底部命令
+	gsettings set com.canonical.Unity.Launcher launcher-position Bottom

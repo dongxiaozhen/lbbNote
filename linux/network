@@ -18,3 +18,5 @@ iproute2
 			ss sport OP PORT 本地端口和一个数比较。ss  sport = :https
 	
 			state  用TCP 状态过滤Sockets :established syn-sent syn-recv fin-wait-1 fin-wait-2 time-wait closed close-wait last-ack listen closing
+
+dig DNS查询

@@ -23,6 +23,9 @@ grep -l 列出匹配的文件名
 sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串
 	-i edit file in place 在文件中替换，sed默认是有缓存的
 	-n 'p' 组合，只答应命令输出行
+	h,H 相当于复制到一个地方(缓存),H是追加，h是覆盖
+	g,G 都是从(缓存)中取出一块数据，g替代当前模板块中的文本,G追加到当前模板块文本的后面
+	a/i/c/d/D/s 命令
 
 curl
 	curl -o [文件名] www.sina.com
@@ -86,3 +89,4 @@ diff
 
 运算  bc  
 	  expr
+
