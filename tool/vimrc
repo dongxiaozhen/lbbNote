@@ -1,4 +1,10 @@
 " must lua
+" ./configure --with-features=huge --enable-cscope --enable-pythoninterp=yes
+" --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu
+"  --enable-multibyte --enable-fontset --enable-gui=gnome2 --disable-netbeans
+"  --enable-luainterp=yes --with-lua-prefix=/usr/include/lua5.1
+"  --enable-largefile --enable-rubyinterp
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -124,7 +130,7 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" tagbar
+" tagbar 需要安装gotags go get -u github.com/jstemmer/gotags
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds' : [

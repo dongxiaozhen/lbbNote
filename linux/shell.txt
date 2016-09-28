@@ -1,0 +1,37 @@
+brace expansion
+	ls file{1,2,3,4}
+	ls file{1..5}
+    ls file{5..1}
+
+variable
+	a='a b*t'
+	${a} $a "${a}" 
+	'${a}' single-quotes prevent variable expansion
+
+parameters
+	$1 $2
+	$* == $@ == $1 $2 .. $n  which allow an argument to become split into multiple words if it contains whitespace
+    "$@"  When wrapped in double-quotes, as "$@", each argument becomes a separate word. 
+	"$*" which combines multiple arguments into a single word
+	$#  the number of positional parameters
+
+condition
+	0   true
+	>=1  false
+	[[ cmd ]]
+		string1 = string2
+		string == pattern
+		string != pattern
+
+subshell
+	() A subshell receives a copy of the surrounding context's "execution environment", which includes any variables, among other things; but any changes that the subshell makes to the execution environment are not copied back when the subshell completes
+
+
+Arithmetic expansion
+	$(( 3 + 4 * (5 - 1) ))
+	
+Bitwise operators
+	& | ^ ~ << >>
+
+function
+	variable is globle scope, unless localized (local var=1)

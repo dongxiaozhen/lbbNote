@@ -1,6 +1,11 @@
 "info $name" 	双引号 里面的$name输出变量的结果
 'info $name'	单引号 里面的$name原样输出
-`cmd`		反斜扛 运行命令的结果
+a=`cmd`		反斜扛 运行结果赋值给一个变量, == $(cmd)
+(cmd)
+exec cmd 将并不启动新的shell，而是用要被执行命令替换当前的shell进程，并且将老进程的环境清理掉，而且exec命令后的其它命令将不再执行
+source命令或者"."，不会为脚本新建shell，而只是将脚本包含的命令在当前shell执行
+
+#注释
 cmd1 && cmd2 || cmd3 cmd1运行成功就运行cmd2，否则运行 cmd3
 
 shell 数组 
