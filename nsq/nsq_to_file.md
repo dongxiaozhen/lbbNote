@@ -1,0 +1,2 @@
+nsq_to_file 从nsqlookup读取topics,每个topic创建一个Consume,连接完后会启动三个go,rdyloop  readloop读数据,writeloop发送数据，然后启动第三个go:handerloop处理读取到的数据,但四个go:route保存数据。所有topic连接上后，会启动一个go:watch检查topic更新
+

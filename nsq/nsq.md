@@ -27,3 +27,5 @@ channel会把数据均衡的放到每一个注册的client中
 
 新建一个topic,会启动一个messagePumb携程，负责把topic的数据复制到每一个channel中,以及对topic的控制。
 (tcp 协议)client链接上来,就会创建两个携程，一个读取客户的输入并执行命令，一个读取channel的memoryMsgChan(如果sub了一个channel)，把数据发送出去,以及对client的控制。
+
+一个nsqd会启动一个lookuploop,和lookup交互,iditify,regist,unregist
