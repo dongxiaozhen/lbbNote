@@ -4,7 +4,7 @@ git config --global user.email xxxxx
 git config --list
 git config --global --list
 git config --global https.proxy='xxx'
-git config --global --unset https.proxy
+	git config --global --unset https.proxy
 
 github
 	github.com

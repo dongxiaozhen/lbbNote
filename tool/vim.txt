@@ -5,14 +5,8 @@
     c change 修改
     y yank   复制
     v visual select 选取
-
-名词
-名词代表了我们即将处理的文本
-    w word   单词
-    s sentence 句子
-    p paragraph 段落
-    t tag 标签
-	b 括号
+	gU		大写转换
+	gu		小写转换
 
 介词
 介词界定了待编辑文本的范围或者位置
@@ -21,6 +15,13 @@
     t to 到...位置之前
     f forward 到..位置上
 
+名词
+名词代表了我们即将处理的文本
+    w word   单词
+    s sentence 句子
+    p paragraph 段落
+    t tag 标签
+	b 括号
 
 组合句子
     动词 介词 名词      VIS  select inside sentence
@@ -63,3 +64,18 @@ buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的�
 ma 'a 标记，返回到标记
 u<c-r> undo redo
 trl + t 在tab中打开
+
+tugitive git插件
+	:Gdiff ==Gvdiff
+	:Gsdiff
+	:Gstatus -(git reset HEAD/git add) dv(Gvdiff)
+	:Gcommit 
+	:Gpull --rebase origin master
+	:Gmerge
+
+大小写转换
+	gu[l|b|w]
+
+数字加1 	ctrl + a
+寄存器运算  ctrl + r =
+	
