@@ -32,7 +32,7 @@ sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的
 	g,G 都是从(缓存)中取出一块数据，g替代当前模板块中的文本,G追加到当前模板块文本的后面
 	a/i/c/d/D/s 命令
 
-curl
+curl 参数需要通过 -d "xx=xx&kk=kk"
 	curl -o [文件名] www.sina.com
 	curl -L www.sina.com #有的网址是自动跳转的
 	curl -i www.sina.com #`-i`参数可以显示http response的头信息  `-I`参数则是只显示http response的头信息。
