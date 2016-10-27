@@ -1,0 +1,20 @@
+ctrl + s 锁住终端
+ctrl + q 解锁终端
+
+ctrl + a 将光标移动到命令行开头相当于VIM里shift+^
+ctrl + e 将光标移动到命令行结尾处相当于VIM里shift+$
+ctrl + 方向键左键 光标移动到前一个单词开头
+ctrl + 方向键右键 光标移动到后一个单词结尾
+
+ctrl + k 删除光标后面所有字符
+ctrl + u 删除光标前面所有字符
+ctrl + w 删除光标前一个单词
+
+alt + r 撤消前一次动作
+
+ctrl + r 输入单词搜索历史命令
+
+ctrl + l 清屏相当于命令clear
+
+ctrl + y 恢复ctrl+u上次执行时删除的字符
+ctrl + ? 撤消前一次输入
