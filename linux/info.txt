@@ -1,0 +1,21 @@
+cpu 			/proc/cpuinfo
+filesystem 		df -l
+	diskinfo 	syscall.Statfs()
+memory			/proc/meminfo
+network			net.Interface()  
+	protoCount /proc/net/snmp
+	IOCount   	/proc/net/dev
+platform	
+	archinfo		uname -snrmpio
+	goV				runtime.Version()
+	GOOS			runtime.GOOS
+	GOARCH			runtime.GOARCH
+	pythonV			python -V
+	hostname 		os.Hostname()
+cpu_tick /usr/bin/getconf CLK_TCK
+timestat /proc/stat
+cpuinfo /sys/devices/system/cpu/cpu{0-3}
+process /proc/"number" number==progress Id
+
+vmstat 	/proc/vmstat syscall.Sysinfo()
+	

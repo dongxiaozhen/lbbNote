@@ -35,3 +35,5 @@ break
 	break只能中断当前最近的一个for,swtich,select;如果要跳出外面的for,switch,select需要使用标签。标签要放在for,switch,select的前面。
 
 
+闭包：
+	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。
