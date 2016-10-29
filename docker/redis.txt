@@ -1,0 +1,11 @@
+start a redis instance
+	$ docker run --name some-redis -d redis
+
+start with persistent storage
+	$ docker run --name some-redis -d redis redis-server --appendonly yes
+
+connect to it from an application
+	$ docker run --name some-app --link some-redis:redis -d application-that-uses-redis
+
+or via redis-cli
+	$ docker run -it --link some-redis:redis --rm redis redis-cli -h redis -p 6379
