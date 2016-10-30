@@ -11,4 +11,11 @@ Container shell access and viewing MySQL logs
 	$ docker exec -it some-mysql bash
 	$ docker logs some-mysql
 
+Creating database dumps
+	$ docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/on/your/host/all-databases.sql
 
+Using a custom MySQL configuration file
+	$ docker run --name some-mysql -v /my/custom:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+Where to Store Data
+	$ docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag

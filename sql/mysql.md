@@ -3,12 +3,17 @@ mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation
 MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快， b+,保存索引
 InnoDB 支持事务 b+树，保存行号
 
+mysql /var/lib/mysql /etc/mysql/conf.d
+
 1.显示MYSQL的版本
 mysql> select version(); 
 2. 显示当前时间
 mysql> select now(); 
 3. 显示年月日
 SELECT DAYOFMONTH(CURRENT_DATE); 
+
+显示数据库 show database;
+显示表     show tables;
 
 删除表中数据 命令：delete from 表名 where 表达式
 修改表中数据：update 表名 set 字段=新值,… where 条件
