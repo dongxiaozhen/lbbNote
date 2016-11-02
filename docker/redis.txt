@@ -9,3 +9,9 @@ connect to it from an application
 
 or via redis-cli
 	$ docker run -it --link some-redis:redis --rm redis redis-cli -h redis -p 6379
+
+start with persistent storage
+	$ docker run --name some-redis -d -v /docker/host/dir:/data redis redis-server --appendonly yes
+
+use your own redis.conf ...
+	$ docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf

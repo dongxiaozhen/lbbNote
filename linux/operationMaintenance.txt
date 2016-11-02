@@ -1,3 +1,9 @@
+Ubuntu中的运行级别
+		 0(关闭系统) 
+		 1(单用户模式，只允许root用户对系统进行维护。)
+         2-5(多用户模式，其中3为字符界面，5为图形界面。)
+		 6(重启系统)
+
 scp source destestion
 	-r 递归复制目录
 	scp file root@192.168.1.23:/root/develop/realm远程复制文件
@@ -9,13 +15,19 @@ crond
 
 
 
-
+service --status-all 查看已经启动的服务
 serivce name cmd
     name:自动要控制的服务名，即/etc/init.d/目录下的脚本文件名
     cmd:status,start restart stop.....
 
 systemctl cmd name
     cmd: start ..同service , enbale,disable 设置开机启动，关闭
+
+服务开启，关闭，等级设置
+	update-rc.d -f servicename default 开机 ==  systemctl servicename enable 
+	update-rc.d -f servicename remove 关闭  == systemctl servicename disable
+	update-rc.d -f servicename start/stop  0-6(level)
+
 whoami
     登陆用户
 

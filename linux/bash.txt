@@ -95,3 +95,6 @@ diff
 运算  bc  
 	  expr
 
+
+mount -t type dev dir
+umount -t type dev
