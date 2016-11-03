@@ -1,4 +1,0 @@
-save 保存数据到 /data/dump.rdb 
-
-hget hmset z
-	

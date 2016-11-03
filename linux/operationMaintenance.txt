@@ -3,6 +3,8 @@ Ubuntu中的运行级别
 		 1(单用户模式，只允许root用户对系统进行维护。)
          2-5(多用户模式，其中3为字符界面，5为图形界面。)
 		 6(重启系统)
+runlevel 查看等级
+切换 ctrl + alt + f2-f7
 
 scp source destestion
 	-r 递归复制目录

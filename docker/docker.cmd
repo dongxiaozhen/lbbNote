@@ -3,6 +3,9 @@ docker login
 
 docker images
 
+docker attach docker_name 连接到前一个docker命令的Stdin,  
+docker exec -it docker_name cmd  运行另一个命令
+
 docker commit -m "Added json gem" -a "Docker Newbee" 0b2616b0e5a8 ouruser/sinatra:v2
     -d 守护态运行
     -m 来指定提交的说明信息，跟我们使用的版本控制工具一样；
@@ -42,10 +45,10 @@ docker save    导出镜像到本地文件
 ocker load 从导出的本地文件中再导入到本地镜像库
     sudo docker load --input ubuntu_14.04.tar
 
- docker rm 命令是移除容器。
-
- docker run    新建并启动容器
+docker run    新建并启动容器
     -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上， -i 则让容器的标准输入保持打开。
+docker stop 停止一个容器,(停止的容器还在，可以用start命令再次激活，如果不用，需要用rm命令删除)
+docker rm 命令是移除容器。
 
 docker ps 命令来查看容器信息
 
