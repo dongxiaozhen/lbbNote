@@ -13,7 +13,13 @@ mysql> select now();
 SELECT DAYOFMONTH(CURRENT_DATE); 
 
 显示数据库 show database;
+	数据库信息 show create database name_db\G
 显示表     show tables;
+	信息 describe tb_name
+		 show columns from tb_name
+		 show field from tb_name
+		 show table status
+
 
 删除表中数据 命令：delete from 表名 where 表达式
 修改表中数据：update 表名 set 字段=新值,… where 条件
@@ -36,3 +42,8 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 	
 导出数据 mysqldump -u root -p database_name [table_name] > dump.sql
 倒入数据 mysql -u root -p database_name < dump.sql (database_name需要提前建立)
+
+
+join 笛卡尔积（交叉组合）,左表和右表没有组合的不显示
+left join 左表和右表没有组合的,也显示左表的行
+right join 左表和右表没有组合的,也显示右表的行
