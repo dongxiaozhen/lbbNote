@@ -1,0 +1,8 @@
+start a postgres instance
+	$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+connect to it from an application
+	$ docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
+
+via psql
+		$ docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U postgres

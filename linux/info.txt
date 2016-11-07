@@ -19,3 +19,11 @@ process /proc/"number" number==progress Id
 
 vmstat 	/proc/vmstat syscall.Sysinfo()
 	
+
+
+free -h 内存使用情况
+pidstat 
+iostat
+vmstat
+mpstat
+

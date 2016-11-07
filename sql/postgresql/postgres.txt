@@ -1,0 +1,4 @@
+data目录
+	/var/lib/postgresql/data
+
+
