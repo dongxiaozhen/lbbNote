@@ -32,6 +32,7 @@ docker run    新建并启动容器
 	-p 暴露端口
 	-h 容器操作系统命名
 	--name 容器命名
+	-w path 修改工作目录
 docker stop 停止一个容器,(停止的容器还在，可以用start命令再次激活，如果不用，需要用rm命令删除)
 docker rm 命令是移除容器。
 docker attach docker_name 连接到前一个docker命令的Stdin,  

@@ -73,6 +73,16 @@ tugitive git插件
 	:Gpull --rebase origin master
 	:Gmerge
 
+csv
+	 可视化表 	:CSVTabularize
+	 可视化一行 :ArrangeColumn
+		撤退    :UnArrangeColumn
+	 可视化一列 :HiColumn
+	 删除一列   :DeleteColumn
+	 列数量 	:NrColumns
+	 按列排序   :1,8CSVSort 3
+	 一列总和   :SumCol
+
 大小写转换
 	gu[l|b|w]
 
