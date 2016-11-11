@@ -20,7 +20,7 @@ serivce name cmd
 systemd模式init
 systemctl cmd name
     cmd: start ..同service , enbale,disable 设置开机启动，关闭
-
+sysv-rc-conf  图形界面管理，鼠标点击
 
 scp source destestion
 	-r 递归复制目录
