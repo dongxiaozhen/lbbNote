@@ -6,32 +6,29 @@ Ubuntu中的运行级别
 runlevel 查看等级
 切换 ctrl + alt + f2-f7
 
-scp source destestion
-	-r 递归复制目录
-	scp file root@192.168.1.23:/root/develop/realm远程复制文件
-ssh root@192.168.1.23远程连接
-
-
-crond
-	sencond minutes hours dayofMonth Month dayofweek year
-
-
-
+systemV style
+	/etc/init.d/serviceName 存放所有文件，/etc/rc[0-6S].d/[S|K][0-9]serviceName.软连接到/etc/init.d/serviceName	
 service --status-all 查看已经启动的服务
 serivce name cmd
     name:自动要控制的服务名，即/etc/init.d/目录下的脚本文件名
     cmd:status,start restart stop.....
-
-systemctl cmd name
-    cmd: start ..同service , enbale,disable 设置开机启动，关闭
-
 服务开启，关闭，等级设置
 	update-rc.d -f servicename default 开机 ==  systemctl servicename enable 
 	update-rc.d -f servicename remove 关闭  == systemctl servicename disable
 	update-rc.d -f servicename start/stop  0-6(level)
 
-whoami
-    登陆用户
+systemd模式init
+systemctl cmd name
+    cmd: start ..同service , enbale,disable 设置开机启动，关闭
+
+
+scp source destestion
+	-r 递归复制目录
+	scp file root@192.168.1.23:/root/develop/realm远程复制文件
+ssh root@192.168.1.23远程连接
+
+crond		 sencond minutes hours dayofMonth Month dayofweek year
+whoami 	 	登陆用户
 
 iftop iotop htop 网络，io, (cpu,mem)
 VmStat 命令用于显示虚拟内存、内核线程、磁盘、系统进程、I/O 块、中断、CPU 活动 等的统计信息。

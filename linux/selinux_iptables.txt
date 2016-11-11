@@ -25,4 +25,18 @@ setsebool [-P] 布尔值=[0|1]
 
 iptables
 iptables -t [filter|nat|raw] <-A/I/D/R> [INPUT|OUTPUT|PREROUTING|POSTOUTING|FORWARD]  <-i/o 网卡名> -p 协议名 <-s 源IP/源子网> --sport 源端口 <-d 目标IP/目标子网> --dport 目标端口 -j [accept|drop|snat|dnat] 
+			1.filter 定义允许或者不允许的												 -i/o  eth0：从这块网卡流入/流出的数据
+			2.nat 定义地址转换的														 -s：指定作为源地址匹配 
+    		3.mangle功能:修改报文原数据													 -d：表示匹配目标地址
+							-A：追加													 -p：用于匹配协议的
+							-I：插入
+							-D：删除
+							-R：修改
+										1.PREROUTING (路由前) 																															drop：悄悄丢弃
+										2.INPUT (数据包流入口)																															REJECT：明示拒绝
+										3.FORWARD (转发管卡)																															 ACCEPT：接受
+										4.OUTPUT(数据包出口)			
+										5.POSTROUTING（路由后）																													
+																										
+						
 	

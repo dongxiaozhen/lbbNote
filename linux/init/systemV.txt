@@ -1,0 +1,25 @@
+sysvinit 时代 Linux 启动流程：
+1. BIOS
+2. MBR
+3. Grub
+4. Linux-Kernel
+5. Init
+    a. 运行 /sbin/init
+    b. 读取 /etc/inittab（该文件定义了运行级别，在Ubuntu中演变为 /etc/init/rc-sysinit.conf）
+    c. 执行 /etc/rc.d/rc-sysinit （Ubuntu中是 /etc/init/rc-sysinit.conf）
+    d. 执行 /etc/rcS.d/ 目录下的脚本
+    e. 切换到默认的运行级别执行（Ubuntu默认执行  " env DEFAULT_RUNLEVEL=2 "     telinit  "${DEFAULT_RUNLEVEL}" ） 
+        执行 /etc/rc2.d/ 目录下的脚本
+    f.  执行 /etc/rc.local （用户自定义的开机服务可放到该脚本中）
+    g.  执行 /bin/login （此时，已完成 Init 全过程）
+6. 完成系统初始化，用户登录。
+
+
+service --status-all 查看已经启动的服务
+serivce name cmd
+    name:自动要控制的服务名，即/etc/init.d/目录下的脚本文件名
+    cmd:status,start restart stop.....
+服务开启，关闭，等级设置
+	update-rc.d -f servicename default 开机 ==  systemctl servicename enable 
+	update-rc.d -f servicename remove 关闭  == systemctl servicename disable
+	update-rc.d -f servicename start/stop  0-6(level)
