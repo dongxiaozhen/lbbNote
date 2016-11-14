@@ -1,3 +1,6 @@
 配置网站： http://studygolang.com/articles/6740?fr=email
 
 安装了vundle之后，执行:GoInstallBinaries
+
+vim-go 
+	asmfmt  errcheck  gocode  godef  gogetdoc  goimports  golint  gometalinter  gorename  gotags  guru  impl  motion
