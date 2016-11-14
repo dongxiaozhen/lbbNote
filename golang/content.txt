@@ -13,9 +13,12 @@ switch不会自动从一个case子句跌落到下一个case子句。但是case�
 变量shadow问题  外部定义的变量，在其他范围{}内使用:=来赋值(情况多出现在和err同时赋值时),回出现变量隐藏的问题  go tool vet -shadow xx.go 可以发现这个问题
 
 channel
+	只能在多个goroutine中使用
 	向关闭的channel 中发送数据会引发panic,在一个nil的channel上发送，接受数据会被永远阻塞,一个channel关闭多次会panic,
 	监听关闭的channel，依然可以接受到之前成功发送的数据，如果已经没有数据会产生一个零值的数据。
 	v,ok:=<-ch ok==true:v数据有效，ok==false:chan关闭，可以直接使用range遍历数据
+	无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行
+	channel 类型可以比较,当且仅当两chan引用的时同一个对象。
 
 range语句中的生成的数据是真实数据的拷贝，[],map,channel
 被defer的调用(函数)会在包含的函数的结尾执行，而不是代码块哦末尾(if,for)
@@ -33,7 +36,10 @@ go net/http
 
 break
 	break只能中断当前最近的一个for,swtich,select;如果要跳出外面的for,switch,select需要使用标签。标签要放在for,switch,select的前面。
-
+goto
+	跳到goto指向的标签处
 
 闭包：
 	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。
+
+interface 可以比较，只有type,value都相同时才相等
