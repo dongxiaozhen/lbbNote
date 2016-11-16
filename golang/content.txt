@@ -31,7 +31,7 @@ context 包实现了对多个派生go的管理，每个需要监听ctx.Done()退
 go net/http  
 	客户端 tcp请求完成后 response body指向con(需要自己调用read,close方法)
 		每个客户端里缓存之前的所有远程连接，每个con有两个goroutine:readloop,writeloop
-	服务器 tcp连接上后 response body指向con(需要自己调用write方法)
+	服务器 tcp listen ,连接上后开启一个goroutine, 读取解析协议。读写用到了limitread , buffreader,buffwrite 
 	
 
 break

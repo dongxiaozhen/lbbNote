@@ -97,3 +97,7 @@ csv
 寄存器运算  ctrl + r =
 寄存器使用 "[a-zA-Z]   "ay "ad    :h quote_alpha
 	
+自动补全快捷键
+	ctrl + n 向后切换成员
+	ctrl + p 向前切换成员
+	ctrl + y 表示退出下拉窗口, 并接受当前选项
