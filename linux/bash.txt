@@ -95,6 +95,8 @@ diff
 运算  bc  
 	  expr
 
+dos2unix  格式转换
+iconv 编码转换
 
 mount -t type dev dir
 umount -t type dev

@@ -45,6 +45,10 @@ set number
 set cursorline
 set scrolloff=999
 set encoding=utf-8
+
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk
+
 " 高亮显示搜索结果
 set hlsearch
 
