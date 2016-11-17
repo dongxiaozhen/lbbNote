@@ -47,3 +47,10 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 join 笛卡尔积（交叉组合）,左表和右表没有组合的不显示
 left join 左表和右表没有组合的,也显示左表的行
 right join 左表和右表没有组合的,也显示右表的行
+
+sum 算数 count 行数
+hour(timevar) 返回值是可以大于23的小时
+非自然时间计算
+ 	select id,mod(hour(timediff(pay_time,'2016-06-23T12:30:00')),24) as 'index' ,user_id,product_id from t_order limit 10;
+
+
