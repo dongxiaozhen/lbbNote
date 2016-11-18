@@ -90,6 +90,9 @@ csv
 	 按列排序   :1,8CSVSort 3
 	 一列总和   :SumCol
 
+hex
+	:%!xxd
+ 
 大小写转换
 	gu[l|b|w]
 

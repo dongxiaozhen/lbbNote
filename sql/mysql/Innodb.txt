@@ -1,8 +1,7 @@
 +--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+
-Engine             | Support | Comment                                                                    | Transactions | XA   | Savepoints
+| Engine             | Support | Comment                                                                    | Transactions | XA   | Savepoints |
 +--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+
-MyISAM             | YES     | MyISAM storage engine                                                      | NO           | NO   | NO         
+| InnoDB             | DEFAULT | Percona-XtraDB, Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |
 +--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+
 
 
-优化count(*)
