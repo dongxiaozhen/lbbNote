@@ -54,3 +54,5 @@ hour(timevar) 返回值是可以大于23的小时
  	select id,mod(hour(timediff(pay_time,'2016-06-23T12:30:00')),24) as 'index' ,user_id,product_id from t_order limit 10;
 
 
+可设置的参数列表
+	mysqld --verbose --help

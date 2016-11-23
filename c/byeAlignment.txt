@@ -29,3 +29,19 @@ struct B
 如何修改编译器的默认对齐值?
 1.在VC IDE中，可以这样修改：[Project]|[Settings],c/c++选项卡Category的Code Generation选项的Struct Member Alignment中修改，默认是8字节。
 2.在编码时，可以这样动态修改：#pragma pack .注意:是pragma而不是progma.
+
+
+
+__attribute__ ((packed)) 的作用就是告诉编译器取消结构在编译过程中的优化对齐,按照实际占用字节数进行对齐，是GCC特有的语法。
+结构体的地址指向低地址，
+
+p--> struct str32{
+p--> 位置10---    uint32_t len; /* used */                                                                                                                                               
+     位置14---    uint32_t alloc; /* excluding the header and null terminator */                                                                                                         
+p2-->位置18---    unsigned char flags; /* 3 lsb of type, 5 unused bits */                                                                                                                
+p1-->位置19---    char buf[]; 
+     }
+sizeof (str32) = 9
+p=malloc(sizeof(str32) + strlen(字符串长度，buf存储))
+p1 = p+ sizeof(str32)
+p2=p1[-1]
