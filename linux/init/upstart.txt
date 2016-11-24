@@ -1,0 +1,2 @@
+upstart 是sysvinit 的改进
+Upstart方式的Ubuntu上是没有inittab这个文件的，所有配置文件在/etc/init ，通过/etc/init/[rc.conf |rc-sysinit.conf| rcS.conf] 间接执行sysvinit.
