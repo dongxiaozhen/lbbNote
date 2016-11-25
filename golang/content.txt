@@ -42,6 +42,7 @@ goto
 闭包：
 	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。
 
-interface 可以比较，只有type,value都相同时才相等
+interface 可以比较，只有type,value都相同时才相等 src/runtime/iface.go
 	var1,ok:=i1.(type) 接口i1的type是不是type1, 返回的是类型type1的变量
 	i3:=i1.(i2)   接口i1的value有没有实现i2接口,返回的结果是i2类型的接口
+

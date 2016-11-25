@@ -39,7 +39,7 @@ p--> struct str32{
 p--> 位置10---    uint32_t len; /* used */                                                                                                                                               
      位置14---    uint32_t alloc; /* excluding the header and null terminator */                                                                                                         
 p2-->位置18---    unsigned char flags; /* 3 lsb of type, 5 unused bits */                                                                                                                
-p1-->位置19---    char buf[]; 
+p1-->位置19---    char buf[];  // 占位符
      }
 sizeof (str32) = 9
 p=malloc(sizeof(str32) + strlen(字符串长度，buf存储))
