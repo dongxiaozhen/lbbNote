@@ -1,6 +1,17 @@
+book 
+	golang-china/gopl-zh/
+	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
+	https://golang.org/doc/effective_go.html
+
 gdb 调试golang   
 	gdb xxxx 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
 	dlv 调试
+
+slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
+	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
+
+string 
+	type = struct string { uint8 *str; int len; }
 
 time
 	Timer定时完需要重置
@@ -24,8 +35,19 @@ channel src/runtime/chan.go   make(chan int) 返回的是一个指针 *hchan
 
 range语句中的生成的数据是真实数据的拷贝，[],map,channel
 被defer的调用(函数)会在包含的函数的结尾执行，而不是代码块哦末尾(if,for)
-map 取不存在的key的value,返回零直
-switch rr:=a.(type)   (type)只能在switch中出现，rr是变量，可以操作
+map 
+	类型创建返回的是指针 type = struct hash<keyType,valueType> {
+	    int count;
+	    uint8 flags;
+	    uint8 B;
+	    uint32 hash0;
+	    struct bucket<keyType,valueType> *buckets;
+	    struct bucket<keyType,valueType> *oldbuckets;
+	    uintptr nevacuate;
+	    [2]*[]*runtime.bmap *overflow;
+	} *
+	
+	map 取不存在的key的value,返回零直
 
 context 包实现了对多个派生go的管理，每个需要监听ctx.Done()退出，正常完成后调用CancelFunc
 
@@ -48,3 +70,9 @@ interface 可以比较，只有type,value都相同时才相等 src/runtime/iface
 	var1,ok:=i1.(type) 接口i1的type是不是type1, 返回的是类型type1的变量
 	i3:=i1.(i2)   接口i1的value有没有实现i2接口,返回的结果是i2类型的接口
 
+	reflect
+		逆操作：reflect.ValueOf(a).Interface()
+		reflect.Type(a).Kind() 返回structkind
+		reflect.ValueOf(a).String() 返回 struct名字
+
+	switch rr:=a.(type)   (type)只能在switch中出现，rr是变量，可以操作,相当于遍历a.(type)

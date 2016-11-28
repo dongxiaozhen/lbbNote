@@ -21,6 +21,8 @@
  * @attention used for C++ only.
  */
 
+// 用链表解决冲突
+
 #ifndef CXX_TRF_DS_TMCEVENTHASHTABLE_H
 #define CXX_TRF_DS_TMCEVENTHASHTABLE_H
 

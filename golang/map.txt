@@ -1,0 +1,37 @@
+使用数组解决冲突
+// A header for a Go map.
+type hmap struct {
+    // Note: the format of the Hmap is encoded in ../../cmd/internal/gc/reflect.go and
+    // ../reflect/type.go. Don't change this structure without also changing that code!
+    count int // # live cells == size of map.  Must be first (used by len() builtin)
+    flags uint8
+    B     uint8  // log_2 of # of buckets (can hold up to loadFactor * 2^B items)
+    hash0 uint32 // hash seed
+
+    buckets    unsafe.Pointer // array of 2^B Buckets. may be nil if count==0. ----------------------------------------------->array bmap (hashkey低位为数组index,循环判断高位)
+    oldbuckets unsafe.Pointer // previous bucket array of half the size, non-nil only when growing
+    nevacuate  uintptr        // progress counter for evacuation (buckets less than this have been evacuated)                                                                                                       
+
+    // If both key and value do not contain pointers and are inline, then we mark bucket
+    // type as containing no pointers. This avoids scanning such maps.
+    // However, bmap.overflow is a pointer. In order to keep overflow buckets
+    // alive, we store pointers to all overflow buckets in hmap.overflow.
+    // Overflow is used only if key and value do not contain pointers.
+    // overflow[0] contains overflow buckets for hmap.buckets.
+    // overflow[1] contains overflow buckets for hmap.oldbuckets.
+    // The first indirection allows us to reduce static size of hmap.
+    // The second indirection allows to store a pointer to the slice in hiter.
+    overflow *[2]*[]*bmap ----------------------------------------------------------------------->array *bmap (指针 hashkey低位为数组index)
+}
+
+
+// A bucket for a Go map.
+type bmap struct {
+    tophash [bucketCnt]uint8 ------------------------------------------------------------>hashkey高位
+    // Followed by bucketCnt keys and then bucketCnt values. ----------------------------------->key1/key2/key3/../key8/value1/value2/..../value8
+    // NOTE: packing all the keys together and then all the values together makes the
+    // code a bit more complicated than alternating key/value/key/value/... but it allows
+    // us to eliminate padding which would be needed for, e.g., map[int64]int8.
+    // Followed by an overflow pointer.
+}
+
