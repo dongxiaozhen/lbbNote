@@ -57,3 +57,7 @@ history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条�
 
 将 Ubuntu 16.04 LTS 的 Unity 启动器移动到桌面底部命令
 	gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+
+
+快捷方式 /usr/share/applications/*.desktop   [Desktop Entry]
+

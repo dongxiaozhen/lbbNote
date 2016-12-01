@@ -50,6 +50,9 @@ go tool compile
 go tool link
 go tool asm 
 go tool dist 
-go toll vet 静态检查
+go tool vet 静态检查
+go tool nm abjfile  // list symbols from object files
+go tool addr2line   // convert addresses into file names and line numbers.
+go tool pack        // 打包成.a文件
 
 
