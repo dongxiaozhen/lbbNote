@@ -6,27 +6,26 @@ buildmode
 // go .a 编译
 		-buildmode=default
 			Listed main packages are built into executables and listed
-			non-main packages are built into .a files (the default
-			behavior).
+			non-main packages are built into .a files (the default behavior).
 
 // 静态编译
-		-buildmode=archive
+		-buildmode=archive   将go代码编译为.a的静态库
 			Build the listed non-main packages into .a files. Packages named
 			main are ignored.
 	
-		-buildmode=c-archive
+		-buildmode=c-archive  cgo有关,需要一个func main(){}
 			Build the listed main package, plus all packages it imports,
 			into a C archive file. The only callable symbols will be those
 			functions exported using a cgo //export comment. Requires
 			exactly one main package to be listed.
 	
 // 动态编译
-		-buildmode=shared
+		-buildmode=shared  将go代码编译为.so的动态库 ,其他程序使用时需要在编译的时候加上-linkshared
 			Combine all the listed non-main packages into a single shared
 			library that will be used when building with the -linkshared
 			option. Packages named main are ignored.
 
-		-buildmode=c-shared
+		-buildmode=c-shared cgo有关,包里需要有func main(){}
 			Build the listed main packages, plus all packages that they
 			import, into C shared libraries. The only callable symbols will
 			be those functions exported using a cgo //export comment.
@@ -48,11 +47,18 @@ go version
 go tool -n 列出所有的tool
 go tool compile 
 go tool link
+	-linkmode 
+		external
+			将cgo,go代码编译成.o,然后和外部依赖用外部的连接器 -extld指定来链接,-edxldflags指定参数
+		internal
+			将cgo,go用gc解释并链接
 go tool asm 
+go tool objdump 反汇编
 go tool dist 
 go tool vet 静态检查
 go tool nm abjfile  // list symbols from object files
 go tool addr2line   // convert addresses into file names and line numbers.
 go tool pack        // 打包成.a文件
+go tool cgo         // src/cmd/cgo/doc.go有详细的cgo解释 
 
 
