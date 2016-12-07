@@ -89,3 +89,8 @@ interface 可以比较，只有type,value都相同时才相等
 	switch rr:=a.(type)   (type)只能在switch中出现，rr是变量，可以操作,相当于遍历a.(type)
 
 method(方法)只是添加对象为func(函数)的第一个参数
+
+
+signal 
+	Notify 可以多次调用，但是只能使用一个chan，
+	往chan里发送信号是非阻塞的，信号会丢失，所以chan必须是非阻塞的，长度至少为1

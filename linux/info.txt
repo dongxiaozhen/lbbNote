@@ -1,4 +1,8 @@
-cpu 			/proc/cpuinfo
+cpu  	/proc/cpuinfo   // cpu多核多线程
+	cpu cores   // cpu核心数
+		cpu id  // 当前线程的核心id
+	siblings    // cpu 线程数
+		apicid  // 当前线程的id
 filesystem 		df -l
 	diskinfo 	syscall.Statfs()
 memory			/proc/meminfo
