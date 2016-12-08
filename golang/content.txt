@@ -94,3 +94,6 @@ method(方法)只是添加对象为func(函数)的第一个参数
 signal 
 	Notify 可以多次调用，但是只能使用一个chan，
 	往chan里发送信号是非阻塞的，信号会丢失，所以chan必须是非阻塞的，长度至少为1
+
+byte.Buffer  底层使用一块内从内存，内存扩大是2×cap()+n n为要写入的数据长度,使用reset重置会使写操作重头开始，底层内存不变
+bufio.Write  io缓存，flush 将buf中的数据写入文件(可能是先写在内存中的文件),sync 写入硬盘
