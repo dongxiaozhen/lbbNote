@@ -19,6 +19,7 @@
 ├── github.com
 │   ├── adamzy
 │   ├── alecthomas
+│   ├── andybalholm
 │   ├── ascoders
 │   ├── astaxie
 │   ├── attic-labs
@@ -58,6 +59,7 @@
 │   ├── divan
 │   ├── docker
 │   ├── donovanhide
+│   ├── donutloop
 │   ├── duguying
 │   ├── eknkc
 │   ├── elazarl
@@ -82,6 +84,7 @@
 │   ├── gpm
 │   ├── hashicorp
 │   ├── howeyc
+│   ├── hu17889
 │   ├── huichen
 │   ├── iamduo
 │   ├── imdario
@@ -141,6 +144,7 @@
 │   ├── samuel
 │   ├── satori
 │   ├── shurcooL
+│   ├── simeji
 │   ├── Sirupsen
 │   ├── skelterjohn
 │   ├── skoo87
@@ -149,6 +153,7 @@
 │   ├── spf13
 │   ├── square
 │   ├── streamrail
+│   ├── stretchr
 │   ├── thoas
 │   ├── tools
 │   ├── twinj
@@ -199,13 +204,17 @@
 │   └── lm
 ├── readline
 │   └── main.go
+├── sour2.list
 ├── test
 │   ├── bit
 │   ├── buffio
+│   ├── cgo
 │   ├── chan
 │   ├── client
 │   ├── cobra
+│   ├── context
 │   ├── daily
+│   ├── encoding
 │   ├── for
 │   ├── glidetest
 │   ├── glidetest2
@@ -218,7 +227,9 @@
 │   ├── main.go
 │   ├── main.sh
 │   ├── map
+│   ├── method
 │   ├── net
+│   ├── os
 │   ├── pid
 │   ├── print
 │   ├── protobuf
@@ -231,10 +242,12 @@
 │   ├── slice
 │   ├── spew
 │   ├── ssh
+│   ├── string
 │   ├── struct
 │   ├── time
+│   ├── type
 │   ├── user
 │   └── websocket
 └── vimrc
 
-225 directories, 12 files
+237 directories, 13 files

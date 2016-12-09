@@ -51,3 +51,14 @@ journalctl 可用于检索 systemd(1) 日志的内容(由 systemd-journald.servi
 
 
 grub
+
+parted /dev/sda print     // 查看分区和MBR/GPT
+cat /proc/partitions
+lsblk
+
+                系统级别                   												  进程级别                			
+统计 		vmstat mpstat iostat netstat sar	   										 ps top pmap					
+跟踪 tcpdump blktrace iosnoop execsnoop dtruss DTrace SystemTap perf 				   	 strace gdb
+剖析 oprofile perf DTrace systemTap cachegrind
+来源   /sys  /proc																			/proc
+
