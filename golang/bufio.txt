@@ -1,0 +1,5 @@
+ioutil.ReadAll()
+bytes.ReadFrom 读取全部数据到buf种
+bytes.Write 底层buf会根据需要增加.
+bufio.Reader read(p []byte)  读取数据到固定大小的buf中。len(p)大于buf长度直接读到p中，len(p)小于len(buf),先从远端读取len(buf)的数据到buf，然后从buf中拷贝到p中，下次读取直接将buf剩余的数据拷贝到p中。
+bufio.Write write(p []byte)  写数据到固定大小的buf中。,如果buf可用空间大于len(p)，则拷贝到buf中。len(p)大于缓存剩余大小就直接写或者拷贝一部分p到buf中，然后flush

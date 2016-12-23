@@ -6,6 +6,7 @@ book
 gdb 调试golang   
 	gdb xxxx 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
 	dlv 调试
+	gom // xinneng  go get github.com/rakyll/gom/cmd/gom
 
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
 	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
@@ -13,6 +14,7 @@ slices, maps, and functions: these types cannot be compared using ==, and may no
 string 
 	type = struct string { uint8 *str; int len; }
 
+struct 匿名字段是结构体，也可以调用匿名字段的指针方法
 time
 	Timer定时完需要重置
 	ticker 就是一直循环定时

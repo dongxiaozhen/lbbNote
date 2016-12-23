@@ -1,0 +1,6 @@
+strace 底层系统调用
+pstack 函数调用栈
+
+pstree  进程关系图
+
+ps -L 线程

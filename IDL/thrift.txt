@@ -1,0 +1,11 @@
+thrift -r --gen go  xx.thrift
+
+service
+	一个客户一个goroutine,顺序读取并处理客户端的调用。map[methname]handle 存储调用
+
+client
+	阻塞调用
+
+
+protocol(binary,json debug,,)协议都有  methodname,type(call,resp,err),seqid,info
+transport(frame,stream, zlib) 传输协议(比如：frame后面的字段有多长，stream直接传输，zlib压缩了再传输)

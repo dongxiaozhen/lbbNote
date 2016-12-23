@@ -1,0 +1,3 @@
+以帧的格式发送数据，字段有类型：文本，二进制；payloadlen,payloaddata,
+readNext 读取下一帧的内容，忽略前一帧未读取的内容。返回一个reader,可以一段一段的读取payloaddata
+readMessage 读取全部payloaddata数据
