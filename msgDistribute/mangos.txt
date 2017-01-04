@@ -1,0 +1,58 @@
+bus       
+		|<------>per1 
+		|            
+		|            
+recv	|            
+  <---->|<------>per2 
+	    |              
+		|            
+		|            
+		|            
+		|<------>per3		
+		
+pub/sub(单方向)
+				|----------->sub1
+				|
+				|
+				|
+				|----------->sub2
+-------->pub--> |
+				|
+				|
+				|
+				|----------->sub3
+
+pair
+	pair1<------------------->pair2
+
+	
+pull/push
+             |<-----------push1
+			 |
+			 |
+pull<------- |<-----------push2
+			 |
+			 |
+			 |<-----------push3
+			 
+			 
+rep/req  (统一处理请求，然后将回复发给请求者)
+		|<------>req1 
+		|            
+		|            
+rep	    |            
+  <---->|<-------req2 
+	    |              
+		|            
+		|            
+		|            
+		|<-------req3
+
+
+con(PipeInterface)
+	Recv() : *Message, error    sz:body
+	Send(msg *Message) : error
+	
+	
+socket
+	Send([]byte)error   sock.uwq <- msg

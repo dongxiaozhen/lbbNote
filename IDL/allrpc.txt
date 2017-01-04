@@ -1,31 +1,29 @@
 
-
 thift 处理连接，在common.RpcHandler 中注册函数就行,每个client一个Goroute
 rpc  func(rq *protoservice.ProtoRequest) *protoservice.ProtoReply
 
-	type ProtoRequest struct {                                                                                                                                                                                                                                                    
+	type ProtoRequest struct {                                                                                                                                                                                                                                            
 		Type       int32  `thrift:"type,1" json:"type"`
 		Content    []byte `thrift:"content,2" json:"content"`
 		ShardingID int64  `thrift:"sharding_id,3" json:"sharding_id"`
 	}
 	
-	type ProtoReply struct {                                                                                                                                                                                                                                                      
+	type ProtoReply struct {                                                                                                                                                                                                                                              
 		Result_ int64  `thrift:"result,1" json:"result"`                                                                                                                                                                                 
 		Type    int32  `thrift:"type,2" json:"type"`                                                                                                                                                                                     
 		Content []byte `thrift:"content,3" json:"content"`                                                                                                                                                                               
 	}
 	
 	
-	
-开启1024个goroutine处理handle，每个client开启一个read goroutine, 解包后分发到1024个G中的一个goroutine 的chan中，goroutine从特定的chan中读出数据然后处理，处理的结果会放到client的send chan中，监听send chan的goroutine处理发送	
+开启1024个goroutine处理handle，每个client开启一个read goroutine, 解包后分发到1024个G中的一个goroutine 的chan中，goroutine从特定的chan中读出数据然后处理，处理的结果会放到client的send chan中，监听send chan的goroutine处理发送(route中传递了conn)
 ChannelPacketProcessor   func(packet *NetPacket)  使用了FkServer
-	type NetPacket struct {                                                                                                                                                                                                                                                       
+	type NetPacket struct {                                                                                                                                                                                                                                          
 		Nc   *FkConn
 		Data []byte
 		*ESPacket
 	}                                                                                                                                                                                                        
 	
-	type ESPacket struct {                                                                                                                                                                                                                                                        
+	type ESPacket struct {                                                                                                                                                                                                                                      
 		Pack_len  uint16
 		Pack_type uint16
 		User_id   uint64
@@ -42,9 +40,9 @@ NewFkServer
 	
 TypeRouteProcessor   封装了ChannelPacketProcessor ,使用了FkServer
 	defaultRoute 找到route,发送出去，route接收到结果后找到client,然后发给client
-					  |----------
+					   ___________
 	------------------|        r1| ---------->server1
-					  | -----|   |
+					  | -----    |
 	------------------| l024G|   |
 					  | -----    |  
 	------------------|        r2|------------->server2
