@@ -21,6 +21,7 @@ time
 	time有个goroutine，采用堆结构处理时间，当时间到期后会调用sendTime()无阻塞(select)的填充Timer里的chan。
 
 select 里面定时不要在里边写time.After(d)，原因就是select每次执行都会重新执行case语句,并重新注册到select中。
+select // if some case be ready on one time, it random select one to run, be careful
 switch不会自动从一个case子句跌落到下一个case子句。但是case可以使用逗号分隔的列表。
 
 变量shadow问题  外部定义的变量，在其他范围{}内使用:=来赋值(情况多出现在和err同时赋值时),回出现变量隐藏的问题  go tool vet -shadow xx.go 可以发现这个问题
@@ -65,7 +66,7 @@ goto
 	跳到goto指向的标签处
 
 闭包：
-	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。
+	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。ref不传，value传.
 	struct {F func, Arg args}
 
 interface 可以比较，只有type,value都相同时才相等 

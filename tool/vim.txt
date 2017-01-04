@@ -57,6 +57,7 @@ tab切换 					 tabn tabp
 buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的文件)
 搜索结果切换(:vim/xx/**) 	 cn cp cwindow
 搜索结果:CtrlSF o p t 
+		:CtrlSFOpen  // previer list
 
 搜索文件 :CtrlP 
 	ctrl + j/k 进行上下选择
@@ -99,6 +100,8 @@ hex
 数字加1 	ctrl + a
 寄存器运算  ctrl + r =
 寄存器使用 "[a-zA-Z]   "ay "ad    :h quote_alpha
+			y  // defer to "0
+			d  // defer to "1 - 8
 	
 自动补全快捷键
 	ctrl + n 向后切换成员
