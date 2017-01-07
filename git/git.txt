@@ -115,10 +115,12 @@ repo
 	repo start 实际上是对git checkout -b 命令的封装
 
 显示指定文件相关的每一次diff
-    git log -p [file]
-显示指定文件是什么人在什么时间修改过
-    git blame [file]
-git whatchanged  filename  显示某个文件的每个版本提交信息：提交日期，提交人员，版本号，提交备注
+    git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file] 
+	git log --follow file / git whatchanged file // 文件在那些提交中有变动
+	git diff commit1 commit2 
+显示指定文件是什么人在什么时间修改过,每一行的提交记录
+    git blame [file]   
+
 gitk -- filename   gitk显示
 
 git diff 			work和stage的比较
@@ -126,3 +128,4 @@ git diff --cached 	stage 与HEAD比较
 git diff HEAD 		work,stage中的内容和 HEAD比较
 
 
+git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)

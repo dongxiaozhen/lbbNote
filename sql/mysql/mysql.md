@@ -1,4 +1,5 @@
 
+mysql 执行了查询数据，但是没有读取(exec代替query)，会出现busy buffer的错误提示。
 mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation 空密码输入'' systemctl start/enable mariadb.service
 MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快， b+,保存索引
 InnoDB 支持事务 b+树，保存行号
@@ -43,6 +44,7 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 导出数据 mysqldump -u root -p database_name [table_name] > dump.sql
 倒入数据 mysql -u root -p database_name < dump.sql (database_name需要提前建立)
 
+group by 只显示一行  group_concat（） 将在group结果中的其他列的数据显示出来  
 
 join 笛卡尔积（交叉组合）,左表和右表没有组合的不显示
 left join 左表和右表没有组合的,也显示左表的行
