@@ -2,6 +2,8 @@ sudo passwd root  使用su
 ctrl+Alt+F{1,6} 图形界面切换到命令行界面
 Alt+ F7 命令行界面切换到图形界面
 
+取消图形界面  systemctl disable lightdm.service
+
 ubuntu 设置
 	sudo apt-get install build-essential
 	sudo apt-get install openssh-server // ssh
