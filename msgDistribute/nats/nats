@@ -1,0 +1,21 @@
+
+
+protocol:
+	INFO {["option_name":option_value],...}
+ 	CONNECT {["option_name":option_value],...}
+	PUB <subject> [reply-to] <#bytes>\r\n[payload]\r\n
+	SUB <subject> [queue group] <sid>\r\n
+	UNSUB <sid> [max_msgs]
+	+OK/ERR
+
+每个客户端一个goroutinue,读取数据，分析协议，发送数据	
+
+sub: 在全局数据结构sublist存放sub信息,
+unsub: 删除全局数据结构sublist中sub信息
+pub: 在全局sublist中找出所有注册的sub信息，然后发送给每个订阅者
+
+
+
+和nsq区别：
+	nsq 启动了了多个Goroutinue,
+	nsq 需要复制多封数据到每个client的chan中
