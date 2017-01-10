@@ -24,3 +24,8 @@ pub: 在全局sublist中找出所有注册的sub信息，然后发送给每个�
 cluster
 	多个server之间通过route配置连接，route发过来的消息不转发
 	客户端发给server的消息会通过route转发给其他server
+
+
+shutdown
+	先主动关闭自己监听的端口，不处理新数据
+	然后关闭所有连接上来的client,关闭所有tcp连接会让所有goroutine都关闭，因为每个goroutine都是循环从client读取数据，出错就退出
