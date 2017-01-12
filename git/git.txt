@@ -126,3 +126,4 @@ git diff --cached 	stage 与HEAD比较
 git diff HEAD 		work,stage中的内容和 HEAD比较
 
 
+git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)
