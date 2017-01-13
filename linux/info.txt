@@ -26,10 +26,10 @@ vmstat 	/proc/vmstat syscall.Sysinfo()
 
 
 free -h 内存使用情况
-pidstat 
+pidstat -s(堆栈) -d(io统计) -t(线程) -u(cpu统计) -p xx 
 iostat
 vmstat
-mpstat
+mpstat  处理器的统计情况  -P ALL 
 
 
 lib和进程内存使用
