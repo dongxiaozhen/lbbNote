@@ -32,6 +32,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'chrisbra/csv.vim.git'
+#Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " all of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,7 +59,7 @@ set fdm=indent
 set nofoldenable
 
 let g:vim_markdown_folding_disabled = 1
-colorscheme molokai
+" colorscheme molokai
 
 " ctrlsf 使用 需要安装ag  sudo apt-get install silversearcher-ag
 let g:ctrlsf_ackprg='ag'
@@ -129,6 +130,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " tagbar
+" sudo apt-get install ctags，然后 go get -u github.com/jstemmer/gotags 安装 Go 语言的相关解析器。
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds' : [
@@ -161,6 +163,7 @@ let g:tagbar_type_go = {
 " shortcuts remap
 nmap <F2> :tabnew<CR>
 nmap <F3> :tabclose<CR>
+map  <F4> <Esc>:%!python -m json.tool<CR>
 nmap <F5> :UndotreeToggle<CR>
 nmap <F7> :NERDTreeTabsToggle<CR>
 nmap <F8> :TagbarToggle<CR>
@@ -191,3 +194,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_bin_path = "/home/libinbin/.mypath" 
 let g:NERDSpaceDelims=1
 let g:csv_delim=','
+
+set rtp+=/home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256

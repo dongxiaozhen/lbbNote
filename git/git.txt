@@ -11,7 +11,7 @@ github
 	1.开源软件点击fork就会在自己的账户下复制那个项目
 	2.clone地址，然后在本地执行git clone xxxxx(网址)
 
-添加文件.gitignore到根目录，里面填写要忽略的文件名 (项目全局共享)
+添加文件.gitignore到项目根目录，里面填写要忽略的文件名 (项目全局共享)
 添加文件名到.git/info/exclude文件中      			(个人局部设置)
 git config --global core.excludesfile /home/lbb/.gitignore (个人全局)
 git status --ignored -s (显示忽略跟踪的文件名)
