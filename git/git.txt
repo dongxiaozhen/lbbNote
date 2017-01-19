@@ -117,6 +117,7 @@ repo
 显示指定文件相关的每一次diff
     git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file] 
 	git log --follow file / git whatchanged file // 文件在那些提交中有变动
+    git log commit -1 -p [file] 
 	git diff commit1 commit2 
 显示指定文件是什么人在什么时间修改过,每一行的提交记录
     git blame [file]   
