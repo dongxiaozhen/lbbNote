@@ -26,6 +26,8 @@ scp source destestion
 	-r 递归复制目录
 	scp file root@192.168.1.23:/root/develop/realm远程复制文件
 ssh root@192.168.1.23远程连接
+telnet ctrl+backspace 删除  ctrl+ent 回车 
+	 open host port  // tcp连接
 
 crond		 sencond minutes hours dayofMonth Month dayofweek year
 whoami 	 	登陆用户

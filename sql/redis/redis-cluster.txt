@@ -1,0 +1,34 @@
+使用redis-trib.rb 需要安装东西，执行：  gem install redis
+redis.conf 基本配置
+port  xxx
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+
+
+
+redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001  127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005
+	(--replics 1 一半master,一半slave)
+
+在集群中添加一个master
+redis-trib.rb add-node 127.0.0.1:7006(新节点) 127.0.0.1:7000(任意一个节点)
+
+在集群中添加一个slave,新节点将成为最少slave的master的slave
+redis-trib.rb add-node --slave 127.0.0.1:7006(新节点) 127.0.0.1:7000(任意一个节点)
+
+reshard slots
+./redis-trib.rb reshard 127.0.0.1:7000(任意一节点)
+	How many slots do you want to move (from 1 to 16384)? 输入要move的slots数量
+	node ID? 输入要添加slots的master的ID
+	what nodes you want to take those keys 输入all ，从其他master分出nums个slots给ID
+
+删除一个节点,在删除一个节点之前要reshard他的slots给其他几点，只有当前节点空了，才能删除
+redis-trib del-node 127.0.0.1:7000(任意节点) ID(要删除的节点ID)
+
+CLUSTER FAILOVER  (故障转移)save成为master
+
+
+
+CLUSTER NODES 
+CLUSTER SLOTS
+CLUSTER INFO

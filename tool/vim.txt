@@ -58,6 +58,10 @@ buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的�
 搜索结果切换(:vim/xx/**) 	 cn cp cwindow
 搜索结果:CtrlSF o p t 
 		:CtrlSFOpen  // previer list
+		'fixed-strings'
+		-R regex
+
+grep -E(extend regex) -F(--fixed-strings) 
 
 搜索文件 :CtrlP 
 	ctrl + j/k 进行上下选择
