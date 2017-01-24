@@ -32,7 +32,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'chrisbra/csv.vim.git'
-#Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " all of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,6 +63,11 @@ let g:vim_markdown_folding_disabled = 1
 
 " ctrlsf 使用 需要安装ag  sudo apt-get install silversearcher-ag
 let g:ctrlsf_ackprg='ag'
+" CtrlSF locates project root by searching VCS root (.git, .hg, .svn, etc.)
+let g:ctrlsf_default_root = 'project'
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nnoremap <C-F>o :CtrlSFOpen<CR>
 
 " plugin customizations
 " neocomplete
