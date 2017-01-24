@@ -20,6 +20,7 @@ date
 	-s 设置时间
 	+%xxxx 显示格式
 
+find xxx|xargs grep xxxx 查找文件中有字符串
 
 grep -l 列出匹配的文件名
      -r 递归遍历文件夹
