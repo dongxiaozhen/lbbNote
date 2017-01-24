@@ -1,3 +1,4 @@
+git clone http://github.com/gmarik/vundle.git ~/.vim/vundle.git
 	安装插件：PluginInstall"
 	更新插件“：PluginUpdate
 	清除不再使用的插件“：PluginClean"

@@ -1,0 +1,7 @@
+生成秘钥 ssh-keygen
+交换秘钥 ssh-copy-id user@host
+免密码登录 
+	配置.ssh/conf
+		host 11
+    	HostName 192.168.1.11
+    	User test1
