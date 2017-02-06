@@ -35,3 +35,7 @@ Bitwise operators
 
 function
 	variable is globle scope, unless localized (local var=1)
+
+
+后台程序的ppid==1, 多且套几个shell程序或者使用subshell(),要不然远程ssh连接断开后，终端退出后会使程序退出
+
