@@ -7,6 +7,7 @@ Alt+ F7 命令行界面切换到图形界面
 ubuntu 设置
 	sudo apt-get install build-essential
 	sudo apt-get install openssh-server // ssh
+	sudo apt-get install graphviz (go pprof pdf)
 	
 安装moc
 	add-apt-repository ppa:noobslab/themes
