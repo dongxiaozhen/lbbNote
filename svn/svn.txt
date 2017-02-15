@@ -1,0 +1,13 @@
+
+svn checkout svn://xxx   拉代码
+svn info 查看库信息
+svn update // 更新代码
+svn resolve xx 解决冲突
+
+svn status 
+svn add xxx 添加文件
+svn commit -m "xx"  提交文件
+
+svn log -l 10 显示最新10条提交记录
+svn diff -r r1:r2  显示r1相对r2更新的文件
+

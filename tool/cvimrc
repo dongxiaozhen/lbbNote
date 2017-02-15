@@ -1,0 +1,98 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+
+"还需要去~/.vim/bundle/YouCompleteMe中./install.sh一下
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'dyng/ctrlsf.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+set encoding=utf-8
+syntax on
+set ts=4
+set sw=4
+set number
+set cursorline
+set scrolloff=999
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk
+set hlsearch
+set fdm=indent
+set nofoldenable
+" ctrlsf 使用 需要安装ag  sudo apt-get install silversearcher-ag                                                                                                                                                                                                              
+let g:ctrlsf_ackprg='ag'
+" CtrlSF locates project root by searching VCS root (.git, .hg, .svn, etc.)
+let g:ctrlsf_default_root = 'project'
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nnoremap <C-F>o :CtrlSFOpen<CR>
+
+
+
+set tag+=./tags
+set tag+=/mnt/hgfs/paipai/cplus/tags
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Show_One_File = 1
+let Tlist_Use_Right_Window =1
+"let Tlist_WinHeight = 100
+let Tlist_WinWidth = 40
+let Tlist_Exit_OnlyWindow = 1
+noremap <F8> :TlistToggle<CR>
+noremap <F6> :!ctags -R<CR>
+
+
+map <F7> :NERDTreeToggle<CR>
+
+" vim-airline
+set laststatus=2
+let g:bufferline_echo = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'dark'
+
+map  <F4> <Esc>:%!python -m json.tool<CR>

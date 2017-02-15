@@ -58,3 +58,12 @@ hour(timevar) 返回值是可以大于23的小时
 
 可设置的参数列表
 	mysqld --verbose --help
+
+
+update table 的时候，如果前后数据不变，row_count() == 0;(变化的行数)
+
+查询所有procedure
+select name from mysql.proc where db = 'your_db_name' and type = 'PROCEDURE'
+查看procedure
+show create procedure proc_name;
+show create function func_name;
