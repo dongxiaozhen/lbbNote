@@ -1,0 +1,8 @@
+
+p $len(aa)  aa=array, slice ,map,string
+p $cap(aa)  aa=array, slice ,map,string
+p $dtype(aa)  打印动态类型
+iface var 
+info goroutines  显示G
+goroutine num 切换G
+

@@ -7,6 +7,7 @@ github.com/urfave/negroni Go语言里，Negroni 是一个很地道的 web 中间
 github.com/blackbeans/turbo 底层网络通讯框架
 github.com/qieangel2013/livego  一个用Go写的直播
 github.com/nats-io/nats-streaming-server    消息分发(同nsq)
+https://github.com/antirez/disque.git    内存消息分发
 
 
 github.com/insionng/macross  待看
