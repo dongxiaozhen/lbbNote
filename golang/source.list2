@@ -18,3 +18,9 @@ github.com/coocood/freecache
 github.com/spf13/hugo 博客
 github.com/json-iterator/go   jsoniter 
 github.com/derekparker/delve/cmd/dlv   调试
+
+github.com/godbus/dbus 
+github.com/TheCreeper/go-notify
+github.com/name5566/leaf
+github.com/asaskevich/EventBus
+
