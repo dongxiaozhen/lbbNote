@@ -25,16 +25,26 @@ find xxx|xargs grep xxxx 查找文件中有字符串
 grep -l 列出匹配的文件名
      -r 递归遍历文件夹
     -F 固定字符串的查找，
+	-E 正则
+	-A 3 输出匹配行后的3行内容
+	-n 显示行号
+	-i 忽略大小写
+	-v 反向搜索
+	
 
-sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串
+
+sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串   以行为单位的文本编辑工具
 	-i edit file in place 在文件中替换，sed默认是有缓存的
-	-n 'p' 组合，只答应命令输出行
+	-n 只显示匹配处理的行，经常和'p' 组合，只答应命令输出行
+	-e 多重编辑：可以输入多个命令
 	h,H 相当于复制到一个地方(缓存),H是追加，h是覆盖
 	g,G 都是从(缓存)中取出一块数据，g替代当前模板块中的文本,G追加到当前模板块文本的后面
 	a/i/c/d/D/s 命令
 
+awk  以行为单位的文本编辑工具,一行又有多个分段
+
 curl 参数需要通过 -d "xx=xx&kk=kk"
-	curl -o [文件名] www.sina.com
+	curl -o [文件名] www.sina.com    默认输出到stdout
 	curl -L www.sina.com #有的网址是自动跳转的
 	curl -i www.sina.com #`-i`参数可以显示http response的头信息  `-I`参数则是只显示http response的头信息。
 	curl -v www.sina.com #`-v`参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。

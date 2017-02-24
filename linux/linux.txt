@@ -1,0 +1,18 @@
+linxu限制连接数的主要因素是内存和文件描述符的个数
+	1:所需内存 = 单个socket的大小 * socket个数
+		查看soket的大小,经过试验，每个socket占用内存在15~20k之间  grep skbuff /proc/slabinfo
+							rm_max wm_max tcp_rm tcp_wm tcp_m
+		skbuff_fclone_cache   1465   1505    512    7    1 : tunables   54   27    8 : slabdata    215    215     52
+		skbuff_head_cache  27453  28170    256   15    1 : tunables  120   60    8 : slabdata   1878   1878    277
+	2:socket个数
+		1:单进程最大文件描述符限制：ulimit -n
+			1000000
+		2:全局文件描述符限制：cat /proc/sys/fs/file-nr 
+				已分配 分配未使用  剩余可用	
+				17504   	0	   13123182
+			2: cat /proc/sys/fs/file-max  最大剩余可用
+				13123182
+
+
+
+端口范围0-65535是不限制socket范围的 socket= <remoteip,remoteport,serverip,serverpot>,所以，一个server可以接受的soket数= remoteip个数 * remoteport个数 = 2^32 * 2^16 = 2^48（理论上）

@@ -29,9 +29,10 @@
     数次 动词 名词        数次表示将操作执行n次   2dw   twice delete word
 
 
-regex 
+regex  /
 	\v very magic  除了0-9a-zA-Z_ 三种字符外，其他字符都有含义(不需要\转义)
 	\V very nomagic 原文搜索
+	\c 忽略大小写
 	:h/character-classes 查看\w含义
 
 窗口竖直分割
