@@ -4,7 +4,7 @@ book
 	https://golang.org/doc/effective_go.html
 
 gdb 调试golang   
-	gdb xxxx 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
+	gdb -tui -d $GOROOT 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
 	dlv 调试
 	gom // xinneng  go get github.com/rakyll/gom/cmd/gom
 

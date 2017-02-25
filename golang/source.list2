@@ -25,4 +25,5 @@ github.com/name5566/leaf
 github.com/asaskevich/EventBus
 
 github.com/xiaojiaqi/10billionhongbaos   实现单机支持100万用户，单机可以支持QPS达 6万, 可以满足100亿红包的压力测试。
-go get github.com/asciimoo/wuzz         Interactive cli tool for HTTP inspection
+github.com/asciimoo/wuzz         Interactive cli tool for HTTP inspection
+github.com/cyfdecyf/cow         翻墙

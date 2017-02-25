@@ -1,4 +1,7 @@
 
+gdb -tui -d $GOROOT XXX
+source ~/go/src/runtime/runtime-gdb.py
+
 p $len(aa)  aa=array, slice ,map,string
 p $cap(aa)  aa=array, slice ,map,string
 p $dtype(aa)  打印动态类型

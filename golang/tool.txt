@@ -56,6 +56,8 @@ go tool asm
 go tool objdump 反汇编
 go tool dist 
 go tool vet 静态检查
+go tool fmt 格式检查
+go tool fix 代码升级
 go tool nm abjfile  // list symbols from object files
 go tool addr2line   // convert addresses into file names and line numbers.
 go tool pack        // 打包成.a文件
