@@ -64,3 +64,9 @@ lsblk
 剖析 oprofile perf DTrace systemTap cachegrind
 来源   /sys  /proc																			/proc
 
+
+http://www.cnblogs.com/defias/p/3426976.html
+strace 底层系统调用
+pstack 函数调用栈
+pstree  进程关系图
+ps -L 线程
