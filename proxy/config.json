@@ -1,0 +1,8 @@
+{
+    "server":"45.76.194.115",
+    "server_port":8389,
+    "local_port":1081,
+    "password":"passwd",
+    "method": "aes-128-cfb",
+    "timeout":600
+}

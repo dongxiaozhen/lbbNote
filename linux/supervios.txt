@@ -1,9 +1,0 @@
-sudo apt-get install supervisor
-vim /etc/supervisor/supervisord.conf 
-		/var/run/supervisor.sock--->/tmp/supervisor.sock
-		 [supervisorctl]  user=libinbin
-
-
-
-conf文件放到/etc/supervisor/conf.d/
-

@@ -1,0 +1,6 @@
+sudo apt-get install supervisor
+会出现两个supervisord.conf，分别是 /etc/supervisord.conf  /etc/supervisor/supervisord.conf 
+ps -elf|grep supervisor 会发现ubuntu的supervisord用的是/etc/supervisor/supervisord.conf, 然而supervisorctl 会使用/etc/supervisord.conf，所以需要删除它
+
+conf文件放到/etc/supervisor/conf.d/
+
