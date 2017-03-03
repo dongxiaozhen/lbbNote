@@ -1,0 +1,20 @@
+tui
+
+启动模式
+1> gdb -tui 
+2> gdb 进去后  ctrl+x a调出gdbtui
+
+
+有四个窗口
+(cmd)command 命令窗口. 可以键入调试命令
+(src)source 源代码窗口. 显示当前行,断点等信息
+(asm)assembly 汇编代码窗口
+(reg)register 寄存器窗口
+
+layout src/asm/reg 显示窗口
+
+在窗口中使用上下键盘，需要切换 focus cmd/src/asm/reg
+
+cmd窗口 查看前一命令ctrl+p 
+
+按esc键可让输入焦点进入到vi窗口，再按i键回到gdb窗口。。按其它键也可以进入到vi窗口，比如小键盘上的按键
