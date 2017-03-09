@@ -3,7 +3,8 @@ git config --global user.name "xxx"
 git config --global user.email xxxxx
 git config --list
 git config --global --list
-git config --global https.proxy='xxx'
+git config --global https.proxy='socks://127.0.0.1:1081'
+git config --global http.proxy='socks://127.0.0.1:1081'
 	git config --global --unset https.proxy
 
 github

@@ -100,3 +100,8 @@ signal
 
 byte.Buffer  底层使用一块内从内存，内存扩大是2×cap()+n n为要写入的数据长度,使用reset重置会使写操作重头开始，底层内存不变
 bufio.Write  io缓存，flush 将buf中的数据写入文件(可能是先写在内存中的文件),sync 写入硬盘
+
+
+使用sync.WaitGroup的时候注意点，
+  1) Add()和Wait()操作要在同一个G里操作，要不会出现wait提前退出的情况，
+  2) 如果要传WaitGroup参数，一定要传指针
