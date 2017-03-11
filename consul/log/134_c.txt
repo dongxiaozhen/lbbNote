@@ -1,0 +1,64 @@
+Last login: Sat Feb 25 14:06:51 2017
+-bash: /home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/bash/../../../scripts/powerline-config: No such file or directory
+-bash: /home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/bash/../../../scripts/powerline-config: No such file or directory
+libinbin@ubuntu:~$  consul agent -data-dir /tmp/consul -node=work001 -bind=192.168.245.134  -join 192.168.245.128
+==> Starting Consul agent...
+==> Starting Consul agent RPC...
+==> Joining cluster...
+    Join completed. Synced with 1 initial agents
+==> Consul agent running!
+           Version: 'unknown-unknown'
+           Node ID: '0da64a54-39dd-4e75-9a75-0c7856795a1d'
+         Node name: 'work001'
+        Datacenter: 'dc1'
+            Server: false (bootstrap: false)
+       Client Addr: 127.0.0.1 (HTTP: 8500, HTTPS: -1, DNS: 8600, RPC: 8400)
+      Cluster Addr: 192.168.245.134 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+             Atlas: <disabled>
+
+==> Log data will now stream in as it occurs:
+
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:14:10 [INFO] agent: (LAN) joining: [192.168.245.128]
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: server001 192.168.245.128
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: server002 192.168.245.130
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: mangaer 192.168.245.133
+    2017/02/25 14:14:10 [INFO] agent: (LAN) joined: 1 Err: <nil>
+    2017/02/25 14:14:10 [INFO] consul: adding server server001 (Addr: tcp/192.168.245.128:8300) (DC: dc1)
+    2017/02/25 14:14:10 [INFO] consul: adding server server002 (Addr: tcp/192.168.245.130:8300) (DC: dc1)
+    2017/02/25 14:14:10 [INFO] consul: adding server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:14:10 [INFO] agent: Synced node info
+==> Newer Consul version available: 0.7.5 (currently running: unknown)
+    2017/02/25 14:15:03 [INFO] agent: Synced service 'manager-192.168.245.134'
+    2017/02/25 14:15:04 [INFO] agent: Synced check 'service:manager-192.168.245.134'
+    2017/02/25 14:15:24 [WARN] memberlist: Refuting a dead message (from: )
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: work002 192.168.245.135
+    2017/02/25 14:16:38 [INFO] agent: Synced service 'manager-192.168.245.134'
+    2017/02/25 14:24:25 [INFO] agent: Deregistered service 'manager-192.168.245.134'
+    2017/02/25 14:24:25 [INFO] agent: Deregistered check 'service:manager-192.168.245.134'
+    2017/02/25 14:25:24 [INFO] agent: Synced service 'wrok-192.168.245.134'
+    2017/02/25 14:25:27 [INFO] agent: Synced check 'service:wrok-192.168.245.134'
+    2017/02/25 14:27:54 [INFO] agent: Deregistered service 'wrok-192.168.245.134'
+    2017/02/25 14:27:54 [INFO] agent: Deregistered check 'service:wrok-192.168.245.134'
+    2017/02/25 14:28:21 [INFO] agent: Synced service 'wrok-192.168.245.134'
+    2017/02/25 14:28:24 [INFO] agent: Synced check 'service:wrok-192.168.245.134'
+    2017/02/25 14:32:52 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:32:59 [WARN] memberlist: Was able to reach server001 via TCP but not UDP, network may be misconfigured and not allowing bidirectional UDP
+    2017/02/25 14:33:00 [INFO] consul: New leader elected: server001
+    2017/02/25 14:33:02 [WARN] memberlist: Refuting a suspect message (from: work002)
+    2017/02/25 14:33:06 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:33:10 [INFO] consul: New leader elected: server003
+    2017/02/25 14:33:14 [WARN] memberlist: Was able to reach mangaer via TCP but not UDP, network may be misconfigured and not allowing bidirectional UDP
+    2017/02/25 14:33:14 [WARN] memberlist: Refuting a suspect message (from: server002)
+^C==> Caught signal: interrupt
+==> Gracefully shutting down agent...
+    2017/02/25 14:53:35 [INFO] consul: client starting leave
+    2017/02/25 14:53:35 [INFO] serf: EventMemberLeave: work001 192.168.245.134
+    2017/02/25 14:53:36 [INFO] agent: requesting shutdown
+    2017/02/25 14:53:36 [INFO] consul: shutting down client
+    2017/02/25 14:53:36 [ERR] memberlist: Failed to send ping: write udp 192.168.245.134:8301->192.168.245.130:8301: use of closed network connection
+    2017/02/25 14:53:36 [ERR] dns: error starting tcp server: accept tcp 127.0.0.1:8600: use of closed network connection
+    2017/02/25 14:53:36 [INFO] manager: shutting down
+    2017/02/25 14:53:36 [INFO] agent: shutdown complete

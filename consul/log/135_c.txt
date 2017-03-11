@@ -1,0 +1,68 @@
+libinbin@ubuntu:~$  consul agent -data-dir /tmp/consul -node=work002 -bind=192.168.245.135  -join 192.168.245.128
+==> Starting Consul agent...
+==> Starting Consul agent RPC...
+==> Joining cluster...
+    Join completed. Synced with 1 initial agents
+==> Consul agent running!
+           Version: 'unknown-unknown'
+           Node ID: '5a91ea2a-0ef4-4003-ae84-1c4876077970'
+         Node name: 'work002'
+        Datacenter: 'dc1'
+            Server: false (bootstrap: false)
+       Client Addr: 127.0.0.1 (HTTP: 8500, HTTPS: -1, DNS: 8600, RPC: 8400)
+      Cluster Addr: 192.168.245.135 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+             Atlas: <disabled>
+
+==> Log data will now stream in as it occurs:
+
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: work002 192.168.245.135
+    2017/02/25 14:15:37 [INFO] agent: (LAN) joining: [192.168.245.128]
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: mangaer 192.168.245.133
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: server001 192.168.245.128
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: server002 192.168.245.130
+    2017/02/25 14:15:37 [INFO] agent: (LAN) joined: 1 Err: <nil>
+    2017/02/25 14:15:37 [WARN] manager: No servers available
+    2017/02/25 14:15:37 [ERR] agent: failed to sync remote state: No known Consul servers
+    2017/02/25 14:15:37 [INFO] consul: adding server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:15:37 [INFO] consul: adding server server001 (Addr: tcp/192.168.245.128:8300) (DC: dc1)
+    2017/02/25 14:15:37 [INFO] consul: adding server server002 (Addr: tcp/192.168.245.130:8300) (DC: dc1)
+    2017/02/25 14:15:38 [INFO] agent: Synced node info
+==> Newer Consul version available: 0.7.5 (currently running: unknown)
+    2017/02/25 14:16:27 [INFO] agent: Synced service 'manager-192.168.245.135'
+    2017/02/25 14:16:29 [INFO] agent: Synced check 'service:manager-192.168.245.135'
+    2017/02/25 14:25:39 [INFO] agent: Deregistered service 'manager-192.168.245.135'
+    2017/02/25 14:25:39 [INFO] agent: Deregistered check 'service:manager-192.168.245.135'
+    2017/02/25 14:26:07 [INFO] agent: Synced service 'work-192.168.245.135'
+    2017/02/25 14:26:11 [INFO] agent: Synced check 'service:work-192.168.245.135'
+    2017/02/25 14:28:26 [INFO] agent: Deregistered service 'work-192.168.245.135'
+    2017/02/25 14:28:26 [INFO] agent: Deregistered check 'service:work-192.168.245.135'
+    2017/02/25 14:28:50 [INFO] agent: Synced service 'work-192.168.245.135'
+    2017/02/25 14:28:53 [INFO] agent: Synced check 'service:work-192.168.245.135'
+    2017/02/25 14:32:52 [INFO] memberlist: Suspect work001 has failed, no acks received
+    2017/02/25 14:32:59 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:32:59 [ERR] memberlist: Failed to send ping: write udp 192.168.245.135:8301->192.168.245.133:8301: sendto: invalid argument
+    2017/02/25 14:32:59 [WARN] memberlist: Refuting a suspect message (from: server001)
+    2017/02/25 14:33:00 [INFO] consul: New leader elected: server001
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.130:8301: write udp 192.168.245.135:8301->192.168.245.130:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.131:8301: write udp 192.168.245.135:8301->192.168.245.131:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.134:8301: write udp 192.168.245.135:8301->192.168.245.134:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.128:8301: write udp 192.168.245.135:8301->192.168.245.128:8301: sendto: invalid argument
+    2017/02/25 14:33:08 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:33:10 [INFO] consul: New leader elected: server003
+    2017/02/25 14:33:19 [WARN] memberlist: Refuting a suspect message (from: server001)
+    2017/02/25 14:53:17 [INFO] agent: Deregistered service 'work-192.168.245.135'
+    2017/02/25 14:53:17 [INFO] agent: Deregistered check 'service:work-192.168.245.135'
+    2017/02/25 14:53:36 [INFO] serf: EventMemberLeave: work001 192.168.245.134
+    2017/02/25 14:53:49 [INFO] serf: EventMemberLeave: mangaer 192.168.245.133
+^C==> Caught signal: interrupt
+==> Gracefully shutting down agent...
+    2017/02/25 14:53:54 [INFO] consul: client starting leave
+    2017/02/25 14:53:54 [INFO] serf: EventMemberLeave: work002 192.168.245.135
+    2017/02/25 14:53:54 [INFO] agent: requesting shutdown
+    2017/02/25 14:53:54 [INFO] consul: shutting down client
+    2017/02/25 14:53:54 [ERR] dns: error starting tcp server: accept tcp 127.0.0.1:8600: use of closed network connection    2017/02/25 14:53:54 [INFO] manager: shutting down
+
+    2017/02/25 14:53:54 [INFO] agent: shutdown complete

@@ -1,3 +1,4 @@
+修改/etc/default/docker  设置翻墙代理 export http_proxy="http://192.168.245.128:7777/"
 docker login
 docker images
 docker search 命令来查找官方仓库中的镜像

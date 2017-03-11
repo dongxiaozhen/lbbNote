@@ -1,0 +1,67 @@
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 60  ts: 1488005534
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 20  ts: 1488005544
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: wrok/192.168.245.134:4300  value: {"load":32,"ts":1488005551}
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 20  ts: 1488005544
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 79  ts: 1488005554
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: wrok/192.168.245.134:4300  value: {"load":16,"ts":1488005561}
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 79  ts: 1488005554
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 54  ts: 1488005564
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+ store data key: wrok/192.168.245.134:4300  value: {"load":39,"ts":1488005571}
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 54  ts: 1488005564
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 64  ts: 1488005574
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: wrok/192.168.245.134:4300  value: {"load":40,"ts":1488005581}
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 64  ts: 1488005574
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 60  ts: 1488005584
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: wrok/192.168.245.134:4300  value: {"load":86,"ts":1488005591}
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 60  ts: 1488005584
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 51  ts: 1488005594
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: wrok/192.168.245.134:4300  value: {"load":51,"ts":1488005601}
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 51  ts: 1488005594
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 81  ts: 1488005604
+check status.
+--do discover ---: 127.0.0.1:8500
+  health nodeid: mangaer  service_name: manager  service_id: manager-192.168.245.133  status: passing  ip: 192.168.245.133  port: 4300
+ store data key: wrok/192.168.245.134:4300  value: {"load":76,"ts":1488005611}
+service node updated ip: 192.168.245.133  port: 4300  serviceid: manager-192.168.245.133  load: 81  ts: 1488005604
+check status.
+2017/02/25 14:53:36 error: Get http://127.0.0.1:8500/v1/catalog/services: dial tcp 127.0.0.1:8500: getsockopt: connection refused

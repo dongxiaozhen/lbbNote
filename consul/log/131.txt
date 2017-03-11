@@ -1,0 +1,75 @@
+libinbin@ubuntu:~$ consul agent -server  -data-dir /tmp/consul -node=server003 -bind=192.168.245.131 -join 192.168.245.128
+==> Starting Consul agent...
+==> Starting Consul agent RPC...
+==> Joining cluster...
+    Join completed. Synced with 1 initial agents
+==> Consul agent running!
+           Version: 'unknown-unknown'
+           Node ID: 'd672fb0f-dc9a-474b-9580-b50f83c1d2d3'
+         Node name: 'server003'
+        Datacenter: 'dc1'
+            Server: true (bootstrap: false)
+       Client Addr: 127.0.0.1 (HTTP: 8500, HTTPS: -1, DNS: 8600, RPC: 8400)
+      Cluster Addr: 192.168.245.131 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+             Atlas: <disabled>
+
+==> Log data will now stream in as it occurs:
+
+    2017/02/25 14:09:28 [INFO] raft: Initial configuration (index=0): []
+    2017/02/25 14:09:28 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 14:09:28 [INFO] raft: Node at 192.168.245.131:8300 [Follower] entering Follower state (Leader: "")
+    2017/02/25 14:09:28 [INFO] consul: Adding LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:09:28 [INFO] serf: EventMemberJoin: server003.dc1 192.168.245.131
+    2017/02/25 14:09:28 [INFO] consul: Adding WAN server server003.dc1 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:09:28 [INFO] agent: (LAN) joining: [192.168.245.128]
+    2017/02/25 14:09:28 [INFO] serf: EventMemberJoin: server001 192.168.245.128
+    2017/02/25 14:09:28 [INFO] serf: EventMemberJoin: server002 192.168.245.130
+    2017/02/25 14:09:28 [INFO] agent: (LAN) joined: 1 Err: <nil>
+    2017/02/25 14:09:28 [INFO] consul: Adding LAN server server001 (Addr: tcp/192.168.245.128:8300) (DC: dc1)
+    2017/02/25 14:09:28 [INFO] consul: Adding LAN server server002 (Addr: tcp/192.168.245.130:8300) (DC: dc1)
+    2017/02/25 14:09:29 [INFO] agent: Synced service 'consul'
+    2017/02/25 14:09:30 [WARN] raft: Failed to get previous log: 224 log not found (last: 0)
+==> Newer Consul version available: 0.7.5 (currently running: unknown)
+    2017/02/25 14:11:11 [INFO] serf: EventMemberJoin: mangaer 192.168.245.133
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:15:21 [ERR] memberlist: Conflicting address for work001. Mine: 192.168.245.134:8301 Theirs: 192.168.245.135:8301
+    2017/02/25 14:15:21 [WARN] serf: Name conflict for 'work001' both 192.168.245.134:8301 and 192.168.245.135:8301 are claiming
+    2017/02/25 14:15:24 [INFO] serf: EventMemberFailed: work001 192.168.245.134
+    2017/02/25 14:15:24 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: work002 192.168.245.135
+    2017/02/25 14:32:52 [INFO] memberlist: Suspect work002 has failed, no acks received
+    2017/02/25 14:32:56 [WARN] memberlist: Refuting a suspect message (from: server003)
+    2017/02/25 14:32:56 [ERR] raft-net: Failed to decode incoming command: read tcp 192.168.245.131:8300->192.168.245.128:38446: read: connection reset by peer
+    2017/02/25 14:32:59 [WARN] memberlist: Was able to reach mangaer via TCP but not UDP, network may be misconfigured and not allowing bidirectional UDP
+    2017/02/25 14:33:00 [WARN] raft: Failed to get previous log: 1673 log not found (last: 1671)
+    2017/02/25 14:33:00 [INFO] consul: New leader elected: server001
+    2017/02/25 14:33:06 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:33:09 [ERR] raft-net: Failed to decode incoming command: read tcp 192.168.245.131:8300->192.168.245.128:38448: read: connection reset by peer
+    2017/02/25 14:33:10 [WARN] raft: Heartbeat timeout from "192.168.245.128:8300" reached, starting election
+    2017/02/25 14:33:10 [INFO] raft: Node at 192.168.245.131:8300 [Candidate] entering Candidate state in term 4
+    2017/02/25 14:33:10 [INFO] raft: Election won. Tally: 2
+    2017/02/25 14:33:10 [INFO] raft: Node at 192.168.245.131:8300 [Leader] entering Leader state
+    2017/02/25 14:33:10 [INFO] raft: Added peer 192.168.245.128:8300, starting replication
+    2017/02/25 14:33:10 [INFO] raft: Added peer 192.168.245.130:8300, starting replication
+    2017/02/25 14:33:10 [INFO] consul: cluster leadership acquired
+    2017/02/25 14:33:10 [INFO] consul: New leader elected: server003
+    2017/02/25 14:33:10 [INFO] raft: pipelining replication to peer {Voter 192.168.245.128:8300 192.168.245.128:8300}
+    2017/02/25 14:33:10 [INFO] raft: pipelining replication to peer {Voter 192.168.245.130:8300 192.168.245.130:8300}
+    2017/02/25 14:33:14 [WARN] memberlist: Was able to reach work002 via TCP but not UDP, network may be misconfigured and not allowing bidirectional UDP
+    2017/02/25 14:33:15 [WARN] memberlist: Refuting a suspect message (from: work001)
+    2017/02/25 14:53:36 [INFO] serf: EventMemberLeave: work001 192.168.245.134
+    2017/02/25 14:53:36 [INFO] consul: member 'work001' left, deregistering
+    2017/02/25 14:53:49 [INFO] serf: EventMemberLeave: mangaer 192.168.245.133
+    2017/02/25 14:53:49 [INFO] consul: member 'mangaer' left, deregistering
+    2017/02/25 14:53:54 [INFO] serf: EventMemberLeave: work002 192.168.245.135
+    2017/02/25 14:53:54 [INFO] consul: member 'work002' left, deregistering
+^C==> Caught signal: interrupt
+    2017/02/25 14:54:16 [INFO] agent: requesting shutdown
+    2017/02/25 14:54:16 [INFO] consul: shutting down server
+    2017/02/25 14:54:16 [WARN] serf: Shutdown without a Leave
+    2017/02/25 14:54:16 [ERR] dns: error starting tcp server: accept tcp 127.0.0.1:8600: use of closed network connection
+    2017/02/25 14:54:16 [WARN] serf: Shutdown without a Leave
+    2017/02/25 14:54:16 [INFO] raft: aborting pipeline replication to peer {Voter 192.168.245.128:8300 192.168.245.128:8300}
+    2017/02/25 14:54:16 [INFO] raft: aborting pipeline replication to peer {Voter 192.168.245.130:8300 192.168.245.130:8300}
+    2017/02/25 14:54:16 [INFO] agent: shutdown complete

@@ -1,0 +1,723 @@
+ store data key: manager/192.168.245.133:4300  value: {"load":25,"ts":1488004184}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":51,"ts":1488004194}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":15,"ts":1488004204}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":57,"ts":1488004214}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":87,"ts":1488004224}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":10,"ts":1488004234}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":10,"ts":1488004244}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":85,"ts":1488004254}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":90,"ts":1488004264}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":32,"ts":1488004274}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":98,"ts":1488004284}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":53,"ts":1488004294}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":91,"ts":1488004304}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":82,"ts":1488004314}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":84,"ts":1488004324}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":97,"ts":1488004334}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":67,"ts":1488004344}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":37,"ts":1488004354}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":71,"ts":1488004364}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+check status.
+--do discover ---: 127.0.0.1:8500
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":94,"ts":1488004374}
+check status.
+check status.
+ store data key: manager/192.168.245.133:4300  value: {"load":26,"ts":1488004384}
+--do discover ---: 127.0.0.1:8500
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":2,"ts":1488004394}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":81,"ts":1488004404}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":79,"ts":1488004414}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":66,"ts":1488004424}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":70,"ts":1488004434}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":93,"ts":1488004444}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":86,"ts":1488004454}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":19,"ts":1488004464}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":81,"ts":1488004474}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":52,"ts":1488004484}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":75,"ts":1488004494}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":85,"ts":1488004504}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":10,"ts":1488004514}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":87,"ts":1488004524}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":49,"ts":1488004534}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":28,"ts":1488004544}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":18,"ts":1488004554}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":84,"ts":1488004564}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":3,"ts":1488004574}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":24,"ts":1488004584}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":47,"ts":1488004594}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":12,"ts":1488004604}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":32,"ts":1488004614}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":16,"ts":1488004624}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":39,"ts":1488004634}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":40,"ts":1488004644}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":86,"ts":1488004654}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":51,"ts":1488004664}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":76,"ts":1488004674}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":40,"ts":1488004684}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":51,"ts":1488004694}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":44,"ts":1488004704}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":64,"ts":1488004714}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":5,"ts":1488004724}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":83,"ts":1488004734}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":1,"ts":1488004744}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":90,"ts":1488004754}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":2,"ts":1488004764}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":58,"ts":1488004774}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":67,"ts":1488004784}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":31,"ts":1488004794}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":78,"ts":1488004804}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+ store data key: manager/192.168.245.133:4300  value: {"load":54,"ts":1488004814}
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":22,"ts":1488004824}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":23,"ts":1488004834}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":42,"ts":1488004844}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":8,"ts":1488004854}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":43,"ts":1488004864}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":68,"ts":1488004874}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":66,"ts":1488004884}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":10,"ts":1488004894}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":35,"ts":1488004904}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":40,"ts":1488004914}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":4,"ts":1488004924}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":62,"ts":1488004934}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":57,"ts":1488004944}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":15,"ts":1488004954}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":71,"ts":1488004964}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":39,"ts":1488004974}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":30,"ts":1488004984}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":13,"ts":1488004994}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":0,"ts":1488005004}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":59,"ts":1488005014}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":20,"ts":1488005024}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":83,"ts":1488005034}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":70,"ts":1488005044}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":84,"ts":1488005054}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":47,"ts":1488005064}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":10,"ts":1488005074}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":65,"ts":1488005084}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":62,"ts":1488005094}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":29,"ts":1488005104}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":20,"ts":1488005114}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":48,"ts":1488005124}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":56,"ts":1488005134}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":95,"ts":1488005144}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":66,"ts":1488005154}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":0,"ts":1488005164}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":56,"ts":1488005174}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":29,"ts":1488005184}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":92,"ts":1488005194}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":31,"ts":1488005204}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":77,"ts":1488005214}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":86,"ts":1488005224}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":20,"ts":1488005234}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":99,"ts":1488005244}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":62,"ts":1488005254}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":47,"ts":1488005264}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":92,"ts":1488005274}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":88,"ts":1488005284}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":11,"ts":1488005294}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":3,"ts":1488005304}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":88,"ts":1488005314}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":18,"ts":1488005324}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":56,"ts":1488005334}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":19,"ts":1488005344}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":7,"ts":1488005354}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":57,"ts":1488005364}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":52,"ts":1488005374}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":75,"ts":1488005384}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":81,"ts":1488005394}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":53,"ts":1488005404}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":95,"ts":1488005414}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":17,"ts":1488005424}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":93,"ts":1488005434}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":70,"ts":1488005444}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":96,"ts":1488005454}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":86,"ts":1488005464}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":32,"ts":1488005474}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":20,"ts":1488005484}
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":60,"ts":1488005494}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":22,"ts":1488005504}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":29,"ts":1488005514}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":61,"ts":1488005524}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":60,"ts":1488005534}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":20,"ts":1488005544}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":79,"ts":1488005554}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":54,"ts":1488005564}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":64,"ts":1488005574}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":60,"ts":1488005584}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":51,"ts":1488005594}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":81,"ts":1488005604}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":57,"ts":1488005614}
+check status.
+--do discover ---: 127.0.0.1:8500
+check status.
+--do discover ---: 127.0.0.1:8500
+ store data key: manager/192.168.245.133:4300  value: {"load":16,"ts":1488005624}
+check status.
+^C--do discover ---: 127.0.0.1:8500
+2017/02/25 14:53:54 error: Put http://127.0.0.1:8500/v1/kv/manager/192.168.245.133:4300: dial tcp 127.0.0.1:8500: getsockopt: connection refused

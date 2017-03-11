@@ -1,0 +1,242 @@
+libinbin@ubuntu:~$ consul agent -server  -data-dir /tmp/consul -node=server002 -bind=10.2.1.83 -join 192.168.245.128
+==> Starting Consul agent...
+==> Error starting agent: Failed to start Consul server: Failed to start RPC layer: listen tcp 10.2.1.83:8300: bind: cannot assign requested address
+libinbin@ubuntu:~$ consul agent -server  -data-dir /tmp/consul -node=server002 -bind=192.168.245.130  -join 192.168.245.128
+==> Starting Consul agent...
+==> Starting Consul agent RPC...
+==> Joining cluster...
+    Join completed. Synced with 1 initial agents
+==> Consul agent running!
+           Version: 'unknown-unknown'
+           Node ID: 'e083e3b8-75b1-489e-adff-c456da454dcc'
+         Node name: 'server002'
+        Datacenter: 'dc1'
+            Server: true (bootstrap: false)
+       Client Addr: 127.0.0.1 (HTTP: 8500, HTTPS: -1, DNS: 8600, RPC: 8400)
+      Cluster Addr: 192.168.245.130 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+             Atlas: <disabled>
+
+==> Log data will now stream in as it occurs:
+
+    2017/02/25 11:09:56 [INFO] raft: Initial configuration (index=0): []
+    2017/02/25 11:09:56 [INFO] serf: EventMemberJoin: server002 192.168.245.130
+    2017/02/25 11:09:56 [INFO] serf: EventMemberJoin: server002.dc1 192.168.245.130
+    2017/02/25 11:09:56 [INFO] raft: Node at 192.168.245.130:8300 [Follower] entering Follower state (Leader: "")
+    2017/02/25 11:09:56 [INFO] consul: Adding LAN server server002 (Addr: tcp/192.168.245.130:8300) (DC: dc1)
+    2017/02/25 11:09:56 [INFO] consul: Adding WAN server server002.dc1 (Addr: tcp/192.168.245.130:8300) (DC: dc1)
+    2017/02/25 11:09:56 [INFO] agent: (LAN) joining: [192.168.245.128]
+    2017/02/25 11:09:56 [INFO] serf: EventMemberJoin: server001 192.168.245.128
+    2017/02/25 11:09:56 [INFO] agent: (LAN) joined: 1 Err: <nil>
+    2017/02/25 11:09:56 [INFO] consul: Adding LAN server server001 (Addr: tcp/192.168.245.128:8300) (DC: dc1)
+==> Newer Consul version available: 0.7.5 (currently running: unknown)
+    2017/02/25 11:10:03 [WARN] raft: no known peers, aborting election
+    2017/02/25 11:10:03 [ERR] agent: failed to sync remote state: No cluster leader
+    2017/02/25 11:10:21 [ERR] agent: coordinate update error: No cluster leader
+    2017/02/25 11:10:38 [ERR] agent: failed to sync remote state: No cluster leader
+    2017/02/25 11:10:47 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 11:10:47 [INFO] consul: Adding LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 11:10:53 [WARN] raft: Failed to get previous log: 1 log not found (last: 0)
+    2017/02/25 11:10:53 [INFO] consul: New leader elected: server001
+    2017/02/25 11:10:55 [INFO] agent: Synced service 'consul'
+    2017/02/25 11:35:03 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 11:35:06 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 11:35:08 [INFO] memberlist: Marking server003 as failed, suspect timeout reached (0 peer confirmations)
+    2017/02/25 11:35:08 [INFO] serf: EventMemberFailed: server003 192.168.245.131
+    2017/02/25 11:35:08 [INFO] consul: Removing LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 11:35:08 [INFO] memberlist: Suspect server003 has failed, no acks received
+
+
+    2017/02/25 11:36:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:37:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:38:20 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 11:38:20 [INFO] consul: Adding LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 11:39:14 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 11:39:17 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 11:39:19 [INFO] memberlist: Marking server003 as failed, suspect timeout reached (0 peer confirmations)
+    2017/02/25 11:39:19 [INFO] serf: EventMemberFailed: server003 192.168.245.131
+    2017/02/25 11:39:19 [INFO] consul: Removing LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 11:40:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:41:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:42:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:43:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:46:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:47:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:47:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:48:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:49:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:49:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:52:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:53:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:54:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:55:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:57:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:57:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 11:59:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:00:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:01:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:03:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:03:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:05:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:07:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:08:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:08:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:09:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:11:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:11:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:12:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:14:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:15:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:19:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:23:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:23:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:24:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:25:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:26:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:28:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:28:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:29:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:30:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:31:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:31:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:32:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:33:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:34:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:36:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:37:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:38:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:39:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:40:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:40:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:43:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:43:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:44:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:45:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:46:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:46:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:48:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:50:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:52:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:54:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:54:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:55:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:56:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:57:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:57:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 12:58:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:01:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:02:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:03:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:05:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:05:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:06:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:08:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:09:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:10:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:11:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:11:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:12:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:14:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:14:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:16:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:20:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:21:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:23:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:24:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:25:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:26:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:26:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:27:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:28:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:28:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:29:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:30:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:31:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:32:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:34:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:35:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:36:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:38:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:39:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:40:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:41:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:42:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:43:56 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:44:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:45:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:46:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:47:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:47:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:48:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:49:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:50:16 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:51:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:53:06 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:54:46 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:58:26 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:59:07 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 13:59:47 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:00:57 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:02:00 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:03:03 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:04:36 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:05:09 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:07:42 [INFO] serf: attempting reconnect to server003 192.168.245.131:8301
+    2017/02/25 14:09:28 [INFO] serf: EventMemberJoin: server003 192.168.245.131
+    2017/02/25 14:09:28 [INFO] consul: Adding LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:11:11 [INFO] serf: EventMemberJoin: mangaer 192.168.245.133
+    2017/02/25 14:14:10 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:15:21 [ERR] memberlist: Conflicting address for work001. Mine: 192.168.245.134:8301 Theirs: 192.168.245.135:8301
+    2017/02/25 14:15:21 [WARN] serf: Name conflict for 'work001' both 192.168.245.134:8301 and 192.168.245.135:8301 are claiming
+    2017/02/25 14:15:24 [INFO] serf: EventMemberFailed: work001 192.168.245.134
+    2017/02/25 14:15:24 [INFO] serf: EventMemberJoin: work001 192.168.245.134
+    2017/02/25 14:15:37 [INFO] serf: EventMemberJoin: work002 192.168.245.135
+    2017/02/25 14:32:52 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:32:57 [ERR] memberlist: Failed to send gossip to 192.168.245.135:8301: write udp 192.168.245.130:8301->192.168.245.135:8301: sendto: invalid argument
+    2017/02/25 14:32:57 [ERR] memberlist: Failed to send gossip to 192.168.245.134:8301: write udp 192.168.245.130:8301->192.168.245.134:8301: sendto: invalid argument
+    2017/02/25 14:32:57 [ERR] memberlist: Failed to send gossip to 192.168.245.133:8301: write udp 192.168.245.130:8301->192.168.245.133:8301: sendto: invalid argument
+    2017/02/25 14:32:57 [ERR] memberlist: Failed to send gossip to 192.168.245.134:8301: write udp 192.168.245.130:8301->192.168.245.134:8301: sendto: invalid argument
+    2017/02/25 14:32:58 [WARN] memberlist: Refuting a suspect message (from: server003)
+    2017/02/25 14:32:59 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:33:00 [ERR] raft-net: Failed to decode incoming command: read tcp 192.168.245.130:8300->192.168.245.128:34918: read: connection reset by peer
+    2017/02/25 14:33:00 [WARN] raft: Failed to get previous log: 1673 log not found (last: 1671)
+    2017/02/25 14:33:00 [INFO] consul: New leader elected: server001
+    2017/02/25 14:33:07 [INFO] memberlist: Suspect work001 has failed, no acks received
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send ping: write udp 192.168.245.130:8301->192.168.245.135:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.133:8301: write udp 192.168.245.130:8301->192.168.245.133:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.135:8301: write udp 192.168.245.130:8301->192.168.245.135:8301: sendto: invalid argument
+    2017/02/25 14:33:07 [ERR] memberlist: Failed to send gossip to 192.168.245.131:8301: write udp 192.168.245.130:8301->192.168.245.131:8301: sendto: invalid argument
+    2017/02/25 14:33:08 [ERR] raft-net: Failed to decode incoming command: read tcp 192.168.245.130:8300->192.168.245.128:34916: read: connection reset by peer
+    2017/02/25 14:33:10 [WARN] raft: Rejecting vote request from 192.168.245.131:8300 since we have a leader: 192.168.245.128:8300
+    2017/02/25 14:33:10 [INFO] consul: New leader elected: server003
+    2017/02/25 14:53:35 [INFO] serf: EventMemberLeave: work001 192.168.245.134
+    2017/02/25 14:53:49 [INFO] serf: EventMemberLeave: mangaer 192.168.245.133
+    2017/02/25 14:53:54 [INFO] serf: EventMemberLeave: work002 192.168.245.135
+    2017/02/25 14:54:18 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:54:21 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:54:23 [WARN] raft: Rejecting vote request from 192.168.245.128:8300 since we have a leader: 192.168.245.131:8300
+    2017/02/25 14:54:24 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:54:25 [WARN] raft: Heartbeat timeout from "192.168.245.131:8300" reached, starting election
+    2017/02/25 14:54:25 [INFO] raft: Node at 192.168.245.130:8300 [Candidate] entering Candidate state in term 5
+    2017/02/25 14:54:25 [ERR] raft: Failed to make RequestVote RPC to {Voter 192.168.245.131:8300 192.168.245.131:8300}: dial tcp 192.168.245.131:8300: getsockopt: connection refused
+    2017/02/25 14:54:26 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:54:28 [INFO] memberlist: Suspect server003 has failed, no acks received
+    2017/02/25 14:54:31 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:54:32 [WARN] raft: Election timeout reached, restarting election
+    2017/02/25 14:54:32 [INFO] raft: Node at 192.168.245.130:8300 [Candidate] entering Candidate state in term 6
+    2017/02/25 14:54:32 [ERR] raft: Failed to make RequestVote RPC to {Voter 192.168.245.128:8300 192.168.245.128:8300}: EOF
+    2017/02/25 14:54:32 [ERR] raft: Failed to make RequestVote RPC to {Voter 192.168.245.131:8300 192.168.245.131:8300}: dial tcp 192.168.245.131:8300: getsockopt: connection refused
+    2017/02/25 14:54:35 [INFO] memberlist: Suspect server001 has failed, no acks received
+    2017/02/25 14:54:35 [INFO] memberlist: Marking server003 as failed, suspect timeout reached (1 peer confirmations)
+    2017/02/25 14:54:35 [INFO] serf: EventMemberFailed: server003 192.168.245.131
+    2017/02/25 14:54:35 [INFO] consul: Removing LAN server server003 (Addr: tcp/192.168.245.131:8300) (DC: dc1)
+    2017/02/25 14:54:36 [INFO] memberlist: Marking server001 as failed, suspect timeout reached (0 peer confirmations)
+    2017/02/25 14:54:36 [INFO] serf: EventMemberFailed: server001 192.168.245.128
+    2017/02/25 14:54:36 [INFO] consul: Removing LAN server server001 (Addr: tcp/192.168.245.128:8300) (DC: dc1)
+^C==> Caught signal: interrupt
+    2017/02/25 14:54:37 [INFO] agent: requesting shutdown
+    2017/02/25 14:54:37 [INFO] consul: shutting down server    2017/02/25 14:54:37 [ERR] dns: error starting tcp server: accept tcp 127.0.0.1:8600: use of closed network connection
+
+    2017/02/25 14:54:37 [WARN] serf: Shutdown without a Leave
+    2017/02/25 14:54:37 [WARN] serf: Shutdown without a Leave
+    2017/02/25 14:54:37 [INFO] agent: shutdown complete
