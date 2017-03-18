@@ -6,12 +6,13 @@
      netmask 255.255.255.0
      gateway 192.168.33.1
 
-/etc/resolv.conf
+重启网络 sudo systemctl restart network-manager
+
+/etc/resolvconf/resolv.conf.d/base
 	nameserver x.x.x.x
 	nameserver x.x.x.x
 	nameserver x.x.x.x
 
+重启dns sudo resolvconf -u
 
 访问 www.ip.cn 可以查看你的网络所属的是电信的还是移动，联通的，然后再“DNS”里找几个离你最近的DNS,如百度DNS,阿里dns，144DNS，，，联通dns
-
-重启网络 sudo systemctl restart network-manager
