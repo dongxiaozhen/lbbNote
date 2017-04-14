@@ -114,3 +114,8 @@ fdisk -l 查看挂载
 lsblk    查看挂载
 mount -t type dev dir
 umount -t type dev
+
+
+popd pushd 目录操作   最新目录  前一次    前两次  ... 最早一个目录
+								pushd +1 (循环成为最新目录）
+								popd +1 （删除这个目录)

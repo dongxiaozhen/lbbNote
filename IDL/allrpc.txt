@@ -51,3 +51,31 @@ TypeRouteProcessor   封装了ChannelPacketProcessor ,使用了FkServer
 					  
 rpcProxy
 	RpcProxyHander 实现了RpcHandler，找到route转发出去，收到结果return
+	代理一个客户端创建一个G，创建count个AsyncRpc，每个AsyncRpc又会创建size个链接，代理处理请求时，随机选用可用的AsyncRpc,Async再随机选用一条可用链接发送请求，阻塞等待，然后返回，
+
+监听端口代理
+	cluster_server_proxy (不带conn分派)
+		client_handle  等待服务的连接,服务的注册(clusterID,typeId)，将服务发来的数据根据数据自带的ESID找到一个conn,然后发送出去
+		server_handle  等待ES的连接,注册ES，将ES发来的数据根据ClusterID,typeId找到conn,发送出去
+	
+								-->1	
+																					--->2
+	(连接方向)		es----------------------------> cluset_server_proxy <-----------------------server
+																			<---3
+						<---4(根据ESID找到)
+	
+	cluster_rpc_proxy
+	
+								--->1	
+																				---->2
+	(连接方向)		server -----------------------------> cluster_rpc_proxy <--------------------------- cluster_old_rpc
+																						<---3
+										<---4 (更具IndentifyID找到)
+	
+不监听端口代理
+	cluster_old_rpc (带conn分派)
+	
+												 <--1 注册rpcId	
+	 (连接方向)   cluster_rpc_server  <-------------------------------------- cluster_old_rpc -------------------------> rpc
+												---->2   发送自定义rpc序列化数据
+											            <--- 4                                       ---->3 发送到rpc

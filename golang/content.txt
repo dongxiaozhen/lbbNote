@@ -3,6 +3,8 @@
 	2> cd src && ./all.bash
 	3>下载工具包 go get golang.org/x/tools/cmd/...
 
+package const--> var ---> init()
+
 book 
 	golang-china/gopl-zh/
 	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
