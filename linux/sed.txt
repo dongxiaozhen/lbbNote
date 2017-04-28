@@ -1,0 +1,15 @@
+最后一行添加
+	 sed -i '$a\\n[UserEquipMaxRedis]\nip=10.33.67.250\nport=45001\nindex=0\n' a.ini
+	 $ 最后一行
+	 a 添加
+	 \ 分割符
+
+每一行行首添加
+	sed 's/^/HEAD/g' a.ini	
+
+每一行行尾添加
+	sed 's/$/HEAD/g' a.ini	
+
+
+for
+	for i in $(seq 14 35);do j=`expr $i - 4`;sed -i "${i}s/138010/138${j}/g" 	a.ini; done
