@@ -2,6 +2,9 @@
 	1>	设置变量GOROOT_BOOTSTRAP ，也就是go编译器的地址
 	2> cd src && ./all.bash
 	3>下载工具包 go get golang.org/x/tools/cmd/...
+	4>export GOROOT=/home/lbb/go
+	  export PATH=$PATH:$GOBIN:$GOPATH/bin
+      export GOPATH=/home/lbb/gowork
 
 package const--> var ---> init()
 
