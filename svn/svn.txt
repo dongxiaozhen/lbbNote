@@ -11,3 +11,4 @@ svn commit -m "xx"  提交文件
 svn log -l 10 显示最新10条提交记录
 svn diff -r r1:r2  显示r1相对r2更新的文件
 
+svn merge -r r1:r2 (xx,/dd/ ) 回退文件xx或者目录/ddd的文件从r1到r2
