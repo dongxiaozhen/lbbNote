@@ -13,3 +13,13 @@ transport(frame,stream, zlib) 传输协议(比如：frame后面的字段有多长，stream直接传
 TServerTransport        tcp,udp等底层服务器端网络操作(accept,listen)，
 TTransportFactory       获取包装底层网络操作的传输(缓存read、write,压缩read、write)
 TProtocolFactory        传输协议(json传输、二进制传输(传输开始，字段传输开始，传输数据，结束标志))
+
+分层架构(类似tcp/ip协议层)
+
+	server
+
+	protocol
+
+	transport 
+
+	original socket 
