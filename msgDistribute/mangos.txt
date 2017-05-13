@@ -1,3 +1,12 @@
+socks是核心，所有要发送、接受的数据都要socks层中转。socks有两个队列，uwq(upper write queue)、urq(upper read queue),uwq存放要发送的数据，
+pipe包装了con，读取，发送格式化数据
+
+发送数据
+server---> socks---> bus--> conpipe--> con
+
+接受数据
+server <---socks <---bus <--conpipe <--con
+
 bus       
 		|<------>per1 
 		|            
