@@ -9,7 +9,11 @@ server <---socks <---bus <--conpipe <-- Pipe <--con
 
 处理数据 SendHook(发送到网络之前，给数据加工数据(添加消息头部)) RecvHook
 
+一个连接要启动两个goroutine,一个读取底层数据，一个发送底层数据，两个goroutine的退出方式都是监听socks的closeChan(被动退出),并且数据发送或者接受错误就直接关闭链接并退出(主动退出)
+一个proto启动启动多个goroutine,处理协议内容
+
 bus (1.将消息发送给所有链接的客户端;2:读取客户端的请求)      
+bus       
 		|<------>per1 
 		|            
 		|            

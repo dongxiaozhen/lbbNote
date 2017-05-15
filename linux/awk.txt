@@ -1,4 +1,12 @@
 awk
+awk '{commad}' file
+-F ':'
+-F '[()]' 方括号制定多个分割符号
+Records and fields
+	$0  Records are read in one at a time
+	$1, $2,,$NF 列
+
+变量直接使用
 
 	pattern {action}
 		A pattern can be:
@@ -34,11 +42,6 @@ awk
 
 		r?           matches r zero or once.
 
-	
-	
-Records and fields
-	$0  Records are read in one at a time
-	$1, $2,,$NF
 	
 Expressions and operators
 	assignment          =  +=  -=  *=  /=  %=  ^=
@@ -76,15 +79,15 @@ Arrays    Awk provides one-dimensional arrays， Array elements are expressed as
 
 	FNR       current record number in FILENAME.
 
-	FS        splits records into fields as a regular expression.
+	FS        splits records into fields as a regular expression.             输入分隔符
 
-	NF        number of fields in the current record.
+	NF        number of fields in the current record. 						  当前行的字段数
 
-	NR        current record number in the total input stream.
+	NR        current record number in the total input stream.                文件中的行号
 
 	OFMT      format for printing numbers; initially = "%.6g".
 
-	OFS       inserted between fields on output, initially = " ".
+	OFS       inserted between fields on output, initially = " ".              输出分隔符
 
 	ORS       terminates each record on output, initially = "\n".
 
