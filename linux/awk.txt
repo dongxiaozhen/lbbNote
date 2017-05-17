@@ -7,8 +7,11 @@ Records and fields
 	$1, $2,,$NF 列
 
 变量直接使用
+比较操作
+ awk '$6 == "MAY" && $7 == 15 { print $9}'
+ awk '{if ($6 ~ /May/ && $7 == 15) print $9 }'pattern {action}
 
-	pattern {action}
+pattern {action}
 		A pattern can be:
 				  BEGIN
 				  END

@@ -11,6 +11,8 @@ server <---socks <---bus <--conpipe <-- Pipe <--con
 
 一个连接要启动两个goroutine,一个读取底层数据，一个发送底层数据，两个goroutine的退出方式都是监听socks的closeChan(被动退出),并且数据发送或者接受错误就直接关闭链接并退出(主动退出)
 一个proto启动启动多个goroutine,处理协议内容
+*读写goroutine中有个一错误就关闭这个链接
+关闭socks的时候要尝试发送完所有的数据。
 
 bus (1.将消息发送给所有链接的客户端;2:读取客户端的请求)      
 bus       
