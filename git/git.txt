@@ -120,10 +120,17 @@ repo
 	repo start 实际上是对git checkout -b 命令的封装
 
 显示指定文件相关的每一次diff
+	git log --graph 图形显示 
     git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file] 
 	git log --follow file / git whatchanged file // 文件在那些提交中有变动
     git log commit -1 -p [file] 
-	git diff commit1 commit2 
+
+	git log --left-right dev...master (dev和master 提交对比)
+	git log dev ^master  (查看 dev 有，而 master 中没有的)
+	git log master..dev  (查看 dev 中比 master 中多提交了哪些内容)
+
+	git diff commit1 commit2  // commit1到commit2之间的修改 
+	git diff commit1 commit2  --stat // commit1到commit2之间的修改,只显示修改过的文件名 
 显示指定文件是什么人在什么时间修改过,每一行的提交记录
     git blame [file]   
 
