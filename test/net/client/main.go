@@ -6,31 +6,47 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 	"time"
 )
 
 type Transport struct {
-	con       *net.TCPConn
-	close     bool
-	readChan  chan []byte
-	writeChan chan []byte
+	con        *net.TCPConn
+	closeRead  bool
+	closeWrite bool
+	readChan   chan []byte
+	writeChan  chan []byte
 }
 
 func NewTransport(con *net.TCPConn) *Transport {
-	return &Transport{con: con, readChan: make(chan []byte, 10), writeChan: make(chan []byte, 10), close: false}
+	return &Transport{con: con, readChan: make(chan []byte, 10), writeChan: make(chan []byte, 10)}
 }
-func (t *Transport) closeRead() {
+func (t *Transport) CloseRead() {
+	fmt.Println("-->close transport read")
+	if t.closeRead {
+		return
+	}
 	t.con.CloseRead()
 }
+
+func (t *Transport) CloseWrite() {
+	fmt.Println("--->close transport write")
+	if t.closeWrite {
+		return
+	}
+	t.con.CloseWrite()
+	close(t.writeChan)
+}
+
 func (t *Transport) ReadData() []byte {
-	if t.close {
+	if t.closeRead {
 		return nil
 	}
 	return <-t.readChan
 }
 func (t *Transport) WriteData(data []byte) {
-	if t.writeClose {
+	if t.closeWrite {
 		return
 	}
 	t.writeChan <- data
@@ -43,7 +59,7 @@ func (t *Transport) beginWork() {
 func (t *Transport) beginToRead() {
 	fmt.Println("-->read begin")
 	defer func() {
-		t.close = true
+		t.closeRead = true
 		fmt.Println("-->read end")
 	}()
 	for {
@@ -51,9 +67,9 @@ func (t *Transport) beginToRead() {
 		_, err := t.con.Read(buf)
 		if err == io.EOF {
 			fmt.Println("-->read err io.EOF")
-			if t.close {
+			if !t.closeRead { //  非手动关闭
 				fmt.Println("--->close write chan")
-				close(t.writeChan)
+				t.CloseWrite()
 				return
 			}
 			return
@@ -65,17 +81,16 @@ func (t *Transport) beginToRead() {
 func (t *Transport) beginToWrite() {
 	fmt.Println("--->write begin")
 	defer func() {
-		t.close = true
+		t.closeWrite = true
 		fmt.Println("--->write end")
 	}()
 	for buf := range t.writeChan {
 		n, err := t.con.Write(buf)
-		if err != nil {
+		if err != nil || n != len(buf) {
 			fmt.Println("--->write err %#v", err)
-			t.con.CloseRead()
+			t.CloseRead()
 			return
 		}
-		fmt.Println(n)
 		time.Sleep(10 * time.Second)
 	}
 }
@@ -83,13 +98,28 @@ func (t *Transport) beginToWrite() {
 type TClient struct {
 	close bool
 	addr  string
+	wg    sync.WaitGroup
 }
 
 func NewTClient(addr string) *TClient {
-	return &TClient{addr: addr}
+	t := &TClient{addr: addr}
+	go t.connect()
 }
-func (t *TClient) Begin() {
-	conn, err := net.Dial("tcp", t.addr)
+
+func (p *TClient) Close() {
+	p.close = true
+	p.wg.Wait()
+}
+
+func (p *TClient) connect() {
+	defer func() {
+		p.recon()
+	}()
+
+	p.wg.Add(1)
+	defer p.wg.Done()
+
+	conn, err := net.Dial("tcp", p.addr)
 	if err != nil {
 		fmt.Println("dial err")
 		return
@@ -99,26 +129,47 @@ func (t *TClient) Begin() {
 		fmt.Println("conver err")
 		return
 	}
+
 	t := NewTransport(con)
 	t.beginWork()
 
-	defer t.close()
+	defer func() {
+		t.CloseWrite()
+	}()
+
+	// close read
+	defer t.CloseRead()
+
+	p.handlerData(t)
 }
 
-func (t *TClient) beginWork(tspt *Transport) {
+func (p *TClient) recon() {
+	if p.close {
+		return
+	}
+	for !p.close {
+		p.connect()
+	}
+}
 
+func (p *TClient) handlerData(t *Transport) {
+	for {
+		if s := t.ReadData(); s == nil {
+			fmt.Println("client handlerData return")
+			return
+		} else {
+			fmt.Println("read print data", string(s))
+		}
+	}
 }
 
 func main() {
 	fmt.Println("vim-go")
 	closeChan := make(chan os.Signal, 1)
 	signal.Notify(closeChan, syscall.SIGTERM)
-	<-closeChan
-	t.closeRead()
-	time.Sleep(3 * time.Second)
-}
 
-func closeRead(con *net.TCPConn) {
-	time.Sleep(10 * time.Second)
-	con.CloseRead()
+	t := NewTClient("127.0.0.01:9099")
+
+	<-closeChan
+	time.Sleep(3 * time.Second)
 }
