@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " custom plugins
 Plugin 'fatih/vim-go'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdtree'
@@ -164,6 +165,8 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
+set tags+=./tags
+set tags+=/mnt/hgfs/paipai/cplus/tags
 
 " shortcuts remap
 nmap <F2> :tabnew<CR>
@@ -196,10 +199,12 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " rename the identifier under the cursor to a new name
 au FileType go nmap <Leader>e <Plug>(go-rename)
-let g:go_bin_path = "/home/lbb/gowork/bin" 
+let g:go_bin_path = "/home/libinbin/.mypath" 
 let g:NERDSpaceDelims=1
 let g:csv_delim=','
 
 set rtp+=/home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
+set ignorecase smartcase
+set modeline
