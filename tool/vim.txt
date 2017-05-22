@@ -124,3 +124,23 @@ hex
 		结束 Esc + q 
 		执行 @a
 		
+struct split and join
+	gS 分开
+	gJ 合并
+
+函数跳转
+	[[ 前一个函数
+	]] 后一个函数
+
+当前文件里搜索函数
+	:GoDecls
+	:GoDeclsDir
+
+实现接口函数
+	:GoImpl io.ReadWriteCloser
+
+重构:修改名字
+	:GoRename aa
+
+查找所有用到该类型的地方
+	:GoReferrers
