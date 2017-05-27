@@ -115,3 +115,7 @@ bufio.Write  io缓存，flush 将buf中的数据写入文件(可能是先写在�
 使用sync.WaitGroup的时候注意点，
   1) Add()和Wait()操作要在同一个G里操作，要不会出现wait提前退出的情况，
   2) 如果要传WaitGroup参数，一定要传指针
+
+rand 
+	The default Source is safe for concurrent use by multiple goroutines.
+	NewSource returns a new pseudo-random Source seeded with the given value. Unlike the default Source used by top-level functions, this source is not safe for concurrent use by multiple goroutines.
