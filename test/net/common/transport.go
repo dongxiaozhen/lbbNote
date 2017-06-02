@@ -34,6 +34,10 @@ func (t *Transport) Close() {
 }
 
 func (t *Transport) WriteData(data []byte) {
+	if t.close {
+		fmt.Println("transport end", string(data))
+		return
+	}
 	t.writeChan <- data
 }
 
@@ -62,6 +66,11 @@ func (t *Transport) beginToWrite() {
 	fmt.Println("--->transport write begin")
 	defer func() {
 		fmt.Println("--->transport write over")
+		if !t.close {
+			t.close = true
+			t.con.Close()
+			close(t.writeChan)
+		}
 	}()
 	for buf := range t.writeChan {
 		n, err := t.con.Write(buf)

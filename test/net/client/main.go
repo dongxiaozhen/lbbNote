@@ -15,6 +15,10 @@ type Hello struct {
 
 func (h *Hello) OnTransportMade(t *common.Transport) {
 	fmt.Println("connect mad")
+	for i := 0; i < 1000; i++ {
+		time.Sleep(100 * time.Millisecond)
+		t.WriteData([]byte(fmt.Sprintf("client%d", i)))
+	}
 }
 func (h *Hello) OnTransportData(t *common.Transport, data []byte) {
 	fmt.Println("connect data", string(data))
