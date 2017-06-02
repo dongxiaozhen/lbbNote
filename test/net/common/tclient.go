@@ -24,7 +24,7 @@ func NewTClient(addr string, pf Protocol) *TClient {
 
 func (p *TClient) Close() {
 	p.close = true
-	p.transport.CloseRead()
+	p.transport.Close()
 	p.wg.Wait()
 }
 
@@ -39,6 +39,7 @@ func (p *TClient) connect() error {
 		fmt.Println("conver err")
 		return errors.New("conv err")
 	}
+	p.close = false
 	go p.handlerConnect(con)
 	return nil
 }
@@ -52,19 +53,13 @@ func (p *TClient) handlerConnect(con *net.TCPConn) {
 	defer p.wg.Done()
 
 	p.transport = NewTransport(con)
-	p.transport.beginWork()
+	p.transport.BeginWork()
 	p.pf.OnTransportMade(p.transport)
 
-	defer func() {
-		fmt.Println("send closeWrite()")
-		p.transport.CloseWrite()
-	}()
-
 	defer p.pf.OnTransportLost(p.transport)
-	// close read
 	defer func() {
-		fmt.Println("send closeRead()")
-		p.transport.CloseRead()
+		fmt.Println("transport close")
+		p.transport.Close()
 	}()
 
 	p.handlerData()
@@ -74,7 +69,8 @@ func (p *TClient) recon() {
 	if p.close {
 		return
 	}
-	for !p.close {
+	p.close = true
+	for p.close {
 		err := p.connect()
 		if err != nil {
 			time.Sleep(5 * time.Second)
@@ -85,6 +81,7 @@ func (p *TClient) recon() {
 func (p *TClient) handlerData() {
 	defer func() {
 		fmt.Println("tclient handlerData over")
+		time.Sleep(2 * time.Second)
 	}()
 
 	for {
