@@ -1,6 +1,7 @@
 package common
 
 import (
+	"bufio"
 	"encoding/binary"
 	"fmt"
 	"net"
@@ -19,7 +20,7 @@ func NewTransport(con *net.TCPConn) *Transport {
 	return &Transport{con: con, readChan: make(chan []byte, 10), writeChan: make(chan []byte, 10)}
 }
 
-func (t *Transport) ReadData() []byte {
+func (t *Transport) ReadData() *NetPacket {
 	s, ok := <-t.readChan
 	if !ok {
 		return nil
@@ -27,7 +28,12 @@ func (t *Transport) ReadData() []byte {
 
 	// 这里可以处理协议相关的解析工作
 	// Here you can deal with protocol related parsing work
-	return s
+	p := &NetPacket{Rw: t}
+	err := p.Decoder(s)
+	if err != nil {
+		return nil
+	}
+	return p
 }
 
 func (t *Transport) Close() {
@@ -67,13 +73,14 @@ func (t *Transport) beginToRead() {
 		headLen uint64
 		err     error
 	)
+	r := bufio.NewReader(t.con)
 	for {
-		err = binary.Read(t.con, binary.LittleEndian, &headLen)
+		err = binary.Read(r, binary.LittleEndian, &headLen)
 		if err != nil {
 			return
 		}
 		buf := make([]byte, headLen)
-		_, err := t.con.Read(buf)
+		_, err := r.Read(buf)
 		if err != nil {
 			fmt.Println("-->transport read err", err)
 			return
@@ -90,16 +97,22 @@ func (t *Transport) beginToWrite() {
 		headLen uint64
 		err     error
 	)
+	w := bufio.NewWriter(t.con)
 	for buf := range t.writeChan {
 		headLen = uint64(len(buf))
-		err = binary.Write(t.con, binary.LittleEndian, headLen)
+		err = binary.Write(w, binary.LittleEndian, headLen)
 		if err != nil {
 			return
 		}
-		n, err := t.con.Write(buf)
+		n, err := w.Write(buf)
 		if err != nil || n != len(buf) {
-			fmt.Println("--->transport write err %#v", err)
+			fmt.Println("--->transport write err", err)
 			return
 		}
+		if err = w.Flush(); err != nil {
+			fmt.Println("--->transport flush err", err)
+			return
+		}
+
 	}
 }

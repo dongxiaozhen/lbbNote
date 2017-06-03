@@ -25,9 +25,9 @@ func (h *Hello) OnNetMade(t *common.Transport) {
 func (h *Hello) OnNetLost(t *common.Transport) {
 	fmt.Println("t lost")
 }
-func (h *Hello) OnNetData(t *common.Transport, data []byte) {
+func (h *Hello) OnNetData(data *common.NetPacket) {
 	if h.close {
-		fmt.Println("process close", string(data))
+		fmt.Println("process close", *data)
 		return
 	}
 
@@ -36,7 +36,7 @@ func (h *Hello) OnNetData(t *common.Transport, data []byte) {
 
 	h.task.SendTask(func() {
 		time.Sleep(1 * time.Second)
-		t.WriteData([]byte("process data" + string(data)))
+		data.Rw.WriteData([]byte("process data" + string(data.Data)))
 	})
 }
 

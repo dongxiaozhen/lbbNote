@@ -66,6 +66,6 @@ func (p *TServer) handler(t *Transport) {
 		if s == nil {
 			return
 		}
-		p.pf.OnNetData(t, s)
+		p.pf.OnNetData(s)
 	}
 }

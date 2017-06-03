@@ -89,7 +89,7 @@ func (p *TClient) handlerData() {
 			fmt.Println("client handlerData return")
 			return
 		} else {
-			p.pf.OnNetData(p.transport, s)
+			p.pf.OnNetData(s)
 		}
 	}
 }

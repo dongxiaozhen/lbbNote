@@ -2,6 +2,6 @@ package common
 
 type Protocol interface {
 	OnNetMade(t *Transport)
-	OnNetData(t *Transport, data []byte)
+	OnNetData(data *NetPacket)
 	OnNetLost(t *Transport)
 }
