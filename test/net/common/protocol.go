@@ -1,7 +1,7 @@
 package common
 
 type Protocol interface {
-	OnTransportMade(t *Transport)
-	OnTransportData(t *Transport, data []byte)
-	OnTransportLost(t *Transport)
+	OnNetMade(t *Transport)
+	OnNetData(t *Transport, data []byte)
+	OnNetLost(t *Transport)
 }

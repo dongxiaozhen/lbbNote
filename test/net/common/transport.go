@@ -1,8 +1,10 @@
 package common
 
 import (
+	"encoding/binary"
 	"fmt"
 	"net"
+	"sync"
 )
 
 type Transport struct {
@@ -10,6 +12,7 @@ type Transport struct {
 	readChan  chan []byte
 	writeChan chan []byte
 	close     bool
+	sync.RWMutex
 }
 
 func NewTransport(con *net.TCPConn) *Transport {
@@ -21,10 +24,16 @@ func (t *Transport) ReadData() []byte {
 	if !ok {
 		return nil
 	}
+
+	// 这里可以处理协议相关的解析工作
+	// Here you can deal with protocol related parsing work
 	return s
 }
 
 func (t *Transport) Close() {
+	t.Lock()
+	defer t.Unlock()
+
 	if t.close {
 		return
 	}
@@ -34,10 +43,14 @@ func (t *Transport) Close() {
 }
 
 func (t *Transport) WriteData(data []byte) {
+	t.RLock()
+	defer t.RUnlock()
+
 	if t.close {
 		fmt.Println("transport end", string(data))
 		return
 	}
+
 	t.writeChan <- data
 }
 
@@ -46,13 +59,20 @@ func (t *Transport) BeginWork() {
 	go t.beginToWrite()
 }
 func (t *Transport) beginToRead() {
-	fmt.Println("-->transport read begin")
 	defer func() {
+		t.Close()
 		close(t.readChan)
-		fmt.Println("-->transport read end")
 	}()
+	var (
+		headLen uint64
+		err     error
+	)
 	for {
-		buf := make([]byte, 30)
+		err = binary.Read(t.con, binary.LittleEndian, &headLen)
+		if err != nil {
+			return
+		}
+		buf := make([]byte, headLen)
 		_, err := t.con.Read(buf)
 		if err != nil {
 			fmt.Println("-->transport read err", err)
@@ -63,16 +83,19 @@ func (t *Transport) beginToRead() {
 }
 
 func (t *Transport) beginToWrite() {
-	fmt.Println("--->transport write begin")
 	defer func() {
-		fmt.Println("--->transport write over")
-		if !t.close {
-			t.close = true
-			t.con.Close()
-			close(t.writeChan)
-		}
+		t.Close()
 	}()
+	var (
+		headLen uint64
+		err     error
+	)
 	for buf := range t.writeChan {
+		headLen = uint64(len(buf))
+		err = binary.Write(t.con, binary.LittleEndian, headLen)
+		if err != nil {
+			return
+		}
 		n, err := t.con.Write(buf)
 		if err != nil || n != len(buf) {
 			fmt.Println("--->transport write err %#v", err)

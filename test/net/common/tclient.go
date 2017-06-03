@@ -54,9 +54,9 @@ func (p *TClient) handlerConnect(con *net.TCPConn) {
 
 	p.transport = NewTransport(con)
 	p.transport.BeginWork()
-	p.pf.OnTransportMade(p.transport)
+	p.pf.OnNetMade(p.transport)
 
-	defer p.pf.OnTransportLost(p.transport)
+	defer p.pf.OnNetLost(p.transport)
 	defer func() {
 		fmt.Println("transport close")
 		p.transport.Close()
@@ -89,7 +89,7 @@ func (p *TClient) handlerData() {
 			fmt.Println("client handlerData return")
 			return
 		} else {
-			p.pf.OnTransportData(p.transport, s)
+			p.pf.OnNetData(p.transport, s)
 		}
 	}
 }

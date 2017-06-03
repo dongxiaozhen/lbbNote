@@ -19,20 +19,24 @@ func (h *Hello) Init() {
 	h.task.Run()
 }
 
-func (h *Hello) OnTransportMade(t *common.Transport) {
+func (h *Hello) OnNetMade(t *common.Transport) {
 	fmt.Println("t made")
 }
-func (h *Hello) OnTransportLost(t *common.Transport) {
+func (h *Hello) OnNetLost(t *common.Transport) {
 	fmt.Println("t lost")
 }
-func (h *Hello) OnTransportData(t *common.Transport, data []byte) {
+func (h *Hello) OnNetData(t *common.Transport, data []byte) {
 	if h.close {
 		fmt.Println("process close", string(data))
 		return
 	}
+
+	// 这里可以处理协议相关的解析工作
+	// Here you can deal with protocol related parsing work
+
 	h.task.SendTask(func() {
-		fmt.Println("process data", string(data))
 		time.Sleep(1 * time.Second)
+		t.WriteData([]byte("process data" + string(data)))
 	})
 }
 
@@ -51,8 +55,9 @@ func main() {
 	s := common.NewTServer(":9099", hello)
 	<-closeChan
 
-	hello.Close()
+	// close listern
 	s.Close()
-	time.Sleep(3 * time.Second)
 
+	// not hander data, wait all done
+	hello.Close()
 }

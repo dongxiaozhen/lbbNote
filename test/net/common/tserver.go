@@ -38,16 +38,13 @@ func (p *TServer) listern() {
 }
 
 func (p *TServer) accept() {
-	fmt.Println("TServer accept begin")
-	defer fmt.Println("TServer accept over")
-
 	for {
 		con, err := p.l.AcceptTCP()
 		if err != nil {
 			fmt.Println("accept err %#v", err)
 			return
 		}
-		con.SetReadBuffer(44)
+		con.SetReadBuffer(100)
 		con.SetNoDelay(true)
 		t := NewTransport(con)
 		t.BeginWork()
@@ -57,25 +54,18 @@ func (p *TServer) accept() {
 }
 
 func (p *TServer) handler(t *Transport) {
-	fmt.Println("TServer handler begin")
-	defer fmt.Println("TServer handler over")
-
 	defer p.wg.Done()
 
 	defer t.Close()
 
-	p.pf.OnTransportMade(t)
-	defer func() {
-		p.pf.OnTransportLost(t)
-		fmt.Println("auto close: call OnTransportLost and delete transport from mp")
-	}()
+	p.pf.OnNetMade(t)
+	defer p.pf.OnNetLost(t)
 
 	for {
 		s := t.ReadData()
 		if s == nil {
-			fmt.Println("tserver readdata err")
 			return
 		}
-		p.pf.OnTransportData(t, s)
+		p.pf.OnNetData(t, s)
 	}
 }
