@@ -3,6 +3,7 @@ package common
 import (
 	"bufio"
 	"encoding/binary"
+	"errors"
 	"fmt"
 	"net"
 	"sync"
@@ -15,6 +16,8 @@ type Transport struct {
 	close     bool
 	sync.RWMutex
 }
+
+var ErrTransportClose = errors.New("链接断开")
 
 func NewTransport(con *net.TCPConn) *Transport {
 	return &Transport{con: con, readChan: make(chan []byte, 10), writeChan: make(chan []byte, 10)}
@@ -48,16 +51,17 @@ func (t *Transport) Close() {
 	close(t.writeChan)
 }
 
-func (t *Transport) WriteData(data []byte) {
+func (t *Transport) WriteData(data []byte) error {
 	t.RLock()
 	defer t.RUnlock()
 
 	if t.close {
 		fmt.Println("transport end", string(data))
-		return
+		return ErrTransportClose
 	}
 
 	t.writeChan <- data
+	return nil
 }
 
 func (t *Transport) BeginWork() {

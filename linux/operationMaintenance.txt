@@ -1,3 +1,5 @@
+lsb_release  -a (查看系统信息) lsb=linux standard base
+
 Ubuntu中的运行级别
 		 0(关闭系统) 
 		 1(单用户模式，只允许root用户对系统进行维护。)

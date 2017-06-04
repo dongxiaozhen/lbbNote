@@ -16,10 +16,17 @@ type TClient struct {
 	transport *Transport
 }
 
-func NewTClient(addr string, pf Protocol) *TClient {
+func NewTClient(addr string, pf Protocol) (*TClient, error) {
 	t := &TClient{addr: addr, pf: pf}
-	t.connect()
-	return t
+	err := t.connect()
+	if err != nil {
+		return nil, err
+	}
+	return t, nil
+}
+
+func (p *TClient) Send(data []byte) error {
+	return p.transport.WriteData(data)
 }
 
 func (p *TClient) Close() {

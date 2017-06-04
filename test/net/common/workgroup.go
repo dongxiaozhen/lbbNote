@@ -32,13 +32,11 @@ func (t *WorkTask) Run() {
 	for i := uint64(0); i < t.pipeLen; i++ {
 		t.process[i] = make(chan func(), t.cacheLen)
 		t.Add(1)
-		fmt.Println("task begin", i)
 		go t.hander(i)
 	}
 }
 
 func (t *WorkTask) hander(index uint64) {
-	defer fmt.Println("task over", index)
 	defer t.Done()
 
 	ch := t.process[index]

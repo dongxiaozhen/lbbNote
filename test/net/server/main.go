@@ -10,48 +10,38 @@ import (
 )
 
 type Hello struct {
-	close bool
-	task  *common.WorkTask
+	common.NetProcess
 }
 
-func (h *Hello) Init() {
-	h.task = common.NewWorkTask(10, 100)
-	h.task.Run()
+func (h *Hello) init() {
+	h.Init()
+	h.RegisterFunc(1, fa)
+	h.RegisterFunc(2, fb)
 }
 
-func (h *Hello) OnNetMade(t *common.Transport) {
-	fmt.Println("t made")
+func fa(data *common.NetPacket) {
+	time.Sleep(1 * time.Second)
+	suf := fmt.Sprintf("1 %d,%d,%d,%d,seqid %d", data.UserId, data.ServerId, data.SessionId, data.PacketType, data.SeqId)
+	tmp := suf + string(data.Data)
+	fmt.Println(tmp)
+	buf := data.Encoder([]byte(tmp))
+	data.Rw.WriteData(buf)
 }
-func (h *Hello) OnNetLost(t *common.Transport) {
-	fmt.Println("t lost")
-}
-func (h *Hello) OnNetData(data *common.NetPacket) {
-	if h.close {
-		fmt.Println("process close", *data)
-		return
-	}
-
-	// 这里可以处理协议相关的解析工作
-	// Here you can deal with protocol related parsing work
-
-	h.task.SendTask(func() {
-		time.Sleep(1 * time.Second)
-		data.Rw.WriteData([]byte("process data" + string(data.Data)))
-	})
-}
-
-func (h *Hello) Close() {
-	h.close = true
-	h.task.Stop()
+func fb(data *common.NetPacket) {
+	time.Sleep(1 * time.Second)
+	suf := fmt.Sprintf("2 %d,%d,%d,%d,seqid %d", data.UserId, data.ServerId, data.SessionId, data.PacketType, data.SeqId)
+	tmp := suf + string(data.Data)
+	fmt.Println(tmp)
+	buf := data.Encoder([]byte(tmp))
+	data.Rw.WriteData(buf)
 }
 
 func main() {
-	fmt.Println("vim-go")
 	closeChan := make(chan os.Signal, 1)
 	signal.Notify(closeChan, syscall.SIGTERM)
 
 	hello := &Hello{}
-	hello.Init()
+	hello.init()
 	s := common.NewTServer(":9099", hello)
 	<-closeChan
 
