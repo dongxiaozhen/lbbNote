@@ -16,10 +16,8 @@ type RpcRet struct {
 func (p *RpcRet) GetReply() (r *NetPacket, err error) {
 	select {
 	case r = <-p.c:
-		fmt.Println("rsv reply")
 	case <-time.After(3 * time.Second):
 		err = ErrRpcTimeOut
-		fmt.Println("reply time out")
 	}
 	return
 }
@@ -55,7 +53,6 @@ func (p *Rpc) OnNetData(t *NetPacket) {
 
 	ret, ok := p.mp[t.SeqId]
 	if ok {
-		fmt.Println("get packet")
 		ret.SetReply(t)
 		delete(p.mp, t.SeqId)
 		return

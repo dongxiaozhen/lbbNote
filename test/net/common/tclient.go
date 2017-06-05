@@ -46,11 +46,18 @@ func (p *TClient) connect() error {
 		fmt.Println("conver err")
 		return errors.New("conv err")
 	}
+
+	// 设置成员变量p.transport，不能放在go后边，会导致成员变量为空
+	p.transport = NewTransport(con)
+	p.transport.BeginWork()
+	p.pf.OnNetMade(p.transport)
+
 	p.close = false
-	go p.handlerConnect(con)
+	go p.handlerConnect()
 	return nil
 }
-func (p *TClient) handlerConnect(con *net.TCPConn) {
+
+func (p *TClient) handlerConnect() {
 	defer func() {
 		fmt.Println("reconnect")
 		p.recon()
@@ -58,10 +65,6 @@ func (p *TClient) handlerConnect(con *net.TCPConn) {
 
 	p.wg.Add(1)
 	defer p.wg.Done()
-
-	p.transport = NewTransport(con)
-	p.transport.BeginWork()
-	p.pf.OnNetMade(p.transport)
 
 	defer p.pf.OnNetLost(p.transport)
 	defer func() {
