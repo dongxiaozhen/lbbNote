@@ -10,6 +10,7 @@ Records and fields
 比较操作
  awk '$6 == "MAY" && $7 == 15 { print $9}'
  awk '{if ($6 ~ /May/ && $7 == 15) print $9 }'pattern {action}
+	时间比较  '$3>="08:00:00"
 
 pattern {action}
 		A pattern can be:

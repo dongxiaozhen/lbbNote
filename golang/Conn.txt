@@ -6,3 +6,6 @@ RemoteAddr() Addr
 SetDeadline(t time.Time) error
 SetReadDeadline(t time.Time) error
 SetWriteDeadline(t time.Time) error
+
+
+SetDeadline/SetReadDeadline/SetWriteDeadline 过期时间设置的是绝对时间，也就是到了那个点，就会产生读写错误(超时error是个net.Error，并且其Temporary函数返回true),所以完成读写后需要重置超时时间。
