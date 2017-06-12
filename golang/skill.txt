@@ -1,0 +1,53 @@
+如果一个实例存在多个公共方法+私有方法，既有外部UI带来的命令驱动，又有内部的消息框架驱动。考虑到并发，不得不引入锁的时候，则建议采用串行异步方式。所有业务方法不对外，对象只有创建、接受消息、销毁三个对外的公共方法。所有消息只有一个入口，这样，就可以不用锁了。
+
+type A struct {
+	close  int32            //对象是否关闭的标志
+	msgbuf chan interface{} //消息缓冲
+}
+
+// 创建
+func NewA() *A {
+	a := &A{
+		msgbuf: make(chan interface{}, 10),
+	}
+	go a.receive()
+	return a
+}
+
+// 接受
+func (a *A) Post(message interface{}) {
+	if atomic.LoadInt32(&a.close) == 1 {
+		a.msgbuf <- message
+	}
+}
+
+// 销毁
+func (a *A) Close() {
+	if atomic.CompareAndSwapInt32(&a.close, 0, 1) {
+		//	do other thing
+	}
+}
+
+// 方法处理
+func (a *A) receive() {
+	//通过defer实现简单的故障隔离
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println(err)
+		}
+	}()
+	//执行消息处理
+	for message := range a.msgbuf {
+		switch msg := message.(type) {
+		case Message1:
+			a.foo1(msg)
+		case Message2:
+			a.foo2(msg)
+		}
+	}
+}
+
+func (a *A) foo1(message Message1) {
+}
+func (a *A) foo2(message Message2) {
+}
