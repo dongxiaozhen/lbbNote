@@ -1,0 +1,25 @@
+
+./consul agent -server -bootstrap-expect 3 -data-dir /tmp/consul -node=server001 -bind=10.31.63.15 -client=0.0.0.0 -ui
+./consul agent -server -data-dir /tmp/consul -node=server002 -bind=10.31.63.17 -join 10.31.63.15
+./consul agent -server -data-dir /tmp/consul -node=server003 -bind=10.31.63.18 -join 10.31.63.15
+
+./consul agent -data-dir /tmp/consul -node=client -bind=10.31.63.11 -join 10.31.63.15
+
+
+consul agent -dev
+~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/server ./server 
+~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/server ./server -port 9528 -sid serverNode_1_2 -maddr "127.0.0.1:8880"
+~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/client ./client
+
+查询集群成员
+consul members
+
+查询节点
+dig @127.0.0.1 -p 8600 namexx.node.consul
+
+查询服务
+dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
+curl http://localhost:8500/v1/catalog/service/namexxx
+
+查询状态 (critical,,,)
+curl http://localhost:8500/v1/health/state/critical

@@ -20,6 +20,8 @@ TProtocolFactory        传输协议(json传输、二进制传输(传输开始，字段传输开始，传
 
 	protocol
 
-	transport 
+	xxTransport (TBufferedTransport:bufio.ReadWriter; TFramedTransport:w:bytes.Buffer,r:bufio.Reader,前面有size字段)
+
+	transport 	(封装了Read,Write接口，添加读写超时设置)
 
 	original socket 
