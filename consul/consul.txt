@@ -11,6 +11,9 @@ consul agent -dev
 ~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/server ./server -port 9528 -sid serverNode_1_2 -maddr "127.0.0.1:8880"
 ~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/client ./client
 
+
+serverId 相同会覆盖前面的服务,后一个服务注消会让前一个也注销，所以serverId 必须唯一，不能重复
+
 查询集群成员
 consul members
 
@@ -19,7 +22,15 @@ dig @127.0.0.1 -p 8600 namexx.node.consul
 
 查询服务
 dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
-curl http://localhost:8500/v1/catalog/service/namexxx
+	获取serverName
+		curl http://localhost:8500/v1/catalog/services
+	获取serverName为namexxx的所有服务
+		curl http://localhost:8500/v1/catalog/service/namexxx
+	根据健康状态检测服务
+		curl http://localhost:8500/v1/health/service/namexxx
 
-查询状态 (critical,,,)
-curl http://localhost:8500/v1/health/state/critical
+查询状态 (passing, warning,critical,)
+	查询状态为xxx的服务
+		curl http://localhost:8500/v1/health/state/xxx
+	查询serverName为namexxx的状态
+		curl http://localhost:8500/v1/health/checks/namexxx
