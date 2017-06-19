@@ -1,5 +1,7 @@
+agent 有两种模式 server模式和client模式，唯一的区别就是client模式不参与选举
 
 ./consul agent -server -bootstrap-expect 3 -data-dir /tmp/consul -node=server001 -bind=10.31.63.15 -client=0.0.0.0 -ui
+		-client 设置监听地址，外网可以访问
 ./consul agent -server -data-dir /tmp/consul -node=server002 -bind=10.31.63.17 -join 10.31.63.15
 ./consul agent -server -data-dir /tmp/consul -node=server003 -bind=10.31.63.18 -join 10.31.63.15
 
@@ -7,6 +9,7 @@
 
 
 consul agent -dev
+	  -dev 开发模式
 ~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/server ./server 
 ~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/server ./server -port 9528 -sid serverNode_1_2 -maddr "127.0.0.1:8880"
 ~/gowork/src/github.com/dongxiaozhen/lbbconsul/example/client ./client
@@ -15,7 +18,12 @@ consul agent -dev
 serverId 相同会覆盖前面的服务,后一个服务注消会让前一个也注销，所以serverId 必须唯一，不能重复
 
 查询集群成员
-consul members
+	consul members
+	curl http://localhost:8500/v1/status/peers
+
+查询集群leader
+	curl http://localhost:8500/v1/status/leader
+
 
 查询节点
 dig @127.0.0.1 -p 8600 namexx.node.consul
@@ -34,3 +42,5 @@ dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
 		curl http://localhost:8500/v1/health/state/xxx
 	查询serverName为namexxx的状态
 		curl http://localhost:8500/v1/health/checks/namexxx
+
+
