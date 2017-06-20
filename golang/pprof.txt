@@ -1,0 +1,8 @@
+https://github.com/hyper0x/go_command_tutorial/blob/master/0.12.md
+
+go tool pprof binaryFile pprofFile
+
+在栈顶的次数 
+在栈中出现的次数
+
+箭头是调用关系，数字代表：A正在调用B的次数
