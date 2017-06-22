@@ -37,3 +37,10 @@ https://github.com/alex023/clock
 https://github.com/alex023/eventbus
 github.com/alecthomas/log4go
 https://github.com/donnie4w/go-logger
+
+uuid/guid
+	github.com/rs/xid
+	github.com/segmentio/ksuid
+	github.com/kjk/betterguid
+	github.com/oklog/ulid
+

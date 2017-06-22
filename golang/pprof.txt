@@ -1,4 +1,5 @@
 https://github.com/hyper0x/go_command_tutorial/blob/master/0.12.md
+https://blog.golang.org/profiling-go-programs
 
 go tool pprof binaryFile pprofFile
 

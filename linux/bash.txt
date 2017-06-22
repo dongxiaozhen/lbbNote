@@ -1,3 +1,4 @@
+type cmd 查看命令到底是由shell自带的，还是由shell外部的独立二进制文件提供的
 "info $name" 	双引号 里面的$name输出变量的结果
 'info $name'	单引号 里面的$name原样输出
 a=`cmd`		反斜扛 运行结果赋值给一个变量, == $(cmd)
@@ -31,6 +32,17 @@ grep -l 列出匹配的文件名
 	-i 忽略大小写
 	-v 反向搜索
 	
+ag --go PATTERN PATH      // 文件类型 ag --list-file-types
+	在PATH下文件类型是go的文件里搜索PATTERN
+	-n: 不进行文件夹的递归搜索
+	-l: 只输出有匹配的文件 
+	-L: 只输出没有匹配的文
+	-A 打印匹配文本后面的N行
+	-B 打印匹配文本前面的N行
+	-c 打印每个文件匹配文本的次数
+
+
+ack --type go pattern path  // ack --help=types
 
 
 sed -i 's/Event\.UseCoin/Event\.UseCoina/g' filename 查找并替换文件中的字符串   以行为单位的文本编辑工具
