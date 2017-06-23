@@ -44,3 +44,4 @@ uuid/guid
 	github.com/kjk/betterguid
 	github.com/oklog/ulid
 
+https://github.com/mreithub/goref

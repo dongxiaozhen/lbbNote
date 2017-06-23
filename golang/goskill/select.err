@@ -1,0 +1,55 @@
+package main
+
+import (
+	"fmt"
+	"runtime"
+	"time"
+)
+
+func init() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+}
+
+// tick丢包
+func main() {
+	ch := make(chan int, 1024)
+	go func(ch chan int) {
+		for {
+			val := <-ch
+			fmt.Printf("val:%d\n", val)
+		}
+	}(ch)
+
+	tick := time.NewTicker(1 * time.Second)
+	for i := 0; i < 20; i++ {
+		// 当两个case条件都满足的时候，运行时系统会通过一个伪随机的算法决定哪个case将会被执行
+		// 所以当tick.C条件满足的那个循环，有某种概率造成ch<-i没有发送(虽然通道两端没有阻塞，满足发送条件)
+		select {
+		case ch <- i:
+		case <-tick.C:
+			fmt.Printf("%d: case <-tick.C\n", i)
+		}
+
+		time.Sleep(200 * time.Millisecond)
+	}
+	close(ch)
+	tick.Stop()
+}
+
+// 解决方案1: 一旦tick.C随机的case被随机到，就多执行一次ch<-i (不体面，如果有多个case就不通用了)
+//select {
+//case ch <- i:
+//case <-tick.C:
+//	fmt.Printf("%d: case <-tick.C\n", i)
+//	ch <- i
+//}
+
+// 解决方案2: 将tick.C的case单独放到一个select里面，并加入一个default（保证不阻塞）
+//select {
+//case ch <- i:
+//}
+//select {
+//case <-tick.C:
+//	fmt.Printf("%d: case <-tick.C\n", i)
+//default:
+//}

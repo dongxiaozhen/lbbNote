@@ -1,0 +1,20 @@
+
+超时等待
+	//  time.AfterFunc 会启动一个携程,如果请求多的话，会启动多个goroutine,坏事
+	    sig := make(chan int, 1)
+		time.AfterFunc(time.Duration(timeout)*time.Millisecond, func() {
+			 sig <- 1
+		})  
+		select {
+		   case ret := <-fk.replay:
+		     return ret, nil 
+		    case <-sig:
+		      return nil, errors.New("rpc call with timeout")
+		}  
+
+
+
+最好是有一个统一的定时器管理超时
+	github.com/alex023/clock  红黑树管理，每次取最近的时间点定时
+		AddJobWithInterval
+		DelJob
