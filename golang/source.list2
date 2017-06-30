@@ -1,36 +1,38 @@
-go get -u github.com/pkg/profile
+go get -u github.com/pkg/profile                   profile cpu mem block 
 go get -u github.com/davecgh/go-spew/spew
 
 
-github.com/rakyll/hey  压力测试
-github.com/urfave/negroni Go语言里，Negroni 是一个很地道的 web 中间件
-github.com/blackbeans/turbo 底层网络通讯框架
-github.com/qieangel2013/livego  一个用Go写的直播
-github.com/nats-io/nats-streaming-server    消息分发(同nsq)
-https://github.com/antirez/disque.git    内存消息分发
+github.com/rakyll/hey  								压力测试
+github.com/urfave/negroni 							Go语言里，Negroni 是一个很地道的 web 中间件
+github.com/blackbeans/turbo 						底层网络通讯框架
+https://github.com/blackbeans/kiteq        			MQ
+https://github.com/siddontang/moonmq				MQ
+github.com/qieangel2013/livego  					一个用Go写的直播
+github.com/nats-io/nats-streaming-server    		消息分发(同nsq)
+https://github.com/antirez/disque.git    			内存消息分发
 
 
-github.com/insionng/macross  待看
-github.com/go-mangos/mangos   网络协议 pub/sub  rep/req bus pair
+github.com/insionng/macross  						待看
+github.com/go-mangos/mangos   						网络协议 pub/sub  rep/req bus pair
 murmur3  哈希
 github.com/coocood/freecache  
 
 github.com/spf13/hugo 博客
-github.com/json-iterator/go   jsoniter 
-github.com/derekparker/delve/cmd/dlv   调试
+github.com/json-iterator/go   						jsoniter 
+github.com/derekparker/delve/cmd/dlv   				调试
 
 github.com/godbus/dbus 
 github.com/TheCreeper/go-notify
 github.com/name5566/leaf
 github.com/asaskevich/EventBus
 
-github.com/xiaojiaqi/10billionhongbaos   实现单机支持100万用户，单机可以支持QPS达 6万, 可以满足100亿红包的压力测试。
-github.com/asciimoo/wuzz         Interactive cli tool for HTTP inspection
-github.com/cyfdecyf/cow         翻墙
-github.com/alex023/clock        定时器任务
-https://github.com/elastic/kibana    监控
+github.com/xiaojiaqi/10billionhongbaos   			实现单机支持100万用户，单机可以支持QPS达 6万, 可以满足100亿红包的压力测试。
+github.com/asciimoo/wuzz         						Interactive cli tool for HTTP inspection
+github.com/cyfdecyf/cow         					翻墙
+github.com/alex023/clock        					定时器任务
+https://github.com/elastic/kibana    				监控
 
-go get -u -v github.com/kshvmdn/fsql/... 文件搜索
+go get -u -v github.com/kshvmdn/fsql/... 			文件搜索
 https://github.com/sryanyuan/tcpnetwork 
 
 https://github.com/alex023/clock
@@ -44,4 +46,4 @@ uuid/guid
 	github.com/kjk/betterguid
 	github.com/oklog/ulid
 
-https://github.com/mreithub/goref
+https://github.com/mreithub/goref					函数调用qps

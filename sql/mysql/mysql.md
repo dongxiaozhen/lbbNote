@@ -67,3 +67,6 @@ select name from mysql.proc where db = 'your_db_name' and type = 'PROCEDURE'
 查看procedure
 show create procedure proc_name;
 show create function func_name;
+
+ON DUPLICATE KEY
+insert into t_user_equip_generate_50 values(?,?) ON DUPLICATE KEY update   info = ?
