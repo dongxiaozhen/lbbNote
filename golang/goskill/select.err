@@ -10,7 +10,7 @@ func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 }
 
-// tick丢包
+// tick丢包,外层循环for的数据丢失，
 func main() {
 	ch := make(chan int, 1024)
 	go func(ch chan int) {
