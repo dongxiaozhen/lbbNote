@@ -51,6 +51,7 @@ nsqd <--------------------- nsq_to_file------------->nsqlookup
 nsqd
 		nsqd连接nsqlookup,连接后发送IDENTIFY cmd,然后发送Register cmd,注册所有topic,channel
 		启动一个G，向nsqlookup注册，销毁topic、channel
+		inFlightPqueue 根据过期时间建立的小堆，
 
 
 协议
