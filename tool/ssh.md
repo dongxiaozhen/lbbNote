@@ -1,3 +1,6 @@
+生成秘钥 ssh-keygen
+交换秘钥 ssh-copy-id user@host
+
  ssh 连接服务器不需要密码 
 	将本机的公钥拷贝到服务器的~/.ssh/authorized_keys文件。
 

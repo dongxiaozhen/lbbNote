@@ -1,0 +1,6 @@
+
+读取不存在的文件会报错
+	fd,err:=os.OpenFile("aaa", os.O_RDONLY, 0666)
+
+读写文件，没有就创建
+	fd, err = os.OpenFile(curFileName, os.O_RDWR|os.O_CREATE, 0600) 

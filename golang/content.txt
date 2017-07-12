@@ -38,7 +38,7 @@ switch不会自动从一个case子句跌落到下一个case子句。但是case�
 
 channel src/runtime/chan.go   make(chan int) 返回的是一个指针 *hchan
 	只能在多个goroutine中使用
-	向关闭的channel 中发送数据会引发panic,在一个nil的channel上发送，接受数据会被永远阻塞,一个channel关闭多次会panic,
+	向关闭的channel 中发送数据会引发panic,在一个nil的channel上发送，接受数据会被永远阻塞(select中监听nil发送是可以的),一个channel关闭多次会panic,
 	监听关闭的channel，依然可以接受到之前成功发送的数据，如果已经没有数据会产生一个零值的数据。
 	v,ok:=<-ch ok==true:v数据有效，ok==false:chan关闭，可以直接使用range遍历数据
 	无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行

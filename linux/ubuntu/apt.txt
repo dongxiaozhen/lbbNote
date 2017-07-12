@@ -32,6 +32,8 @@ apt-get check
 
 3.2. apt-cache apt-cache是一个apt软件包管理工具，它可查询apt的二进制软件包缓存文件。通过它我们可查询软件包的状态信息。
 
+apt-cache madison package_name 列出可用版本
+
 apt-cache show package_name 显示软件的信息，包括版本号，安装状态和包依赖关系等。
 
 apt-cache search package_name 搜索软件包，可用正则表达式。

@@ -60,3 +60,11 @@ nsqd
 
 go-nsq 
 	一个consume 启动一个rdyLoop,设置是否可以让nsqd继续发送数据
+
+
+go-diskqueue
+	"%s.diskqueue.meta.dat" 保存元数据 格式"%d\n%d,%d\n%d,%d\n" depth\nreadFileNum,readPos\nwriteFileNum,writePos
+	"%s.diskqueue.%06d.dat" 保存数据 格式 "%s%s" 数据长度,数据
+	定时或者根据文件读写操作次数来sync同步文件
+	-个G监控同步，读，写。
+
