@@ -41,3 +41,6 @@ runlevel 查看运行等级
        │6        │ reboot.target     │
        └─────────┴───────────────────┘
 
+service的配置文件在 /etc/init/
+	lightdm.conf
+	mysql.conf 
