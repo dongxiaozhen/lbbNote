@@ -4,3 +4,6 @@ ps -elf|grep supervisor 会发现ubuntu的supervisord用的是/etc/supervisor/su
 
 conf文件放到/etc/supervisor/conf.d/
 
+
+启动程序是go,需要在[supervisord]设置一个变量
+	environment=GOPATH="/home/libinbin/gowork"

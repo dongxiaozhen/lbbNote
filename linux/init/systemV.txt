@@ -22,4 +22,22 @@ serivce name cmd
 服务开启，关闭，等级设置
 	update-rc.d -f servicename default 开机 ==  systemctl servicename enable 
 	update-rc.d -f servicename remove 关闭  == systemctl servicename disable
-	update-rc.d -f servicename start/stop  0-6(level)
+	update-rc.d -f servicename enable/disable  0-6(level) 设置启动级别
+
+
+
+runlevel 查看运行等级
+       ┌─────────┬───────────────────┐
+       │Runlevel │ Target            │
+       ├─────────┼───────────────────┤
+       │0        │ poweroff.target   │
+       ├─────────┼───────────────────┤
+       │1        │ rescue.target     │
+       ├─────────┼───────────────────┤
+       │2, 3, 4  │ multi-user.target │
+       ├─────────┼───────────────────┤
+       │5        │ graphical.target  │
+       ├─────────┼───────────────────┤
+       │6        │ reboot.target     │
+       └─────────┴───────────────────┘
+
