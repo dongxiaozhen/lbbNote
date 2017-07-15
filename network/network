@@ -21,3 +21,6 @@ iproute2
 			state  用TCP 状态过滤Sockets :established syn-sent syn-recv fin-wait-1 fin-wait-2 time-wait closed close-wait last-ack listen closing
 
 dig DNS查询
+
+监听0号端口:
+	会随机选择一个可用端口来监听，可用用来选择freeport

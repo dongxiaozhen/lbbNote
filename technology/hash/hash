@@ -13,6 +13,8 @@ map实现机制
 		|		|
 		---------
 
+		redis-dict
+			两个hash,当oldhash数据量达到阈值时，会新建一个容量是oldhash两倍的newhash,新数据会插入newhash,oldhash的数据会分批次少量转移到newhash.查询，删除都会在两个hash里查找
 
 
 	2 树
