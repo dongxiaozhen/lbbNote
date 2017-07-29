@@ -8,4 +8,5 @@ protoc --go_out=path *.proto libprotobuf.a(静态链接) -l libprotobuf(动态�
 github.com/golang/protobuf/protoc_gen_go     是protoc解析成go文件的插件
 github.com/golang/protobuf/proto              goprotobuf 提供的支持库，包含诸如编码（marshaling）、解码（unmarshaling）等功能
 
+github.com/google/protobuf        			protoc
 
