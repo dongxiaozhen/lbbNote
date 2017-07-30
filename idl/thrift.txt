@@ -25,3 +25,44 @@ TProtocolFactory        传输协议(json传输、二进制传输(传输开始，字段传输开始，传
 	transport 	(封装了Read,Write接口，添加读写超时设置)
 
 	original socket 
+
+
+binary protocol
+
+Binary protocol Message, strict encoding, 12+ bytes:
++--------+--------+--------+--------+--------+--------+--------+--------+--------+...+--------+--------+--------+--------+--------+
+|1vvvvvvv|vvvvvvvv|unused  |00000mmm| name length                       | name                | seq id                            |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+...+--------+--------+--------+--------+--------+
+
+Binary protocol Message, old encoding, 9+ bytes:
++--------+--------+--------+--------+--------+...+--------+--------+--------+--------+--------+--------+                                    
+| name length                       | name                |00000mmm| seq id                            |
++--------+--------+--------+--------+--------+...+--------+--------+--------+--------+--------+--------+
+	* `mmm` is the message type
+		* _Call_: 1
+		* _Reply_: 2
+		* _Exception_: 3
+		* _Oneway_: 4
+	
+	* `name` is the method name, a UTF-8 encoded string.
+	* `seq id` is the sequence id, a signed 32 bit integer encoded in network (big endian) order.
+
+Binary protocol field header and field value:
++--------+--------+--------+--------+...+--------+
+|tttttttt| field id        | field value         |
++--------+--------+--------+--------+...+--------+
+	* `tttttttt` the field-type, a signed 8 bit integer.
+	* `field id` the field-id, a signed 16 bit integer in big endian order.
+	* `field-value` the encoded field value.	
+		list,set
+			+--------+--------+--------+--------+--------+--------+...+--------+
+			|tttttttt| size                              | elements            |
+			+--------+--------+--------+--------+--------+--------+...+--------+
+		map
+			map  ::=  key-element-type value-element-type size ( key value )*
+			+--------+--------+--------+--------+--------+--------+--------+...+--------+
+			|kkkkkkkk|vvvvvvvv| size                              | key value pairs     |
+			+--------+--------+--------+--------+--------+--------+--------+...+--------+
+
+
+
