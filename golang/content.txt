@@ -42,7 +42,7 @@ channel src/runtime/chan.go   make(chan int) 返回的是一个指针 *hchan
 	监听关闭的channel，依然可以接受到之前成功发送的数据，如果已经没有数据会产生一个零值的数据。
 	v,ok:=<-ch ok==true:v数据有效，ok==false:chan关闭，可以直接使用range遍历数据
 	无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行
-	channel 类型可以比较,当且仅当两chan引用的时同一个对象。
+	channel 类型可以比较,当且仅当两chan引用的是同一个对象。
 
 []type          slice = struct []type{ type *array; int len; int cap; }
 
