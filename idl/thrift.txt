@@ -1,7 +1,7 @@
 thrift -r --gen go  xx.thrift
 
 service
-	一个客户一个goroutine,顺序读取并处理客户端的调用。map[methname]handle 存储调用
+	一个客户一个goroutine,顺序读取并处理客户端的调用。map[methname]handle 存储调用,除了method_unkonw错误,其他错误都退出G
 
 client
 	阻塞调用
