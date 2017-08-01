@@ -1,0 +1,10 @@
+cut 
+	-b select only these bytes (数字符)
+	-d use DELIM instead of TAB for field delimiter
+		-f select only these fields (数字段)
+
+       N      N'th byte, character or field, counted from 1
+       N-     from N'th byte, character or field, to end of line
+       N-M    from N'th to M'th (included) byte, character or field
+       -M     from first to M'th (included) byte, character or field
+

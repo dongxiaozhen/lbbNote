@@ -1,0 +1,11 @@
+
+sort	
+	-t   field-separator
+	-k   field-id
+	-r, --reverse 
+	   
+		-d, --dictionary-order
+		-g, --general-numeric-sort
+		-M, --month-sort          (JAN DEC)
+		-h, --human-numeric-sort  (2K 1G)
+		-n, --numeric-sort
