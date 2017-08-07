@@ -60,3 +60,4 @@ https://github.com/radovskyb/watcher				监控文件，文件夹变化
 go get github.com/grafana/grafana					图形监控系统
 go get -u github.com/mailru/easyjson/...            json
 https://github.com/xtaci/chat                       chat
+https://github.com/msgpack/msgpack-go               序列化
