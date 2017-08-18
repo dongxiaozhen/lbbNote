@@ -56,6 +56,10 @@ nsqd
 
 
 协议
+    IDENTIFY  客户端连接到nsqd后首先发送该命令(只能发送一次)，更新服务器上的客户端元数据和协商功能，压缩(snappy,deflate),tls,msgTimeout,heatbeat,,
+    CLS       客户端发送后服务器端会将客户端的rdyCount设置为0，不再发送数据。
+    RDY       客户端通知服务器可以接受的消息数量。客户端会起一个G，更新RDY
+    SUB       订阅一个topic/channel,,一个consume只能订阅一个
 	consume发送FIN cmd确认数据收到，REQ cmd请求数据重发
 
 
