@@ -26,6 +26,7 @@ git pull == git fetch + git merger
 git pull --rebase  = git fetch + git rebase 
 
 git remote -v 远程的git地址
+git remote set-url remote url 跟新 remote 的远程地址
 
 git rev-parse --git-dir         显示.git目录所在的位置
 git rev-parse --show-toplevel    显示工作区根目录
@@ -142,3 +143,6 @@ git diff HEAD 		work,stage中的内容和 HEAD比较
 
 
 git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)
+
+
+git add -u 添加已被跟踪的文件到stage
