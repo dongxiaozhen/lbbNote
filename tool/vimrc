@@ -26,6 +26,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'leshill/vim-json'
 "Plugin 'axiaoxin/vim-json-line-format'
 Plugin 'thinca/vim-quickrun'
@@ -33,6 +34,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'chrisbra/csv.vim.git'
+Plugin 'johngrib/vim-game-code-break'
 "Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " all of your Plugins must be added before the following line
@@ -43,6 +45,7 @@ filetype plugin indent on    " required
 syntax on
 set ts=4
 set sw=4
+set expandtab
 set number
 set cursorline
 set scrolloff=999
@@ -171,13 +174,17 @@ set tags+=/mnt/hgfs/paipai/cplus/tags
 " shortcuts remap
 nmap <F2> :tabnew<CR>
 nmap <F3> :tabclose<CR>
-map  <F4> <Esc>:%!python -m json.tool<CR>
+map  <F4><Esc>:%!python -m json.tool<CR>
 nmap <F5> :UndotreeToggle<CR>
 nmap <F7> :NERDTreeTabsToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F10> :QuickRun<CR>
 nmap <C-Left> :tabprevious<CR>
 nmap <C-Right> :tabnext<CR>
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+inoremap <Tab> <Esc>`^
 
 " show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -206,5 +213,5 @@ let g:csv_delim=','
 set rtp+=/home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
-set ignorecase smartcase
+" set ignorecase smartcase
 set modeline

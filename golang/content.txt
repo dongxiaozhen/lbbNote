@@ -119,3 +119,8 @@ bufio.Write  io缓存，flush 将buf中的数据写入文件(可能是先写在�
 rand 
 	The default Source is safe for concurrent use by multiple goroutines.
 	NewSource returns a new pseudo-random Source seeded with the given value. Unlike the default Source used by top-level functions, this source is not safe for concurrent use by multiple goroutines.
+
+
+string <------> []byte  复制转化
+    runtime.slicebytetostring
+    runtime.stringtoslicebyte
