@@ -29,3 +29,11 @@ tmux
 	~/.tmux.conf
 	run-shell "powerline-daemon -q"
 	source "{Local}/powerline/bindings/tmux/powerline.conf"
+
+
+
+
+
+
+golang版powerline
+    https://github.com/justjanne/powerline-go

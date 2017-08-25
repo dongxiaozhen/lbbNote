@@ -31,7 +31,9 @@ github.com/asciimoo/wuzz         						Interactive cli tool for HTTP inspection
 github.com/cyfdecyf/cow         					翻墙
 https://github.com/elastic/kibana    				监控
 
-go get -u -v github.com/kshvmdn/fsql/... 			文件搜索
+github.com/kshvmdn/fsql/... 		            	文件搜索
+https://github.com/justjanne/powerline-go           powerline
+
 https://github.com/sryanyuan/tcpnetwork 
 
 https://github.com/alex023/clock					定时器任务,基于红黑树
@@ -39,6 +41,7 @@ https://github.com/alex023/eventbus
 github.com/alecthomas/log4go
 https://github.com/donnie4w/go-logger				log 程序启动的时候读取日志数量，然后循环增加，启动一个G监控当前文件的大小
 gopkg.in/natefinch/lumberjack.v2  	         		log 写操作的时候判断文件大小，然后改名，启动一个G监控文件数量(读取目录下的所有文件名，判断日期)，移除最老日志
+github.com/Sirupsen/logrus                          log
 
 uuid/guid
 	github.com/rs/xid
@@ -62,7 +65,8 @@ go get -u github.com/mailru/easyjson/...            json
 https://github.com/xtaci/chat                       chat
 https://github.com/msgpack/msgpack-go               序列化
 https://github.com/casbin/casbin                    access control
-github.com/rcrowley/goagain                         平滑重启
+github.com/rcrowley/goagain                         平滑重启,（环境变量里记录listenid,新进程根据id重启创建Listern）
+https://github.com/facebookgo/grace                 gracefully terminated & restarted
 https://github.com/davyxu/cellnet                   游戏
 https://github.com/name5566/leaf                    游戏
 https://github.com/lonnng/nano                      游戏

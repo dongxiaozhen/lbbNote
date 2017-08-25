@@ -22,3 +22,7 @@ Emacs 模式(默认)
 
 vi 模式 
 	set -o vi  设置模式为VI
+
+
+powerline
+    https://github.com/justjanne/powerline-go
