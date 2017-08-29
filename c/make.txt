@@ -48,3 +48,7 @@ P hony Targe ts
 	‘$<’ is just the fist prerequisite:
 
 $(wildcard *.c ./sub/*c ......)  通配符展开
+
+
+targets 是一个文件，除非用.PHONY声明的为伪目标 All non-phony targets are files. Phony targets indicate that no such file will exist. Make should run the rule every time it's invoked and skip looking for the presence of a matching file.
+The shell code inside $(...) is evaluated once and it's output (STDOUT) is saved in variable

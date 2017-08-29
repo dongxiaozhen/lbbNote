@@ -1,36 +1,21 @@
-
         |                  |
 syn_sent|                  |
-        |                  |
         |                  |syn_revd
-        |                  |
-        |                  |
-        |                  |
 establis|                  |
-        |                  |
-        |                  |
         |                  |establis
-        |                  |
 
 
-            |                  |
 fin_wait_1  |                  |
-            |                  |
             |                  |close_wait (wait last_ack)
-            |                  |
-            |                  |
 fin_wait_2  |                  |
-            |                  |
-            |                  |
             |                  |last_ack
-            |                  |
-            |                  |
-            |                  |
 time_wait   |                  |
-            |                  |
             |                  |closed
-            |                  |
-            |                  |
+
+tcp_keepalive 内核层做了保活探测，优点：效率高，应用层可以专注业务，缺点：如果正好在某个中间路由器崩溃、重启的时候发送存活探测,TCP就 将会认为客户端主机已经崩溃、
+    tcp_keepalive_time（开启keepalive的闲置时 长）
+    tcp_keepalive_intvl（keepalive探测包的发送间隔）
+    tcp_keepalive_probes （如果对方不予应答，探测包的发送次数）
 
 netstat
 从整体上看，netstat的输出结果可以分为两个部分：

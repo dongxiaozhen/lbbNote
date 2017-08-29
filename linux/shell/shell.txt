@@ -39,3 +39,7 @@ function
 
 后台程序的ppid==1, 多且套几个shell程序或者使用subshell(),要不然远程ssh连接断开后，终端退出后会使程序退出
 
+
+source file 在当前shell里执行file文件。
+export 导出变量为环境，子shell 可以看到该变量的值，非导出变量，只能在自己的shell里能看到
+
