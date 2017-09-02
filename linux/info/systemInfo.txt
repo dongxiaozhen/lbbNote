@@ -1,4 +1,5 @@
 cpu  	/proc/cpuinfo   // cpu多核多线程
+    physical id // 物理CPU数量
 	cpu cores   // cpu核心数
 		cpu id  // 当前线程的核心id
 	siblings    // cpu 线程数
