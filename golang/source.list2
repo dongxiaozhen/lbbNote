@@ -15,7 +15,9 @@ https://github.com/antirez/disque.git    			内存消息分发
 github.com/insionng/macross  						待看
 github.com/go-mangos/mangos   						网络协议 pub/sub  rep/req bus pair
 murmur3  哈希
+
 github.com/coocood/freecache  
+github.com/muesli/cache2go
 
 github.com/spf13/hugo 博客
 github.com/json-iterator/go   						jsoniter 

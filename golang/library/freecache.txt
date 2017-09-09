@@ -1,0 +1,61 @@
+type entryPtr struct {
+    offset   int64  // entry offset in ring buffer
+    hash16   uint16 // entries are ordered by hash16 in a slot.
+    keyLen   uint16 // used to compare a key
+    reserved uint32
+}
+
+type entryHdr struct {
+    accessTime uint32
+    expireAt   uint32
+    keyLen     uint16
+    hash16     uint16
+    valLen     uint32
+    valCap     uint32
+    deleted    bool
+    slotId     uint8
+    reserved   uint16
+}  
+
+slotId == uint8(hashVal >> 8), 0-255
+
+type segment struct {
+    rb            RingBuf // 开启一个size byte 的空间
+    segId         int
+    entryCount    int64
+    totalCount    int64      // number of entries in ring buffer, including deleted entries.
+    totalTime     int64      // used to calculate least recent used entry.
+    totalEvacuate int64      // used for debug
+    totalExpired  int64      // used for debug
+    overwrites    int64      // used for debug
+    vacuumLen     int64      // rb现在可以留下的有效空间可以写数据，
+    slotLens      [256]int32 // 一个slotId现在对应有几个key
+    slotCap       int32      // 一个slotId最多可以有几个key
+    slotsData     []entryPtr // 存储slot信息，数据格式 |entryPtr1|entryPtr1|...|entryPtrn|entryPtrn| 一个slotId预留slotCap个位置，定位的方法：slotId * slotCap
+}
+
+
+set
+    1: 首先在slotsData 里查找有没有给定key的记录
+      1.1：有记录，判断现在的数据长度是否能存放在原来的位置
+        1.1.1能存放，直接修改，退出
+        1.1.2不能存放，删除原来的记录，在新的位置存放数据
+      1.2 没有记录，找位置存放数据
+        1.2.1 现在的vacuumLen是否大于要存放数据的长度
+          1.2.1.1 大于，直接写
+          1.2.1.2 循环判断后面一个data时候是过期
+             1.2.1.2.1 过期，增加vacuumLen
+             1.2.1.2.2 没过期，向前移动数据并更新slotsData[x].offset，接着判断后一个数据，
+
+get 
+    1:首先在slotsData 里查找有没有给定key的记录
+      1.1 有，读取rb，返回
+      1.2 没有，返回
+
+type RingBuf struct {                                                                                                                                                                                                                                                     
+    begin int64 // beginning offset of the data stream.
+    end   int64 // 写数据的长度，end-begin 永远 <=len(data)  ending offset of the data stream.
+    data  []byte
+    index int // 写指针  range from '0' to 'len(rb.data)-1'
+}  
+
