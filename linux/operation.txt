@@ -1,0 +1,54 @@
+
+1. 版本 centos 5.8/6.5
+2. 分区 系统分区和数据分区分离原则
+	2.1 多分区 / /boot /var /usr /data 
+3. swap 使用建议
+	设置一个小的，2G,4G,象征性的，万一要用呢
+4.	开发包 Development 
+5. 网络
+	5.1 /etc/sysconcifg/network-scripts/ifcfg-eth0
+		service network restart
+     5.2 主机名 /etc/sysconfig/network
+	5.3 DNS    /etc/resolv.conf
+	5.4 hosts  /etc/hostname
+
+	5.5 selinux
+		/etc/selinux/config  disable
+		关闭命令 setenforce 0
+	5.6 iptables
+		/etc/sysconfig/iptables
+		iptables -P INPUT ACCEPT
+		iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+		iptables -A INPUT -s 1.1.1.1 -p tcp -m tcp --dport 22 -j ACCEPT
+		iptables -A INPUT -i eth1 -j ACCEPT
+		iptables -A INPUT -i lo -j ACCEPT
+		iptables -P INPUT DROP
+		iptables -P OUTPUT ACCEPT
+		iptables -P FORWARD DROP
+
+		iptables -L -n
+
+6 sudo /etc/sudoers
+7 yum 源
+	epel: 		https://fedoraproject.org/wiki/EPEL
+	repoforge: 	http://repoforge.org/use/
+
+8 服务器时间NTP设置
+	8.1 通过crontab 设置时间同步
+	ntp.sjtu.edu.cn
+	/usr/sbin/ntpdate ntp.sjtu.edu.cn >> /var/log/ntp.log 2>&1;/sbin/hwclock -w
+
+调优
+1	ulimit 
+2	ip_conntrack_max  iptables相关
+3	swappiness 表示当内存使用超过(100-value)%的时候使用swap，
+	/proc/sys/vm/swappiness
+
+评估
+1 vmstat 内存，进程，cpu
+	vmstat 2 3  表示2秒一次，执行3次 
+2 iostat 主要是对磁盘的I/O 操作
+	iostat -c 3 5
+3 uptime 机器信息
+
+

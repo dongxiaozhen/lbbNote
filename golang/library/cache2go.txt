@@ -1,0 +1,6 @@
+启动一个G执行expirationCheck,循环遍历全部的key,删除过期的key,检索出最小的lifespan,设置定时器。
+
+
+缺点：
+	遍历所有的key,阻塞时间太长，不确定。
+    添加一个小的lifespan的key，会触发expirationCheck，
