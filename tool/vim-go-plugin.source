@@ -1,0 +1,16 @@
+golang.org/x/tools/cmd/goimports
+golang.org/x/tools/cmd/guru
+golang.org/x/tools/cmd/gorename
+golang.org/x/tools/go/gcexportdata
+golang.org/x/tools/go/loader
+golang.org/x/tools/go/buildutil
+golang.org/x/tools/imports
+
+
+cd ~/gowork/src/golang.org/x/tools/cmd/goimports && go install  && cp ~/go/bin/goimports ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/cmd/guru  && go install  && cp ~/go/bin/guru ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/cmd/gorename && go install  && cp ~/go/bin/gorename ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/go/gcexportdata && go install  && cp ~/go/bin/gcexportdata ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/go/loader && go install  && cp ~/go/bin/loader ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/go/buildutil && go install  && cp ~/go/bin/buildutil ~/.mypath
+cd ~/gowork/src/golang.org/x/tools/imports && go install  && cp ~/go/bin/imports ~/.mypath
