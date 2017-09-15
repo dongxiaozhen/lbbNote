@@ -23,7 +23,7 @@ git status --ignored -s (显示忽略跟踪的文件名)
 
 
 git pull == git fetch + git merger
-git pull --rebase  = git fetch + git rebase 
+git pull --rebase  = git fetch + git rebase
 
 git remote -v 远程的git地址
 git remote set-url remote url 跟新 remote 的远程地址
@@ -48,7 +48,7 @@ git reset 改变的是refs/head/branchName文件里的ID
 	git reset --soft commitID 将原先HEAD 到 commitID 之间的提交转到了stage中，refs/head/branchName指向commitID
 	git reset  commitID 将原先HEAD 到 commitID 之间的提交转到了work中，refs/head/brancNname指向commitID
 	git reset  commitID 将原先HEAD 到 commitID 之间的提交在work，stage中删除H，refs/head/branchName指向commitID
-	
+
 git clean -f     删除未跟踪文件
 
 git cherry-pick xxxx 用于把另一个本地分支的commit修改应用到当前分支。     xxxx(commitID)
@@ -74,7 +74,7 @@ git fsck --lost-found  丢失分支和stash后，用来恢复
 
       git rebase -i A  (然后改C为squad)
 
-git rebase -i 
+git rebase -i
 	删除一行commit 就相当于将该次提交删除
 	reword 可以修改此次commit message
 	squad 此行提交和前一次合并
@@ -121,19 +121,19 @@ repo
 	repo start 实际上是对git checkout -b 命令的封装
 
 显示指定文件相关的每一次diff
-	git log --graph 图形显示 
-    git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file] 
+	git log --graph 图形显示
+    git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file]
 	git log --follow file / git whatchanged file // 文件在那些提交中有变动
-    git log commit -1 -p [file] 
+    git log commit -1 -p [file]
 
 	git log --left-right dev...master (dev和master 提交对比)
 	git log dev ^master  (查看 dev 有，而 master 中没有的)
 	git log master..dev  (查看 dev 中比 master 中多提交了哪些内容)
 
-	git diff commit1 commit2  // commit1到commit2之间的修改 
-	git diff commit1 commit2  --stat // commit1到commit2之间的修改,只显示修改过的文件名 
+	git diff commit1 commit2  // commit1到commit2之间的修改
+	git diff commit1 commit2  --stat // commit1到commit2之间的修改,只显示修改过的文件名
 显示指定文件是什么人在什么时间修改过,每一行的提交记录
-    git blame [file]   
+    git blame [file]
 
 gitk -- filename   gitk显示
 
