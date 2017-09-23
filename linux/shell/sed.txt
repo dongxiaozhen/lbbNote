@@ -13,3 +13,8 @@
 
 for
 	for i in $(seq 14 35);do j=`expr $i - 4`;sed -i "${i}s/138010/138${j}/g" 	a.ini; done
+
+
+sed -e "cmd"  cmd里使用变量： $var    (直接使用)
+sed -e 'cmd'  cmd里使用变量： ‘$var’  (外面加单引号)
+    for i in $(seq 16 32);do name=$(printf addr_%d= $i); j=`expr 14800 + $i`;sed -i '/'$name'/c\'$name'10.33.83.240:'$j'' rpc_proxy_14901.ini ; done

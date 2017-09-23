@@ -18,6 +18,7 @@ murmur3  哈希
 
 github.com/coocood/freecache  
 github.com/muesli/cache2go
+https://github.com/golang/groupcache/
 
 github.com/spf13/hugo 博客
 github.com/json-iterator/go   						jsoniter 
@@ -75,6 +76,15 @@ https://github.com/lonnng/nano                      游戏
 https://github.com/liangdas/mqant                   游戏
 https://github.com/gonet2/game                      游戏
 
+https://github.com/rgburke/grv                      git 
 
 github.com/garyburd/redigo
 github.com/go-redis/redis
+
+https://github.com/youdao-api/go-ynote
+https://github.com/youdao-api/go-ydict
+
+https://github.com/facebookgo
+https://github.com/Qihoo360/poseidon
+http://open-falcon.com/
+
