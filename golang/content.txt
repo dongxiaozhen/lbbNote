@@ -9,7 +9,8 @@
 package const--> var ---> init()
 
 book 
-	golang-china/gopl-zh/
+#	golang-china/gopl-zh/
+    https://github.com/gopl-zh/gopl-zh.github.com
 	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
 	https://golang.org/doc/effective_go.html
 

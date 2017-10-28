@@ -88,3 +88,8 @@ https://github.com/facebookgo
 https://github.com/Qihoo360/poseidon
 http://open-falcon.com/
 
+一致性hash,增设虚拟节点
+    github.com/g4zhuj/hashring                          
+    https://github.com/stathat/consistent
+
+github.com/allegro/bigcache                        cache 
