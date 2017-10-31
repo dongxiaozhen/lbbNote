@@ -8,5 +8,16 @@ protoc --go_out=path *.proto libprotobuf.a(静态链接) -l libprotobuf(动态�
 github.com/golang/protobuf/protoc_gen_go     是protoc解析成go文件的插件
 github.com/golang/protobuf/proto              goprotobuf 提供的支持库，包含诸如编码（marshaling）、解码（unmarshaling）等功能
 
-github.com/google/protobuf        			protoc
 
+github.com/google/protobuf        			protoc
+    1 git clone https://github.com/google/protobuf
+    2 sudo apt-get install autoconf automake libtool curl make g++ unzip
+    3 ./autogen.sh
+    4 ./configure --prefix=/usr   (--prefix安装到/usr/lib,/usr/include，而不是默认的/usr/local/lib,/usr/local/include)
+    5 make
+    6 sudo make install
+    7 sudo ldconfig
+    8 技巧
+        pkg-config --cflags protobuf         # print compiler flags
+        pkg-config --libs protobuf           # print linker flags
+        pkg-config --cflags --libs protobuf  # print both

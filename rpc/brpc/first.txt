@@ -1,0 +1,3 @@
+install
+  sh config_brpc.sh --headers=/usr/include --libs=/usr/lib
+  make
