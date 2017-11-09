@@ -93,3 +93,6 @@ http://open-falcon.com/
     https://github.com/stathat/consistent
 
 github.com/allegro/bigcache                        cache 
+https://gitee.com/snail/proxy                      http,https,websocket,tcp,udp,socks5代理服务器
+https://gitee.com/bryan31/litx                     基于补偿的轻量级分布式事务框架
+https://github.com/prometheus/prometheus           监控系统
