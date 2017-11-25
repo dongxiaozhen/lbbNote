@@ -63,3 +63,21 @@ session
 
 翻页
 	C-b PgUp  
+
+
+2窗格移动
+ #up
+bind-key k select-pane -U
+#down
+bind-key j select-pane -D
+#left
+bind-key h select-pane -L
+#right
+bind-key l select-pane -R
+
+复制模式copy-mode
+    前缀 [ 进入复制模式
+    按 space 开始复制，移动光标选择复制区域
+    按 Enter 复制并退出copy-mode。
+    将光标移动到指定位置，按 PREIFX ] 粘贴
+  2: setw -g mode-keys vi   //#copy-mode 将快捷键设置为vi 模式
