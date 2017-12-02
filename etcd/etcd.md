@@ -19,3 +19,9 @@ listern-client-url 2379 监听客户端的请求
 listern-peer-url 2380 etcd服务器之间交流端口
 
 
+etcd 底层有重连机制，
+   put的时候服务器跌机，put会一直阻塞，直到服务重启
+   watch的时候服务跌机，服务重启后，重连。
+
+
+--max-request-bytes 最大发送的请求字节数，默认1.5M

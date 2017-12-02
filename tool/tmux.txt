@@ -81,3 +81,12 @@ bind-key l select-pane -R
     按 Enter 复制并退出copy-mode。
     将光标移动到指定位置，按 PREIFX ] 粘贴
   2: setw -g mode-keys vi   //#copy-mode 将快捷键设置为vi 模式
+
+
+
+tmate
+  sudo apt install tmate
+  tmate 开启
+  tmate show-messages
+  ssh xxx.tmate.io
+  exit 退出ssh

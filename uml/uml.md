@@ -8,5 +8,7 @@ plantuml 语法
    http://www.plantuml.com/plantuml/uml
 
 
-Graphviz    http://www.graphviz.org/Documentation.php 
+Graphviz    
+   http://www.graphviz.org/documentation/
+
    dot -T<type> -o<outfile> <infile.dot>

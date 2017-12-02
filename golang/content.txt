@@ -125,3 +125,6 @@ rand
 string <------> []byte  复制转化
     runtime.slicebytetostring
     runtime.stringtoslicebyte
+
+md5
+   计算多个md5需要每次都调用New,创建新的md5,然后write,sum,
