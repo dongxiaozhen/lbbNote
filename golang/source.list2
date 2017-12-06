@@ -81,8 +81,8 @@ https://github.com/rgburke/grv                      git
 github.com/garyburd/redigo
 github.com/go-redis/redis
 
-https://github.com/youdao-api/go-ynote
-https://github.com/youdao-api/go-ydict
+https://github.com/youdao-api/go-ynote            有道笔记
+https://github.com/youdao-api/go-ydict            有道翻译
 
 https://github.com/facebookgo
 https://github.com/Qihoo360/poseidon
@@ -96,3 +96,7 @@ github.com/allegro/bigcache                        cache
 https://gitee.com/snail/proxy                      http,https,websocket,tcp,udp,socks5代理服务器
 https://gitee.com/bryan31/litx                     基于补偿的轻量级分布式事务框架
 https://github.com/prometheus/prometheus           监控系统
+
+https://github.com/manifoldco/promptui             cli
+https://github.com/marcusolsson/tui-go             ui-cl
+
