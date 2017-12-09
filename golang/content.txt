@@ -14,6 +14,12 @@ book
 	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
 	https://golang.org/doc/effective_go.html
 
+条件编译
+   1> 条件编译语句要和package 包语句之间有空行
+   2> +build !linux
+   3> // +build go1.6,!go1.7  go1.7以上的不编译次文件
+
+
 gdb 调试golang   
 	gdb -tui -d $GOROOT 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
 	dlv 调试
