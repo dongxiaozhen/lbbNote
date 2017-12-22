@@ -25,6 +25,10 @@ gdb 调试golang
 	dlv 调试
 	gom // xinneng  go get github.com/rakyll/gom/cmd/gom
 
+    go test -c -o rpc_test -gcflags="-N -l"
+    gdb xxx
+        set args -test.run='TestRpcReOpen'
+
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
 	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
 

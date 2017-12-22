@@ -42,6 +42,7 @@ git checkout 改变的事refs/HEAD文件里分支名称
 	git checkout branch 切换分支
 	git checkout -b branch 创建并切换分支
 	git checkout  -b develop origin/master        // 创建并切换封装develop, 指向origin/master分支顶点端。
+    git checkout HEAD^(branchName) fileName //将本地的fileName文件回退到上上次提交的fileName版本
 
 git reset 改变的是refs/head/branchName文件里的ID
 	git reset HEAD filename 将stage中的提价退回到work区，(只是从stage到work,数据还在)
@@ -123,8 +124,14 @@ repo
 显示指定文件相关的每一次diff
 	git log --graph 图形显示
     git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file]
-	git log --follow file / git whatchanged file // 文件在那些提交中有变动
+    
+    // 文件在那些提交中有变动
+       git log -- file //只显示commitId
+       git log -p --file 
+	   git log --follow file / git whatchanged file // 文件在那些提交中有变动
     git log commit -1 -p [file]
+    git log --skip n 跳过前n个commit
+
 
 	git log --left-right dev...master (dev和master 提交对比)
 	git log dev ^master  (查看 dev 有，而 master 中没有的)
@@ -141,8 +148,12 @@ git diff 			work和stage的比较
 git diff --cached 	stage 与HEAD比较
 git diff HEAD 		work,stage中的内容和 HEAD比较
 
+git show commitID 显示该提交的变动信息
 
 git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)
 
 
 git add -u 添加已被跟踪的文件到stage
+
+
+git add --patch filename  暂存一个文件的一部分
