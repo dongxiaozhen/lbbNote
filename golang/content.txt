@@ -29,6 +29,8 @@ gdb 调试golang
     gdb xxx
         set args -test.run='TestRpcReOpen'
 
+int 字节长度和cpu位数有关
+
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
 	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
 
