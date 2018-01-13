@@ -11,6 +11,7 @@ tcpdump
 	
 过滤语法：tcp/ip协议栈方向   
 	协议 方向 类型
+    tcp dsct port 
 
 第三种是协议的关键字，主要包括fddi,ip,arp,rarp,tcp,udp等类型
 第二种是确定传输方向的关键字，主要包括src , dst ,dst or src, dst and src ,这些关键字指明了传输的方向。举例说明，src 210.27.48.2 ,指明ip包中源地址是210.27.48.2 , dst net 202.0.0.0 指明目的网络地址是202.0.0.0 。如果没有指明方向关键字，则缺省是src or dst关键字

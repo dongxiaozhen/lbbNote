@@ -1,3 +1,11 @@
+lshw 硬件
+lsblk 块设备
+lscpu 
+lspci -v -t
+lsusb 
+lsscsi
+fdisk -l
+
 cpu  	/proc/cpuinfo   // cpu多核多线程
     physical id // 物理CPU数量
 	cpu cores   // cpu核心数
