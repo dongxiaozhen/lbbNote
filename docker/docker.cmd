@@ -1,3 +1,33 @@
+Cgroup:资源控制 /sys/fs/cgroup
+	cpuset：分配制定的CPU和内存节点
+	cpu：控制cpu占用率
+	cpuacct: 统计cpu使用情况
+	memory:限制内存的使用上线
+	devices:设备权限控制
+	...
+Namespace:访问隔离 /proc/$$/ns 每个进程都有
+	Mount Namespace: 隔离文件系统挂载点
+	User Namespace: 隔离用户ID和组ID
+	UTS Namespace: 隔离主机名和域名
+	IPC Namespace: 隔离SYSTEMV IPC和POSIX消息队列
+	PID Namespace: 隔离进程ID
+	Net Namespace: 隔离网络资源
+rootfs:文件系统隔离
+容器引擎:生命周期控制
+libnetwork实现了5种驱动
+	1.bridge:默认的驱动。动态分配IP和配置路由，防火墙规则
+
+		容器1          容器2
+         eth0            eth0
+          |               |
+		 veth            veth
+ 	---------docker0网桥-----
+				|
+			   eth0
+
+	2.host: 容器与主机共享同一个network namespace
+
+
 修改/etc/default/docker  设置翻墙代理 export http_proxy="http://192.168.245.128:7777/"
 docker login
 docker images

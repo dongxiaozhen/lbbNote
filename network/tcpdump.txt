@@ -1,5 +1,7 @@
 http://www.cnblogs.com/defias/p/3434654.html
 
+man pcap-filter
+
 tcpdump 
    [ -c count ]  抓包数量
    [ -i interface ] 
@@ -8,10 +10,16 @@ tcpdump
    		[ -W filecount ] 循环文件数量
 	-s 一个包的长度 0表示不截断
 	-n  不对地址(比如, 主机地址, 端口号)进行数字表示到名字表示的转换.
+	-nn 不对协议号，端口号转换
+	-X 需要把协议和包内容都原原本本的显示出来
+	-t 输出时不打印时间戳
+	-v 输出更详细的内容，tos,ttl,校验值，总长度
 	
 过滤语法：tcp/ip协议栈方向   
 	协议 方向 类型
     tcp dsct port 
+
+	tcp dst port ftp 
 
 第三种是协议的关键字，主要包括fddi,ip,arp,rarp,tcp,udp等类型
 第二种是确定传输方向的关键字，主要包括src , dst ,dst or src, dst and src ,这些关键字指明了传输的方向。举例说明，src 210.27.48.2 ,指明ip包中源地址是210.27.48.2 , dst net 202.0.0.0 指明目的网络地址是202.0.0.0 。如果没有指明方向关键字，则缺省是src or dst关键字
