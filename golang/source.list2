@@ -101,3 +101,18 @@ https://github.com/manifoldco/promptui             cli
 https://github.com/marcusolsson/tui-go             ui-cl
 
 https://github.com/llgcode/draw2d                  canv
+
+
+rpc framework
+   https://github.com/twitchtv/twirp
+https://github.com/micro/go-micro                 pluggable RPC framework for distributed systems development
+
+https://github.com/jedisct1/piknik                 Copy/paste anything over the network!
+
+misc-server
+https://github.com/EwanValentine/shippy 
+
+
+kafka client lib
+    https://github.com/Shopify/sarama
+    https://github.com/bsm/sarama-cluster
