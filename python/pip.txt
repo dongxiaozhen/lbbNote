@@ -1,0 +1,8 @@
+
+安装
+sudo apt install pip3
+升级Pip3
+pip3 install --upgrade pip
+
+
+pip3 install awesome-finder
