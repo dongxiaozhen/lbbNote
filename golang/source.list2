@@ -116,3 +116,6 @@ https://github.com/EwanValentine/shippy
 kafka client lib
     https://github.com/Shopify/sarama
     https://github.com/bsm/sarama-cluster
+
+https://github.com/rgburke/grv                    git client
+https://github.com/ktr0731/evans                  grpc client

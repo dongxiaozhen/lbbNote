@@ -64,3 +64,9 @@ go tool pack        // 打包成.a文件
 go tool cgo         // src/cmd/cgo/doc.go有详细的cgo解释 
 
 
+环境变量：
+   GOBIN  go install生成的程序存放处。
+
+
+internal 包：
+    internal 包下的文件只能在internal上一层目录下的文件访问，其他目录不能引用。
