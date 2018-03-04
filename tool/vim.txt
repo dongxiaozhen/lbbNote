@@ -172,3 +172,7 @@ struct split and join
 查找所有用到该类型的地方
 	:GoReferrers
 
+格式化
+   ctrl+v(可视化选择) =
+   当前行缩进 ==
+   多行缩进 3==
