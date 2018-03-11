@@ -45,6 +45,8 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 倒入数据 mysql -u root -p database_name < dump.sql (database_name需要提前建立)
 
 group by 只显示一行  group_concat（） 将在group结果中的其他列的数据显示出来  
+    在select指定的字段要么就要包含在Group By语句的后面，作为分组的依据；要么就要被包含在聚合函数中
+    没有聚合函数，相当于去重。
 
 join 笛卡尔积（交叉组合）,左表和右表没有组合的不显示
 left join 左表和右表没有组合的,也显示左表的行
