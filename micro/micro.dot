@@ -1,0 +1,9 @@
+digraph G { 
+
+select ->strategy [label="选择策略"]
+client ->select[label="选择服务"]
+select ->registy[label="服务发现"]
+server ->registy[label="服务注册"]
+server ->codec[label="编码"]
+server ->transport[label="底层连接"]
+} 

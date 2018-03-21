@@ -44,3 +44,11 @@ dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
 		curl http://localhost:8500/v1/health/checks/namexxx
 
 
+健康检查
+    1,设置Interval，并设置Script，HTTP，TCP，GRPC中的一个
+      1.1  Script+ Interval 
+      1.2 HTTP+ Interval 这种检查将按照预设的时间间隔创建一个HTTP “get”请求。HTTP响应代码来标示服务所处状态.RL.  any 2xx code is considered passing, a 429 Too Many Requests is a warning, and anything else is a failure
+      1.3 TCP+ Interval 将按照预设的时间间隔与指定的IP/Hostname和端口创建一个TCP连接
+    2,设置TTL，(Timeto Live)  这种checks为给定TTL保留了最后一种状态，checks的状态必须通过HTTP接口周期性更新，如果外部接口没有更新状态，那么状态就会被认定为不正常。
+    注：Interval和TTL不能同时设置。
+
