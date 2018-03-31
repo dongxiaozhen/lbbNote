@@ -38,6 +38,8 @@ session
 			C-b h,j,k,l vim模式切换窗格
 
 			C-b },{ 窗格位置交换
+            
+            C-b z 窗口最大化
 
         C-b t 钟表
 

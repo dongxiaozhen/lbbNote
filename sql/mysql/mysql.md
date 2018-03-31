@@ -70,3 +70,24 @@ show create function func_name;
 
 ON DUPLICATE KEY
 insert into t_user_equip_generate_50 values(?,?) ON DUPLICATE KEY update   info = ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+锁（何登成大神解释比较清楚）：http://hedengcheng.com/?p=771
+锁深入浅出一书讲解：http://blog.sina.com.cn/s/blog_53b13d950100vtks.html
+
+
+row_count() 要紧跟在select,insert,update 之后，中间不能插入其他数据，然不要取出count结果不对

@@ -50,5 +50,16 @@ dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
       1.2 HTTP+ Interval 这种检查将按照预设的时间间隔创建一个HTTP “get”请求。HTTP响应代码来标示服务所处状态.RL.  any 2xx code is considered passing, a 429 Too Many Requests is a warning, and anything else is a failure
       1.3 TCP+ Interval 将按照预设的时间间隔与指定的IP/Hostname和端口创建一个TCP连接
     2,设置TTL，(Timeto Live)  这种checks为给定TTL保留了最后一种状态，checks的状态必须通过HTTP接口周期性更新，如果外部接口没有更新状态，那么状态就会被认定为不正常。
+          使用updateTTL接口更新
     注：Interval和TTL不能同时设置。
 
+
+
+
+
+consul 有健康检查，但是没有监控服务变动的接口，只能每次都拉去特定的服务，需要依赖外部模块
+    https://github.com/hashicorp/consul-template
+    https://github.com/kelseyhightower/confd
+
+
+getservice  可以注册访问，WaitTime:最少30s,最大10m, waitIndex:check.LastIndex
