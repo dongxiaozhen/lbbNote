@@ -1,4 +1,5 @@
 agent 有两种模式 server模式和client模式，唯一的区别就是client模式不参与选举
+     服务注册和健康检查都是在特定的agent上操作的，然后将信息发送到集群的server节点上，catalog只在server节点上通过raft log维护。
 
 ./consul agent -server -bootstrap-expect 3 -data-dir /tmp/consul -node=server001 -bind=10.31.63.15 -client=0.0.0.0 -ui
 		-client 设置监听地址，外网可以访问
@@ -63,3 +64,14 @@ consul 有健康检查，但是没有监控服务变动的接口，只能每次�
 
 
 getservice  可以注册访问，WaitTime:最少30s,最大10m, waitIndex:check.LastIndex
+
+consul 没有提供watch接口，但是很多接口提供了阻塞调用的实现，通过该方法实现watch
+      命令行提供了watch，也就是api的阻塞封装。
+
+// 设置节点维护状态
+   func (a *Agent) EnableNodeMaintenance(reason string) error
+// 取消节点维护状态
+   func (a *Agent) DisableServiceMaintenance(serviceID string) error
+
+
+// 服务节点挂了之后，是否可以在其他节点更新状态.
