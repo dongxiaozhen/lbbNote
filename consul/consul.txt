@@ -1,5 +1,18 @@
 agent 有两种模式 server模式和client模式，唯一的区别就是client模式不参与选举
      服务注册和健康检查都是在特定的agent上操作的，然后将信息发送到集群的server节点上，catalog只在server节点上通过raft log维护。
+     服务节点挂了
+       1:kill -9 杀死
+         a:通过health().service()接口获取服务，
+             1： passOnly=false 获取不到该节点的服务，
+             2： passOnly=true 获取不到该节点的服务,说明该服务不正常
+         b:通过catalog().service()接口获取服务,获取不到该节点的服务
+       2:SIGINT,SIGTERM,,,可捕捉的信号
+         a:通过health().service()接口获取服务，
+             1： passOnly=false 可以获取到该节点的服务，
+             2： passOnly=true 获取不到该节点的服务,说明该服务不正常
+         b:通过catalog().service()接口获取服务,可以获取到该节点的服务------说明程序agent优化退出，其挂载的服务都被注销
+
+      同一个svrId可以在不同的节点注册，显示两个服务。
 
 ./consul agent -server -bootstrap-expect 3 -data-dir /tmp/consul -node=server001 -bind=10.31.63.15 -client=0.0.0.0 -ui
 		-client 设置监听地址，外网可以访问
@@ -44,7 +57,6 @@ dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
 	查询serverName为namexxx的状态
 		curl http://localhost:8500/v1/health/checks/namexxx
 
-
 健康检查
     1,设置Interval，并设置Script，HTTP，TCP，GRPC中的一个
       1.1  Script+ Interval 
@@ -53,8 +65,6 @@ dig @127.0.0.1 -p 8600 namexxx.service.consul SRV
     2,设置TTL，(Timeto Live)  这种checks为给定TTL保留了最后一种状态，checks的状态必须通过HTTP接口周期性更新，如果外部接口没有更新状态，那么状态就会被认定为不正常。
           使用updateTTL接口更新
     注：Interval和TTL不能同时设置。
-
-
 
 
 
@@ -72,6 +82,3 @@ consul 没有提供watch接口，但是很多接口提供了阻塞调用的实�
    func (a *Agent) EnableNodeMaintenance(reason string) error
 // 取消节点维护状态
    func (a *Agent) DisableServiceMaintenance(serviceID string) error
-
-
-// 服务节点挂了之后，是否可以在其他节点更新状态.
