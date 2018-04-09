@@ -1,3 +1,4 @@
+
 agent 有两种模式 server模式和client模式，唯一的区别就是client模式不参与选举
      服务注册和健康检查都是在特定的agent上操作的，然后将信息发送到集群的server节点上，catalog只在server节点上通过raft log维护。
      服务节点挂了
@@ -12,7 +13,7 @@ agent 有两种模式 server模式和client模式，唯一的区别就是client�
              2： passOnly=true 获取不到该节点的服务,说明该服务不正常
          b:通过catalog().service()接口获取服务,可以获取到该节点的服务------说明程序agent优化退出，其挂载的服务都被注销
 
-      同一个svrId可以在不同的节点注册，显示两个服务。
+      同一个svrId可以在不同的节点注册，显示两个服务。解决方法：一台机器上一个agent,
 
 ./consul agent -server -bootstrap-expect 3 -data-dir /tmp/consul -node=server001 -bind=10.31.63.15 -client=0.0.0.0 -ui
 		-client 设置监听地址，外网可以访问
