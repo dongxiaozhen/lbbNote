@@ -157,3 +157,7 @@ git add -u 添加已被跟踪的文件到stage
 
 
 git add --patch filename  暂存一个文件的一部分
+
+
+取消跟踪文件
+   git rm --cached xxx
