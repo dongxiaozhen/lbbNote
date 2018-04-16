@@ -54,6 +54,7 @@ type maptype struct {
       data  unsafe.Pointer                                                                                                                                                                                                         
   }
 
+ // 编译的时候会给每个需要发射的类型建一个itab，以后直接获取，不用重新生成。,inter(接口名字)的类型名和_type(结构体名字)的类型名索引
  type itab struct {
    	inter  *interfacetype  // 接口信息,接口的方法记录
    	 _type  *_type          //变量的类型信息
