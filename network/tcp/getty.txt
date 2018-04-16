@@ -1,0 +1,8 @@
+getty https://github.com/AlexStocks/getty
+网络异步库
+
+Connect 封装net.Conn, Read，Write,Close 封装。
+Session 管理Connect,解析函数PkgHandler(Read,Write),EventListerner(OnOpen,OnClose,OnErr,OnMessage)
+       server: 启动一个G，读取底层，将解析的包发送到队列rQ
+               启动一个G，读取rQ,调用OnMessage,
+                          读取wQ,解析并调用底层发送数据

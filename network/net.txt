@@ -1,0 +1,22 @@
+ACL access control list 访问控制列表  
+    3p原则：
+       1 每种协议一个acl,
+       2 每个方向一个acl
+       3 每个接口一个acl
+
+BGP border gateway protocol 边界网关协议
+    边界网关协议（BGP）是运行于 TCP 上的一种自治系统的路由协议。 BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议。 BGP 构建在 EGP 的经验之上。 BGP 系统的主要功能是和其他的 BGP 系统交换网络可达信息
+
+
+OSPF open shortest path first 开放式最短路径优先
+      OSPF是内部网关协议
+
+CLB cloud load balance 云负载均衡
+    1 四层负载均衡 (ip+port+protocol)
+    2 七层负载均衡
+
+NAT Network Address Translation，网络地址转换
+       SNAT 源地址转化：内部机器访问外网。
+       DNAT 目的地址转化：外内网机器提供服务时,部机器访问内网，
+
+CDN的全称是Content Delivery Network，即内容分发网络
