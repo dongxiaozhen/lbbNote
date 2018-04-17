@@ -1,5 +1,9 @@
+create_version: 创建时的id
+mod_version:    最后一次修改时的id
+version:        现在的id
 
-
+linearizable get请求都要到leader,在leader端点操作，默认,数据准确
+Serializable get请求在连接的端点操作，快,数据可能不一致
 
 etcd 保存key/value键值对，多个etcd之间可以组成一个clustering集群，所有集群里的数据保存同步
 etcd集群里会有一个leader,写操作只能在leader上进行.在其他节点上写操作，会转发到leader上，leader再同步其他节点
@@ -101,3 +105,13 @@ etcdctl lease keep-alive  32696290C7D41A0A
 
 etcd 使用b+tree实现键值对存储
      使用btree实现key-revision检索
+
+
+etcd concurrency 选举机制
+       1:  session就是一个租约
+       2:  key的格式 /prefix/leaseId,监控/prefix下的key,取出创建时间最早的key作为Leader.
+       3： 将key和leaseId绑定，lease过期，删除key 
+            1> master节点      keepalive退出，然后关闭session,
+            2> 其他slave节点会 其他slave节点监控到key变化后，再次选出leader.
+
+sort  get 排序，字符比较，可以比较key, version, revisions 
