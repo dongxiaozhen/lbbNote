@@ -3,7 +3,7 @@ https://blog.golang.org/profiling-go-programs
 
 go tool pprof binaryFile pprofFile
 
-在栈顶的次数 
-在栈中出现的次数
+在栈顶的次数 (正在执行该函数)
+在栈中出现的次数 (该函数在直接或者间接的执行其他函数)
 
 箭头是调用关系，数字代表：A正在调用B的次数
