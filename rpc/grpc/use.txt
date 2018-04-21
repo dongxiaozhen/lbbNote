@@ -14,7 +14,7 @@ client
  
 
 方法调用
-   1 每个强求创建一个stream, 先发送SET帧，设置参数;再发送header,包括method:post;path:方法通过http2的path设置,最后发送调用方法的参数,通过DATA帧发送
+   1 每个请求创建一个stream, 先发送SET帧，设置参数;再发送header,包括method:post;path:方法通过http2的path设置,最后发送调用方法的参数,通过DATA帧发送
          http2://127.0.0.0.1:1000/routeguide.RouteGuide/GetFeature
    2 服务起发送header帧，status头表名调用状态，200成功;接着发送data帧，返回结果，最后发送header帧，grpc-stats:0表名成功
    3 grpc-status  codes/codes.go里定义 0:成功

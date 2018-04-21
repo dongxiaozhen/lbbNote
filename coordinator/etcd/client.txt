@@ -1,0 +1,4 @@
+client config
+      Endpoints         etcd地址
+      AutoSyncInterval  主动更新etcd地址。设置时间间隔
+     
