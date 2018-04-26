@@ -27,3 +27,18 @@ client
   UnaryRPC: 一元(普通)rpc
   Streaming RPC: stream rpc
   handleStream : server.go  处理请求入口
+
+
+http_transport,创建stream,streamId所以steam(activeStreams map[uint32]*Stream)
+    一个tcp连接启动三个G
+        1：reader          读物包
+        2: newLoopyWriter  发送包
+        3: keepalive       保活
+
+    reader 读物包，处理
+      header : transport.statsHandler.HandleRPC
+      data  :  stream.fc.onData
+
+naming 地址解析，获取有用地址，next()接口
+      ipwatch   ip知道直接返回
+      dnswatch  查询dns,返回服务器名称，然后名称解析到地址。
