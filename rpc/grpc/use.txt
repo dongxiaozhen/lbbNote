@@ -26,7 +26,7 @@ client
   grpc.NewClientStream 有stream的调用
   UnaryRPC: 一元(普通)rpc
   Streaming RPC: stream rpc
-  handleStream : server.go  处理请求入口
+  ServerHttp --> serveStreams --> handleStream --> (processUnaryRPC / processStreamingRPC): server.go  处理请求入口
 
 
 http_transport,创建stream,streamId所以steam(activeStreams map[uint32]*Stream)
@@ -44,5 +44,8 @@ naming 地址解析，获取有用地址，
       dnswatch  查询dns,返回服务器名称，然后名称解析到地址。
       Next()接口
 
-balance 负载均衡策略
-   Pick 选择一个连接
+Balance 
+    Up     grpc内部通知一个地址连接已建立
+    down   grpc内部通知一个地址连接不可用
+    Get    grpc获取一个已经建立链接的地址,可阻塞
+    Notify 获取所有地址
