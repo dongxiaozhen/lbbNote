@@ -1,0 +1,7 @@
+漫谈非加密哈希算法
+   https://segmentfault.com/a/1190000010990136
+
+哈希函数大检阅
+   https://coyee.com/article/10753-hash-functions-all-the-way-down
+
+
