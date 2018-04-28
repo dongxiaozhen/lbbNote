@@ -39,6 +39,10 @@ http_transport,创建stream,streamId所以steam(activeStreams map[uint32]*Stream
       header : transport.statsHandler.HandleRPC
       data  :  stream.fc.onData
 
-naming 地址解析，获取有用地址，next()接口
+naming 地址解析，获取有用地址，
       ipwatch   ip知道直接返回
       dnswatch  查询dns,返回服务器名称，然后名称解析到地址。
+      Next()接口
+
+balance 负载均衡策略
+   Pick 选择一个连接
