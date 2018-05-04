@@ -13,6 +13,11 @@
 	nameserver x.x.x.x
 	nameserver x.x.x.x
 
-重启dns sudo resolvconf -u
+#16.04 重启dns sudo resolvconf -u
+18.04 sudo systemctl restart systemd-resolve.service
+
+
+route 
+    sudo route add default gw 192.168.245.2
 
 访问 www.ip.cn 可以查看你的网络所属的是电信的还是移动，联通的，然后再“DNS”里找几个离你最近的DNS,如百度DNS,阿里dns，144DNS，，，联通dns
