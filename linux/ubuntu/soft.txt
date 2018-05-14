@@ -1,0 +1,2 @@
+KeePassXC  密码管理
+gitkraken  git 图形界面

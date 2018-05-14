@@ -12,6 +12,7 @@ Namespace:访问隔离 /proc/$$/ns 每个进程都有
 	IPC Namespace: 隔离SYSTEMV IPC和POSIX消息队列
 	PID Namespace: 隔离进程ID
 	Net Namespace: 隔离网络资源
+
 rootfs:文件系统隔离
 容器引擎:生命周期控制
 libnetwork实现了5种驱动

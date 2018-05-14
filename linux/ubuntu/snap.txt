@@ -1,0 +1,6 @@
+安装包和配置封装在一起
+/snap/
+
+snap find 
+snap install / refresh / remove
+snap revert 
