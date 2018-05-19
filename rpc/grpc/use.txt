@@ -44,8 +44,36 @@ naming 地址解析，获取有用地址，
       dnswatch  查询dns,返回服务器名称，然后名称解析到地址。
       Next()接口
 
-Balance 
+grpc.Balancer 
     Up     grpc内部通知一个地址连接已建立
     down   grpc内部通知一个地址连接不可用
     Get    grpc获取一个已经建立链接的地址,可阻塞
     Notify 获取所有地址
+
+balance.Balancer
+    HandleSubConnStateChange(sc SubConn, state connectivity.State)   更新一个addConn的连接状态转化
+    HandleResolvedAddrs([]resolver.Address, error)   通知新的地址解析出来了
+
+addConn 
+    connect 连接远端地址，两层循环，第一层是Retry(重连机制),第二层是地址列表(有一个地址连接上退出),有连接建立，启动一个G ,monitor监控连接状况，连接断开就重连
+            连接状态的转换要调用handleSubConnStateChange,通知上一层
+
+acBalancerWrapper  封装addConn
+    UpdateAddresses 如果新的地址列表有和旧地址列表重合的，就直接修改addConn，如果没有，就新建一个addConn，
+    connect         addConn的connect
+
+ccBalancerWrapper 封装Balancer
+     UpdateBalancerState  Balance回调单数，通知Balance的pick更新
+     NewSubConn           生成addConn
+     watcher              监控resolve的地址更新，连接的状态更新，更新Balancer(HandleSubConnStateChange,HandleResolvedAddrs)
+
+clientConn  Client,封装了客户端操作，
+
+resolver.ClientConn 接口,resolver解析出来后调用NewAddress，通知新地址列表
+     NewAddress()
+
+newCCResolverWrapper 封装resolve,地址变化后调用NewAddress()-->ClientConn.handleResolvedAddrs()-->balance.HandleResolvedAddrs()-->cc.NewSubConn()
+
+
+
+
