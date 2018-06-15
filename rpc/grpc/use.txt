@@ -44,11 +44,17 @@ naming 地址解析，获取有用地址，
       dnswatch  查询dns,返回服务器名称，然后名称解析到地址。
       Next()接口
 
-grpc.Balancer 
+grpc.Balancer  v1
     Up     grpc内部通知一个地址连接已建立
     down   grpc内部通知一个地址连接不可用
     Get    grpc获取一个已经建立链接的地址,可阻塞
     Notify 获取所有地址
+
+balancerWrapper grpc.Balancer的封装，从v1版本到balance.Balancer的封装
+      从v1.Notify获取地址，然后连接。用户控制Notify的输出来控制连接的建立、旧连接的断开(NewSubConn,RemoveSubConn)。
+      使用HandleSubConnStateChange 调用v1.Up
+      不适用HandleResolvedAddrs,印证了Notify的控制。
+      Pick 封装了v1.Get
 
 balance.Balancer
     HandleSubConnStateChange(sc SubConn, state connectivity.State)   更新一个addConn的连接状态转化
