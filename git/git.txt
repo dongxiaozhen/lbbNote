@@ -3,6 +3,8 @@ git config --global user.name "xxx"
 git config --global user.email xxxxx
 git config --list
 git config --global --list
+git config --global branch.autosetuprebase=always
+git config --global credential.helper store
 git config --global https.proxy 'socks5://127.0.0.1:1081'  // use shadowsock
 git config --global http.proxy 'socks5://127.0.0.1:1081'   // use shadowsock
 git config --global https.proxy 'http://127.0.0.1:7777/pac'  // use cow
