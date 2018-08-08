@@ -1,2 +1,5 @@
 json工具
 	github.com/simeji/jid
+
+github 代码目录插件
+    https://github.com/buunguyen/octotree

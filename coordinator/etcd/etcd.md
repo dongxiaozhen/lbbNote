@@ -1,6 +1,7 @@
 create_version: 创建时的id
 mod_version:    最后一次修改时的id
 version:        现在的id
+delete操作后，create_version，mod_version都会重置。
 
 linearizable get请求都要到leader,在leader端点操作，默认,数据准确
 Serializable get请求在连接的端点操作，快,数据可能不一致

@@ -176,3 +176,22 @@ struct split and join
    ctrl+v(可视化选择) =
    当前行缩进 ==
    多行缩进 3==
+
+
+
+
+编译：
+ ./configure --with-features=huge \
+    --enable-cscope \
+    --enable-rubyinterp \
+    --enable-largefile \
+    --disable-netbeans \
+    --enable-pythoninterp \
+    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
+    --enable-luainterp \
+    --with-luajit \
+    --enable-fail-if-missing \
+    --with-lua-prefix=/usr \
+    --prefix=/usr

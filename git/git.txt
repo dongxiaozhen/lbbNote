@@ -1,6 +1,7 @@
 git
 git config --global user.name "xxx"
 git config --global user.email xxxxx
+git config --global core.editor vim
 git config --list
 git config --global --list
 git config --global branch.autosetuprebase=always
