@@ -103,7 +103,7 @@ git rebase orign/master 和git merger的却别   （在develop分支放到orign/
 	           -
 			     -------c5-------c6(develop)
 
-(rebase后的结构)
+(rebase后的结构) 在develop分支rebase origin，提交在下面的是origin
 	c1--------c2---------c3--------c4(origin)
 	                                 -
 			                          -------c5-------c6(develop)

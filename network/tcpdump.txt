@@ -27,3 +27,10 @@ tcpdump
 其他重要的关键字如下：gateway, broadcast,less,greater   // gateway 表示从网关xx来的数据包
 三种逻辑运算，取非运算是 'not ' '! ', 与运算是'and','&&;或运算 是'or' ,'||'；
 
+
+tcpdump -ttttnnvvS
+tcpdump net 192.168.1.0/24
+tcpdump host 192.168.1.100
+tcpdump dst 192.168.1.100
+tcpdump port 22
+

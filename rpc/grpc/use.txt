@@ -1,3 +1,6 @@
+grpc生态 https://github.com/grpc-ecosystem
+
+
 server
    1 创建grpc server 
       grpcServer := grpc.NewServer(opts...)
@@ -79,6 +82,7 @@ resolver.ClientConn 接口,resolver解析出来后调用NewAddress，通知新�
      NewAddress()
 
 newCCResolverWrapper 封装resolve,地址变化后调用NewAddress()-->ClientConn.handleResolvedAddrs()-->balance.HandleResolvedAddrs()-->cc.NewSubConn()
+
 
 
 

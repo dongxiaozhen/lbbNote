@@ -45,6 +45,7 @@ github.com/alecthomas/log4go
 https://github.com/donnie4w/go-logger				log 程序启动的时候读取日志数量，然后循环增加，启动一个G监控当前文件的大小
 gopkg.in/natefinch/lumberjack.v2  	         		log 写操作的时候判断文件大小，然后改名，启动一个G监控文件数量(读取目录下的所有文件名，判断日期)，移除最老日志
 github.com/Sirupsen/logrus                          log
+github.com/uber-go/zap                              log
 
 uuid/guid
 	github.com/rs/xid
@@ -124,3 +125,6 @@ https://github.com/ktr0731/evans                  grpc client
 github.com/olekukonko/tablewriter                 table 格式化输出
 
 https://github.com/grpc-ecosystem                 grpc
+github.com/jesseduffield/lazygit                  git cui
+github.com/Jeffail/benthos                        net operation
+golang.org/x/time/rate                            限速,(n/limit * time 算出要等待的时间，然后设置last=now，下次循环)
