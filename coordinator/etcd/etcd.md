@@ -115,4 +115,7 @@ etcd concurrency 选举机制
             1> master节点      keepalive退出，然后关闭session,
             2> 其他slave节点会 其他slave节点监控到key变化后，再次选出leader.
 
+???
+  etcd does not ensure linearizability for watch operations. Users are expected to verify the revision of watch responses to ensure correct ordering.
+
 sort  get 排序，字符比较，可以比较key, version, revisions 

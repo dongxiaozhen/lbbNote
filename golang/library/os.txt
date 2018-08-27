@@ -1,0 +1,12 @@
+
+进程之间同步文件操作
+    syscall.Flock()  
+       syscall.LOCK_NB 非阻塞
+       syscall.LOCK_EX 互斥
+       syscall.LOCK_SH 共享
+
+os.Getpagesize()  文件页大小
+
+
+文件映射
+syscall.Mmap

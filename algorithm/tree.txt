@@ -1,0 +1,21 @@
+btree
+  最大数量 maxItems = 2*degree - 1
+  最小数量 minItems = degree -1 
+  insert   (只能在叶子节点插入数据,分裂产生父节点)
+     1 查找，找到就赋值。
+     2 检查该节点有没有children,没有就直接插入
+     3 检查children节点的item数量是否大于等于maxItems,是则应该分裂，
+       3.1 一分为二 second1,item,second2，中间item提升到父节点。second2加入父节点
+     4 递归
+    
+   delete 
+     1 叶子节点找到直接删除
+     2 非叶子节点找到后,判断子节点的item数量是否小于minItems,是则
+        2.1 如果该children 有左兄弟且其item数量大于minItems,
+           2.1.1 将父节点item 插入到右children的0号位置
+           2.1.2 删除左兄弟的最大值,赋值给父节点,其children 赋值到右兄弟的0children
+        2.2 如果该children 有右兄弟且其item数量大于minItems,
+           2.2.1 将父节点item 插入到左children的0号位置
+           2.2.2 删除右兄弟的最小值,赋值给父节点,其children 赋值到左兄弟的最后一个children
+        2.3 和右兄弟,父节点合并,删除父节点的右children
+     3 递归
