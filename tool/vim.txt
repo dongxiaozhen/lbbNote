@@ -158,6 +158,9 @@ struct split and join
 函数跳转
 	[[ 前一个函数
 	]] 后一个函数
+    ctrl+] 函数定义
+    ctrl+t 返回
+    ctrl+o 返回
 
 当前文件里搜索函数
 	:GoDecls

@@ -1,3 +1,16 @@
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-08-27 20:37
+
+
+操作展示
+   https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html
+
+
+IntervalTree
+   线段树
+ 
+
 btree
   最大数量 maxItems = 2*degree - 1
   最小数量 minItems = degree -1 

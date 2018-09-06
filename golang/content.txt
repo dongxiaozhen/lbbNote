@@ -126,3 +126,13 @@ md5
 sync.pool
     上层服务使用pool发送了数据，发送完就回收到pool，但是底层没有释放。所以使用pool的地方，需要看下一层函数怎么处理该变量。
    
+
+go:linkname
+    //go:linkname hello github.com/lastsweetop/testlinkname/hello.hellofunc
+    go:linkname引导编译器将当前(私有)方法或者变量在编译时链接到指定的位置的方法或者变量
+
+
+   linkname 包里需要有一个.s结尾的文件，需要导入 unsafe
+        import _ "unsafe"
+   跨包使用时，目标方法或者变量必须导入有方法体的包，这个编译器才可以识别到链接
+        import _ "github.com/lastsweetop/testlinkname/private"

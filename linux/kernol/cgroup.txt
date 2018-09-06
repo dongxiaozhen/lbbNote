@@ -1,0 +1,35 @@
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-08-27 14:45
+
+参看cgroup的消息
+    cat /proc/cgroups
+          Hierarchy 层级
+
+cgroups 以文件的方式提供应用接口，我们可以通过 mount 命令来查看 cgroups 默认的挂载点 
+    mount | grep cgroup
+
+
+查看进程的cgroup
+    cat /proc/xxx/cgroup
+       1 cgroup 树的 ID， 和 /proc/cgroups 文件中的 ID 一一对应。
+       2 和 cgroup 树绑定的所有 subsystem，多个 subsystem 之间用逗号隔开。这里 name=systemd 表示没有和任何 subsystem 绑定，只是给他起了个名字叫 systemd。
+       2 进程在 cgroup 树中的路径，即进程所属的 cgroup，这个路径是相对于挂载点的相对路径。
+
+
+ubuntu
+   sudo apt install cgroup-tools
+
+创建cgroup子目录
+   cd  /sys/fs/cgroup/cpu && mkdir nick_cpu  (会自动生存很多文件)
+       把 CPU 周期限制为总量的十分之一
+           echo 100000 > nick_cpu/cpu.cfs_period_us
+           echo 10000 > nick_cpu/cpu.cfs_quota_us
+
+   cd  /sys/fs/cgroup/memory && mkdir nick_memory
+       把进程的可用内存限制在最大 300M，并且不使用 swap
+          echo 314572800 > nick_memory/memory.limit_in_bytes  (314572800 == 1024*1024*300)
+          echo 0 > nick_memory/memory.swappiness
+
+   cgexec -g cpu:cname_x -g memory:cname_y run_file
+
