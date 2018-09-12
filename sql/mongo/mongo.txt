@@ -1,0 +1,28 @@
+mongo.txt
+
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-09-12 16:46
+
+mongod 启动服务器
+mongo xxx:xx 连接服务器
+
+db
+show dbs
+db.dropDatabase
+
+show tables == show collections
+db.collection_ins.insert() == db['collection_ins'].insert()
+db.collection_ins.drop()
+
+db.collection_ins.update({query},{update},{upsert/multi })
+db.collection_ins.remove({query},{justOne})
+
+db.collection_ins.find({query})  a:b a:{$xx:b} a:{$xx:b,$xy:c} $or:[{query1},{query2}}]   $lt/lt3/gt/gte/ne/   
+                       .limit(n)
+                       .skip(n)
+                       .sort({key:1/-1})
+                       
+db.collection_ins.createIndex({key:1/-1})
+
+
