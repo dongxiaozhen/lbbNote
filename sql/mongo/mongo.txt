@@ -24,5 +24,12 @@ db.collection_ins.find({query})  a:b a:{$xx:b} a:{$xx:b,$xy:c} $or:[{query1},{qu
                        .sort({key:1/-1})
                        
 db.collection_ins.createIndex({key:1/-1})
+db.collection_ins.getIndexes() 获取索引
+db.collection_ins.dropIndex()  删除指定索引
+db.collection_ins.dropIndexes() 删除全部索引
+db.collection_ins.totalIndexSize() 索引大小
 
+
+db.stats()
+db.collection_ins.stats()
 

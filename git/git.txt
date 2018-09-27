@@ -5,6 +5,7 @@ git config --global core.editor vim
 git config --list
 git config --global --list
 git config --global branch.autosetuprebase=always
+git config --global ore.quotepath false  // 中文文件名显示乱码
 git config --global credential.helper store
 git config --global https.proxy 'socks5://127.0.0.1:1081'  // use shadowsock
 git config --global http.proxy 'socks5://127.0.0.1:1081'   // use shadowsock
