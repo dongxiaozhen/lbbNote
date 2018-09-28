@@ -24,12 +24,12 @@ date
 	+%xxxx 显示格式
 
 find xxx|xargs grep xxxx 查找文件中有字符串
- find ./ -mtime +20 -a -mtime -50 -type f
+ find ./ -mtime +20 -mtime -50 -a  -type f
     -mtime +n n天前修改的
     -mtime -n n天内修改的
                ->      <-
      ---------|----------|------------｜--
-             +50        -20           now
+             -50        +20           now
 
 grep -l 列出匹配的文件名
      -r 递归遍历文件夹

@@ -32,7 +32,7 @@
     数次 动词 名词        数次表示将操作执行n次   2dw   twice delete word
 
 
-regex  /     (:h \v)
+regex  /     (:h \v) (:h magic)
 	\v very magic  除了0-9a-zA-Z_ 三种字符外，其他字符都有含义(不需要\转义)
 	\V very nomagic 原文搜索(转义字符只有\ / ?)
     \m magic 和 \v差不多
@@ -181,6 +181,24 @@ struct split and join
    多行缩进 3==
 
 
+
+删除空格行：
+    非编辑状态下输入:g/^$/d
+删除行首空格：
+    非编辑状态下输入:%s/^\s*//g
+删除行尾空格：
+    非编辑状态下输入:%s/\s*$//g
+
+Line number
+   .               the current line
+   $               the last line in the file
+   %               equal to 1,$ (the entire file)
+
+:g :global
+   :[range]g[lobal]/{pattern}/[cmd]
+
+:s :substitute
+   :[range]s[ubstitute]/{pattern}/{string}/[flags]
 
 
 编译：

@@ -1,0 +1,76 @@
+margic.txt
+
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-09-27 21:05
+
+/\i     \i      \i      identifier character (see 'isident' option) 
+/\I     \I      \I      like "\i", but excluding digits 
+/\k     \k      \k      keyword character (see 'iskeyword' option) 
+/\K     \K      \K      like "\k", but excluding digits 
+/\f     \f      \f      file name character (see 'isfname' option) 
+/\F     \F      \F      like "\f", but excluding digits 
+/\p     \p      \p      printable character (see 'isprint' option) 
+/\P     \P      \P      like "\p", but excluding digits 
+/\s     \s      \s      whitespace character: <Space> and <Tab> 
+/\S     \S      \S      non-whitespace character; opposite of \s                                                                                                                                                                                                              
+/\d     \d      \d      digit:                          [0-9] 
+/\D     \D      \D      non-digit:                      [^0-9] 
+/\x     \x      \x      hex digit:                      [0-9A-Fa-f] 
+/\X     \X      \X      non-hex digit:                  [^0-9A-Fa-f] 
+/\o     \o      \o      octal digit:                    [0-7] 
+/\O     \O      \O      non-octal digit:                [^0-7] 
+/\w     \w      \w      word character:                 [0-9A-Za-z_] 
+/\W     \W      \W      non-word character:             [^0-9A-Za-z_] 
+/\h     \h      \h      head of word character:         [A-Za-z_] 
+/\H     \H      \H      non-head of word character:     [^A-Za-z_] 
+/\a     \a      \a      alphabetic character:           [A-Za-z] 
+/\A     \A      \A      non-alphabetic character:       [^A-Za-z] 
+/\l     \l      \l      lowercase character:            [a-z] 
+/\L     \L      \L      non-lowercase character:        [^a-z] 
+/\u     \u      \u      uppercase character:            [A-Z] 
+/\U     \U      \U      non-uppercase character         [^A-Z] 
+/\_     \_x     \_x     where x is any of the characters above: character 
+                        class with end-of-line included 
+(end of character classes) 
+ 
+      magic   nomagic   matches 
+/\e     \e      \e      <Esc> 
+/\t     \t      \t      <Tab> 
+/\r     \r      \r      <CR>                                                                                                                                                                                                                                                  
+/\b     \b      \b      <BS> 
+/\n     \n      \n      end-of-line 
+/~      ~       \~      last given substitute string 
+/\1     \1      \1      same string as matched by first \(\) {not in Vi} 
+/\2     \2      \2      Like "\1", but uses second \(\) 
+           ... 
+/\9     \9      \9      Like "\1", but uses ninth \(\) 
+                                                                E68 
+/\z1    \z1     \z1     only for syntax highlighting, see :syn-ext-match 
+           ... 
+/\z1    \z9     \z9     only for syntax highlighting, see :syn-ext-match 
+
+        x       x       a character with no special meaning matches itself 
+ 
+/[]     []      \[]     any character specified inside the [] 
+/\%[]   \%[]    \%[]    a sequence of optionally matched atoms 
+ 
+/\c     \c      \c      ignore case, do not use the 'ignorecase' option 
+/\C     \C      \C      match case, do not use the 'ignorecase' option 
+/\Z     \Z      \Z      ignore differences in Unicode "combining characters". 
+                        Useful when searching voweled Hebrew or Arabic text.                                                                                                                                                                                                  
+ 
+      magic   nomagic   matches 
+/\m     \m      \m      'magic' on for the following chars in the pattern 
+/\M     \M      \M      'magic' off for the following chars in the pattern 
+/\v     \v      \v      the following chars in the pattern are "very magic" 
+/\V     \V      \V      the following chars in the pattern are "very nomagic" 
+/\%#=   \%#=1   \%#=1   select regexp engine /zero-width 
+ 
+/\%d    \%d     \%d     match specified decimal character (eg \%d123) 
+/\%x    \%x     \%x     match specified hex character (eg \%x2a) 
+/\%o    \%o     \%o     match specified octal character (eg \%o040) 
+/\%u    \%u     \%u     match specified multibyte character (eg \%u20ac) 
+/\%U    \%U     \%U     match specified large multibyte character (eg 
+                        \%U12345678) 
+/\%C    \%C     \%C     match any composing characters 
