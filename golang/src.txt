@@ -1,0 +1,26 @@
+src.txt
+
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-10-13 11:56
+
+src/runtime/string.go atoi 字符串转整形
+    从右到左一次出去一位数字数字 + 前面的数字和乘以10，
+    un := uint(0)
+    for i := 0; i < len(s); i++ {
+        c := s[i]
+        if c < '0' || c > '9' {
+            return 0, false
+        }   
+        if un > maxUint/10 {
+            // overflow
+            return 0, false
+        }   
+        un *= 10
+        un1 := un + uint(c) - '0' 
+        if un1 < un {
+            // overflow
+            return 0, false
+        }   
+        un = un1 
+    }

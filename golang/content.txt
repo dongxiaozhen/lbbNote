@@ -14,6 +14,7 @@ book
     https://github.com/gopl-zh/gopl-zh.github.com
 	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
 	https://golang.org/doc/effective_go.html
+    https://github.com/go-internals-cn/go-internals
 
 条件编译
    1> 条件编译语句要和package 包语句之间有空行
@@ -35,8 +36,8 @@ int 字节长度和cpu位数有关
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
 	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
 
-string 
-	type = struct string { uint8 *str; int len; }
+string 值传参 
+    type stringStruct struct { str unsafe.Pointer; len int };
 
 struct 匿名字段是结构体，也可以调用匿名字段的指针方法
 time
