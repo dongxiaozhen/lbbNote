@@ -200,6 +200,10 @@ Line number
 :s :substitute
    :[range]s[ubstitute]/{pattern}/{string}/[flags]
 
+换行
+  模式匹配的时候\n代表换行
+  替换的时候\r代表换行
+
 
 编译：
  ./configure --with-features=huge \

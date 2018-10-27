@@ -1,4 +1,7 @@
 
+测试数据下载  https://launchpad.net/test-db/+download
+
+
 mysql 执行了查询数据，但是没有读取(exec代替query)，会出现busy buffer的错误提示。
 mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation 空密码输入'' systemctl start/enable mariadb.service
 MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快， b+,保存索引
@@ -93,3 +96,27 @@ insert into t_user_equip_generate_50 values(?,?) ON DUPLICATE KEY update   info 
 
 
 row_count() 要紧跟在select,insert,update 之后，中间不能插入其他数据，然不要取出count结果不对
+
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf  skip-grant-tables // 不需要验证密码登录
+show engines //查看数据库支持的引擎
+show engine innodb status  // 查看引擎innodb的状态
+    Total large memory allocated 137428992
+    Dictionary memory allocated 88631
+    Buffer pool size   8191
+    Free buffers       7842
+    Database pages     349
+
+
+
+
+导入测试数据
+  1 修复测试数据库数据版本问题 storage_engine 不再使用
+  send -i 's/storage_engine/default_storage_engine/g' employees_partitioned3.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' employees_partitioned3.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' employees_partitioned2.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' test_employees_md5.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' employees_partitioned.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' employees.sql 
+  sed -i 's/storage_engine/default_storage_engine/g' test_employees_sha.sql 
+  mysql -t < employees.sql
+

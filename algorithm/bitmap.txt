@@ -1,0 +1,10 @@
+bitmap.txt
+
+:Author: libinbin
+:Email: libinbin@lmv
+:Date: 2018-10-22 20:46
+
+
+bitmap 位映射
+   1 考虑使用的前提是问题是不是只有两个状态，用0/1就可以表示
+   2  数据量大的问题可以考虑
