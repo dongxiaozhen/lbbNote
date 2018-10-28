@@ -1,0 +1,28 @@
+page   数据的管理模式，page_size=4k,管理数据的读取,使用mmap技术管理内存块。pgid*page_size = 内存地址
+     分类： 
+       branchPageFlag 中间节点
+       leafPageFlag   叶子节点
+       metaPageFlag   元信息节点，两个metapage,依此循环写入txid，管理第一个bucket的节点信息,也就是root node。
+                      每个事务开始时都会复制一份metapage信息。
+
+     kv组织  
+       -------|---|---|---|-----------------------------|---|---|----|---|---|---|---|--|
+      <-page->                                          <-node-key-><-node-value->.....
+              <-node_head->...
+
+            
+bucket 一个bucket管理一个b+tree,bucket信息存储和kv存储一样都在在inode中，用flag表示 bucketflag
+       page_header 之后存储的bucket_inode信息，value是pgid,用此pgid 再相应的page中查找kv信息。如果此时该b+tree几节点小，就可以使用inline方法，value=pgid+page_header
+node 内存模型,从page中读取节点信息到node中，
+     node的children字段是只在spill方法使用，在节点分裂时设置新节点的parent节点的children字段,分裂是从下往上分裂的。该节点的childre都分裂完后设置该节点的children = nil.
+     rebalance方法是合并节点的方法。找左兄弟合并()，如果没有(第一个节点),则找右面的兄弟节点合并(将右节点的子节点都移动到该节点中,最后删除右节点)
+          合并方法： 如果此节点叶子节点，则直接赋值该节点信息到兄弟节点中就行了node.inode
+                     如果此节点是中间节点，则将该节点的children信息都合并到兄弟节点 node.inode+node.children 
+                     如果此节点没有信息则删除.
+     
+rollback db使用写时复制机制，写操作会写到新的page页中并放到freelist的pedding中，如果要回退，只需要将pedding中的page释放就行。
+
+transaction 事务
+   读事务需要mmaplock.RLock
+   mmap需要mmaplock.Lock  node.spill --> tx.allocate-->db.allocate--->db.mmap
+   Update 最后有tx.Commit()
