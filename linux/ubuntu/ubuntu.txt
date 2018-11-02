@@ -73,3 +73,5 @@ history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条�
      uktools-purge    
      uktools-upgrade 
 
+
+bashrc 和 bash_profile 不能同时存在，否则读取bash_profile
