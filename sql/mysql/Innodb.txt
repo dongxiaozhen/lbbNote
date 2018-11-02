@@ -19,3 +19,32 @@ repeated read实现：在rc的基础上增加了GAP锁,保证不会再增加新�
 非serializable 读取上S(共享)锁，更删增设置X(排他)锁
 表锁和行锁
  在表没有索引的条件下，使用表锁,否则使用行锁
+
+
+
+
+
+表空间
+   所有的数据都属于表空间
+   如果设置了 innodb_file_per_table,则每张表的收据单独存放一个表空间
+段
+   数据段(b+树的叶节点),索引段，回滚段
+区
+  64个连续的页组成的,即1M。
+页
+  每个也16K
+  数据页，undo页，系统页，事务数据页，插入数据位图页.
+行
+  compact: 变长字段长度列表 | NULL标志位 | 记录头信息 | 列数据 | ...| 
+  redundant: 字段长度偏移列表 | 记录头信息 | 列数据| ... |
+  Fixed,Dynamic,Barracuda
+  行溢出：将一条记录的某些数据存储在真正的数据页面之外. 所有可变长度的列长度不超多65532。
+
+  
+  // show table status like 'aa';
+
+意向锁是表级别的锁
+在INFORMATION_SCHEMA架构下添加了INNODB_TRX、INNODB_LOCKS、INNODB_LOCK_WAITS
+在InnoDB存储引擎中，事务日志通过重做（redo）日志文件和InnoDB存储引擎的日志缓冲（InnoDB Log Buffer）来实现
+就是在写数据前，需要先写日志。这种方式称为预写日志方式（Write-Ahead Logging，WAL）。
+redo不同的是，redo存放在重做日志文件中，undo存放在数据库内部的一个特殊段（segment）中，这称为undo段（undo segment），undo段位于共享表空间内。

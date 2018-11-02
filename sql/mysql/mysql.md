@@ -106,8 +106,20 @@ show engine innodb status  // 查看引擎innodb的状态
     Free buffers       7842
     Database pages     349
 
+show @@version; // 查看mysql版本
+show variables like 'innodb_version'; // innode
+show variables like 'innodb_file_format';
+show variables like 'innodb_buffer_pool_size';
+show variables like 'innodb_log_buffer_size';
+show variables like 'innodb_additional_mem_pool_size';
 
 
+系统库 information_schema
+    PARTITIONS  分区
+    TRIGGERS
+    TABLES
+    VIEWS
+    STATISTICS 索引
 
 导入测试数据
   1 修复测试数据库数据版本问题 storage_engine 不再使用
@@ -119,4 +131,17 @@ show engine innodb status  // 查看引擎innodb的状态
   sed -i 's/storage_engine/default_storage_engine/g' employees.sql 
   sed -i 's/storage_engine/default_storage_engine/g' test_employees_sha.sql 
   mysql -t < employees.sql
+
+
+索引：聚集索引=primary_key 非聚集索引=辅助索引=index
+使用聚集索引的查询效率要比非聚集索引的效率要高，但是如果需要频繁去改变聚集索引的值，写入性能并不高，因为需要移动对应数据的物理位置。
+非聚集索引在查询的时候可以的话就避免二次查询，这样性能会大幅提升。
+不是所有的表都适合建立索引，只有数据量大表才适合建立索引，且建立在选择性高的列上面性能会更好。
+
+分区: 
+   RANGE a<10
+   LIST  a in (1,3,4)
+   HASH
+
+
 
