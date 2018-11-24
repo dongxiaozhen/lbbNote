@@ -47,3 +47,8 @@ Proto显示连接使用的协议,RefCnt表示连接到本套接口上的进程�
 Dosflood
     sync flood syn_send之后不发送数据，服务器一直处在syn_revd状态，以至于不能再接受更多的连接请求
         解决方法：在server前端部署FW,只有三次握手都完成才代理到后端的服务器，
+
+syns queue(半连接队列）；accept queue（全连接队列）
+三次握手中，server收到client的syn后，把相关信息放到半连接队列中，同时回复syn+ack给client，比如syn floods 攻击就是发生在这个阶段。
+server收到client的ack，如果这时全连接队列没满，那么从半连接队列拿出相关信息放入到全连接队列中，否则按tcp_abort_on_overflow指示的执行。
+这时如果全连接队列满了并且tcp_abort_on_overflow是0的话，server过一段时间再次发送syn+ack给client（也就是重新走握手的第二步），如果client超时等待比较短，就很容易异常了。

@@ -204,6 +204,9 @@ Line number
   模式匹配的时候\n代表换行
   替换的时候\r代表换行
 
+鼠标
+  set mouse=a
+  ctrl+左击 函数跳转
 
 编译：
  ./configure --with-features=huge \
@@ -220,3 +223,7 @@ Line number
     --enable-fail-if-missing \
     --with-lua-prefix=/usr \
     --prefix=/usr
+
+
+
+

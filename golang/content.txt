@@ -28,6 +28,7 @@ gdb 调试golang
 	gom // xinneng  go get github.com/rakyll/gom/cmd/gom
 
     go test -c -o rpc_test -gcflags="-N -l"
+    go test -run TestSimpleClientReconn
     gdb xxx
         set args -test.run='TestRpcReOpen'
 

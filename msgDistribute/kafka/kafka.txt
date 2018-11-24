@@ -1,0 +1,6 @@
+环境
+  1 安装java  
+      sudo apt install default-jdk
+  2 下载kafka
+      http://kafka.apache.org/quickstart
+

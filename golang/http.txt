@@ -1,3 +1,8 @@
 server 
 	net/http 每个连接启动一个goroutine
 	fasthttp 顺序启动256 × 1024 个goroutine,处理完一次请求的goroutine放入缓存池等待放入新的conn(channel 等待读取net.Conn)。 使用了很多种缓冲池。
+
+
+
+http2  如果发送的json数据里有\n或者不是二进制码，程序会报错  stream error: stream ID 1; PROTOCOL_ERROR
+       解决方方：hex.EncodeToString

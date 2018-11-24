@@ -1,1 +1,13 @@
 f 进入排序，添加列选项，列选项显示顺序移动 功能页面
+
+
+https://www.jianshu.com/p/fd6e35f529c1
+uptime  
+dmesg | tail 
+vmstat 1  
+mpstat -P ALL 1 
+pidstat 1  
+iostat -xz 1 
+free -m  
+sar -n DEV 1  
+sar -n TCP,ETCP 1 top

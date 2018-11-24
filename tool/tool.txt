@@ -3,3 +3,17 @@ json工具
 
 github 代码目录插件
     https://github.com/buunguyen/octotree
+
+
+bat 类似cat
+     https://github.com/sharkdp/bat
+
+fzf 搜索
+     https://github.com/junegunn/fzf
+
+diff-so-fancy  文件比较
+    https://github.com/so-fancy/diff-so-fancy
+
+
+ncdu   du
+    https://dev.yorhel.nl/ncdu
