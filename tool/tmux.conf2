@@ -54,6 +54,5 @@ bind r source ~/.tmux.conf \; display "Configuration reloaded!"
 # Enable mouse mode (tmux 2.1 and above)
 set -g mouse on
 
-# shft+鼠标左键 复制 shft+鼠标右键 粘贴
 bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy" 
 bind-key -T copy-mode MouseDragEnd1Pane send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
