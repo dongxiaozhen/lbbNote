@@ -14,7 +14,9 @@
 	nameserver x.x.x.x
 
 #16.04 重启dns sudo resolvconf -u
-18.04 sudo systemctl restart systemd-resolve.service
+18.04 
+   修改DNS /etc/systemd/resolved.conf
+   sudo systemctl restart systemd-resolve.service
 
 
 route 

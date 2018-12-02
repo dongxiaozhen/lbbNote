@@ -4,3 +4,8 @@
   2 下载kafka
       http://kafka.apache.org/quickstart
 
+
+kafka 注意事项
+   1 一个topic可以在一个broker有多个partion
+   2 replication-factor 不能大于 broker-num
+
