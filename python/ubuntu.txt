@@ -1,0 +1,8 @@
+
+1 先查看/usr/bin/python2 /usr/bin/python3 是否存在
+2 查看/usr/bin/python是否存在
+3 设置
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+4 切换 (输入要选择的版本编号)
+    sudo update-alternatives --config python

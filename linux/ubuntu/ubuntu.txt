@@ -75,3 +75,6 @@ history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条�
 
 
 bashrc 和 bash_profile 不能同时存在，否则读取bash_profile
+
+产看可以更新的包 apt list --upgradable
+更欢开机界面图形 /usr/share/gnome-shell/theme/ubuntu.css

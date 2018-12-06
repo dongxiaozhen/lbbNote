@@ -86,3 +86,4 @@ nm xxx
 
 dmidecode 该表包含一个描述该系统的硬件组成，以及其他有用的信息如序列号、BIOS版本
 
+nmon 查看系统负载，io,disk,net
