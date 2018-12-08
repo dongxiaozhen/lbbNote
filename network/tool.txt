@@ -2,3 +2,10 @@
 nc 
    nc -l 1234         服务器段
    nc 127.0.0.1 1234  客户端
+
+
+
+网络性能测量工具
+   https://github.com/Microsoft/Ethr
+   服务器端： ethr -s
+   客户端：   ethr -c localhost -n 64 -t c/b/p

@@ -129,3 +129,5 @@ github.com/jesseduffield/lazygit                  git cui
 github.com/Jeffail/benthos                        net operation
 golang.org/x/time/rate                            限速,(n/limit * time 算出要等待的时间，然后设置last=now，下次循环)
 github.com/soyking/e3w                            etcd ui
+
+https://github.com/Microsoft/Ethr                 网络性能测量工具
