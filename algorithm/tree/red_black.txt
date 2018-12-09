@@ -4,7 +4,7 @@ case2：D是黑色：
 - case2-1：D是黑色，DR不为NIL，必为红色
 - case2-2：D是黑色，DR为NIL，必为黑色
 
-    case2-2-1： case2-2条件+S节点为红色         以S为支点左旋,S,P互换颜色
+    case2-2-1： case2-2条件+S节点为红色    
     case2-2-2：case2-2条件+S节点为黑色
         case2-2-2-1：case2-2-2+P不能确定，SL为红色，SR任意
         case2-2-2-2：case2-2-2+P不能确定，SL为任意，SR红色
