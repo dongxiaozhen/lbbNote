@@ -1,0 +1,3 @@
+journal 系统日志
+  保存地址 /var/log/journal
+  修改日志保存最近两天的日志 sudo journalctl --vacuum-time=2d

@@ -61,12 +61,15 @@ git checkout 改变的事refs/HEAD文件里分支名称
 	git checkout -b branch 创建并切换分支
 	git checkout  -b develop origin/master        // 创建并切换封装develop, 指向origin/master分支顶点端。
     git checkout HEAD^(branchName) fileName //将本地的fileName文件回退到上上次提交的fileName版本
+    git checkout commit   游离head，(正常：HEAD->分支->commit, 游离: HEAD->commit)
 
 git reset 改变的是refs/head/branchName文件里的ID
 	git reset HEAD filename 将stage中的提价退回到work区，(只是从stage到work,数据还在)
 	git reset --soft commitID 将原先HEAD 到 commitID 之间的提交转到了stage中，refs/head/branchName指向commitID
 	git reset  commitID 将原先HEAD 到 commitID 之间的提交转到了work中，refs/head/brancNname指向commitID
 	git reset  commitID 将原先HEAD 到 commitID 之间的提交在work，stage中删除H，refs/head/branchName指向commitID
+
+git revert c2  撤销c2提交，(原理，创建新的commit,指向c2前一个commit)
 
 git clean -f     删除未跟踪文件
 
@@ -102,7 +105,7 @@ git rebase -i
 里程碑tag
   git tag -m "xxx" name <commitID>创建
   git tag -d name   删除
-  git discrible
+  git discrible  描述离你最近的锚点
   git push origin tagName  创建远程tag
   git push origin :tagName 删除远程的tag
 
@@ -111,6 +114,11 @@ git rebase -i
 	git branch -d name 检查name分支是否已经合并到其他分支，否则拒绝删除
 	git branch -D name 强制删除
 	git branch -m/-M oldname newname  重命名分支（拒绝/强制）
+    git branch -f branch1 commit1 将branch1的head指向commit1所在的位置
+<<<<<<< HEAD
+    git branch -u origin/master master  本地分支master和远程分支origin/master对应
+=======
+>>>>>>> 2b195b1... ss
 
 git rebase orign/master 和git merger的却别   （在develop分支放到orign/master分支后面）
 （原始结构）
@@ -182,3 +190,7 @@ git add --patch filename  暂存一个文件的一部分
 
 取消跟踪文件
    git rm --cached xxx
+
+
+使用 ^ 向上移动 1 个提交记录
+使用 ~<num> 向上移动多个提交记录，如 ~3

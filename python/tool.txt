@@ -2,3 +2,11 @@ https://github.com/oparex/vim-config
 
 virtualenv
 pip3 install --user termtosvg
+
+
+
+github.com/google/protobuf/python
+    python setup.py build
+    python setup.py install
+
+

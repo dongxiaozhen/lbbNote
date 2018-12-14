@@ -23,3 +23,28 @@ route
     sudo route add default gw 192.168.245.2
 
 访问 www.ip.cn 可以查看你的网络所属的是电信的还是移动，联通的，然后再“DNS”里找几个离你最近的DNS,如百度DNS,阿里dns，144DNS，，，联通dns
+
+#18.04 
+  dns  
+     服务名称: systemd-resolved
+     配置：    /etc/systemd/resolved.conf
+    
+  net 
+     服务名称：NetworkManager
+     命令
+        netplan try 测试新的文件是否正确
+        netplan apply 使新的文件生效
+     配置地址：/etc/netplan/01-network-manager-all.yaml
+       network:
+        version: 2
+        renderer: NetworkManager
+        ethernets:
+         ens33:
+          addresses: [192.168.245.140/24]
+          gateway4: 192.168.245.2
+          nameservers:
+           addresses: [8.8.8.8, 114.114.114.114]
+          dhcp4: no
+          optional: no
+
+
