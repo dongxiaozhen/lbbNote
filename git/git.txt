@@ -43,6 +43,8 @@ git status --ignored -s (显示忽略跟踪的文件名)
 git pull == git fetch + git merger
 git pull --rebase  = git fetch + git rebase
 
+git fetch origin foo:mybranch  拉取远程分支的foo来更新本地的mybranch(:mybranch不写，默认是更新本地的origin/foo)
+
 git remote -v 远程的git地址
 git remote set-url remote url 跟新 remote 的远程地址
 
@@ -75,7 +77,8 @@ git clean -f     删除未跟踪文件
 
 git cherry-pick xxxx 用于把另一个本地分支的commit修改应用到当前分支。     xxxx(commitID)
 
-git push origin master:refs/for/mybranch (在local repository中找到名字为master的branch，用他去更新remote repository下面名字为mybranch的branch)
+git push origin master:mybranch (用本地的master分支更新远程的mybranch)
+git push origin :mybranch (删除分支mybranch)
 
 git fsck --lost-found  丢失分支和stash后，用来恢复
 
@@ -115,10 +118,9 @@ git rebase -i
 	git branch -D name 强制删除
 	git branch -m/-M oldname newname  重命名分支（拒绝/强制）
     git branch -f branch1 commit1 将branch1的head指向commit1所在的位置
-<<<<<<< HEAD
     git branch -u origin/master master  本地分支master和远程分支origin/master对应
-=======
->>>>>>> 2b195b1... ss
+    git branch -v 查看所有分支
+    git branch -vv 产看本地分支和远程分支的对应关系
 
 git rebase orign/master 和git merger的却别   （在develop分支放到orign/master分支后面）
 （原始结构）
