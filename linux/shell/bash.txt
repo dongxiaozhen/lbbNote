@@ -24,7 +24,7 @@ date
 	+%xxxx 显示格式
 
 find xxx|xargs grep xxxx 查找文件中有字符串
- find ./ -mtime +20 -mtime -50 -a  -type f
+ find ./ -mtime -50 -mtime +20 -a  -type f
     -mtime +n n天前修改的
     -mtime -n n天内修改的
                ->      <-

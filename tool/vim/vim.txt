@@ -115,8 +115,13 @@ csv
 	 按列排序   :1,8CSVSort 3
 	 一列总和   :SumCol
 
-hex
+查看二进制文件
+  hex
 	:%!xxd
+    :set display=uhex
+  命令行：
+    xxd      2进制
+    hexdump  16进制
  
 大小写转换
 	g[u|U][l|b|w]

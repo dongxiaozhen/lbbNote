@@ -26,3 +26,10 @@ transaction 事务
    读事务需要mmaplock.RLock
    mmap需要mmaplock.Lock  node.spill --> tx.allocate-->db.allocate--->db.mmap
    Update 最后有tx.Commit()
+
+
+工具
+    go get -u github.com/hasit/bolter
+
+代码： 
+    go get -u github.com/boltdb/bolt/...
