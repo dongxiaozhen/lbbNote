@@ -35,40 +35,74 @@ func main() {
 	fmt.Printf("-------------------------page num: %d---------------------\n", num)
 
 	// page size 16
-	buf := [16]byte{}
+	buf := [4096]byte{}
 
-	for i := int64(0); i < num; i++ {
+	// 先读取两个meta数据
+	for i := int64(0); i < 2; i++ {
 		offset := psize * i
 		n, err := file.ReadAt(buf[:], offset)
 		if err != nil {
 			continue
 		}
-		if n != 16 {
+		if n != 4096 {
 			fmt.Println("size not equip 16")
 			continue
 		}
-		aa := *(*page)(unsafe.Pointer(&buf))
-
+		ptr := unsafe.Pointer(&buf[0])
+		aa := *(*page)(ptr)
 		if aa.flags == 4 {
 			fmt.Println("----------------------------------------------------------meta------------------------------------------------------------")
-			fmt.Printf("%v\n", aa)
-			dealMeta(file, offset)
+			fmt.Printf("meta %v\n", aa)
+			dealMeta(ptr, offset)
 		}
-		if i >= 2 {
-			if i == int64(m2.root.root) {
-				fmt.Println("----------------------------------------------------------root---------------------------------------------------------------------------")
+	}
+
+	for i := int64(2); i < num; i++ {
+		fmt.Println("begin enter", i)
+		buf1 := make([]byte, 4096)
+		offset := psize * i
+		n, err := file.ReadAt(buf1, offset)
+		if err != nil || n != 4096 {
+			fmt.Println("size not equal 4096", err)
+			continue
+		}
+		vptr := unsafe.Pointer(&buf1[0])
+		vaa := *(*page)(vptr)
+		if vaa.overflow > 0 {
+			fmt.Println("xxete", vaa, i)
+			length := (vaa.overflow + 1) * 4096
+			buf1 = make([]byte, length)
+			n, err := file.ReadAt(buf1, offset)
+			if err != nil || uint32(n) != length {
+				continue
 			}
+			i += int64(vaa.overflow)
 		}
-		if aa.flags == 2 {
-			fmt.Println("----------------------------------------------------------leaf---------------------------------------------------------------------------")
-			fmt.Printf("bucket %v\n", aa)
-			// dealLeaf(file, offset, aa.count)
-		}
-		if aa.flags == 1 {
-			fmt.Println("----------------------------------------------------------branch---------------------------------------------------------------------------")
-			fmt.Printf("bucket %v\n", aa)
-			dealBranch(file, offset, aa.count)
-		}
+
+		ptr := unsafe.Pointer(&buf1[0])
+		aa := *(*page)(ptr)
+		deal(ptr, aa)
+	}
+}
+
+func deal(ptr unsafe.Pointer, aa page) {
+	fmt.Println("deal------------page", aa)
+	switch aa.flags {
+	// leaf data ,contain normal-data and bucket-data
+	case 2:
+		fmt.Println("----------------------------------------------------------leaf---------------------------------------------------------------------------")
+		fmt.Printf("leaf %v\n", aa)
+		dealLeaf(ptr, aa.count)
+
+	case 1:
+		fmt.Println("----------------------------------------------------------b+tree---------------------------------------------------------------------------")
+		fmt.Printf("b+tree %v\n", aa)
+		dealBranch(ptr, aa.count)
+
+	case 0x10:
+		fmt.Println("----------------------------------------------------------freelist---------------------------------------------------------------------------")
+		fmt.Printf("free %v\n", aa)
+		dealFreeList(ptr, aa.count)
 	}
 }
 

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"unsafe"
 )
 
@@ -26,17 +25,11 @@ var m0 meta
 var m1 meta
 var m2 meta
 
-func dealMeta(file *os.File, offset int64) {
-	buf := [100]byte{}
-	n, err := file.ReadAt(buf[:], offset+16)
-	if err != nil {
-		return
-	}
-	if n != 100 {
-		fmt.Println("size not equip 100")
-		return
-	}
-	aa := *(*meta)(unsafe.Pointer(&buf))
+func dealMeta(ptr unsafe.Pointer, offset int64) {
+	data := *(*[4096]byte)(ptr)
+	buf := data[16:]
+
+	aa := *(*meta)(unsafe.Pointer(&buf[0]))
 	fmt.Printf("%v\n\n", aa)
 	if offset == 0 {
 		m0 = aa
