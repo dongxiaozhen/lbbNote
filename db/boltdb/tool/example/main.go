@@ -37,7 +37,7 @@ func main() {
 			log.Fatal(err)
 			return err
 		}
-		for i := 0; i < 600; i++ {
+		for i := 0; i < 6; i++ {
 			key := fmt.Sprintf("lbb2keyx%d", i)
 			value := fmt.Sprintf("lbb2Valuex%d", i)
 			err = b.Put([]byte(key), []byte(value))
@@ -61,7 +61,7 @@ func main() {
 			log.Fatal(err)
 			return err
 		}
-		for i := 0; i < 500; i++ {
+		for i := 0; i < 5; i++ {
 			key := fmt.Sprintf("nnkeyx%d", i)
 			value := fmt.Sprintf("nnValuex%d", i)
 			err = nb.Put([]byte(key), []byte(value))
@@ -81,17 +81,17 @@ func main() {
 			return err
 		}
 		b.FillPercent = float64(100)
-		err = b.Put([]byte("first"), []byte("libinbin"))
+		err = b.Put([]byte("1first"), []byte("1libinbin"))
 		if err != nil {
 			log.Fatal(err)
 			return err
 		}
-		err = b.Put([]byte("second"), []byte("lixinyuan"))
+		err = b.Put([]byte("1second"), []byte("1lixinyuan"))
 		if err != nil {
 			log.Fatal(err)
 			return err
 		}
-		err = b.Put([]byte("thirst"), []byte("liqinyuan"))
+		err = b.Put([]byte("1thirst"), []byte("1liqinyuan"))
 		if err != nil {
 			log.Fatal(err)
 			return err

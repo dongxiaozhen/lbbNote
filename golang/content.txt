@@ -36,6 +36,8 @@ int 字节长度和cpu位数有关
 
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
 	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
+    []type slice = struct []type{ type *array; int len; int cap; }, 获取slice指定位置的ptr, &a[0] !=&a
+    [num]type array   &a[0] == &a
 
 string 值传参 
     type stringStruct struct { str unsafe.Pointer; len int };
@@ -60,7 +62,6 @@ channel src/runtime/chan.go   make(chan int) 返回的是一个指针 *hchan
 	无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行
 	channel 类型可以比较,当且仅当两chan引用的是同一个对象。
 
-[]type          slice = struct []type{ type *array; int len; int cap; }
 
 range语句中的生成的数据是真实数据的拷贝，[],map,channel
 被defer的调用(函数)会在包含的函数的结尾执行，而不是代码块哦末尾(if,for)

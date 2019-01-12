@@ -19,7 +19,16 @@ node 内存模型,从page中读取节点信息到node中，
           合并方法： 如果此节点叶子节点，则直接赋值该节点信息到兄弟节点中就行了node.inode
                      如果此节点是中间节点，则将该节点的children信息都合并到兄弟节点 node.inode+node.children 
                      如果此节点没有信息则删除.
+     节点分裂的时候,如果node.parent为空，则创建默认为(branchPageFlag= 0x01)的节点,并设置parent的两个字段 
+         node.parent.children  将新分裂的自己点加入父节点的children字段里：
+         node.parent.inodes    将新分裂的节点的第一个key名加入inodes，此值就是branchPage,
+         
+
+内存数据node初始化：
+   当调用bucket的Put,Del的时候，会调用bucket的node()方法，改方法会将硬盘的数据读取到内存中然后构建node
      
+删除数据的时候会设置node的unbalanced字段，改字段会让节点rebalance
+
 rollback db使用写时复制机制，写操作会写到新的page页中并放到freelist的pedding中，如果要回退，只需要将pedding中的page释放就行。
 
 transaction 事务
