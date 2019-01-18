@@ -24,3 +24,6 @@ dig DNS查询
 
 监听0号端口:
 	会随机选择一个可用端口来监听，可用用来选择freeport
+
+
+telnet 退出 ctrl + ]  , 然后输入 quit
