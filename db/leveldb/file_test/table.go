@@ -9,7 +9,7 @@ import (
 )
 
 func sstable() {
-	data, err := ioutil.ReadFile("013255.ldb")
+	data, err := ioutil.ReadFile("000033.ldb")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -68,7 +68,9 @@ func (b *block) read(rstart int) {
 	_, n2 := binary.Uvarint(b.data[offset+n1:]) // value length
 	m := offset + n1 + n2
 	key := b.data[m : m+int(v1)]
-	fmt.Println("key", rstart, offset, string(key))
+	value := b.data[m+int(v1):]
+	bhd, n := decodeBlockHandle(value)
+	fmt.Println("key", rstart, offset, string(key), bhd, n)
 }
 
 func readBlock(data []byte) (*block, error) {

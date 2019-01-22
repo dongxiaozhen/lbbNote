@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	// sstable()
+	sstable()
 	// log()
-	manifest()
+	// manifest()
 }
 func readBytes(r *bytes.Buffer) []byte {
 	n, err := binary.ReadUvarint(r)
