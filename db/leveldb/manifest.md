@@ -1,0 +1,4 @@
+version 记录stNextFileNum,stJournalNum,stPrevJournalNum,stSeqNum,levels(每个等级的sstable信息)
+sessionRecord 记录vession变化的，保存到manifest文件中，包括stNextFileNum,stJournalNum,stPrevJournalNum,stSeqNum,comptr,add,delete sstable信息
+versionStaging 记录sessionRecord里相对version里的sstable文件的变化情况，即将sessionRecord里的add,delete整理成根据level管理的sstable集合，返回新的version
+sesion 管理version

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"io"
 	"io/ioutil"
 )
 
@@ -59,9 +60,9 @@ type sessionRecord struct {
 
 func (s sessionRecord) String() string {
 	ss := fmt.Sprintf("comparer:%s,journalNum:%d,prevJournalNum:%d,nextFileNum:%d,seqNum:%d", s.comparer, s.journalNum, s.prevJournalNum, s.nextFileNum, s.seqNum)
-	s1 := fmt.Sprintf("comptrs:%v", s.compPtrs)
-	s2 := fmt.Sprintf("addedTables:%v", s.addedTables)
-	s3 := fmt.Sprintf("deletedTables:%v", s.deletedTables)
+	s1 := fmt.Sprintf(",comptrs:%v", s.compPtrs)
+	s2 := fmt.Sprintf(",addedTables:%v", s.addedTables)
+	s3 := fmt.Sprintf(",deletedTables:%v", s.deletedTables)
 	return ss + s1 + s2 + s3
 }
 
@@ -166,4 +167,19 @@ func readManifestblk(data []byte) (length uint16) {
 		}
 	}
 	return
+}
+
+func readBytes(r *bytes.Buffer) []byte {
+	n, err := binary.ReadUvarint(r)
+	if err != nil {
+		return nil
+	}
+
+	x := make([]byte, n)
+	_, err = io.ReadFull(r, x)
+	if err != nil {
+		return nil
+	}
+
+	return x
 }

@@ -20,7 +20,7 @@ func sstable() {
 	b, _ := decodeBlockHandle(foot[tmp:])
 	// fmt.Println(a)
 	fmt.Println(b.offset, b.length)
-	fmt.Printf("%x\n", foot[40:])
+	fmt.Printf("%d,%x\n", dataLen, foot[40:])
 
 	indexData := data[b.offset:]
 	bh := b
@@ -62,6 +62,7 @@ type block struct {
 
 func (b *block) read(rstart int) {
 	i := 0
+	// restart里读取offset
 	offset := int(binary.LittleEndian.Uint32(b.data[b.restartsOffset+4*(rstart+i):]))
 	offset++                                    // shared always zero, since this is a restart point
 	v1, n1 := binary.Uvarint(b.data[offset:])   // key length
@@ -80,6 +81,14 @@ func readBlock(data []byte) (*block, error) {
 		restartsLen:    restartsLen,
 		restartsOffset: len(data) - (restartsLen+1)*4,
 	}
+	ss := data[b.restartsOffset:]
+	offsets := make([]uint32, b.restartsLen)
+	for i := 0; i < restartsLen; i++ {
+		offset := binary.LittleEndian.Uint32(ss)
+		ss = ss[4:]
+		offsets[i] = offset
+	}
+	fmt.Println(offsets)
 	return b, nil
 }
 

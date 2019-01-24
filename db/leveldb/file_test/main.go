@@ -1,30 +1,23 @@
 package main
 
 import (
-	"bytes"
-	"encoding/binary"
-	"fmt"
-	"io"
+	"flag"
 )
 
-func main() {
-	sstable()
-	// log()
-	// manifest()
-}
-func readBytes(r *bytes.Buffer) []byte {
-	n, err := binary.ReadUvarint(r)
-	if err != nil {
-		return nil
-	}
-	fmt.Println("readbytes:", n)
-	x := make([]byte, n)
-	_, err = io.ReadFull(r, x)
-	if err != nil {
-		return nil
-	}
+var index = flag.Int64("index", 1, "1:table,2:log,3:manifest")
 
-	return x
+func main() {
+	flag.Parse()
+
+	switch *index {
+	case 1:
+		sstable()
+	case 2:
+		log()
+	case 3:
+		manifest()
+	default:
+	}
 }
 
 const (
