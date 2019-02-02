@@ -36,7 +36,15 @@ iptables -t [filter|nat|raw] <-A/I/D/R> [INPUT|OUTPUT|PREROUTING|POSTOUTING|FORW
 										2.INPUT (数据包流入口)																															REJECT：明示拒绝
 										3.FORWARD (转发管卡)																															 ACCEPT：接受
 										4.OUTPUT(数据包出口)			
-										5.POSTROUTING（路由后）																													
-																										
-						
-	
+										5.POSTROUTING（路由后）
+		/etc/sysconfig/iptables
+		iptables -P INPUT ACCEPT
+		iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+		iptables -A INPUT -s 1.1.1.1 -p tcp -m tcp --dport 22 -j ACCEPT
+		iptables -A INPUT -i eth1 -j ACCEPT
+		iptables -A INPUT -i lo -j ACCEPT
+		iptables -P INPUT DROP
+		iptables -P OUTPUT ACCEPT
+		iptables -P FORWARD DROP
+
+		iptables -L -n
