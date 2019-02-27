@@ -131,3 +131,4 @@ golang.org/x/time/rate                            限速,(n/limit * time 算出�
 github.com/soyking/e3w                            etcd ui
 
 https://github.com/Microsoft/Ethr                 网络性能测量工具
+github.com/chenjiandongx/go-echarts               数据可视化

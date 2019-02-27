@@ -14,3 +14,11 @@ fortune  命令行名言警句
 
 cf 命令行文件管理器
     https://github.com/mananapr/cfiles
+
+tldr 类似man 命令手册
+  tldr.ostera.io 
+  
+  sudo apt-get install nodejs
+  sudo apt-get install npm
+  sudo npm install -g tldr 
+  tldr  --update
