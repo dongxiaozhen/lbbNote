@@ -29,6 +29,9 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
+// changed file mode from 100644 to 100755 提示，原因：让git忽略文件权限变动 
+git config --add core.filemode false
+
 github
 	github.com
 	1.开源软件点击fork就会在自己的账户下复制那个项目

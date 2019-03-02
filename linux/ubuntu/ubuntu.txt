@@ -2,6 +2,15 @@ sudo passwd root  使用su
 ctrl+Alt+F{1,6} 图形界面切换到命令行界面
 Alt+ F7 命令行界面切换到图形界面
 
+
+ubuntu 
+   /bin/sh -> /bin/dash  
+   脚本里一般不用,只有ubuntu启动的时候使用
+
+ubuntu 扩容
+   将根分区后面分区删掉，让未分配的容量和根分区合并
+   https://blog.csdn.net/daemon_2017/article/details/80660372
+
 取消图形界面 
    16.04  systemctl disable lightdm.service
    18.04  systemctl stop gdm.service              (gnome)
