@@ -41,6 +41,9 @@ regex  /     (:h \v) (:h magic)
 	\c 忽略大小写
 	:h/character-classes 查看\w含义
 
+
+搜索当前词：
+    Vim普通模式下使用 * 和 # 可以用于正向或反向精确查找当前光标所在单词。
 窗口竖直分割
     vsp sp
 vim -on file1 file2... 水平分屏
@@ -61,6 +64,8 @@ vim -On file1 file2... 垂直分屏
 	删除     d
 	替换     c
 	输入     shift + i
+行模式 shift+v
+单字母模式 v
 
 tab切换 					 tabn tabp
 buff切换					 bn bp buffers(列出buffer,继续输入b{1,2}跳转到相应的文件)

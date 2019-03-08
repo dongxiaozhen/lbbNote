@@ -22,6 +22,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'grep.vim'
 Plugin 'sh.vim--Cla'
+"需要安装https://github.com/beyondgrep/ack2
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'

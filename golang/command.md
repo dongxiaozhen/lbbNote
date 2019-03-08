@@ -4,6 +4,9 @@ go build
 	-v 打印出那些被编译的代码包的名字
 	-work 打印出编译时生成的临时工作目录的路径
 
+指定编译版本
+go build  -gcflags "-lang=go1.9"
+
 go vet 代码检查 
 	--all
 

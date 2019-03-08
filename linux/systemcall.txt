@@ -1,0 +1,35 @@
+在X86_64体系架构下，除了普通的系统调用外，还提供了sysenter和vsyscall方式来获取内核态的数据
+
+5 结论
+1. 系统调用指令：
+
+传统的32位系统调用int 0x80
+Intel的sysenter/sysexit
+AMD的syscall/sysret
+
+2. 传统Int 0x80系统调用
+系统调用号：EAX
+参数：EBX、ECX、EDX、ESI、EDI、EBP
+返回值：EAX
+
+3. 32位系统调用sysenter
+系统调用号：EAX
+参数：EBX、ECX、EDX、ESI、EDI、EBP
+返回值：EAX
+
+
+静态链接时，采用"call *_dl_sysinfo"指令；
+动态链接时，采用"call *%gs:0x10"指令；
+最终调用的是VDSO(linux-gate.so.1)中的__kernel_vsyscall函数；
+
+__kernel_vsyscall函数包含sysenter指令；
+syscall()函数也是类似的，根据静态/动态链接的不同分别采用的不同的指令，最终调用__kernel_vsyscall函数；
+
+4. 64位系统调用syscall
+系统调用号：RAX
+参数：RDI、RSI、RDX、R10、R8、R9
+返回值：RAX
+
+静态链接时，直接调用syscall指令；
+动态链接时，调用libc的系统调用代码，调用syscall指令；
+syscall()函数也是类似的，最终调用syscall指令
