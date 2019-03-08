@@ -1,0 +1,9 @@
+
+安装OpenJDK 10 JDK
+    $sudo apt install default-jdk
+
+安装OpenJDK 8 JDK
+    $sudo apt install openjdk-8-jdk
+
+如果我们在服务器上安装了多个Java版本，我们可以使用update-alternatives系统更改默认版本：
+    $sudo update-alternatives --config java
