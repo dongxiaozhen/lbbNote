@@ -157,3 +157,5 @@ ls -lR 递归显示目录
 ls -t 时间排序 
    -S 文件大小
    -r 反序排列
+
+stat filename  查看文件详细信息，inode,time,size,,

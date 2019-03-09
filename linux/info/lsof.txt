@@ -1,0 +1,12 @@
+lsof
+ lsof file_name
+ lsof -u user
+ lsof -p pid
+ lsof -c run_name
+ lsof -i :port
+      -i 4  　　　#ipv4地址
+      -i 6  　　　#ipv6地址
+      -i tcp  　#tcp连接
+      -i :3306 　#端口
+      -i @ip  　#ip地址 
+

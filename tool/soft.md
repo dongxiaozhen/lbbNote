@@ -22,3 +22,6 @@ tldr 类似man 命令手册
   sudo apt-get install npm
   sudo npm install -g tldr 
   tldr  --update
+
+错误命令后的嘲讽
+https://github.com/hkbakke/bash-insulter
