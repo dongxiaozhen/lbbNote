@@ -2,6 +2,13 @@
       systemd 同样是 sysv init daemon 的替代者。特点是与 sysvinit 完全兼容、更清晰的服务依赖关系、开机系统初始化服务并行启动、更少的shell开销。每个服务就是 一个 unit，对应于运行级别，systemd有一个 target （multi-user.target）。
       systemd 使用 socket 和 D-Bus 来开启服务，提供基于守护进程的按需启动策略，保留了 Linux cgroups 的进程追踪功能，支持快照和系统状态恢复，维护挂载和自挂载点，实现了各服务间基于从属关系的一个更为精细的逻辑控制，拥有前卫的并行 性能。systemd 无需经过任何修改便可以替代 sysvinit 。
 
+1。自己的配置
+    /usr/lib/systemd/system/*.service
+   链接地址： /etc/systemd/system/multi-user.target.wants/*.service
+              /lib/systemd/system/xxx
+   修改、新增配置文件后需要调用,重新生成依赖，服务信息： systemctl daemon-reload
+
+
 2. 服务启动
     服务配置文件放在 /lib/systemd/system/ 目录下，以 *.service命名。没有运行级别的概念，但是完全兼容sysvinit。
     rsyslog.service文件格式：

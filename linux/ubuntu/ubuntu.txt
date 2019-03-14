@@ -13,12 +13,22 @@ ubuntu 扩容
 
 取消图形界面 
    16.04  systemctl disable lightdm.service
-   18.04  systemctl stop gdm.service              (gnome)
+   18.04  
+      关闭图形界面
+          sudo systemctl set-default multi-user.target
+          sudo reboot
+      开启图形界面
+          sudo systemctl set-default graphical.target
+          sudo reboot
+          
+   #应该是不对的  18.04  systemctl stop gdm.service              (gnome)
 
 ubuntu 设置
 	sudo apt-get install build-essential
 	sudo apt-get install openssh-server // ssh
 	sudo apt-get install graphviz (go pprof pdf)
+    sudo apt install net-tools
+    sudo apt install ack
 	
 安装moc
 	add-apt-repository ppa:noobslab/themes
@@ -87,3 +97,11 @@ bashrc 和 bash_profile 不能同时存在，否则读取bash_profile
 
 产看可以更新的包 apt list --upgradable
 更欢开机界面图形 /usr/share/gnome-shell/theme/ubuntu.css
+
+
+
+软件多版本切换
+    update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
+    update-alternatives --list python
+    update-alternatives --config python

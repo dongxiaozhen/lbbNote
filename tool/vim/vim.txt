@@ -237,6 +237,12 @@ ds + 要删除的符号
 ys + 添加的符号包含的语句范围（比如s表示整行） + 要添加的符号
 
 
+安装
+  1 lua安装 官网代码编译
+  2 luajit 安装 官网代码编译
+  3 python2.7安装 apt install python2.7
+  4 python3.6-dev 安装  apt install python3.6-dev
+
 编译：
  ./configure --with-features=huge \
     --enable-cscope \

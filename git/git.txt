@@ -199,3 +199,9 @@ git add --patch filename  暂存一个文件的一部分
 
 使用 ^ 向上移动 1 个提交记录
 使用 ~<num> 向上移动多个提交记录，如 ~3
+
+
+安装配置
+   sudo apt install git
+   配置 ~/.gitconfig
+       mv gitconfig ~/.gitconfig
