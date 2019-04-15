@@ -168,6 +168,7 @@ repo
 	git log dev ^master  (查看 dev 有，而 master 中没有的)
 	git log master..dev  (查看 dev 中比 master 中多提交了哪些内容)
 
+    git log --author=xxx 提交某个人的提交
 	git diff commit1 commit2  // commit1到commit2之间的修改
 	git diff commit1 commit2  --stat // commit1到commit2之间的修改,只显示修改过的文件名
 显示指定文件是什么人在什么时间修改过,每一行的提交记录
@@ -192,6 +193,8 @@ git add -u 添加已被跟踪的文件到stage
 
 git add --patch filename  暂存一个文件的一部分
 
+
+git revert commitID 以新增一个 commit 的方式还原某一个 commit 的修改
 
 取消跟踪文件
    git rm --cached xxx

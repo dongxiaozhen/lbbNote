@@ -25,3 +25,7 @@ tldr 类似man 命令手册
 
 错误命令后的嘲讽
 https://github.com/hkbakke/bash-insulter
+
+
+linux文档阅读pdf,epub,mobi
+https://babluboy.github.io/bookworm/
