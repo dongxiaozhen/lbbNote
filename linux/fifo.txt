@@ -6,3 +6,11 @@
 对于以只写方式（O_WRONLY）打开的FIFO文件，
     如果open调用是阻塞的（即第二个参数为O_WRONLY），open调用将被阻塞，直到有一个进程以只读方式打开同一个FIFO文件为止；
     如果open调用是非阻塞的（即第二个参数为O_WRONLY | O_NONBLOCK），open总会立即返回，但如果没有其他进程以只读方式打开同一个FIFO文件，open调用将返回2(ENOENT:no such file or directory)，并且FIFO也不会被打开。
+
+
+管道文档
+   http://man7.org/linux/man-pages/man7/pipe.7.html
+
+
+
+多个程序写管道，linux只要内容不大于4096(PIPE_BUF),就可以保证原子写入，和阻塞，非阻塞模式 无关, 如果阻塞写入，则可能出现写一直卡着，影响超时管理

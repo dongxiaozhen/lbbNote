@@ -29,3 +29,7 @@ https://github.com/hkbakke/bash-insulter
 
 linux文档阅读pdf,epub,mobi
 https://babluboy.github.io/bookworm/
+
+
+markdown
+   zettlr   https://www.zettlr.com/download/deb

@@ -132,3 +132,6 @@ github.com/soyking/e3w                            etcd ui
 
 https://github.com/Microsoft/Ethr                 网络性能测量工具
 github.com/chenjiandongx/go-echarts               数据可视化
+
+https://github.com/djimenez/iconv-go              字体编码转换
+https://github.com/fyne-io/fyne                   UI 库

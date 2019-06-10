@@ -51,4 +51,8 @@
 	iostat -c 3 5
 3 uptime 机器信息
 
+程序Pid
+pidof hello
 
+程序运行时间
+ps -p 20642 -o lstart,etime

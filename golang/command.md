@@ -12,3 +12,20 @@ go vet 代码检查
 
 os.Exec
    vfork是为了解决fork拷贝页表项导致的性能问题, 而且大部分场景fork之后是调用exec，exec要把所有页表删除重置新的页表, 实在没必要再拷贝页表项。但由于vfork父子进程共享内存，所以使用要很小心，如果子进程修改某个变量，会影响到父进程，而且kernel会挂起父进程，让子进程先执行，这些限制基本限制vfork只适合跟exec的场景，不如fork通用。
+
+查看go设置代理
+   go help goproxy  
+   设置GOPROXY 环境变量
+
+
+包依赖解决
+   go help modules
+   go mod help 
+     	download    download modules to local cache
+	    edit        edit go.mod from tools or scripts
+	    graph       print module requirement graph
+	    init        initialize new module in current directory
+	    tidy        add missing and remove unused modules
+	    vendor      make vendored copy of dependencies
+	    verify      verify dependencies have expected content
+	    why         explain why packages or modules are needed
