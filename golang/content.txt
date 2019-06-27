@@ -139,3 +139,44 @@ go:linkname
         import _ "unsafe"
    跨包使用时，目标方法或者变量必须导入有方法体的包，这个编译器才可以识别到链接
         import _ "github.com/lastsweetop/testlinkname/private"
+
+##在转换操作前，不能将uintptr的值保存到临时变量中,某些GC会把变量进行搬移来进行内存整理，这种类型的GC称为“移动的垃圾回收器”。当一个变量在内存中移动后，所有指向旧地址的指针都应该更新，并指向新地址。uintptr只是个数值，它的值不会变动
+    错误示范   u := uintptr(p); p = unsafe.Pointer(u + offset)
+    正确示范。 end = unsafe.Pointer(uintptr(unsafe.Pointer(&s)) + unsafe.Sizeof(s))
+
+reflect 包里的slice,string有两种类型
+      // StringHeader is the runtime representation of a string.
+      // It cannot be used safely or portably and its representation may
+      // change in a later release.
+      // Moreover, the Data field is not sufficient to guarantee the data
+      // it references will not be garbage collected, so programs must keep
+      // a separate, correctly typed pointer to the underlying data.
+      type StringHeader struct {                                                                                                                                                                                                                                                    
+          Data uintptr
+          Len  int  
+      }
+      
+      // stringHeader is a safe version of StringHeader used within this package.
+      type stringHeader struct {
+          Data unsafe.Pointer
+          Len  int  
+      }
+      
+      // SliceHeader is the runtime representation of a slice.
+      // It cannot be used safely or portably and its representation may
+      // change in a later release.
+      // Moreover, the Data field is not sufficient to guarantee the data
+      // it references will not be garbage collected, so programs must keep
+      // a separate, correctly typed pointer to the underlying data.
+      type SliceHeader struct {
+          Data uintptr
+          Len  int  
+          Cap  int  
+      }
+      
+      // sliceHeader is a safe version of SliceHeader used within this package.
+      type sliceHeader struct {
+          Data unsafe.Pointer
+          Len  int  
+          Cap  int  
+      }
