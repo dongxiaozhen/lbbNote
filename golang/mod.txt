@@ -1,0 +1,32 @@
+
+GO111MODULE=off，go命令行将不会支持module功能，寻找依赖包的方式将会沿用旧版本那种通过vendor目录或者GOPATH模式来查找。
+GO111MODULE=on，go命令行会使用modules，而一点也不会去GOPATH目录下查找。
+GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：
+当前目录在GOPATH/src之外且该目录包含go.mod文件
+当前文件在包含go.mod文件的目录下面。
+
+Run go help modules for more about modules. (This is the main entry point for modules topics via go help)
+Run go help mod for more about the go mod command.
+Run go help module-get for more about the behavior of go get when in module-aware mode.
+Run go help goproxy for more about the module proxy, including a pure file-based option via a file:/// URL.
+
+https://goproxy.io/zh/
+
+https://github.com/golang/go/wiki/Modules
+
+代码下载到 $GOPATH/pkg/mod/
+
+go.mod
+indirect 表示这个库是间接引用进来的。
+
+
+
+更新代码库
+run go get -u to use the latest minor or patch releases (i.e. it would update from 1.0.0 to, say, 1.0.1 or, if available, 1.1.0)
+run go get -u=patch to use the latest patch releases (i.e., would update to 1.0.1 but not to 1.1.0)
+run go get package@version to update to a specific version (say, github.com/robteix/testmod@v1.0.1)
+
+
+依赖
+ go mod vendor
+ go build -mod vendor   编译从vendor里读取文件，默认不读取

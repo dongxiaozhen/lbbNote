@@ -4,3 +4,8 @@
 
 vim-go 
 	asmfmt  errcheck  gocode  godef  gogetdoc  goimports  golint  gometalinter  gorename  gotags  guru  impl  motion
+
+
+:GoCallee   定义函数的地方
+:GoCaller   调用函数的地方
+:GoImplement 实现接口的地方

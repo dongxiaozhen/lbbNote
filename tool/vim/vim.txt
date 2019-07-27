@@ -146,6 +146,7 @@ csv
 寄存器使用 "[a-zA-Z]   "ay "ad    :h quote_alpha
 			y  // defer to "0
 			d  // defer to "1 - 8
+            +  // 系统复制板
 	
 自动补全快捷键
 	ctrl + n 向后切换成员

@@ -1,0 +1,75 @@
+pprof consists of two parts:
+    runtime/pprof package built into every Go program
+    go tool pprof for investigating profiles.
+
+pprof supports several types of profiling, we’ll discuss three of these today:
+    CPU profiling.
+    Memory profiling.
+    Block (or blocking) profiling.
+    Mutex contention profiling.
+
+Do not enable more than one kind of profile at a time.
+
+
+
+跟踪
+import "github.com/pkg/profile"
+func main() {
+	defer profile.Start(profile.TraceProfile, profile.ProfilePath(".")).Stop()
+go tool trace
+
+gc跟踪
+执行使用环境变量  GODEBUG=gctrace=1
+
+
+heap,stack   ---escape analysis
+    To print the compilers escape analysis decisions, use the -m flag.    go build -gcflags=-m 
+
+goroutines
+2048 * 1,000,000 goroutines == 2GB of memory,  
+The Go runtime has been written for programs with tens of thousands of goroutines as the norm, hundreds of thousands are not unexpected.
+
+
+cgo
+cgo calls are similar to blocking IO, they consume a thread during operation.
+Do not call out to C code in the middle of a tight loop.
+
+
+
+影响程序性能的原因
+。   内存的速度 和CPU的速度不是一个数量级
+     cpu 缓冲，命令并行化处理，  （golang inline内连编译）
+
+
+
+Until Go 1.11 inlining only worked on leaf functions, a function that does not call another
+     -gcflags=-l, inlining disabled.
+
+
+条件编译
+// +build !debug
+// +build debug
+    go test -tags debug    条件编译
+
+
+环境编译显示需要的平台文件  
+   go list -f '{{.GoFiles}}' os/exec
+
+
+prove pass    证明通过，明显的分支选择
+     go build -gcflags=-d=ssa/prove/debug=on foo.go 
+
+
+-x toolexec
+      go build -toolexec="/usr/bin/time"
+
+-x 
+    go build -x   shows each command the go tool invokes
+
+-gcflags 
+      -S prints the (Go flavoured) assembly of the package being compiled.
+      -l controls the behaviour of the inliner; -l disables inlining, -l -l increases it (more -l 's increases the compiler’s appetite for inlining code). Experiment with the difference in compile time, program size, and run time.
+      -m controls printing of optimisation decision like inlining, escape analysis. -m-m` prints more details about what the compiler was thinking.
+      -l -N disables all optimisations.
+      -d=ssa/prove/debug=on, this also takes values of 2 and above, see what prints
+      The -d flag takes other values, you can find out what they are with the command go tool compile -d help. Experiment and see what you can discovrer.

@@ -21,3 +21,8 @@ diff-so-fancy  文件比较
 
 ncdu   du
     https://dev.yorhel.nl/ncdu
+
+
+
+lsd 图形颜色的ls
+     https://github.com/Peltoche/lsd

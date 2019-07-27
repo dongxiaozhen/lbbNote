@@ -5,3 +5,38 @@ go test -test.run=
 
 表格测试函数
 https://github.com/cweill/gotests
+
+
+golang.org/x/perf/cmd/benchstat
+
+go test -bench=. -cpu=1,2,4 ./examples/fib/
+go test -bench=. -benchtime=10s ./examples/fib/
+
+
+避免其他初始化程序影响bench测试
+。  func BenchmarkExpensive(b *testing.B) {
+        boringAndExpensiveSetup()
+        b.ResetTimer() 
+        for n := 0; n < b.N; n++ {
+                // function under test
+        }
+      } 
+    
+     func BenchmarkComplicated(b *testing.B) {
+        for n := 0; n < b.N; n++ {
+                b.StopTimer() 
+                complicatedSetup()
+                b.StartTimer() 
+                // function under test
+        }
+      }
+
+
+统计空间分配数量和大小对测试的影响
+     代码: b.ReportAllocs()
+     参数： go test -bench=. -benchmem bufio
+
+性能监控
+    -cpuprofile=$FILE writes a CPU profile to $FILE.
+    -memprofile=$FILE, writes a memory profile to $FILE, -memprofilerate=N adjusts the profile rate to 1/N.
+    -blockprofile=$FILE, writes a block profile to $FILE.
