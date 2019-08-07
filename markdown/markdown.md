@@ -60,3 +60,11 @@ UML
 ```sequence
 sdf
 ```
+
+
+数学公式
+  $  x^2  $
+
+
+数学公式
+   https://www.cnblogs.com/peaceWang/p/Markdown-tian-jia-Latex-shu-xue-gong-shi.html

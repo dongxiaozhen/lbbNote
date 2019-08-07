@@ -29,3 +29,9 @@ os.Exec
 	    vendor      make vendored copy of dependencies
 	    verify      verify dependencies have expected content
 	    why         explain why packages or modules are needed
+
+
+
+
+go build , go install
+     新版本的gomode机制下载的文件都是只读的，所以，go build 是时候，会报 permission denied的错误提示，使用go install 代替
