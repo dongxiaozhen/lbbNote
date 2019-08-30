@@ -181,6 +181,19 @@ reflect 包里的slice,string有两种类型
           Cap  int  
       }
 
+for循环中append,需要注意：
+    var a []byte
+	for i := byte(100); i < 109; i++ {
+		c := append(a, i)
+	}
+   如果a的容量不足，append会创建新的底层数据，c 每次都不一样
+   如果a的容量满足，append不会新建底层，c 每次都是使用a, 和预想的不一样
+
+  
 
 iota  
   iota在const关键字出现时将被重置为0(const内部的第一行之前)，const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。
+
+panic
+    由于panic 所在的函数返回的参数不会设置给调用者
+    panic之后的代码不回执行,然后依次退出调用层，直到遇到recover

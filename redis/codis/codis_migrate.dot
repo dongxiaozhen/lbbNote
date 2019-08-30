@@ -1,0 +1,33 @@
+@startuml
+
+fe -> dash: rebalance
+dash -> dash: slot pending_status save
+
+alt  goroutine check slot status
+    alt pending_slot
+        dash -> store: save prepareing
+    else preparing
+        dash -> proxy: fill_slot prepared
+        dash -> store: save prepared
+    else prepared
+        dash -> proxy: fill_slot migrating
+        dash -> store: save migrating
+    else migrating
+        dash -> redis: migrate_asyn 
+        note over dash,redis: migrate until asyn return 0 
+        dash -> store: save finished 
+    else finished
+        dash -> proxy: fill_slot finished
+    end
+end
+alt  proxy forward request
+    client -> proxy: send request
+    alt slot status migrating
+       proxy -> from_redis: sync key
+       proxy -> to_redis: foward  request
+    else direct forward
+        proxy -> to_redis: foward  request
+    end
+end
+@enduml
+

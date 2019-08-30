@@ -80,3 +80,7 @@ reflect
 	reflect.ValueOf(a).String() 返回 struct名字
 
 switch rr:=a.(type)   (type)只能在switch中出现，rr是变量，可以操作,相当于遍历a.(type)
+
+
+文章
+https://mp.weixin.qq.com/s/EbxkBokYBajkCR-MazL0ZA

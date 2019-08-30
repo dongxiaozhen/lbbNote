@@ -91,3 +91,14 @@ AVL树 平衡树   https://mp.weixin.qq.com/s/VX2TdgIlXDpUZ4AiU5pDeQ
   d-b,dr-nil,u-b,ul/ur -r :  
   d-b,dr-nil,u-b,ul/ur==nil,p-r:
   d-b,dr-nil,u-b,ul/ur==nil,p-b:
+
+
+
+
+
+B+树中间节点没有卫星数据，只存索引数据，所以同样大小的磁盘页可以容纳更多的节点元素，这就意味着，数据量相同的情况下B+树比B树更加的”矮胖“，相应会减小IO次数。其次，B+树的查询必须最终查找到叶子节点，而B树只要找到匹配元素即可，无论匹配元素处于中间节点还是叶子节点。
+综合起来，B+树比B树的优势有三个：
+1、单一节点存储更多的元素，使得查询的IO次数减少；
+2、所有查询都要查找到叶子节点，查询性能稳定；
+3、所有叶子节点形成有序链表，便于范围查询。
+https://www.cnblogs.com/nullzx/p/8729425.html

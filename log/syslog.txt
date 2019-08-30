@@ -1,0 +1,42 @@
+https://devconnected.com/syslog-the-complete-system-administrator-guide/
+
+
+III – What is Syslog message format?
+The syslog format is divided into three parts:
+    PRI part: that details the message priority levels (from a debug message to an emergency) as well as the facility levels (mail, auth, kernel);
+    HEADER part: composed of two fields which are the TIMESTAMP and the HOSTNAME, the hostname being the machine name that sends the log;
+    MSG part: this part contains the actual information about the event that happened. It is also divided into a TAG and a CONTENT field.
+
+Here are the Syslog facility levels described in a table:
+
+Numerical   Code	Keyword	Facility name
+0   	    kern	Kernel messages
+1   	    user	User-level messages
+2   	    mail	Mail system
+3   	    daemon	System Daemons
+4   	    auth	Security messages
+5   	    syslog	Syslogd messages
+6   	    lpr	Line printer subsystem
+7   	    news	Network news subsystem
+8   	    uucp	UUCP subsystem
+9   	    cron	Clock daemon
+10  	    authpriv	Security messages
+11  	    ftp	FTP daemon
+12  	    ntp	NTP subsystem
+13  	    security	Security log audit
+14  	    console	Console log alerts
+15  	    solaris-cron	Scheduling logs
+16-23	    local0 to local7	Locally used facilities
+
+
+Here are the syslog severity levels described in a table:
+
+Value	Severity	Keyword
+0	    Emergency	emerg
+1	    Alert	alert
+2	    Critical	crit
+3	    Error	err
+4	    Warning	warning
+5	    Notice	notice
+6	    Informational	info
+7	    Debug	debug

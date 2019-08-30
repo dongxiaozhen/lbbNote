@@ -1,0 +1,18 @@
+@startuml
+
+alt  proxy forward request
+    client -> proxy: new client
+    proxy -> proxy: new_session(loop_read  loop_write)
+    proxy -> proxy: read data(loop_read)
+    alt slot status migrating
+       proxy -> from_redis: sync key
+       proxy -> to_redis: foward  request
+    else direct forward
+        proxy -> to_redis: foward  request
+    end
+    proxy -> proxy: send to task queue(loop_read)
+    proxy -> proxy: pop task queue (loop_write)
+    proxy -> client: send data to client
+end
+@enduml
+
