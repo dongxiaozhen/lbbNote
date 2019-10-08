@@ -1,0 +1,55 @@
+#export TERM="xterm-256color"
+function _update_ps1() {
+    PS1="$(/Users/libinbin/go/bin/powerline-go  -error $?)"
+}
+
+if [ "$TERM" != "linux" ] && [ -f "/Users/libinbin/go/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias ll='ls -alF'
+alias tailf='tail -f'
+alias bag='cd /Users/libinbin/gowork/src/bag_server'
+alias arrive='cd /Users/libinbin/gowork/src/arrive_server'
+alias achive='cd /Users/libinbin/gowork/src/achivement_server/golang'
+alias udc='cd /Users/libinbin/gowork/src/user_data_center'
+alias boss='cd /Users/libinbin/gowork/src/tradition_boss_server'
+alias sproxy='cd /Users/libinbin/gowork/src/proxy_server'
+alias freetk='cd /Users/libinbin/gowork/src/freetk'
+alias note='cd /Users/libinbin/lbbNote'
+alias dxz='cd /data/src/github.com/dongxiaozhen'
+alias ranch='cd /Users/libinbin/gowork/src/paipai_ranch_server/bin'
+alias matchs='cd /Users/libinbin/gowork/src/paipai_ranch_server/src/town_server/servers/match_server'
+alias user_game='cd /Users/libinbin/gowork/src/paipai_ranch_server/src/town_server/servers/user_game_server'
+alias ab_server='cd /Users/libinbin/gowork/src/paipai_ranch_server/src/town_server/servers/ab_server'
+alias ranchs='cd /Users/libinbin/gowork/src/paipai_ranch_shared'
+alias pproxy='cd /Users/libinbin/gowork/src/paipai_ranch_server/src/pp_proxy_server'
+alias ppadmin='cd /Users/libinbin/gowork/src/paipai_ranch_server/src/ppword_admin'
+alias sshc='sshpass -f ~/.ssh/ceshi_password ssh -o "StrictHostKeyChecking no"'
+alias tiyanfu='sshpass -p "password" ssh cltx@10.31.64.43'
+
+alias proxy='export all_proxy=socks5://127.0.0.1:1081'
+alias unproxy='unset all_proxy'
+
+export GOPATH=/Users/libinbin/gowork
+export GOROOT=/Users/libinbin/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN:/usr/local/mysql/bin/ 
+# Enable the go modules feature
+#export GO111MODULE=on
+# Set the GOPROXY environment variable
+export GOPROXY=https://goproxy.io
+alias gamessh='ssh root@192.168.100.98'
+
+source /usr/local/etc/bash_completion.d/sshp
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+export CLICOLOR=1
+export LSCOLORS=gxfxaxdxcxegedabagacad
+source ~/.git-completion.bash
