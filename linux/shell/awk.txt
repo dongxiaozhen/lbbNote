@@ -2,6 +2,7 @@ awk
 awk '{commad}' file
 -F ':'
 -F '[()]' 方括号制定多个分割符号
+-F "[: ]"
 Records and fields
 	$0  Records are read in one at a time
 	$1, $2,,$NF 列

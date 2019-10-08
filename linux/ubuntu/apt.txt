@@ -1,3 +1,5 @@
+介绍apt 和 apt-get 的区别(apt = apt-get + apt-cache)
+   https://itsfoss.com/apt-vs-apt-get-difference/
 3.1. apt-get
 3.2. apt-cache
 

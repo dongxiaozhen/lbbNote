@@ -7,3 +7,7 @@
 
 条件概率。
    图形化展示概念。 http://setosa.io/conditional/
+
+
+微积分
+    https://www.geogebra.org/m/x39ys4d7
