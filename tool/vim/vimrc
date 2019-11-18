@@ -14,6 +14,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -36,14 +37,16 @@ Plugin 'chrisbra/csv.vim.git'
 Plugin 'johngrib/vim-game-code-break'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'fatih/gomodifytags'
+Plugin 'lervag/vimtex'
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+Plugin 'flazz/vim-colorschemes'
 
 " 需要安装go get -u github.com/cweill/gotests/...
 Plugin 'buoto/gotests-vim'
 "Plugin 'aperezdc/vim-template'
 
 "Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-Plugin 'lervag/vimtex'
 
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -64,12 +67,16 @@ set ts=4
 set sw=4
 set expandtab
 set number
-set cursorline
-set scrolloff=999
+"设置光标移动后是否移动窗口
+"set scrolloff=999
 set encoding=utf-8
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,gb2312,big5
+"set fileencodings=utf-8,gbk
 
 let &termencoding=&encoding
-set fileencodings=utf-8,gbk
 
 " 高亮显示搜索结果
 set hlsearch
@@ -81,12 +88,16 @@ set nofoldenable
 
 let g:vim_markdown_folding_disabled = 1
 " colorscheme molokai
+"colorscheme molokai_dark
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " ctrlsf 使用 需要安装ag  sudo apt-get install silversearcher-ag
-let g:ctrlsf_ackprg='ag'
+"let g:ctrlsf_ackprg='ack'
 " CtrlSF locates project root by searching VCS root (.git, .hg, .svn, etc.)
-let g:ctrlsf_default_root = 'project'
-
+"let g:ctrlsf_default_root = 'project'
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>F <Plug>CtrlSFVwordExec
 nnoremap <C-F>o :CtrlSFOpen<CR>
@@ -106,7 +117,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 " ctrlp.vim
-" let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -197,6 +208,7 @@ map  <F4> :%!python -m json.tool<CR>
 "nmap <F5> :UndotreeToggle<CR>
 map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
 imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+nmap <F6> :nohl<CR>
 nmap <F7> :NERDTreeTabsToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F10> :QuickRun<CR>
@@ -206,6 +218,8 @@ nnoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
+map <C-a> :vertical resize +20<CR>
+map <C-l> :vertical resize -20<CR>
 
 " show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -227,18 +241,20 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " rename the identifier under the cursor to a new name
 au FileType go nmap <Leader>e <Plug>(go-rename)
-let g:go_bin_path = "/home/libinbin/.mypath" 
+let g:go_bin_path = "/Users/libinbin/.mypath" 
 let g:NERDSpaceDelims=1
 let g:csv_delim=','
 
-set rtp+=/home/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=/Users/libinbin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim
 autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 set laststatus=2
 set t_Co=256
 " set ignorecase smartcase
 set modeline
-"set mouse=a 手动启动
+set mouse=a
+"vmap <c-c> "+y
+vmap <F6> "+y 
 
 "片段管理工具
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -252,3 +268,54 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+"add file header
+map <F10> :call TitleDet()<cr>'s
+function AddTitle()
+    call append(00,"/*")
+    call append(01," * Created: ".strftime("%Y-%m-%d %H:%M %z"))
+    call append(02," *")
+    call append(03," * Modified: ".strftime("%Y-%m-%d %H:%M %z"))
+    call append(04," *")
+    call append(05," * Description: ")
+    call append(06," *")
+    call append(07," * Author: libinbin")
+    call append(08," */")
+    echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+endfunction
+
+"update file header
+function UpdateTitle()
+    normal m'
+    execute '/\s\*\sModified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M %z")@'
+    normal ''
+    echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+endfunction
+
+"add or update fileheader
+function TitleDet()
+    let n=1
+    while n < 8
+        let line = getline(n)
+        if line =~ '^\s\*\sModified:'
+            call UpdateTitle()
+            return
+        endif
+        let n = n + 1
+    endwhile
+    call AddTitle()
+endfunction

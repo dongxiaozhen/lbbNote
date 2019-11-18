@@ -33,7 +33,6 @@ ssh root@192.168.1.23远程连接
 telnet ctrl+backspace 删除  ctrl+ent 回车 
 	 open host port  // tcp连接
 
-crond		 sencond minutes hours dayofMonth Month dayofweek year
 whoami 	 	登陆用户
 
 iftop iotop htop 网络，io, (cpu,mem)

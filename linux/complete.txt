@@ -1,0 +1,25 @@
+命令行补全
+    complete
+
+查看所有的补全 complete
+
+设置简单的补全
+    complete -W "red green blue yellow purple pink orange" color
+        -W 之后是补全列表
+        color 代表需要补全的命令
+    complete -F _nodenv nodenv
+        -F 之后是补全函数
+      
+
+补全函数
+    $COMP_LINE contains the full line that was typed, 
+    $COMP_WORDS is that same line broken into an array of words 
+    $COMP_POINT is the cursor’s index position.
+    最后返回命令 COMPREPLY
+
+
+生效
+    .bash_profile 里面source 补全文件
+
+
+

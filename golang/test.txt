@@ -5,6 +5,7 @@ go test -test.run=
 
 表格测试函数
 https://github.com/cweill/gotests
+https://www.yuque.com/ksco/uiondt/napwx1  测试说明
 
 
 golang.org/x/perf/cmd/benchstat

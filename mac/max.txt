@@ -1,0 +1,3 @@
+iterm  https://aaaaaashu.gitbooks.io/mac-dev-setup/content/iTerm/index.html
+mac 配置 https://aaaaaashu.gitbooks.io/mac-dev-setup/content/iTerm/index.html
+

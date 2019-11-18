@@ -1,0 +1,5 @@
+0   to first character in the line 
+;  repeat the last "f", "F", "t", or "T" N times
+,  repeat the last "f", "F", "t", or "T" N times in opposite direction
+
+
