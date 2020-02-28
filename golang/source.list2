@@ -135,3 +135,14 @@ github.com/chenjiandongx/go-echarts               数据可视化
 
 https://github.com/djimenez/iconv-go              字体编码转换
 https://github.com/fyne-io/fyne                   UI 库
+https://github.com/tidwall/tile38                 Rtree实现的空间算法
+https://github.com/baidu/bfe                      百度代理
+https://github.com/petar/GoLLRB                   红黑树
+https://github.com/huandu/skiplist                跳跃表
+
+https://github.com/zhiqiangxu/qrpc                 rpc框架
+
+https://tip.golang.org/doc/                       golang
+https://github.com/casbin/casbin                  权限控制
+
+https://github.com/iamshuaidi/CS-Book             书籍下载
