@@ -145,3 +145,9 @@ show variables like 'innodb_additional_mem_pool_size';
 
 
 
+
+优化前：sql1 = select * from test where val=4 limit 300000,5
+优化后：sql2 = select * from test a inner join (select id from test where val=4 limit 300000,5)
+优化原理: limit 的offset 比较大的时候，减少回表操作
+    1 sql1 需要把所有的数据准备好之后，然后丢去300000个数据，最后取5个
+    2 sql2 先找出3000005个索引，然周过滤出5会让索引，最后再查处所有数据

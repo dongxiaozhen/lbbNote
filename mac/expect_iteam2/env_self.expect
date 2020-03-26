@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set timeout -1
+set send_slow {1 .005}
+
+set ip [lindex $argv 0]
+set user [lindex $argv 1]
+set passwd [lindex $argv 2]
+
+spawn ssh -p 22 ${user}@${ip}
+expect {
+"yes/no" { send "yes\r"; exp_continue}
+"password:" { send "${passwd}\r" }
+}
+
+interact

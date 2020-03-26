@@ -1,0 +1,21 @@
+#!/usr/bin/expect
+
+set timeout -1
+set send_slow {1 .005}
+
+set ip [lindex $argv 0]
+set user "libinbin"
+set passwd "user_passwd"
+
+spawn ssh ${user}@10.33.101.152
+expect {
+"yes/no" { send "yes\r"; exp_continue}
+"password:" { send "${passwd}\r" }
+}
+
+expect "Input:" {send "i\n"}
+expect "Input IP Address:" {send -s "${ip}\r"}
+expect "Input:" {send -s "1\n"}
+
+
+interact

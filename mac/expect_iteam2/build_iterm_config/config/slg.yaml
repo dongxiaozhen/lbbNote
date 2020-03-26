@@ -1,0 +1,10 @@
+basic:
+  name: slg
+  ip: "127.0.0.1"
+  command: expect
+  script: ~/.expect/env_slg.expect
+  tag: slg
+
+services:
+  - {ip: 10.31.62.10}
+  # - {ip: 10.31.62.66}

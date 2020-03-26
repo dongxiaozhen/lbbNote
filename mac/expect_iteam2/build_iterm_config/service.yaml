@@ -1,0 +1,22 @@
+id:
+  old:
+    min: 0
+    max: 150000000
+  new:
+    min: 150000001
+service:
+  valet_drop_recode:
+    old:
+      - 
+        range: 0,31
+        ip: 10.33.68.161
+      -
+        range: 32,63
+        ip: 10.33.80.222
+    new:
+      - 
+        range: 0,31
+        ip: 10.33.108.26
+      -
+        range: 32,63
+        ip: 10.33.108.243

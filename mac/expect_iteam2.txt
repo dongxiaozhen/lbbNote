@@ -1,0 +1,2 @@
+1 修改里面的user_name,user_passwd
+2 ./build_iterm_config -out "/Users/libinbin/Library/Application Support/iTerm2/DynamicProfiles"

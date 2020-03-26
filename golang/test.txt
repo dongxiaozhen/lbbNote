@@ -3,6 +3,8 @@ go test -args
 指定测试用例
 go test -test.run=
 
+在 Go1.14 中，go test -v 将使 t.Log 的输出变成流式
+
 表格测试函数
 https://github.com/cweill/gotests
 https://www.yuque.com/ksco/uiondt/napwx1  测试说明

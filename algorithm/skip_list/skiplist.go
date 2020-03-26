@@ -68,10 +68,17 @@ func (list *skipList) get(key int) int {
 	for level := LevelMax - 1; level >= 0; level-- {
 
 		next = prev.nexts[level]
-		fmt.Println("---------- get level", level, next)
+		if next != nil {
+			fmt.Println("---------- get level", level, next.key, next.value, len(next.nexts))
+		}
 		for next != nil && key >= next.key {
 			prev = next
 			next = next.nexts[level]
+			if next != nil {
+				fmt.Println("22----------22 get level", level, next.key, next.value, len(next.nexts))
+			} else {
+				fmt.Println("22--nil:")
+			}
 		}
 		fmt.Println("---------- get level over", level, prev)
 	}

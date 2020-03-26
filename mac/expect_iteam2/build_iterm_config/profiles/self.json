@@ -1,0 +1,44 @@
+{
+    "Name": "$name-$user-$ip",
+    "Guid": "$tag_$name_$ip",
+    "Custom Command": "Yes",
+    "Command": "$command $script $ip $user $pass",
+    "Tags": [
+        "$tag"
+    ],
+    "Sync Title": false,
+    "Allow Title Setting": false,
+    "Use Tab Color": true,
+    "Title Components" : 64,
+    "Badge Text": "$ip",
+    "Tab Text": "$ip",
+    "Normal Font": "Monaco 14",
+    "Tab Color": {
+        "Red Component": 0,
+        "Color Space": "Calibrated",
+        "Blue Component": 0,
+        "Alpha Component": 1,
+        "Green Component": 0.8509804010000001
+    },
+    "Badge Color": {
+        "Red Component": 0.11968994140625,
+        "Color Space": "sRGB",
+        "Blue Component": 0,
+        "Alpha Component": 0.6653594970703125,
+        "Green Component": 1
+    },
+    "Triggers": [
+        {
+            "partial": true,
+            "parameter": "\/usr\/local\/bin\/iterm2-send-zmodem.sh",
+            "regex": "\\*\\*B0100",
+            "action": "MuteCoprocessTrigger"
+        },
+        {
+            "partial": true,
+            "parameter": "\/usr\/local\/bin\/iterm2-recv-zmodem.sh",
+            "regex": "\\*\\*B00000000000000",
+            "action": "MuteCoprocessTrigger"
+        }
+    ]
+}

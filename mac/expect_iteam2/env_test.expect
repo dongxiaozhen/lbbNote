@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+set timeout -1
+set send_slow {1 .005}
+
+set ip [lindex $argv 0]
+set user "user_name"
+set passwd "user_passwd"
+
+spawn ssh ${user}@10.31.63.2
+expect {
+"yes/no" { send "yes\r"; exp_continue}
+"password:" { send "${passwd}\r" }
+}
+
+expect "Input:" {send "i"}
+expect "Input IP Address:" {send -s "${ip}\r"}
+expect "Input:" {send -s "1\r"}
+
+expect {
+">$ " {}
+"]$ " {}
+}
+
+interact

@@ -1,0 +1,19 @@
+basic:
+  name: slg
+  ip: "127.0.0.1"
+  command: expect
+  script: ~/.expect/env_self.expect
+  tag: slg
+
+services:
+  -
+    name: beijing
+    ip: 49.232.35.120
+    user: root
+    pass: A1Id17a9bJvTByy4
+  # -
+  #   name: temp
+  #   ip: 49.233.171.89
+  #   user: root
+  #   pass: 1XnJmp56j7oWuSwU
+  # - {ip: 10.31.62.66}

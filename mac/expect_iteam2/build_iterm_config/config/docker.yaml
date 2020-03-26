@@ -1,0 +1,10 @@
+basic:
+  name: docker_build
+  ip: "127.0.0.1"
+  command: expect
+  script: ~/.expect/env_docker.expect
+  tag: docker
+
+services:
+  - {name: docker_build,user: build}
+  - {name: docker_root,user: root}

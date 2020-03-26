@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+
+set timeout -1
+set send_slow {1 .005}
+
+set ip [lindex $argv 0]
+set user "cltx"
+set passwd "user_passwd"
+
+spawn ssh ${user}@10.31.64.43
+expect {
+"yes/no" { send "yes\r"; exp_continue}
+"password:" { send "${passwd}\r" }
+}
+
+expect "Input:" {send -s "${ip}\r"}
+
+expect {
+">$ " {}
+"]$ " {}
+}
+
+interact

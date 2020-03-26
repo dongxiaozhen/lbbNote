@@ -7,6 +7,9 @@ go build
 指定编译版本
 go build  -gcflags "-lang=go1.9"
 
+在编译过程中，Go进行了逃逸分析，以确定哪些可以放入栈（静态数据），哪些需要放入堆（动态数据）。我们可以通过运行带有
+go build -gcflags '-m'
+
 go vet 代码检查 
 	--all
 
