@@ -1,0 +1,11 @@
+高效压缩位图RoaringBitmap
+
+https://github.com/RoaringBitmap/roaring
+
+RBM的主要思路是：将32位无符号整数按照高16位分桶，即最多可能有216=65536个桶，论文内称为container。存储数据时，按照数据的高16位找到container（找不到就会新建一个），再将低16位放入container中。也就是说，一个RBM就是很多container的集合。
+
+ArrayContainer
+   当桶内数据的基数不大于4096时，会采用它来存储，其本质上是一个unsigned short类型的有序数组。数组初始长度为4，随着数据的增多会自动扩容（但最大长度就是4096）。另外还维护有一个计数器，用来实时记录基数。
+j
+BitmapContainer
+  当桶内数据的基数大于4096时，会采用它来存储，其本质就是上一节讲过的普通位图，用长度固定为1024的unsigned long型数组表示，亦即位图的大小固定为216位（8KB）。它同样有一个计数器。

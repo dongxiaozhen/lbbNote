@@ -1,0 +1,27 @@
+G,P,M
+https://studygolang.com/articles/27054
+    G M P模型
+    G —— goroutinue对象，经go语句创建
+    M —— 系统线程，和P关联后运行G，上限10000
+    P —— 调度器，和M关联后运行G，数量由 runtime.MAXGOPROCS 设置，默认为CPU核数，上限256
+    此外还有一个系统调度器（runtime.sched），负责维护一些全局队列。
+M的状态
+    自旋中：M正在从运行队列获取G, 这时候M会拥有一个P
+    执行中：M正在执行go代码, 这时候M会拥有一个P
+    挂起中：M正在执行阻塞的syscall, 这时M并不拥有P
+    休眠中：M发现无待运行的G时会进入休眠，并添加到空闲M链表中, 这时M并不拥有P
+P的状态
+    Pidel：当前P未和任何M关联
+    Prunning：当前P已经和某个M关联，M在执行某个G
+    Psyscall：当前P中的被运行的那个G正在进行系统调用
+    Pgcstop：runtime正在进行GC（runtime会在gc时试图把全局P列表中的P都处于此种状态）
+    Pdead：当前P已经不再被使用（在调用runtime.GOMAXPROCS减少P的数量时，多余的P就处于此状态）
+G的状态
+    Gidle：G被创建但还未完全被初始化。
+    Grunnable：G完成初始化，为可运行的，正在等待被运行。
+    Grunning：G正在被运行。 Gsyscall：G正在被系统调用
+    Gwaiting：G正在因某个原因（channel阻塞、网络I/O、timer等事件）而等待
+    Gdead：G完成了运行
+
+
+https://blog.csdn.net/u010853261/article/details/84790392

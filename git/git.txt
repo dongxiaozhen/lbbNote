@@ -153,22 +153,6 @@ repo
 	repo start 实际上是对git checkout -b 命令的封装
 
 显示指定文件相关的每一次diff
-	git log --graph 图形显示
-    git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file]
-    
-    // 文件在那些提交中有变动
-       git log -- file //只显示commitId
-       git log -p --file 
-	   git log --follow file / git whatchanged file // 文件在那些提交中有变动
-    git log commit -1 -p [file]
-    git log --skip n 跳过前n个commit
-
-
-	git log --left-right dev...master (dev和master 提交对比)
-	git log dev ^master  (查看 dev 有，而 master 中没有的)
-	git log master..dev  (查看 dev 中比 master 中多提交了哪些内容)
-
-    git log --author=xxx 提交某个人的提交
 	git diff commit1 commit2  // commit1到commit2之间的修改
 	git diff commit1 commit2  --stat // commit1到commit2之间的修改,只显示修改过的文件名
 显示指定文件是什么人在什么时间修改过,每一行的提交记录
@@ -183,9 +167,6 @@ git diff HEAD 		work,stage中的内容和 HEAD比较
 git show commitID 显示该提交的变动信息
 git show commitID fileName 查看该提交中某个文件的变动
 
-git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)
-git log -S "要查找的内容"
-git log -G "要查找的内容,正则表达式"
 
 
 git add -u 添加已被跟踪的文件到stage

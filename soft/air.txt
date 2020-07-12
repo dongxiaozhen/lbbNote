@@ -1,0 +1,6 @@
+air 监控文件变化，自动执行build 和 run 命令
+   
+go get -u github.com/cosmtrek/air
+
+
+使用 air -c .air.toml

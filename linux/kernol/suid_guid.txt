@@ -1,0 +1,8 @@
+#https://www.cnblogs.com/fhefh/archive/2011/09/20/2182155.html
+
+除了一般的user id 和group id外，还有两个称之为effective 的id，就是有效id，上面的四个id表示为：uid，gid，euid，egid。内核主要是根据euid和egid来确定进程对资源的访问权限。
+
+一个进程如果没有SUID或SGID位，则euid=uid egid=gid，分别是运行这个程序的用户的uid和gid。
+如果一个程序设置了SUID，则euid和egid变成被运行的程序的所有者的uid和gid
+
+SUID的作用就是这样：让本来没有相应权限的用户运行这个程序时，可以访问他没有权限访问的资源

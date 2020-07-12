@@ -1,0 +1,20 @@
+
+
+trace.Start()
+
+go tool trace trace.out
+
+    网页：
+         View trace             <查看所有的信息>
+            按键控制
+                w 放大图片，可以看到每个M上的G的执行顺序
+                s 缩小图片
+                a 图片左移
+                d 图片右移
+
+         Goroutine analysis     <查看单个信息> 
+
+
+
+
+GODEBUG=gctrace = 1

@@ -1,0 +1,38 @@
+	git log --graph 图形显示
+    git log commitName -1(commitName之后的1次提交) -p(显示文件变动内容) [file]
+    
+    // 文件在那些提交中有变动
+       git log -- file //只显示commitId
+       git log -p --file 
+	   git log --follow file / git whatchanged file // 文件在那些提交中有变动
+    git log commit -1 -p [file]
+    git log --skip n 跳过前n个commit
+
+
+	git log --left-right dev...master (dev和master 提交对比)
+	git log dev ^master  (查看 dev 有，而 master 中没有的)
+	git log master..dev  (查看 dev 中比 master 中多提交了哪些内容)
+
+    git log --author=xxx 提交某个人的提交
+
+git log --oneline(只有一行信息显示) --graph(图形显示) --decorate(显示tag) <branchname>(要显示的分支) < ^branchname>(不在此分支上的提交)
+git log -S "要查找的内容"
+git log -G "要查找的内容,正则表达式"
+
+git log --after="2020-15-05" --before="2020-25-05"
+
+git log --after="yesterday" // shows only commits from yeserday
+
+git log --after="today" // shows only today commits
+
+git log --before="10 day ago" // omits last 10 days commits
+
+git log --after="1 week ago" //show only commits from last week
+
+git log --after="2 week ago"
+
+git log --after="2 month ago" // shows only last 2 months commits
+
+git log main.rb search.rb login.rb
+
+git log -S"function login()"  提交记录里查找

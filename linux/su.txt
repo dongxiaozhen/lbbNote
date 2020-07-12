@@ -2,3 +2,5 @@ su - keysystem -c "whoami
    -c  执行的命令
    -   需要切换用户环境
 su只是切换了root身份，但Shell环境仍然是普通用户的Shell；而su -连用户和Shell环境一起切换成root身份了
+su root  输入root密码后切换之root用户但是pwd目录不变
+su - root  输入root密码后切换之root用户但是pwd目录/root

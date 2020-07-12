@@ -1,0 +1,79 @@
+sed会把处理的行存储在缓存区种，接着用sed命令处理缓存区种的内容，处理完后，把缓存区的内容送往屏幕。
+pattern space相当于车间sed把流内容在这里处理。
+hold space相当于仓库，加工的半成品在这里临时储存。(一个中间转化的地方)
+
+命令格式: 
+	范围 命令
+
+范围
+	3,5 表示3行到5行
+	/xx/ 模式匹配
+命令
+	d 删除
+	a 在下面插入新行
+	i 在前面插入新行
+	r 读取文件到当前行
+	w 写范围内的数据到文件
+	p 打印当前行
+    g：[address[,address]]g 将hold space中的内容拷贝到pattern space中，原来pattern space里的内容清除
+    G：[address[,address]]G 将hold space中的内容append到pattern space\n后
+    h：[address[,address]]h 将pattern space中的内容拷贝到hold space中，原来的hold space里的内容被清除
+    H：[address[,address]]H 将pattern space中的内容append到hold space\n后
+    d：[address[,address]]d 删除pattern中的所有行，并读入下一新行到pattern中
+    D：[address[,address]]D 删除multiline pattern中的第一行，不读入下一行
+    n/N Read/append the next line of input into the pattern space
+        n命令：读取下一行到pattern space。
+        N命令：将下一行添加到pattern space中。将当前读入行和用N命令添加的下一行看成“一行”。
+
+	-n 只输出p命令要输出的内容，其他的禁止输出
+
+复制行
+    sed 'h;G' 
+
+合并行
+    sed 'H;g'
+
+倒序输出
+    sed '1!G;h;$!d' sed-demo.txt
+
+最后一行添加
+	 sed -i '$a\\n[UserEquipMaxRedis]\nip=10.33.67.250\nport=45001\nindex=0\n' a.ini
+	 $ 最后一行
+	 a 添加
+	 \ 分割符
+
+每一行行首添加
+	sed 's/^/HEAD/g' a.ini	
+
+每一行行尾添加
+	sed 's/$/HEAD/g' a.ini	
+
+
+for
+	for i in $(seq 14 35);do j=`expr $i - 4`;sed -i "${i}s/138010/138${j}/g" 	a.ini; done
+
+
+sed -e "cmd"  cmd里使用变量： $var    (直接使用)
+sed -e 'cmd'  cmd里使用变量： ‘$var’  (外面加单引号)
+    for i in $(seq 16 32);do name=$(printf addr_%d= $i); j=`expr 14800 + $i`;sed -i '/'$name'/c\'$name'10.33.83.240:'$j'' rpc_proxy_14901.ini ; done
+
+
+& 表示之前配置的内容
+	sed 's/B.*/&2008/' file  讲配置的内容后面加上2008
+\(xx\) 暂存匹配内容 
+\1 \2 \3 读取暂存内容
+	echo "hello world"|sed 's/\(hello\).*/world \1/' 
+
+
+
+多命令执行
+    sed '1d;5d;9d;$d' sed-demo.txt  //删除第 1 、第 5 、第 9 和最后一行
+
+逻辑运算
+    sed '3,6!d' sed-demo.txt            // 逻辑非 !, 删除第 3到 6 行以外的其他行
+    sed '/System\|Linux/d' sed-demo.txt // 逻辑或
+
+条件组合
+    sed '1,6{/Linux/d;}' sed-demo.txt   // 删除在 1 到 6 行内有 Linux 这个词的内容
+
+

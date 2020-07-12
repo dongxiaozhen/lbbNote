@@ -1,6 +1,11 @@
 
 测试数据下载  https://launchpad.net/test-db/+download
 
+原则 1：加锁的基本单位是 next-key lock。希望你还记得，next-key lock 是前开后闭区间。
+原则 2：查找过程中访问到的对象才会加锁。
+优化 1：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。
+优化 2：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock 退化为间隙锁。
+一个 bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止。
 
 mysql 执行了查询数据，但是没有读取(exec代替query)，会出现busy buffer的错误提示。
 mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation 空密码输入'' systemctl start/enable mariadb.service

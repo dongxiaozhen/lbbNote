@@ -1,0 +1,15 @@
+https://github.com/ryo-ma/lazyhub
+命令行查看 github
+lazyhub
+
+    
+    j / DownArrow(↓) Move down a line      
+    k / UpArrow(↑) Move up a line
+    q / CTRL+C Quit
+    CTRL+D Move down 5 lines
+    CTRL+U Move up 5 lines
+    x Back panel                        切换到目录
+    Enter / r Open the README           查看当前光标下项目的readme
+    c Copy the clone command to clipboard
+    o Open the repository page on your browser   在浏览器打开项目
+

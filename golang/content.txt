@@ -80,6 +80,7 @@ map
 	map 取不存在的key的value,返回零直
 
 context 包实现了对多个派生go的管理，每个需要监听ctx.Done()退出，正常完成后调用CancelFunc
+   context 不要放在结构体里一直保存，随着WithValue的一直调用不释放，会引起大内存，还有就是deadline不取消引起的混乱,要当参数传递
 
 go net/http  
 	客户端 tcp请求完成后 response body指向con(需要自己调用read,close方法)

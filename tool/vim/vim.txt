@@ -270,6 +270,18 @@ ys + 添加的符号包含的语句范围（比如s表示整行） + 要添加�
     --prefix=/usr
 
 
+mac 编译
+     ./configure --with-features=huge \
+    --enable-cscope \
+    --enable-rubyinterp \
+    --enable-perlinterp=yes \
+    --enable-largefile \
+    --enable-python3interp=yes \
+    --enable-luainterp \
+    --with-luajit \
+    --with-lua-prefix=/usr/local \
+	--with-tlib=ncurses
+
 
 
 Vim normal命令的使用形式为 :{range}norm[al][!] {commands}，表示在 {range} 指定的范围内的每行执行若干 普通模式命令 
