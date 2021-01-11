@@ -38,3 +38,10 @@ os.Exec
 
 go build , go install
      新版本的gomode机制下载的文件都是只读的，所以，go build 是时候，会报 permission denied的错误提示，使用go install 代替
+
+
+指定编译, 
+    文件开头// +build x1,x2 y1,!y2 ((x1 and x2) 或 (y1 and !y2))
+    后面有换行符
+    go build -tags x1,x2
+    

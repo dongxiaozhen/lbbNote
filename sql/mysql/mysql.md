@@ -1,6 +1,9 @@
 
 测试数据下载  https://launchpad.net/test-db/+download
 
+优秀文摘
+    https://mp.weixin.qq.com/s/B4Yu8KWTkm1Jnwc5B5l9lg
+
 原则 1：加锁的基本单位是 next-key lock。希望你还记得，next-key lock 是前开后闭区间。
 原则 2：查找过程中访问到的对象才会加锁。
 优化 1：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。
