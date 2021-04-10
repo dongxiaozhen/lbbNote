@@ -30,3 +30,13 @@ run go get package@version to update to a specific version (say, github.com/robt
 依赖
  go mod vendor
  go build -mod vendor   编译从vendor里读取文件，默认不读取
+
+
+
+
+在GOPROXY流程中，官方定义了一组代理接口, 请参考官方接口定义
+GET $GOPROXY/<module>/@v/list returns a list of all known versions of the given module, one per line.
+GET $GOPROXY/<module>/@v/<version>.info returns JSON-formatted metadata about that version of the given module.
+GET $GOPROXY/<module>/@v/<version>.mod returns the go.mod file for that version of the given module.
+GET $GOPROXY/<module>/@v/<version>.zip returns the zip archive for that version of the given module.
+

@@ -1,3 +1,6 @@
 KeePassXC  密码管理
 gitkraken  git 图形界面
 lazygit    git cui界面
+
+sudp apt-get install moreutils  // 命令工具，提供 ts, sponge
+

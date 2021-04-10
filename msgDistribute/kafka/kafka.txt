@@ -9,3 +9,18 @@ kafka 注意事项
    1 一个topic可以在一个broker有多个partion
    2 replication-factor 不能大于 broker-num
 
+
+
+at most onece模式
+基本思想是保证每一条消息commit成功之后，再进行消费处理；
+设置自动提交为false，接收到消息之后，首先commit，然后再进行消费
+
+at least onece模式
+基本思想是保证每一条消息处理成功之后，再进行commit；
+设置自动提交为false；消息处理成功之后，手动进行commit；
+采用这种模式时，最好保证消费操作的“幂等性”，防止重复消费；
+
+exactly onece模式
+核心思想是将offset作为唯一id与消息同时处理，并且保证处理的原子性；
+设置自动提交为false；消息处理成功之后再提交；
+比如对于关系型数据库来说，可以将id设置为消息处理结果的唯一索引，再次处理时，如果发现该索引已经存在，那么就不处理；

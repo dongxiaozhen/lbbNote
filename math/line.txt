@@ -1,3 +1,13 @@
 
 线性代数
     https://www.monades.dev/notes-on-linear-transformations/
+
+
+
+矩阵就是映射
+
+矩阵是线性空间里的变换的描述
+
+Ma = b
+向量a经过矩阵M所描述的变换，变成了向量b
+有一个向量，它在坐标系M的度量下得到的度量结果向量为a，那么它在坐标系I的度量下，这个向量的度量结果是b

@@ -45,3 +45,10 @@ go build , go install
     后面有换行符
     go build -tags x1,x2
     
+
+go version [go_bin]  // 查看go程序的版本信息，如果不带文件，显示当前环境的go版本
+    -m  显示目录，mod， 依赖 信息
+    -v  如果参数是目录，不是go程序的文件也显示出来，
+
+
+    

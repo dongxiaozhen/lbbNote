@@ -160,3 +160,6 @@ ls -t 时间排序
    -r 反序排列
 
 stat filename  查看文件详细信息，inode,time,size,,
+
+
+realpath 获取文件相对路径和绝对路径

@@ -34,6 +34,8 @@ docker login
 docker images
 docker search 命令来查找官方仓库中的镜像
 
+docker image rm xx 删除镜像
+
 Dockerfile
 
     使用#来注释

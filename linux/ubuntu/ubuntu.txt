@@ -28,7 +28,9 @@ ubuntu 设置
 	sudo apt-get install openssh-server // ssh
 	sudo apt-get install graphviz (go pprof pdf)
     sudo apt install net-tools
-    sudo apt install ack
+    sudo apt inst 
+    sudo apt-get install silversearcher-agall ack
+    sudo apt-get install ctags
 	
 安装moc
 	add-apt-repository ppa:noobslab/themes
@@ -91,6 +93,10 @@ history [n 显示最近的n条命令] [!n 第n条命令] [!-n 最近的第n条�
      git clone https://github.com/usbkey9/uktools
      uktools-purge    
      uktools-upgrade 
+
+更新系统版本
+安装工具：apt install update-manager-core
+升级：    do-release-upgrade
 
 
 bashrc 和 bash_profile 不能同时存在，否则读取bash_profile

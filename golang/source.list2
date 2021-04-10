@@ -127,7 +127,8 @@ github.com/olekukonko/tablewriter                 table 格式化输出
 https://github.com/grpc-ecosystem                 grpc
 github.com/jesseduffield/lazygit                  git cui
 github.com/Jeffail/benthos                        net operation
-golang.org/x/time/rate                            限速,(n/limit * time 算出要等待的时间，然后设置last=now，下次循环)
+golang.org/x/time/rate                            限速， 原理：上一次获取时候剩余的次数 + 这次和上次时间差里的次数 等于 现在可用的次数， 
+                                                  如果要求的次数大于可用次数，就根据多余的次数等待相应的时间，(limit 一秒的qps, burst: 最大容量)
 github.com/soyking/e3w                            etcd ui
 
 https://github.com/Microsoft/Ethr                 网络性能测量工具
@@ -149,3 +150,5 @@ https://github.com/iamshuaidi/CS-Book             书籍下载
 https://goa.lenggirl.com/                          数据结构和算法：Go语言实现
 
 github.com/tal-tech/go-zero/core/mrx             MapReduce
+https://github.com/prashantv/gostub              测试打桩
+go.uber.org/automaxprocs                         根据容器配置设置cpu数量，P
