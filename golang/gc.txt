@@ -1,1 +1,29 @@
 GODEBUG=gctrace=1
+
+
+垃圾回收的是堆对象，栈上的对象不会参与混合写屏障。程序大部分时间是处理栈对象，如果栈对象需要处理，开销太大了。
+
+gc 过程说明 runtime/mgc.go
+
+混合写屏障 runtime/mbarrier.go
+//     writePointer(slot, ptr):
+//         shade(*slot)
+//         if current stack is grey:
+//             shade(ptr)
+//         *slot = ptr
+
+
+stw 只是在开始和结束的时候设置一些全局变量
+mark/sweep  的时候，会一个一个goroutine的暂停扫描栈，从而不需要stw
+
+三色：
+    强三色： 黑色不能之际引用白色的, 把白色修改成灰色
+    弱三色   被删除的对象，如果自身为灰色或者白色，那么被标记为灰色(保护灰色对象到白色对象的路径不会断)
+
+
+
+
+#文章
+* https://www.kancloud.cn/aceld/golang/1958308#GC_376
+* https://blog.csdn.net/qiya2007/article/details/107622603?spm=1001.2014.3001.5501
+* http://legendtkl.com/2017/04/28/golang-gc/

@@ -95,3 +95,7 @@ docker import     从容器快照文件中再导入为镜像
     --link 参数可以让容器之间安全的进行交互 --link name:alias 与容器name连接
 
     之后是用来创建镜像的容器的 ID；最后指定目标镜像的仓库名和 tag 信息。创建成功后会返回这个镜像的 ID 信息。
+
+
+// docker和宿主机之间考呗数据
+sudo docker cp 074af74c669d:/etc/bash.bashrc  /tmp

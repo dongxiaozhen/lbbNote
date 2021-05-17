@@ -15,6 +15,9 @@ book
 	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
 	https://golang.org/doc/effective_go.html
     https://github.com/go-internals-cn/go-internals
+    https://www.bookstack.cn/read/qcrao-Go-Questions/spilt.6.GC-GC.md
+    http://legendtkl.com/2017/04/02/golang-alloc/
+
 
 条件编译
    1> 条件编译语句要和package 包语句之间有空行

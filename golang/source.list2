@@ -152,3 +152,5 @@ https://goa.lenggirl.com/                          数据结构和算法：Go语
 github.com/tal-tech/go-zero/core/mrx             MapReduce
 https://github.com/prashantv/gostub              测试打桩
 go.uber.org/automaxprocs                         根据容器配置设置cpu数量，P
+https://github.com/sergi/go-diff                 对比库
+https://github.com/spf13/viper                   配置管理

@@ -1,0 +1,7 @@
+
+动画数学展示库
+    官网 https://docs.manim.community/en/stable/installation/mac.html
+    代码 https://github.com/ManimCommunity/manim/
+        pip3 install manim
+        brew install ffmpeg
+        manim -p -ql example.py SquareToCircle
