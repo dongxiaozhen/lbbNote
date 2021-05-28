@@ -28,6 +28,10 @@ gpg --armor --output private-key.txt --export-secret-keys
 gpg --gen-revoke <uid>
 
 // 上传公钥到服务器
+    hkps://keys.openpgp.org
+    hkp://subkeys.pgp.net
+    hkps.pool.sks-keyservers.net
+
 gpg --send-keys <uid> --keyserver hkp://subkeys.pgp.net
 
 

@@ -154,3 +154,4 @@ https://github.com/prashantv/gostub              测试打桩
 go.uber.org/automaxprocs                         根据容器配置设置cpu数量，P
 https://github.com/sergi/go-diff                 对比库
 https://github.com/spf13/viper                   配置管理
+github.com/dundee/gdu/v5/cmd/gdu                 磁盘文件查看大小
