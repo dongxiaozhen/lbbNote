@@ -36,3 +36,5 @@ git log --after="2 month ago" // shows only last 2 months commits
 git log main.rb search.rb login.rb
 
 git log -S"function login()"  提交记录里查找
+
+git branch --contain xxxx --all 查看某个提交在哪个分支

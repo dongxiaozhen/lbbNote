@@ -12,3 +12,14 @@ Plug 'iamcco/markdown-preview.vim'
 
     MarkdownPreviewStop
     " 关闭 markdown 预览窗口，并停止开启的服务进程
+
+
+
+
+# 终端里看md文件
+https://github.com/maaslalani/slides
+#vim 看md文件
+glow
+
+#软件 marktext
+https://github.com/marktext/marktext

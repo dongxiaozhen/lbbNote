@@ -1,5 +1,7 @@
 lsb_release：Linux 发行版信息
 
+ctrl-r command to search the history
+
 type cmd 查看命令到底是由shell自带的，还是由shell外部的独立二进制文件提供的
 "info $name" 	双引号 里面的$name输出变量的结果
 'info $name'	单引号 里面的$name原样输出

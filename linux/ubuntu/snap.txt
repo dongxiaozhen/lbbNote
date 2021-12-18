@@ -4,3 +4,9 @@
 snap find 
 snap install / refresh / remove
 snap revert 
+
+
+
+
+sudo snap install dbeaver-ce // 数据库连接
+sudo apt install terminator

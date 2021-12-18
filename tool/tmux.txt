@@ -77,6 +77,7 @@ bind-key h select-pane -L
 #right
 bind-key l select-pane -R
 
+rust_pkg                tensorflow                    world_boss_serv
 复制模式copy-mode
     前缀 [ 进入复制模式
     按 space 开始复制，移动光标选择复制区域

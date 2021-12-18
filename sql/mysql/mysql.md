@@ -4,6 +4,8 @@
 优秀文摘
     https://mp.weixin.qq.com/s/B4Yu8KWTkm1Jnwc5B5l9lg
 
+    https://dataschool.com/how-to-teach-people-sql/how-sql-subqueries-work/
+
 原则 1：加锁的基本单位是 next-key lock。希望你还记得，next-key lock 是前开后闭区间。
 原则 2：查找过程中访问到的对象才会加锁。
 优化 1：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。
@@ -58,6 +60,7 @@ SELECT DAYOFMONTH(CURRENT_DATE);
 group by 只显示一行  group_concat（） 将在group结果中的其他列的数据显示出来  
     在select指定的字段要么就要包含在Group By语句的后面，作为分组的依据；要么就要被包含在聚合函数中
     没有聚合函数，相当于去重。
+    group by 相当于条件过滤，已group by 后面的字段为输出总样本
 
 join 笛卡尔积（交叉组合）,左表和右表没有组合的不显示
 left join 左表和右表没有组合的,也显示左表的行

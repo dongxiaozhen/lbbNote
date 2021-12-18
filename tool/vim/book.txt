@@ -1,1 +1,5 @@
 https://github.com/iggredible/Learn-Vim
+
+
+https://vim.fandom.com/wiki/Vim_Tips_Wiki
+https://vim.fandom.com/wiki/Copy_search_matches

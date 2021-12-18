@@ -45,7 +45,11 @@ Plugin 'lervag/vimtex'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'uarun/vim-protobuf'
 "Plugin 'Yggdroot/indentLine'
+
+" shell 语法检测vim-syntastic/syntastic
+Plugin 'scrooloose/syntastic'
 
 " 需要安装go get -u github.com/cweill/gotests/...
 Plugin 'buoto/gotests-vim'
@@ -61,6 +65,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'racer-rust/vim-racer'
 " Rust.vim
 Plugin 'rust-lang/rust.vim'
+
+
+" python
+"" Python Bundle
+Plugin 'davidhalter/jedi-vim'
+Plugin 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 " all of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,6 +88,8 @@ set encoding=utf-8
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
+hi CursorLine   cterm=underline ctermfg=red ctermbg=blue
+hi CursorColumn cterm=underline ctermfg=red ctermbg=blue
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,gb2312,big5
 "set fileencodings=utf-8,gbk
 
@@ -96,7 +108,7 @@ syntax enable
 "set background=dark
 let g:solarized_termcolors=256
 "colorscheme solarized
-colorscheme molokai
+colorscheme codedark
 "colorscheme cherryblossom 
 
 "将原来的\ leader 修改为逗号
@@ -248,6 +260,7 @@ map <C-a> :vertical resize +20<CR>
 map <C-l> :vertical resize -20<CR>
 
 " show a list of interfaces which is implemented by the type under your cursor
+"  查看有实现了当前鼠标下的接口
 au FileType go nmap <Leader>s <Plug>(go-implements)
 " show type info for the word under your cursor
 au FileType go nmap <Leader>gi <Plug>(go-info)
@@ -255,18 +268,17 @@ au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 " run Go commands
-au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <leader>i <Plug>(go-install)
 " open the definition/declaration in a new vertical, horizontal or tab for the
 " word under your cursor
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+"au FileType go nmap <Leader>ds <Plug>(go-def-split)
+"au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+"au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " rename the identifier under the cursor to a new name
-au FileType go nmap <Leader>e <Plug>(go-rename)
+"au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_bin_path = "/Users/libinbin/.mypath" 
 let g:NERDSpaceDelims=1
 let g:csv_delim=','
@@ -283,6 +295,7 @@ set mouse=a
 vmap <F6> "+y 
 "在visual模式下,复制到系统剪贴板上.
 vmap <leader>c "+y
+set clipboard=unnamed
 
 "片段管理工具
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -369,22 +382,40 @@ augroup go
   au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
+  " 定位函数、变量
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
   au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
 
-  au FileType go nmap <leader>r  <Plug>(go-run)
+  " 搜索函数的全部调用地方
+  au FileType go nmap <leader>gr :GoReferrers<CR>
+  " 函数、变量列表
+  au FileType go nmap <leader>kk :TagbarToggle<CR>
+  au FileType go nmap <leader>r <Plug>(go-run)
   au FileType go nmap <leader>t  <Plug>(go-test)
   au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
   au FileType go nmap <Leader>i <Plug>(go-info)
-  au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
+  "au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
+  " 当前文件的所有函数
   au FileType go nmap <C-g> :GoDecls<cr>
-  au FileType go nmap <leader>dr :GoDeclsDir<cr>
-  au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-  au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
+  "au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
+  au FileType go imap <leader>df :GoDecls<cr>
+  " 当前目录的所有函数
+  au FileType go nmap <leader>ll :GoDeclsDir<cr>
+  "au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
   au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
 
 augroup END
+
+" python 
+let g:jedi#goto_command = "<leader>dd"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
 
 
 "" Buffer nav
@@ -392,4 +423,38 @@ noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
 noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
+" 跳转到目录列表并指向当前文件
 noremap <leader>jj :NERDTreeTabsFind<CR>
+" 打开目录
+noremap <leader>hh :NERDTreeTabsToggle<CR>
+
+
+function GetCurFilePath()
+    let cur_file_name=getreg('%')
+    let dir_filename=cur_file_name
+    echo dir_filename."    done"
+    call setreg('+',dir_filename)
+endfunction
+nnoremap <silent><F9> : call GetCurFilePath()<cr>
+
+
+
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+
+
+" 拷贝正则匹配的内容 先执行搜索命令，然后执行:CopyMathes + (参数是寄存器命令)
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)

@@ -11,6 +11,14 @@ json工具
             resource_type
             name
         }
+        
+        // 格式化输出 {} json 输出，[] 数组输出，() 文本输出
+
+    jsoncsv  json 文件转csv
+        pip install jsoncsv
+        cat raw.json | jsoncsv | mkexcel > output.csv  当个json结构
+        cat data_bag_item.json | jsoncsv -A | mkexcel > output.csv json是数组结构
+
 
 github 代码目录插件
     https://github.com/buunguyen/octotree

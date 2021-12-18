@@ -155,3 +155,10 @@ go.uber.org/automaxprocs                         根据容器配置设置cpu数�
 https://github.com/sergi/go-diff                 对比库
 https://github.com/spf13/viper                   配置管理
 github.com/dundee/gdu/v5/cmd/gdu                 磁盘文件查看大小
+https://github.com/asaskevich/govalidator        校验
+github.com/go-echarts/go-echarts/v2/             图形库
+github.com/panjf2000/ants/v2                     携程库
+github.com/panjf2000/gnet                        网络库,epoll异步读写网络,epoll异步处理listen
+github.com/valyala/bytebufferpool                字节缓存库，将内存分成多组，使用最多的组的字节为默认字节数，最大字节为当前最大的内存
+github.com/tidwall/uhaha                         Uhaha is a framework for building highly available Raft-based data applications in Go
+https://github.com/caarlos0/env                  环境变量

@@ -144,3 +144,15 @@ system(expr) uses /bin/sh to execute expr and returns the exit status of the com
 
 User defined functions
 	function name( args ) { statements }
+
+
+
+
+多次分割
+  获取下面uid,back_stone,back_yuan_bao 数值
+ {"level":"warn","ts":"2021:07:31-02:17:58.443913","caller":"process/gm.go:253","msg":"down equip success","uid":218507330,"delNum":250,"info":{"equips":[{"equip_name":"首像","from_lv":120,"to_lv":119}],"back_stone":980,"back_yuan_bao":70},"uid":218507330,"logID":1627669075281876924}
+    awk -F 'uid":|,"delNum|back_stone":|,"back_yuan_bao":|},"uid":' '{print $2,$4,$5}'
+
+
+#acticl
+https://earthly.dev/blog/awk-examples/

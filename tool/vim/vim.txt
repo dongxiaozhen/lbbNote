@@ -230,6 +230,8 @@ Line number
 
 :g :global
    :[range]g[lobal]/{pattern}/[cmd]
+    :g/pattern/y A   拷贝匹配的行
+    :g/pattern/d     删除匹配的行
 
 :s :substitute
    :[range]s[ubstitute]/{pattern}/{string}/[flags]

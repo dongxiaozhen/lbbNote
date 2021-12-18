@@ -12,10 +12,12 @@ case2：D是黑色：
         case2-2-2-4：case2-2-2+P为黑色，SL为黑色，SR黑色
 ----------------------------------------------------------------------------------------- 
 原文：https://blog.csdn.net/qq_37169817/article/details/78880110 
+      https://blog.csdn.net/m0_37589327/article/details/78518324
 
 
 
 
+# github.com/petar/GoLLRB/llrb
 llrb (Left-Leaning Red Black Tree) 左斜红黑树中，所有的3-node其内部的红边都是向左倾斜的，
     可导出：
         1:红点都在左分支
