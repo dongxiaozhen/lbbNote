@@ -1,4 +1,3 @@
-
 测试数据下载  https://launchpad.net/test-db/+download
 
 优秀文摘
@@ -27,33 +26,32 @@ mysql> select now();
 SELECT DAYOFMONTH(CURRENT_DATE); 
 
 显示数据库 show database;
-	数据库信息 show create database name_db\G
+    数据库信息 show create database name_db\G
 显示表     show tables;
-	信息 describe tb_name
-		 show columns from tb_name
-		 show field from tb_name
-		 show table status
-
+    信息 describe tb_name
+         show columns from tb_name
+         show field from tb_name
+         show table status
 
 删除表中数据 命令：delete from 表名 where 表达式
 修改表中数据：update 表名 set 字段=新值,… where 条件
 修改表：
-	增加字段 alter table 表名 add字段 类型 其他;
-	加索引
-  		 mysql> alter table 表名 add index 索引名 (字段名1[，字段名2 …]);
-	加主关键字的索引
-  		mysql> alter table 表名 add primary key (字段名);
-	加唯一限制条件的索引
-   		mysql> alter table 表名 add unique 索引名 (字段名);
-	删除某个索引
-   		mysql> alter table 表名 drop index 索引名;
-	增加字段：
-		mysql> ALTER TABLE table_name ADD field_name field_type;
-	修改原字段名称及类型：
-		mysql> ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;
-	修改表名
-		命令：rename table 原表名 to 新表名;
-	
+    增加字段 alter table 表名 add字段 类型 其他;
+    加索引
+           mysql> alter table 表名 add index 索引名 (字段名1[，字段名2 …]);
+    加主关键字的索引
+          mysql> alter table 表名 add primary key (字段名);
+    加唯一限制条件的索引
+           mysql> alter table 表名 add unique 索引名 (字段名);
+    删除某个索引
+           mysql> alter table 表名 drop index 索引名;
+    增加字段：
+        mysql> ALTER TABLE table_name ADD field_name field_type;
+    修改原字段名称及类型：
+        mysql> ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;
+    修改表名
+        命令：rename table 原表名 to 新表名;
+
 导出数据 mysqldump -u root -p database_name [table_name] > dump.sql
 倒入数据 mysql -u root -p database_name < dump.sql (database_name需要提前建立)
 
@@ -69,12 +67,10 @@ right join 左表和右表没有组合的,也显示右表的行
 sum 算数 count 行数
 hour(timevar) 返回值是可以大于23的小时
 非自然时间计算
- 	select id,mod(hour(timediff(pay_time,'2016-06-23T12:30:00')),24) as 'index' ,user_id,product_id from t_order limit 10;
-
+     select id,mod(hour(timediff(pay_time,'2016-06-23T12:30:00')),24) as 'index' ,user_id,product_id from t_order limit 10;
 
 可设置的参数列表
-	mysqld --verbose --help
-
+    mysqld --verbose --help
 
 update table 的时候，如果前后数据不变，row_count() == 0;(变化的行数)
 
@@ -87,24 +83,8 @@ show create function func_name;
 ON DUPLICATE KEY
 insert into t_user_equip_generate_50 values(?,?) ON DUPLICATE KEY update   info = ?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 锁（何登成大神解释比较清楚）：http://hedengcheng.com/?p=771
 锁深入浅出一书讲解：http://blog.sina.com.cn/s/blog_53b13d950100vtks.html
-
 
 row_count() 要紧跟在select,insert,update 之后，中间不能插入其他数据，然不要取出count结果不对
 
@@ -124,7 +104,6 @@ show variables like 'innodb_buffer_pool_size';
 show variables like 'innodb_log_buffer_size';
 show variables like 'innodb_additional_mem_pool_size';
 
-
 系统库 information_schema
     PARTITIONS  分区
     TRIGGERS
@@ -143,7 +122,6 @@ show variables like 'innodb_additional_mem_pool_size';
   sed -i 's/storage_engine/default_storage_engine/g' test_employees_sha.sql 
   mysql -t < employees.sql
 
-
 索引：聚集索引=primary_key 非聚集索引=辅助索引=index
 使用聚集索引的查询效率要比非聚集索引的效率要高，但是如果需要频繁去改变聚集索引的值，写入性能并不高，因为需要移动对应数据的物理位置。
 非聚集索引在查询的时候可以的话就避免二次查询，这样性能会大幅提升。
@@ -153,9 +131,6 @@ show variables like 'innodb_additional_mem_pool_size';
    RANGE a<10
    LIST  a in (1,3,4)
    HASH
-
-
-
 
 优化前：sql1 = select * from test where val=4 limit 300000,5
 优化后：sql2 = select * from test a inner join (select id from test where val=4 limit 300000,5)

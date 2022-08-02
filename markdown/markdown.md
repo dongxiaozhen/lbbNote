@@ -39,6 +39,11 @@ func main(){
 	log.Println("log")
 }
 ```
+
+```
+    块
+```
+
 **Strong**
 *italic*
 ~~remove~~
@@ -61,6 +66,8 @@ UML
 sdf
 ```
 
+// 重点*** ***
+this is ***aaa*** is
 
 数学公式
   $  x^2  $

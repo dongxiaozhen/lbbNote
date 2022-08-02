@@ -153,6 +153,60 @@ User defined functions
  {"level":"warn","ts":"2021:07:31-02:17:58.443913","caller":"process/gm.go:253","msg":"down equip success","uid":218507330,"delNum":250,"info":{"equips":[{"equip_name":"首像","from_lv":120,"to_lv":119}],"back_stone":980,"back_yuan_bao":70},"uid":218507330,"logID":1627669075281876924}
     awk -F 'uid":|,"delNum|back_stone":|,"back_yuan_bao":|},"uid":' '{print $2,$4,$5}'
 
+# Type
+## String literals are represented inside double quotes. 
+## Numbers can be integers or floating-point. Scientific notation is allowed as well.
+## Arrays Arrays in awk are associative, meaning they are key-value pairs. 
+
+# regular
+1. \< \> 单词边界
+2. \B matches locations other than those places where the word anchor would match.
+3. $ echo 'copper' | awk '{gsub(/\y/, ":")} 1'
+    :copper:
+    $ echo 'copper' | awk '{gsub(/\B/, ":")} 1'
+    c:o:p:p:e:r
+4. $ printf 'red\nreform\nread\narrest\n' | awk '/re(form|st)/'
+    reform
+5. ? metacharacter which quantifies a character or group to match 0 or 1 times.
+6. . The dot metacharacter serves as a placeholder to match any character
+7.  {m,n}	match m to n times
+    {m,}	match at least m times
+    {,n}	match up to n times (including 0 times)
+    {n}	match exactly n times
+8.  \w matches all word characters [a-zA-Z0-9_] (recall the description for word boundaries)
+    \W matches all non-word characters (recall duality seen earlier, like \y and \B)
+    \s matches all whitespace characters: tab, newline, vertical tab, form feed, carriage return and space
+    \S matches all non-whitespace characters
+
+9.  [:digit:]	[0-9]
+    [:lower:]	[a-z]
+    [:upper:]	[A-Z]
+    [:alpha:]	[a-zA-Z]
+    [:alnum:]	[0-9a-zA-Z]
+    [:xdigit:]	[0-9a-fA-F]
+    [:cntrl:]	control characters — first 32 ASCII characters and 127th (DEL)
+    [:punct:]	all the punctuation characters
+    [:graph:]	[:alnum:] and [:punct:]
+    [:print:]	[:alnum:], [:punct:] and space
+    [:blank:]	space and tab characters
+    [:space:]	whitespace characters, same as \s
+10. (a|b)
+11. "\\1" to represent \1
+12. & metacharacter represents entire matched string
+
+
+## 使用shell变量
+    $ # assume that the 's' variable is part of some bash script
+    $ # or perhaps a variable that has stored the output of a shell command
+    $ s='cake'
+    $ awk -v word="$s" '$2==word' table.txt
+        blue cake mug shirt -7
+## 获取环境变量
+    awk 'BEGIN{print ENVIRON["HOME"]}'
+
+## 调用外部命令
+    awk '{system("redis-cli get aa:" $1 ":bb")}' file.txt
 
 #acticl
 https://earthly.dev/blog/awk-examples/
+https://learnbyexample.github.io/learn_gnuawk/awk-introduction.html

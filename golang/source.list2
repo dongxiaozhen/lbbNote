@@ -136,6 +136,7 @@ github.com/chenjiandongx/go-echarts               数据可视化
 
 https://github.com/djimenez/iconv-go              字体编码转换
 https://github.com/fyne-io/fyne                   UI 库
+https://github.com/gioui/gio                      UI 库
 https://github.com/tidwall/tile38                 Rtree实现的空间算法
 https://github.com/baidu/bfe                      百度代理
 https://github.com/petar/GoLLRB                   红黑树
@@ -162,3 +163,19 @@ github.com/panjf2000/gnet                        网络库,epoll异步读写网�
 github.com/valyala/bytebufferpool                字节缓存库，将内存分成多组，使用最多的组的字节为默认字节数，最大字节为当前最大的内存
 github.com/tidwall/uhaha                         Uhaha is a framework for building highly available Raft-based data applications in Go
 https://github.com/caarlos0/env                  环境变量
+golang/x/sync/singleflight                       重复的函数调用抑制(防止统一时间爆发调用)
+golang/x/sync/semaphore                          信号量
+https://github.com/dtm-labs/dtm                  分布式事务
+https://github.com/sqshq/sampler                 命令行可视化命令
+https://github.com/gwuhaolin/livego              视频广播
+https://github.com/hedzr/lb                      负载均衡
+https://github.com/princjef/gomarkdoc            导出go文件的mark文档
+https://github.com/mdlayher/wifi                 linux wifi 查询接口
+github.com/sony/gobreaker                        断路器
+https://github.com/Netflix/Hystrix               断路器
+gonum.org/v1/gonum/mat                           向量、矩阵
+github.com/mb-14/gomarkov                        马尔可夫链
+github.com/leesper/tao                           tcp 框架
+go install loov.dev/lensm@main                   go代码专汇编 lensm -watch -filter "函数" 二进制文件
+https://github.com/cloudwego/netpoll             字节跳动netpoll
+https://github.com/klauspost/cpuid               查看cpu信息

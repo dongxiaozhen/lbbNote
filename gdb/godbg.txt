@@ -9,3 +9,9 @@ iface var
 info goroutines  显示G
 goroutine num 切换G
 
+
+vim-gdb调试
+F9 godebugStart / godebugbreakpoint
+,o godebugbreakpoint
+,os godebugstep
+,on godebugnext

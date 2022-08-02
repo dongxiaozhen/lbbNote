@@ -1,0 +1,55 @@
+## http://vimregex.com/
+
+查找或者替换
+:range s[ubstitute]/pattern/string/cgiI
+    For each line in the range replace a match of the pattern with the string where:
+        c
+            Confirm each substitution 替换之前一个一个确认
+        g
+            Replace all occurrences in the line (without g - only first).
+        i
+            Ignore case for the pattern.
+        I
+            Don't ignore case for the pattern.
+
+range
+    number
+        an absolute line number
+    .
+        the current line
+    $
+        the last line in the file
+    %
+        the whole file. The same as 1,$
+    't
+        position of mark "t"
+    /pattern[/]
+        the next line where text "pattern" matches.
+    ?pattern[?]
+        the previous line where text "pattern" matches
+    \/
+        the next line where the previously used search pattern matches
+    \?
+        the previous line where the previously used search pattern matches
+    \&
+        the next line where the previously used substitute pattern matches 
+
+    
+        /Section 1/+,/Section 2/-
+            all lines between Section 1 and Section 2,
+
+        /Section 1/;/Subsection/-,/Subsection/+
+            first find Section 1, then the first line with Subsection, step one line down (beginning of the range) and find the next line with Subsection, step one line up (end of the range).
+
+
+/pattern
+    /\vpattern 使用常规的正则表达式
+
+
+:range g[lobal][!]/pattern/cmd
+    Execute the Ex command cmd (default ":p") on the lines within [range] where pattern matches. 
+
+
+
+:{range}norm[al][!] {commands}				*:normal-range*
+	Execute Normal mode commands {commands} for each line in the {range}.

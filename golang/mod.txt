@@ -35,8 +35,19 @@ run go get package@version to update to a specific version (say, github.com/robt
 
 
 在GOPROXY流程中，官方定义了一组代理接口, 请参考官方接口定义
-GET $GOPROXY/<module>/@v/list returns a list of all known versions of the given module, one per line.
-GET $GOPROXY/<module>/@v/<version>.info returns JSON-formatted metadata about that version of the given module.
-GET $GOPROXY/<module>/@v/<version>.mod returns the go.mod file for that version of the given module.
-GET $GOPROXY/<module>/@v/<version>.zip returns the zip archive for that version of the given module.
+GET $GOPROXY/<module>/@latest 返回有关最新已知版本的 JSON 格式的元数据 格式相同的模块 $base/$module/@v/$version.info
+GET $GOPROXY/<module>/@v/list returns a list of all known versions of the given
+module, one per line. 返回版本列表
+GET $GOPROXY/<module>/@v/<version>.info returns JSON-formatted metadata about
+that version of the given module. // 返回指定版本和创建时间，
+GET $GOPROXY/<module>/@v/<version>.mod returns the go.mod file for that version
+of the given module. // 返回go.mod 文件
+GET $GOPROXY/<module>/@v/<version>.zip returns the zip archive for that version
+of the given module. // 返回zap 文件
+
+
+zip 
+    A module zip file may be at most 500 MiB in size
+    The total uncompressed size of its files is also limited to 500 MiB. go.mod files are limited to 16 MiB.
+
 

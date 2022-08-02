@@ -1,3 +1,16 @@
 
 reference:
     https://github.com/wubx/rust-in-databend
+
+
+
+    基于rust官方仓库crates.io，通过版本说明来描述
+    基于项目源代码的git仓库地址，通过URL来描述
+    基于本地项目的绝对路径或者相对路径，通过类Unix模式的路径来描述
+
+[dependencies]
+rand = "0.3"
+hammer = { version = "0.5.0"}
+color = { git = "https://github.com/bjz/color-rs" }
+geometry = { path = "crates/geometry" }
+

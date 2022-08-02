@@ -63,6 +63,7 @@ sed -e 'cmd'  cmd里使用变量： ‘$var’  (外面加单引号)
 \(xx\) 暂存匹配内容 
 \1 \2 \3 读取暂存内容
 	echo "hello world"|sed 's/\(hello\).*/world \1/' 
+    sed -i "s/\(\"resource_id\"\:\)\([0-9]*\),/\1\"\2\",/g" 7604_100038.json
 
 
 

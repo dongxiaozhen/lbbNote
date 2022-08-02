@@ -5,14 +5,6 @@ Cgroup:资源控制 /sys/fs/cgroup
 	memory:限制内存的使用上线
 	devices:设备权限控制
 	...
-Namespace:访问隔离 /proc/$$/ns 每个进程都有
-	Mount Namespace: 隔离文件系统挂载点
-	User Namespace: 隔离用户ID和组ID
-	UTS Namespace: 隔离主机名和域名
-	IPC Namespace: 隔离SYSTEMV IPC和POSIX消息队列
-	PID Namespace: 隔离进程ID
-	Net Namespace: 隔离网络资源
-
 rootfs:文件系统隔离
 容器引擎:生命周期控制
 libnetwork实现了5种驱动
@@ -99,3 +91,7 @@ docker import     从容器快照文件中再导入为镜像
 
 // docker和宿主机之间考呗数据
 sudo docker cp 074af74c669d:/etc/bash.bashrc  /tmp
+
+
+// amd64上拷贝的在arm上运行
+docker run -it --platform linux/amd64 work_plate_ubuntu_20.04 /bin/bash

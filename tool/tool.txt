@@ -13,11 +13,24 @@ json工具
         }
         
         // 格式化输出 {} json 输出，[] 数组输出，() 文本输出
+         jq --sort-keys 'sort_by(.Id)'
+            --sort-keys 排序字段
+            sort_by() 排序数组
 
     jsoncsv  json 文件转csv
         pip install jsoncsv
         cat raw.json | jsoncsv | mkexcel > output.csv  当个json结构
         cat data_bag_item.json | jsoncsv -A | mkexcel > output.csv json是数组结构
+
+    jless 
+        brew install jless
+
+    fx  
+        go install github.com/antonmedv/fx@latest
+
+
+regex 使用 regex-vis.com 可视化正则表达式
+    https://regex-vis.com/samples
 
 
 github 代码目录插件

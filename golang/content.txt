@@ -8,6 +8,9 @@
                  gopath设置多个路径，如果每个路径下都有一个相同的库，会引起这个库包含多次，有的方法初始化了，有的没有，，引起问题。
 
 package const--> var ---> init()
+import 不同分组使用空行分割开, 组内按顺序排序 
+    如果引用的包有顺序，比如需要先调用A的init函数，再调用B的init函数，怎把A
+    的引用放在B 之前，如有A自动排在B之后，则需要空行来强行排序
 
 book 
 #	golang-china/gopl-zh/
@@ -17,6 +20,9 @@ book
     https://github.com/go-internals-cn/go-internals
     https://www.bookstack.cn/read/qcrao-Go-Questions/spilt.6.GC-GC.md
     http://legendtkl.com/2017/04/02/golang-alloc/
+    https://www.purewhite.io/2019/11/28/runtime-hacking-translate/
+    https://golang.design/under-the-hood/zh-cn/part2runtime/ch06sched/preemption/
+    (全面)
 
 
 条件编译
@@ -81,6 +87,33 @@ map
 	} *
 	
 	map 取不存在的key的value,返回零直
+
+    // A header for a Go map.
+    type hmap struct {
+        count     int // # live cells == size of map.  Must be first (used by len() builtin)
+        flags     uint8
+        B         uint8  // 2^B == buckets数量
+        hash0     uint32 // hash 种子
+
+        buckets    unsafe.Pointer // array of 2^B Buckets.能存放的数据量最大是 6.5(loadFactor 加载因子 float32(loadFactorNum) / float32(loadFactorDen)) * 2^B
+        oldbuckets unsafe.Pointer // 扩容的时候使用，
+        extra *mapextra // optional fields
+    }
+    
+    // mapextra holds fields that are not present on all maps.
+    type mapextra struct {
+        ...
+        // nextOverflow holds a pointer to a free overflow bucket.
+        nextOverflow *bmap // 存放提前生成的、未使用的bmap
+    }
+
+    // A bucket for a Go map.
+    type bmap struct {
+        tophash [bucketCnt]uint8 // 每个key hash之后的高8位，如果高8位相同，再比较key
+        Keys [buketCnt]keyType  // keys
+        Values [bucketCnt]ValueType // 数值
+        overflow *bmap // 溢出bucket
+    }
 
 context 包实现了对多个派生go的管理，每个需要监听ctx.Done()退出，正常完成后调用CancelFunc
    context 不要放在结构体里一直保存，随着WithValue的一直调用不释放，会引起大内存，还有就是deadline不取消引起的混乱,要当参数传递

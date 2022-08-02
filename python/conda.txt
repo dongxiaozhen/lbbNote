@@ -1,0 +1,34 @@
+显示已创建环境
+	conda info --envs
+	conda env list
+	conda info -e
+
+
+# 激活某个环境 
+conda activate [env_name] 
+
+# 退出激活的环境 
+conda deactivate  
+
+查找包
+	conda search --full-name pynvim
+
+获取当前环境中已安装的包信息
+	conda list
+
+在指定环境中安装包
+	conda install --name <env_name> <package_name>
+
+卸载指定环境中的包
+	conda remove --name <env_name> <package_name>
+
+
+
+
+// 配置conda使用代理
+在~/.condarc里增加下面的配置
+proxy_servers:
+ http: http://127.0.0.1:8123
+ https: http://127.0.0.1:8123
+ ssl_verify: false
+

@@ -17,3 +17,7 @@ http://www.ambrsoft.com/TrigoCalc/PointsInOut/PointInOut_.htm
 
 坐标系
 http://www.fooplot.com/
+
+
+线上计算数学公式
+    https://mathsolver.microsoft.com/zh/topic/calculus/integrals

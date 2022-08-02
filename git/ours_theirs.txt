@@ -3,7 +3,7 @@
 ours 含义是： git log 下面的commit 
 theirs 含义是: git log 上面的commit
 
-git merge 的时候，HEAD代表当前分支,
+git merge 的时候，HEAD代表***当前分支***,
     master: git merge  develop  (在master分支，合并develop分支)
 
     <<<<<<< HEAD (master 分支)
@@ -20,7 +20,7 @@ merge (要合并的代码是ours)
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 
-git rebase 的时候，HEAD 代表要合并分支
+git rebase 的时候，HEAD 代表要 ***合并分支*** 
     master: git rebase develop (在master分支rebase develop)
 
     <<<<<<< HEAD (develop分支)
@@ -34,4 +34,4 @@ git checkout --ours （ours 代表冲突的下面部分，）
 git checkout --theirs（ours 代表冲突的上面部分，）
 
 git merge 的时候，老代码是本地的要提交的代码，新代码是要合并的代码
-git rebase的时候，因为实在新代码的基础上合并本地的代码，所以，老代码是要合并的代码, 新代码代表自己本地的
+git rebase的时候，因为是在新代码的基础上合并本地的代码，所以，老代码是要合并的代码, 新代码代表自己本地的

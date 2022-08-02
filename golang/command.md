@@ -31,7 +31,7 @@ os.Exec
 	    tidy        add missing and remove unused modules
 	    vendor      make vendored copy of dependencies
 	    verify      verify dependencies have expected content
-	    why         explain why packages or modules are needed
+	    why         explain why packages or modules are needed // 可以是模块，也可以是包
 
 
 
@@ -46,9 +46,10 @@ go build , go install
     go build -tags x1,x2
     
 
-go version [go_bin]  // 查看go程序的版本信息，如果不带文件，显示当前环境的go版本
+go version [go_bin|dir_path]  // 查看go程序的版本信息，如果不带文件，显示当前环境的go版本
     -m  显示目录，mod， 依赖 信息
     -v  如果参数是目录，不是go程序的文件也显示出来，
+    dir_path 显示目录下的所有go_bin 的版本信息
 
 
     

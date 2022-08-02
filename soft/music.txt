@@ -1,0 +1,2 @@
+命令行听音乐
+https://github.com/clangen/musikcube/wiki/user-guide

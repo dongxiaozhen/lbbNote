@@ -43,3 +43,14 @@ irate同样用于计算区间向量的计算率，但是其反应出的是瞬时
 
 Histogram的分位数计算需要通过histogram_quantile(φ float, b instant-vector)函数进行计算。其中φ（0<φ<1）表示需要计算的分位数
 histogram_quantile(0.5, http_request_duration_seconds_bucket)
+
+
+最大值
+histogram_quantile(0.99, sum(rate(paipai_server_method_histogram_bucket{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$"}[2m])) by(cluster,group,method,le))
+
+请求量
+sum by (group) (rate(paipai_server_method_histogram_count{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$"}[1m]))
+
+平均
+rate(paipai_server_method_histogram_sum{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$",shardingId=~"^($shardingId)$"}[1m])/rate(paipai_server_method_histogram_count{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$",shardingId=~"^($shardingId)$"}[1m])
+

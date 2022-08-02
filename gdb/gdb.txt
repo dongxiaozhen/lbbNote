@@ -373,3 +373,23 @@ follow child process
 
 运行shell命令
     (gdb) shell <CMD>
+
+
+
+gdb 查看程序入口
+---------------------
+gdb hello
+info files (找到Entry point xxx)
+list *xxxx
+
+runtime/rt0_linux_arm64.s (_rt0_arm64_linux)
+runtime/asm_arm64.s (runtime·rt0_go)
+	BL	runtime·args(SB)
+	BL	runtime·osinit(SB)
+	BL	runtime·schedinit(SB)
+
+	// create a new goroutine to start program
+	MOVD	$runtime·mainPC(SB), R0		// entry
+
+runtime/proc.go (runtime.main)
+------------------------
