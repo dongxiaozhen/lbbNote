@@ -16,6 +16,18 @@ mariadb -- mysql 配置文件 /etc/my.cnf 修改密码 mysql_secure_installation
 MyISAM 三个文件保存表信息.frm格式，.MYD数据，.MYI索引，速度快， b+,保存索引
 InnoDB 支持事务 b+树，保存行号
 
+
+mysql
+整个update语句中牵涉到写redo log和binlog，并且redo log在前，binlog在后，并且redo log的写入被拆分成了prepare和commit两个步骤，这就是两阶段提交在数据库中的应用。
+假设binlog写完，但是redo log还没commit之前发生了crash，此时MySQL在崩溃恢复时会有一定的处理逻辑？
+    如果redo log里面的事务是完整的（有commit标识），则直接提交
+    如果redo log里面只有完整的prepare，则判断对应的事务binlog是否存在且完整，如果完整则提交事务，否则回滚事务。
+
+redo log和binlog有一个共同的数据字段是XID，在崩溃恢复时，会顺序扫描redo log：
+    如果redo log既有prepare，又有commit，则直接提交
+    如果redo log只有prepare，则会拿着XID去找binlog，如果binlog里面有则提交，否则回滚
+
+
 mysql /var/lib/mysql /etc/mysql/conf.d
 
 1.显示MYSQL的版本

@@ -20,3 +20,18 @@ NAT Network Address Translation，网络地址转换
        DNAT 目的地址转化：外内网机器提供服务时,部机器访问内网，
 
 CDN的全称是Content Delivery Network，即内容分发网络
+
+
+linux 网络/ veth pair / tun / tap / bridge 
+  #https://typesafe.cn/posts/linux-tun-tap/
+  #https://morven.life/posts/networking-2-virtual-devices/
+
+  tun是网络层的虚拟网络设备，可以收发第三层数据报文包，如IP封包，因此常用于一些点对点IP隧道，例如OpenVPN，IPSec等
+  tap是链路层的虚拟网络设备，等同于一个以太网设备，它可以收发第二层数据报文包，如以太网数据帧。Tap最常见的用途就是做为虚拟机的网卡，因为它和普通的物理网卡更加相近，也经常用作普通机器的虚拟网卡
+
+    ip tuntap help
+    
+    veth pair是成对出现的一种虚拟网络设备接口，一端连着网络协议栈，一端彼此相连。如下图所示：
+    Linux Bridge（网桥）是用纯软件实现的虚拟交换机，有着和物理交换机相同的功能，例如二层交换，MAC地址学习等。因此我们可以把tun/tap，veth pair等设备绑定到网桥上，就像是把设备连接到物理交换机上一样。此外它和veth pair、tun/tap一样，也是一种虚拟网络设备，具有虚拟设备的所有特性，例如配置IP，MAC地址等。
+    apt-get install -y bridge-utils 
+    brctl help

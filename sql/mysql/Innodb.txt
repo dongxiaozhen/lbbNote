@@ -14,6 +14,8 @@
  2 rr  reapeated read ,同一事务前后两次读取的数据时一致的。可能出现幻读
  3 serializable, 所有的读都要上锁
 
+https://blog.csdn.net/Me_xuan/article/details/123364357
+
 幻读指的是多了一个或者少了一个，就像幻影一样，是和一个范围有关的，幻读的必要条件是两个，第一是有Insert/delete操作，第二个是你做了范围查询；
 repeated read实现：在rc的基础上增加了GAP锁,保证不会再增加新的数据.GAP的出现条件时,where 语句后面的Key 不是主键也不是唯一索引,因为这两种情况下不会增加新数据
 
@@ -52,3 +54,10 @@ repeated read实现：在rc的基础上增加了GAP锁,保证不会再增加新�
 在InnoDB存储引擎中，事务日志通过重做（redo）日志文件和InnoDB存储引擎的日志缓冲（InnoDB Log Buffer）来实现
 就是在写数据前，需要先写日志。这种方式称为预写日志方式（Write-Ahead Logging，WAL）。
 redo不同的是，redo存放在重做日志文件中，undo存放在数据库内部的一个特殊段（segment）中，这称为undo段（undo segment），undo段位于共享表空间内。
+
+
+
+快照读：读取快照中的数据，不需要进行加锁。看到快照这两个字，各位肯定马上就想到 MVCC 了，是这样，MVCC 作用于读取已提交和可重复读（默认）这两个隔离级别，这俩隔离级别下的普通 select 操作就是快照读
+当前读：读取的是最新版本的数据, 并且对读取的记录加锁, 阻塞其他事务同时改动相同记录，避免出现安全问题。
+
+

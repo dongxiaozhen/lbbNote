@@ -31,7 +31,7 @@ docker image rm xx 删除镜像
 Dockerfile
 
     使用#来注释
-    FROM 指令告诉 Docker 使用哪个镜像作为基础
+    FROM 指令告诉 Docker 使用哪个镜像作为基础,可以有多个from ,以最后一个为准构建，可以使用copy --from=0 将之前的拷贝到当前容器里
     接着是维护者的信息
     RUN开头的指令会在创建中运行，比如安装一个软件包，在这里使用 apt-get 来安装了一些软件
     ADD 命令复制本地文件到镜像；
@@ -95,3 +95,9 @@ sudo docker cp 074af74c669d:/etc/bash.bashrc  /tmp
 
 // amd64上拷贝的在arm上运行
 docker run -it --platform linux/amd64 work_plate_ubuntu_20.04 /bin/bash
+
+
+FROM 
+    --from=$num，从前边的阶段num中拷贝文件到当前阶段中，Dockerfile中包含多个FROM语句时，0代表第一个阶段
+CMD在Dockerfile中只能出现一次，有多个，只有最后一个会有效。其作用是在启动容器的时候提供一个默认的命令项。如果用户执行docker run的时候提供了命令项，就会覆盖掉这个命令。没提供就会使用构建时的命令。
+ENTRYPOINT这个命令和CMD命令一样，唯一的区别是不能被docker run命令的执行命令覆盖，如果要覆盖需要带上选项--entrypoint，如果有多个选项，只有最后一个会生效

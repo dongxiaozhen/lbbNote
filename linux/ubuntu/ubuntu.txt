@@ -2,6 +2,8 @@ sudo passwd root  使用su
 ctrl+Alt+F{1,6} 图形界面切换到命令行界面
 Alt+ F7 命令行界面切换到图形界面
 
+ulimit
+  /etc/security/limits.conf
 
 ubuntu 
    /bin/sh -> /bin/dash  

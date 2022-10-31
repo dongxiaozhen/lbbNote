@@ -5,3 +5,6 @@ mac 配置 https://aaaaaashu.gitbooks.io/mac-dev-setup/content/iTerm/index.html
 替换默认的sed 命令
     http://www.gnu.org/software/sed/  下载
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+
+截屏软件 https://shottr.cc/

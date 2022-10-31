@@ -51,3 +51,5 @@ zip
     The total uncompressed size of its files is also limited to 500 MiB. go.mod files are limited to 16 MiB.
 
 
+
+go 会将xxx/a 和xxx/a/v2 视为完全不同的两个模块对待

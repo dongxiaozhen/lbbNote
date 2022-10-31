@@ -1,0 +1,15 @@
+0. 启动python环境 conda activate pytorch_learn
+1. 安装 pip install jupyterlab
+    1.1 启动 jupyter-lab
+2. 安装 anaconda, 
+    2.1 查看 anaconda 信息， conda info （之前出现了m1 版本安装了x86版本）
+    2.2 查看python 平台信息，(之前展示的是老版本)
+        python 
+        import python 
+        platform.platform()
+            // 'macOS-12.4-arm64-arm-64bit'
+ 3. mac m1 修改
+    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+
+ 4. pip 安装 修改清华源
+     -i https://pypi.tuna.tsinghua.edu.cn/simple

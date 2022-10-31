@@ -54,3 +54,11 @@ sum by (group) (rate(paipai_server_method_histogram_count{service=~"^($service)$
 平均
 rate(paipai_server_method_histogram_sum{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$",shardingId=~"^($shardingId)$"}[1m])/rate(paipai_server_method_histogram_count{service=~"^($service)$",cluster=~"^($cluster)$",group=~"^($group)$",method=~"^($method)$",shardingId=~"^($shardingId)$"}[1m])
 
+
+
+apt 安装
+修改 yaml 配置
+启动 grafana 的数据源，dashbord
+
+
+

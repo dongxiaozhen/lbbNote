@@ -11,6 +11,8 @@ alt  proxy forward request
         proxy -> to_redis: foward  request
     end
     proxy -> proxy: send to task queue(loop_read)
+    proxy -> backend: forward_to_backend (BackendConn_loopWriter)
+    backend -> proxy: backend_to_proxy (BackendConn_loopReader)
     proxy -> proxy: pop task queue (loop_write)
     proxy -> client: send data to client
 end

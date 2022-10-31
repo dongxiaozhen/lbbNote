@@ -5,6 +5,18 @@ mcentral 管理空闲或者非空mspan
 mheap  地址空间总管，有67个mcentral,
 
 
+mallocgc
+    if size <  32K {
+        if noscan && size < 16B{
+            // 微对象，从mcache.tiny获取
+        }else{
+            // 从mcache.alloc(span 获取)
+        }
+    }else{
+        // 大对象，从mheap 获取
+    }
+
+
 
 
 介绍go内存

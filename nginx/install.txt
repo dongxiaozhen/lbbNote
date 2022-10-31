@@ -1,1 +1,3 @@
 install zlib zlib-devel openssl openssl-devel pcre pcre-devel
+
+apt install nginx

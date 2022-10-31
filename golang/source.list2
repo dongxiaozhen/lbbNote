@@ -179,3 +179,7 @@ github.com/leesper/tao                           tcp 框架
 go install loov.dev/lensm@main                   go代码专汇编 lensm -watch -filter "函数" 二进制文件
 https://github.com/cloudwego/netpoll             字节跳动netpoll
 https://github.com/klauspost/cpuid               查看cpu信息
+https://github.com/vishvananda/netlink           网络操作
+
+import "github.com/swaggo/gin-swagger" // gin-swagger middleware  自动生成文档
+import "github.com/swaggo/files" // swagger embed files  //自动生成文档

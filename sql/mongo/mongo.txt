@@ -33,3 +33,73 @@ db.collection_ins.totalIndexSize() 索引大小
 db.stats()
 db.collection_ins.stats()
 
+
+piple:
+  $match
+  $group _id,,
+    $sum
+    $count
+    $avg
+    $first
+    $last
+    $min
+    $max
+    $push
+    $addtoset 统计某个字段的所有类型枚举
+
+    $unwind 将一个字段含多多个值的拆分成多个记录
+    $skip
+    $limit
+    $sort
+    $lookup 
+      from
+      foreignField
+      localField
+      as
+
+    $bucket 区间分组
+      groupBy
+      boundaries
+      default
+      output
+
+
+
+
+  aggregate
+    $project: 
+      控制数据列的显示规则"_id" 列（{"_id"：0 | false}）：表示 "_id" 列是否显示
+      设置别名
+      加法（$add）、减法（$subtract）、乘法（$multipy）、除法（$divide）、求模（$mod）
+      关系运算：大小比较（"$cmp"）、等于（"$eq"）、大于（"$gt"）、大于等于（"$gte"）、小于（"$le"）、小于等于（"$lte"）、不等于（"$ne"）、判断 null （"$ifNull"），这些返回值都是 boolean 值类型的。
+
+      逻辑运算：与（"$and"）、或（"$or"）、非 （"$not"）
+      字符串操作：连接（"$concat"）、截取（"$substr"）、转小写（"$toLower"）
+      使用日期格式的数据 $dayOfYear $year
+
+index 索引 b+
+  getIndexs 查看索引
+  totalIndexSize 查看索引占用空间
+  dropIndex
+  dropIndexs
+  createIndex
+     options
+        background
+        uniq
+  多键索引 在数组的属性上简历索引
+  ttl索引 expireafterseconds 
+  空间索引
+    $near
+    $geometry
+    $maxDistance
+  options
+    unique
+    partialFilterExpression 部分索引
+    sparse true 稀疏索引，只对存在的字段创建索引，(hint()显示使用)
+
+
+分片
+  服务 mongod --shardsvr
+  config mongod --configsvr
+  mongos 集群，连接config mongod ，分片策略： Hashed 分片， 范围分片（Ranged Sharding） 
+    mongos, sh.addShard(服务)

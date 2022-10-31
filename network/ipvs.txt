@@ -1,0 +1,16 @@
+ lvs
+      nat 模式
+        修改目的地址ip, 回包必须进过来包的机器，单机压力大
+      dr 模式
+        所有机器的vip 都一样，在一个网段(后端的网关都指向入口)，只需要目标mac地址，后端服务直接回报给客户端，
+        后端服务需要关闭arp 应答和announce 机制(只需要限定特定的网卡，一般使用lo)
+      tun 模式
+        类似dr,但是可以夸网段， 不需要解决arp问题
+
+      ipvsadm
+        -L 列表
+        -A/-E  -t/-u（t:tcp, u:udp）service-addr -s(调度算法) 
+        -D 删除
+        -a/-e -t/-u service-addr -r sevice-addr -g/-i/-m (g:gateway dr模式，i:ipip tun模式，m:masquerade nat模式)
+        -C 清空
+

@@ -18,3 +18,7 @@ multipass delete vm01
 # 释放实例（彻底删除）
 multipass purge vm01
 
+
+
+#配置
+ /var/root/Library/Application Support/multipassd/qemu

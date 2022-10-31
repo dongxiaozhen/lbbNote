@@ -7,9 +7,9 @@ gc 过程说明 runtime/mgc.go
 
 混合写屏障 runtime/mbarrier.go
 //     writePointer(slot, ptr):
-//         shade(*slot)
+//         shade(*slot)    // 强三色，保护不了栈
 //         if current stack is grey:
-//             shade(ptr)
+//             shade(ptr)   // 弱三色, 保护了栈对象引用的对象不是白色,（原来堆里引用删除后赋值给栈）栈不需要重扫描(只要开始的时候暂停当前的G扫描一次)
 //         *slot = ptr
 
 
@@ -27,3 +27,11 @@ mark/sweep  的时候，会一个一个goroutine的暂停扫描栈，从而不�
 * https://www.kancloud.cn/aceld/golang/1958308#GC_376
 * https://blog.csdn.net/qiya2007/article/details/107622603?spm=1001.2014.3001.5501
 * http://legendtkl.com/2017/04/28/golang-gc/
+* https://mp.weixin.qq.com/s?__biz=MjM5MDUwNTQwMQ==&mid=2257484062&idx=1&sn=40a8cca15b9c215f8a29e60e6d8a3542&chksm=a53919c8924e90de345abb48b2e0789f8f8ca1557c607680ca366112fd4d7668e57c742700e3&mpshare=1&scene=1&srcid=&sharer_sharetime=1578283724418&sharer_shareid=4317d953c0b80e400bcd56fdb955a3af&key=da59564ba51e192af752ec80ebb40b4c64894a8a913bf8623c6b994e917c93459a9233d55673c20d3eb2a702cdd0baa77857e2462ad9a1fe9eff0f75039b8a849ba1ba08b013aa57c5a9023e296c8d02&ascene=1&uin=Mjg4ODUzNTIxMA==&devicetype=Windows%2010&version=62070158&lang=zh_CN&exportkey=A30CTDV02pfcL8T8JFLvxhI=&pass_ticket=ufMEdJKUyD8Vvp3LSMca126uYXD3VQoJby3SOOCx/FyQzRLri8CgBd/w1lMZFJnt##
+* https://www.imooc.com/article/323356
+
+
+根对象在垃圾回收的术语中又叫做根集合，它是垃圾回收器在标记过程时最先检查的对象，包括：
+    全局变量：程序在编译期就能确定的那些存在于程序整个生命周期的变量。
+    执行栈：每个 goroutine 都包含自己的执行栈，这些执行栈上包含栈上的变量及指向分配的堆内存区块的指针
+    寄存器：寄存器的值可能表示一个指针，参与计算的这些指针可能指向某些赋值器分配的堆内存区块。

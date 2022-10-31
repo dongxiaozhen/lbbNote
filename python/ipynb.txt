@@ -1,0 +1,5 @@
+ipynb文件是怎么生成的,怎么导出ipynb文件
+  jupyter nbconvert --to script *.ipynb
+
+conda install jupyter     # install jupyter + notebook
+jupyter notebook       # start server + kernel

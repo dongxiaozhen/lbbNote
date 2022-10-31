@@ -1,3 +1,4 @@
+# https://haoyu.love/blog900.html
 显示已创建环境
 	conda info --envs
 	conda env list

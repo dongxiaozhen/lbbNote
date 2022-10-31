@@ -6,10 +6,15 @@ sync.Map 包括两个map ，
     read给dirty赋值时，删除里的可以不会出现在dity里
     
     entry
-        expunged 说明该key已经被删除，而且read和dirty数据不一致，dirty里面已经删除了
+        expunged 说明该key已经被删除，而且read和dirty数据不一致，dirty里面已经删除了(read->dirty转换的时候删除的)
         nil      说明该key被删除，而且read和dirty里的数据一致，只需要修改p指针的值就行
-    
 
 
+为什么要引入expunged
+    1. read->dirty转换的时候不清理nil key, 会导致map 越来越大
+    2. read->dirty 转换的时候清理nil key, 导致read 里有，dirty里没有，
+        2.1 如果再次更新的时候,直接更新read里的value,会导致dirty数据不全，下次dirty->read的时候就会丢失key, 因为不能删除read里的数据，如果要删除，read 也需要加锁了
+        2.2 如果是read->dirty转换完之后删除key, 这时候都是nil key, 不需要考虑dirty里没有的情况
 
 
+https://view.inews.qq.com/a/20220613A08UDG00

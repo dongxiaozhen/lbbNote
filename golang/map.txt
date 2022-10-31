@@ -35,3 +35,12 @@ type bmap struct {
     // Followed by an overflow pointer.
 }
 
+
+map range  // 每次循环遍历前都会先随机一个bucket，作为开始遍历的bucket
+
+	// decide where to start
+	r := uintptr(fastrand())
+	if h.B > 31-bucketCntBits {
+		r += uintptr(fastrand()) << 31
+	}
+	it.startBucket = r & bucketMask(h.B)
