@@ -154,9 +154,10 @@ top
 	按”u”快捷键，可以过滤出特定用户拉起的进程
 	按”f”快捷键，列显示，排序规则
 
-JSON  
+JSON   https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions
 	jq .key file
 	jq .[1].key 数组
+    jq ".data.list | length" 获取数组长度
 
 ls -lR 递归显示目录
 ls -t 时间排序 

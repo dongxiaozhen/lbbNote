@@ -269,3 +269,11 @@ heap high
 	map-> slice
 	offheap
 	reuse everything
+
+
+regexp 正则表达式
+    正则表达式不包含特定字符串 
+    对于正则表达式引擎来说，因为它是从文本头部向尾部开始解析的（可以通过正则选项控制解析方向），因此对于文本尾部方向，称为“前”，因为这个时候，正则引擎还没走到那块，而对文本头部方向，则称为“后”，因为正则引擎已经走过了那一块地方。
+    前瞻式否定式匹配 (?!匹配模式)
+    golang 不支持前瞻式否定匹配，可以使用访问下面的这个网址生成其他方式的否定匹配 https://www.formauri.es/personal/pgimeno/misc/non-match-regex/?word=bdc
+

@@ -1,6 +1,9 @@
 # 线上配置
 https://nginx-playground.wizardzines.com/
 
+# 可视化配置
+    https://www.digitalocean.com/community/tools/nginx?global.app.lang=zhCN
+
 
 配置文档
 

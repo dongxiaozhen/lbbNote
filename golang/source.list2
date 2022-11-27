@@ -183,3 +183,6 @@ https://github.com/vishvananda/netlink           网络操作
 
 import "github.com/swaggo/gin-swagger" // gin-swagger middleware  自动生成文档
 import "github.com/swaggo/files" // swagger embed files  //自动生成文档
+https://github.com/imroc/req                     http client
+https://github.com/monkeyWie/gopeed              下载视频
+github.com/disintegration/imaging                图片

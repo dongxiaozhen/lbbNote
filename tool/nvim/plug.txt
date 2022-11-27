@@ -1,0 +1,23 @@
+
+
+代码补全，跳转，
+https://github.com/neoclide/coc.nvim
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    :CocInstall coc-go coc-json
+
+查看分支
+https://github.com/junegunn/gv.vim
+    :GV
+
+输入括号后自动格式化
+https://github.com/windwp/nvim-autopairs
+
+显示当前所在的行
+https://github.com/DanilaMihailov/beacon.nvim
+
+显示最近编辑的文件
+https://github.com/mhinz/vim-startify
+
+
+显示命令行界面
+https://github.com/voldikss/vim-floaterm

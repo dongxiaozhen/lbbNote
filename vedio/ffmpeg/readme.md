@@ -26,3 +26,13 @@ ffmpeg -codecs
 	D、E表示的解码器、编码器
 ffmpeg -encoders
 
+
+
+从视屏里提取音频
+    ffmpeg -i share_548123ade13265be76a1fb342fbe16c7.mp4 -vn -c:a mp3 output.mp3
+
+截取视频
+    ffmpeg -ss 01:43:10 -to 02:10:19 -i "hhd800.com@SSIS-541.mp4" -c copy  output4.mp4
+
+转换rmkv视频
+    ffmpeg -i 只有你.rmvb -c:v libx264 -strict -2 看不见的爱.mp4
