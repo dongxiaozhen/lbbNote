@@ -1,7 +1,7 @@
-Explain     | char
-------------|----
-ErrorReply  | '-'  
-StatusReply | '+'                                                
-IntReply    | ':'                                                  
-StringReply |'$'                                                                   
-ArrayReply  | '*'
+| Explain     | char |
+| ----------- | ---- |
+| ErrorReply  | '-'  |
+| StatusReply | '+'  |
+| IntReply    | ':'  |
+| StringReply | '$'  |
+| ArrayReply  | '*'  |

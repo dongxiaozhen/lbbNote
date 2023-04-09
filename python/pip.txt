@@ -6,3 +6,11 @@ pip3 install --upgrade pip
 
 
 pip3 install awesome-finder
+
+python 生成依赖
+    pip freeze > requirements.txt
+python 安装依赖
+    pip install -r requirements.txt
+
+pthon 安装指定版本库
+    pip3 install aliyun-log-python-sdk==0.8.2

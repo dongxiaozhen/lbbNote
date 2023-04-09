@@ -15,3 +15,33 @@
 
  github com/vishvananda/netlink
  github com/vishvananda/netns
+
+
+
+Network: bridge host ipvlan macvlan null overlay
+1. bridge 桥接，相当于网桥，工作在链路层
+    // 安装
+     sudo apt install bridge-utils
+
+    // 创建虚拟网卡
+    ip link add A type veth peer name B
+
+    // A 端插入docker0
+    brctl addif docker0 A
+    ip link set A up
+
+    // B 端插入容器
+    PID=$(docker inspect -f '{{.State.Pid}}' contaminxxx)
+    mkdir -p /var/run/netns
+    ln -s /proc/$PID/ns/net /var/run/netns/$PID
+
+    // B端放到命名空间
+    ip link set B netns $PID
+    ip netns exec $PID ip link set dev B name eth0
+    ip netns exec $PID ip link set eth0 up
+
+    // 设置ip
+    ip netns exec $PID ip addr add 172.17.0.100/16 dev eth0
+    ip netns exec $PID ip route add default via 172.17.0.1
+
+2. host  和宿主机在一个命名空间

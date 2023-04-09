@@ -186,3 +186,8 @@ import "github.com/swaggo/files" // swagger embed files  //自动生成文档
 https://github.com/imroc/req                     http client
 https://github.com/monkeyWie/gopeed              下载视频
 github.com/disintegration/imaging                图片
+https://github.com/ehang-io/nps/                 内网穿透
+https://github.com/robfig/cron                   定时器
+https://github.com/djherbis/times                File Times for #golang
+github.com/blevesearch/bleve                     倒排索引
+https://github.com/sourcegraph/conc              并发库

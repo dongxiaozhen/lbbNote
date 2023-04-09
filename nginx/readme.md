@@ -60,3 +60,13 @@ limit_rate 下载速率
 stub_status 显示nginx状态
 
 htpasswd -c(create file) -b file user1 paswd1
+
+
+
+
+nginx 499错误原因及解决[!nginx_499.png](https://blog.csdn.net/github_30641423/article/details/119787706)
+   在nginx中 499状态码的定义是  client has closed connection，也就是客户端断开了连接。
+   所以显然，客户端端主动关闭请求或者客户端网络断掉时，于是nginx就记录了499状态，并且断开了和后面服务端的连接（这样可能导致服务端返回数据时，因为连接断开而报错）
+    解决499问题：
+        1、查看服务端为什么响应这么慢，是否需要优化，或者调大客户端方的连接超时时间，不那么快断开
+        2、proxy_ignore_client_abort参数设置为on，默认是off的

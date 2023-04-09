@@ -152,3 +152,78 @@ StringIO     在内存中读写st StringIO操作的只能是str，
 BytesIO     如果要操作二进制数据，就需要使用BytesIO
     
 
+Python有五个标准的数据类型：
+    Numbers（数字）
+    	int（有符号整型）
+    	bool True, False
+    	-- long（长整型，也可以代表八进制和十六进制）Python使用 L 来显示长整型。long 类型只存在于 Python2.X 版本中，
+    	float（浮点型）
+    	complex（复数） 可以用 a + bj,或者 complex(a,b) 表示， 复数的实部 a 和虚部 b 都是浮点型
+
+    String（字符串）
+    	我们可以使用引号 ( ' 或 " ) 来创建字符串,Python 三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符
+    	u(U)前缀表示字符串的编码方式为unicode。
+    	f在字符串前面，字符串中引入变量直接{变量名}，推荐使用这款,format
+    	r在字符串前面,此字符串中的 \, \\, ' , " , \n \b \r ... 等转义符号，就不进行转义了.raw string. 注意：两个\\不能正常处理，需要\\\\
+    	chr(x)将一个整数转换为一个字符
+		unichr(x)将一个整数转换为Unicode字符
+		ord(x)将一个字符转换为它的整数值
+		hex(x)将一个整数转换为一个十六进制字符串
+		oct(x) 将一个整数转换为一个八进制字符串
+
+    List（列表）
+    	list = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
+    	list(s)将序列 s 转换为一个列表
+    Tuple（元组）
+    	tuple = ( 'runoob', 786 , 2.23, 'john', 70.2 )
+    	元组不能二次赋值，相当于只读列表。
+    	tuple(s) 将序列 s 转换为一个元组	
+    Dictionary（字典）
+    	字典用"{ }"标识。字典由索引(key)和它对应的值value组成
+    	tinydict = {'name': 'runoob','code':6734, 'dept': 'sales'}
+    	dict(d) 创建一个字典。d 必须是一个序列 (key,value)元组。
+    	键必须不可变，所以可以用数字，字符串或元组充当，所以用列表就不行，
+    	xxx in dict
+    	dict.items()
+    	dict.keys()
+
+	在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。
+	Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。
+		from…import 语句 让你从模块中导入一个指定的部分到当前命名空间中
+		如果要给函数内的全局变量赋值，必须使用 global 语句。
+		dir() 函数一个排好序的字符串列表，内容是一个模块里定义过的名字。
+	Python中的包 包就是文件夹，但该文件夹下必须存在 __init__.py 文件, 该文件的内容可以为空。__init__.py 用于标识当前文件夹是一个包
+
+	生成器
+	yield函数是一个生成器(generator),可用于迭代；在函数中yield类似于return，不同的是，yield返回一个return的值并且记住这个返回值的位置，下次迭代就从记住的这个位置开始，并且下一次迭代时，从上一次迭代遇到的yield后面的代码开始执行。
+	next()函数可以不断打印yield生成器的值；
+	send()函数特别之处在于它可以携带参数，并修改上一个表达式的值，同时用法也与next()有很多相同之处；
+
+	迭代器
+		把一个类作为一个迭代器使用需要在类中实现两个方法 __iter__() 与 __next__() 。
+		__iter__() 方法返回一个特殊的迭代器对象， 这个迭代器对象实现了 __next__() 方法并通过 StopIteration 异常标识迭代的完成。
+
+	try/except 语句还有一个可选的 else 子句，如果使用这个子句，那么必须放在所有的 except 子句之后。
+	else 子句将在 try 子句没有发生任何异常的时候执行.
+	try-finally 语句无论是否发生异常都将执行最后的代码
+	使用 raise 语句抛出一个指定的异常。
+	异常类继承自 Exception 类，可以直接继承，或者间接继承，
+
+	类：
+		__private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.__private_attrs。
+		在类的内部，使用 def 关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数 self，且为第一个参数，self 代表的是类的实例。
+
+    	__init__ : 构造函数，在生成对象时调用
+    	__del__ : 析构函数，释放对象时使用
+    	__repr__ : 打印，转换
+    	__setitem__ : 按照索引赋值
+    	__getitem__: 按照索引获取值
+    	__len__: 获得长度
+    	__cmp__: 比较运算
+    	__call__: 函数调用
+    	__add__: 加运算
+    	__sub__: 减运算
+    	__mul__: 乘运算
+    	__truediv__: 除运算
+    	__mod__: 求余运算
+    	__pow__: 乘方

@@ -1,4 +1,18 @@
 
+# 汇编语法
+* 这是 AT&T 语法的示例：
+    addl $4, %eax
+* 这是英特尔语法的示例：
+    add eax, 4
+    MOV A, B 指令就好像它只是一个赋值语句 A = B.
+
+**  CALL instruction就是取当前指令指针，压栈，然后用第一个操作数的值替换当前指令指针。 
+**  这 RET(return) 指令的作用恰恰相反，它将堆栈中的一个值弹出到当前指令指针中。 
+**  这 JMP指令与 CALL除了它不会将返回地址压入堆栈。 它通常用于函数内的控制流。 
+
+## objdump 设置汇编类型
+    objdump -d -M intel ./a.out
+
     FP: Frame pointer: arguments and locals.
     PC: Program counter: jumps and branches.
     SB: Static base pointer: global symbols.

@@ -1,0 +1,6 @@
+# 安装
+    go run build.go install
+
+## 修改密码
+    ./syncthing generate --gui-user=libinbin --gui-password=libinbin
+

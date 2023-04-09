@@ -18,6 +18,8 @@ cf 命令行文件管理器
 tldr 类似man 命令手册
   tldr.ostera.io 
   
+man 手册https://dashdash.io/3
+
   sudo apt-get install nodejs
   sudo apt-get install npm
   sudo npm install -g tldr 

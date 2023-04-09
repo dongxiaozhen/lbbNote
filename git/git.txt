@@ -203,3 +203,6 @@ git revert commitID 以新增一个 commit 的方式还原某一个 commit 的�
    sudo apt install git
    配置 ~/.gitconfig
        mv gitconfig ~/.gitconfig
+
+diff 对比
+https://github.com/dandavison/delta

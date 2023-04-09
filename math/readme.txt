@@ -21,3 +21,6 @@ http://www.fooplot.com/
 
 线上计算数学公式
     https://mathsolver.microsoft.com/zh/topic/calculus/integrals
+
+计算公式
+https://mathb.in/1

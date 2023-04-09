@@ -1,3 +1,10 @@
+docker info 查看docker 信息
+    client: 客户端信息
+    server: 服务端信息
+        runc-version: runc 版本号
+        kerner-version: linux 内核版本号 (容器使用宿主机的linux内核)
+        os-type: linux  
+
 Cgroup:资源控制 /sys/fs/cgroup
 	cpuset：分配制定的CPU和内存节点
 	cpu：控制cpu占用率
@@ -37,7 +44,11 @@ Dockerfile
     ADD 命令复制本地文件到镜像；
     EXPOSE 命令来向外部开放端口；
     CMD 命令来描述容器启动后运行的程序等。
+    CMD在Dockerfile中只能出现一次，有多个，只有最后一个会有效。其作用是在启动容器的时候提供一个默认的命令项。如果用户执行docker run的时候提供了命令项，就会覆盖掉这个命令。没提供就会使用构建时的命令。
+    ENTRYPOINT这个命令和CMD命令一样，唯一的区别是不能被docker run命令的执行命令覆盖，如果要覆盖需要带上选项--entrypoint，如果有多个选项，只有最后一个会生效
     VOLUME 来添加一个或者多个新的卷到由该镜像创建的任意容器
+    ENV,ARG 设置环境变量，ARG 只有docker build过程中使用
+    USER 用户名:用户组
 
     sudo docker build -t="ouruser/sinatra:v2" .
         -t 标记来添加 tag，指定新的镜像的用户信息。 “.” 是 Dockerfile 所在的路径（当前目录）
@@ -59,10 +70,17 @@ docker run    新建并启动容器
 	-h 容器操作系统命名
 	--name 容器命名
 	-w path 修改工作目录
+    -rm 运行停止后删除容器
+
 docker stop 停止一个容器,(停止的容器还在，可以用start命令再次激活，如果不用，需要用rm命令删除)
 docker rm 命令是移除容器。
 docker attach docker_name 连接到前一个docker命令的Stdin,  
 docker exec -it docker_name cmd  运行另一个命令
+
+      load                   docker run                          exec
+ file------>images   ------------------------------> container  start
+     <------         <------------------------------            stop
+       save                 docker commit
 
 docker ps 命令来查看容器运行情况信息
 docker inspect 查看容器所有信息
@@ -99,5 +117,3 @@ docker run -it --platform linux/amd64 work_plate_ubuntu_20.04 /bin/bash
 
 FROM 
     --from=$num，从前边的阶段num中拷贝文件到当前阶段中，Dockerfile中包含多个FROM语句时，0代表第一个阶段
-CMD在Dockerfile中只能出现一次，有多个，只有最后一个会有效。其作用是在启动容器的时候提供一个默认的命令项。如果用户执行docker run的时候提供了命令项，就会覆盖掉这个命令。没提供就会使用构建时的命令。
-ENTRYPOINT这个命令和CMD命令一样，唯一的区别是不能被docker run命令的执行命令覆盖，如果要覆盖需要带上选项--entrypoint，如果有多个选项，只有最后一个会生效

@@ -1,3 +1,5 @@
+线上vim  https://www.vimonlineeditor.com/
+
 动词
 动词代表了我们要进行的操作 (:h operator)
     d delete 删除
@@ -303,6 +305,13 @@ mac 编译
 	--with-tlib=ncurses
 
 
+! 外部命令执行可以执行文件中选中的内容
+    .. ! sort | uniq  选中的内容排序，去重
+    '<','>' ! jq "." json操作
+    
+
+gf 打开当前鼠标位置的文件
+gx 浏览器里打开超链接地址
 
 Vim normal命令的使用形式为 :{range}norm[al][!] {commands}，表示在 {range} 指定的范围内的每行执行若干 普通模式命令 
     range 可以是行号或者可是模式选中的行

@@ -1,5 +1,10 @@
 grpc生态 https://github.com/grpc-ecosystem
 
+客户端工具：
+    go install github.com/ktr0731/evans@latest
+        evans --proto api/api.proto repl
+    https://github.com/uw-labs/bloomrpc
+
 
 server
    1 创建grpc server 

@@ -17,6 +17,8 @@ json工具
             --sort-keys 排序字段
             sort_by() 排序数组
 
+        线上操作网址：https://jqplay.org/
+
     jsoncsv  json 文件转csv
         pip install jsoncsv
         cat raw.json | jsoncsv | mkexcel > output.csv  当个json结构
@@ -54,3 +56,19 @@ ncdu   du
 
 lsd 图形颜色的ls
      https://github.com/Peltoche/lsd
+
+命令行
+    https://github.com/wtfutil/wtf
+
+depth 查看go 依赖
+    https://github.com/KyleBanks/depth
+
+rts 更加json字符串生成结构体
+    https://github.com/galeone/rts
+
+rust重写工具
+    https://deepu.tech/rust-terminal-tools-linux-mac-windows-fish-zsh/
+        1. exa ==> ls
+        2. rip ==> rm 
+        3. dust ==> du
+

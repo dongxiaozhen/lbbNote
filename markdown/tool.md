@@ -18,7 +18,7 @@ Plug 'iamcco/markdown-preview.vim'
 
 # 终端里看md文件
 https://github.com/maaslalani/slides
-#vim 看md文件
+#vim,命令行 看md文件
 glow
 
 #软件 marktext

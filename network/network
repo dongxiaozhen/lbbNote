@@ -27,3 +27,49 @@ dig DNS查询
 
 
 telnet 退出 ctrl + ]  , 然后输入 quit
+
+
+
+
+vlan 12位标示，最多创建4096个
+	交换机上设置vlan, 通过将端口分类，分别加入不同的vlan, 收到数据打vlan标志，发出数据删除vlan标志，
+	access,trunk,hybird trunk可以设置多个vlan通过
+	划分方法：
+		1. 基于端口
+		2. 基于mac地址
+		3. 基于ip子网划分
+		4. 基于协议划分
+		5. 基于策略（以上方式组合）voice-vlan
+
+	vlan 之间通信
+		1. 增加路由器, vlan设置if, 
+		2. 增加三层交换机，直接给vlan设置ip
+
+
+点对点
+	hdlc 高级数据链路通信
+		三种数据 信息、监控、无编号
+	ppp 点对点通信
+		链路控制协议
+		网络层控制协议
+
+
+vpn，ipsec 路由器上配置
+	传输模式，在ip_header和数据之间插入AH,ESP信息
+	隧道模式，在ip_header前面增加新的ip_header,
+
+GRE
+	将一种报文协议封装在另一种报文协议的报文中
+
+snmp 统一网络管理
+	包括 NMS,AGENT, MIB
+
+vxlan 24位标志，最多16777216
+	l2/l3层网络上构建
+	spine节点执行路由转发，转发时不感知vxlan
+	leaf 节点负责资源接入，完成vxlan封装和解封
+	udp 转发
+
+wlan wifi lan
+	AC/Ap 模式
+		capwap 协议，AC通过此协议管理AP

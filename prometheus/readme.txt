@@ -6,6 +6,21 @@
    https://www.jianshu.com/p/93412a925da2
 
 
+prometheus
+  监控告警系统说明
+    同比:  (abs(energy_flow{job="ddcs_energy_new_4"}  -  energy_flow{job="ddcs_energy_new_4"} offset 7d) /  energy_flow{job="ddcs_energy_new_4"}  offset 7d  >  0.25)
+    环比： (abs(energy_flow{job="ddcs_energy_new_4"}  -  energy_flow{job="ddcs_energy_new_4"} offset 10m) /  energy_flow{job="ddcs_energy_new_4"}  offset 10m  >  0.2) 
+    
+  郑则表示
+    = 等于
+    != 不等于
+    =~ 匹配正则表达式
+    !~ 与正则表达式不匹配
+
+    grafana 配置参数
+      1。 Variables 里增加参数，name=newlabel, type=query, query=label_values(energy_flow,method_name), regex=/daily|new.*/
+      2.  配置图形语句： energy_flow{job="ddcs_energy_new_3",method_name=~'$newlabel'}
+
 基础
 https://www.ctolib.com/docs/sfile/prometheus-book/promql/prometheus-metrics-types.html
 https://www.zhihu.com/topic/20223143/hot

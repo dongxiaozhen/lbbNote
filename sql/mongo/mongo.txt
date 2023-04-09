@@ -22,17 +22,15 @@ db.collection_ins.find({query})  a:b a:{$xx:b} a:{$xx:b,$xy:c} $or:[{query1},{qu
                        .limit(n)
                        .skip(n)
                        .sort({key:1/-1})
-                       
+
 db.collection_ins.createIndex({key:1/-1})
 db.collection_ins.getIndexes() 获取索引
 db.collection_ins.dropIndex()  删除指定索引
 db.collection_ins.dropIndexes() 删除全部索引
 db.collection_ins.totalIndexSize() 索引大小
 
-
 db.stats()
 db.collection_ins.stats()
-
 
 piple:
   $match
@@ -56,15 +54,12 @@ piple:
       foreignField
       localField
       as
-
+    
     $bucket 区间分组
       groupBy
       boundaries
       default
       output
-
-
-
 
   aggregate
     $project: 
@@ -97,6 +92,7 @@ index 索引 b+
     partialFilterExpression 部分索引
     sparse true 稀疏索引，只对存在的字段创建索引，(hint()显示使用)
 
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-09-18-28-12-image.png)
 
 分片
   服务 mongod --shardsvr

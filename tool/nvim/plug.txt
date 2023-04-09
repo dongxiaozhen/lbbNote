@@ -1,4 +1,5 @@
-
+使用nvim 阅读man 手册，可以使用ctrl+], ctl+o 跳转关键字,没有高亮的字也可以跳转（:Man）
+	export MANPAGER="nvim -u /dev/null +Man!"
 
 代码补全，跳转，
 https://github.com/neoclide/coc.nvim

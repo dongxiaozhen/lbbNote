@@ -1,0 +1,8 @@
+
+1. pdfcpu , go提供的cli, api 处理pdf 
+    https://github.com/pdfcpu/pdfcpu
+        
+        图片排版 2 5
+        pdfcpu grid -- "d:500 500, ma:20, bo:off" out.pdf 2 5 *.png
+
+

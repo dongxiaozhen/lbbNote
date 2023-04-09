@@ -4,7 +4,6 @@
 | InnoDB             | DEFAULT | Percona-XtraDB, Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |
 +--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+
 
-
 主键 树
 索引 树
 
@@ -13,6 +12,25 @@
  1 rc  read committed 不会出现脏读
  2 rr  reapeated read ,同一事务前后两次读取的数据时一致的。可能出现幻读
  3 serializable, 所有的读都要上锁
+
+RR跟RC隔离级别，最大的区别就是：RC每次读取数据前都生成一个ReadView，而RR只在第一次读取数据时生成一个ReadView。
+幻读，一个事物读取范围操作没有加锁，另一个事物插入了数据，那当前事物更新范围操作的时候，就会出现另一个事物新插入的数据，出现幻读，
+串行化（Serializable)， 所有SELECT语句会隐式转化为SELECT ... FOR SHARE，即加共享锁。
+
+MVCC的实现原理
+    隐式字段
+        对于InnoDB存储引擎，每一行记录都有两个隐藏列DB_TRX_ID、DB_ROLL_PTR，如果表中没有主键和非NULL唯一键时，则还会有第三个隐藏的主键列DB_ROW_ID。
+            DB_TRX_ID，记录每一行最近一次修改（修改/更新）它的事务ID，大小为6字节；
+            DB_ROLL_PTR，这个隐藏列就相当于一个指针，指向回滚段的undo日志，大小为7字节；
+            DB_ROW_ID，单调递增的行ID，大小为6字节；
+
+    快照读&当前读
+        读取的是记录数据的可见版本（有旧的版本），不加锁,普通的select语句都是快照读,如：
+        读取的是记录数据的最新版本，显示加锁的都是当前读
+    
+    Read View
+        Read View就是事务执行快照读时，产生的读视图。
+        m_ids:当前系统中那些活跃的读写事务ID,它数据结构为一个List。
 
 https://blog.csdn.net/Me_xuan/article/details/123364357
 
@@ -28,7 +46,6 @@ repeated read实现：在rc的基础上增加了GAP锁,保证不会再增加新�
 如果使用锁机制来实现这两种隔离级别，在可重复读中，该sql第一次读取到数据后，就将这些数据加锁，其它事务无法修改这些数据，就可以实现可重复 读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会 发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免。需要Serializable隔离级别 ，读用读锁，写用写锁，读锁和写锁互斥，这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。
 所以说不可重复读和幻读最大的区别，就在于如何通过锁机制来解决他们产生的问题。
 上文说的，是使用悲观锁机制来处理这两种问题，但是MySQL、ORACLE、PostgreSQL等成熟的数据库，出于性能考虑，都是使用了以乐观锁为理论基础的MVCC（多版本并发控制）来避免这两种问题。
-
 
 表空间
    所有的数据都属于表空间
@@ -46,18 +63,119 @@ repeated read实现：在rc的基础上增加了GAP锁,保证不会再增加新�
   Fixed,Dynamic,Barracuda
   行溢出：将一条记录的某些数据存储在真正的数据页面之外. 所有可变长度的列长度不超多65532。
 
-  
   // show table status like 'aa';
 
 意向锁是表级别的锁
-在INFORMATION_SCHEMA架构下添加了INNODB_TRX、INNODB_LOCKS、INNODB_LOCK_WAITS
+意向锁是在当事务加表锁时发挥作用。比如一个事务想要对表加排他锁，如果没有意向锁的话，那么该事务在加锁前需要判断当前表的每一行是否已经加了锁，如果表很大，遍历每行进行判断需要耗费大量的时间。如果使用意向锁的话，那么加表锁前，只需要判断当前表是否有意向锁即可，这样加快了对表锁的处理速度。
+意向锁是有存储引擎自己维护的，是内部机制，用户无法操作意向锁。
+    在INFORMATION_SCHEMA架构下添加了INNODB_TRX、INNODB_LOCKS、INNODB_LOCK_WAITS
+
 在InnoDB存储引擎中，事务日志通过重做（redo）日志文件和InnoDB存储引擎的日志缓冲（InnoDB Log Buffer）来实现
 就是在写数据前，需要先写日志。这种方式称为预写日志方式（Write-Ahead Logging，WAL）。
 redo不同的是，redo存放在重做日志文件中，undo存放在数据库内部的一个特殊段（segment）中，这称为undo段（undo segment），undo段位于共享表空间内。
 
-
-
 快照读：读取快照中的数据，不需要进行加锁。看到快照这两个字，各位肯定马上就想到 MVCC 了，是这样，MVCC 作用于读取已提交和可重复读（默认）这两个隔离级别，这俩隔离级别下的普通 select 操作就是快照读
 当前读：读取的是最新版本的数据, 并且对读取的记录加锁, 阻塞其他事务同时改动相同记录，避免出现安全问题。
 
+悲观锁：每次去取数据，很悲观，都觉得会被别人修改，所以在拿数据的时候都会上锁。简言之，共享资源每次都只给一个线程使用，其他线程阻塞，等第一个线程用完后再把资源转让给其他线程。synchronized和ReentranLock等都是悲观锁思想的体现。
+乐观锁：每次去取数据，都很乐观，觉得不会被被人修改。因此每次都不上锁，但是在更新的时候，就会看别人有没有在这期间去更新这个数据，如果有更新就重新获取，再进行判断，一直循环，直到拿到没有被修改过的数据。CAS(Compare and Swap 比较并交换)就是乐观锁的一种实现方式。
 
+![](./mysql_thread.png)
+
+main thread 1s的操作
+
+1. 日志缓存刷新到磁盘(会总是操作，即使事物还没有提交)
+
+2. 最多可能刷100个新脏页到磁盘
+
+3. 执行合并改变缓存的操作
+
+4. 若当前没有用户活动，可能切换到后台执行
+
+main thread 10s的操作
+
+1. 刷新可能最多 100个脏页到磁盘
+
+2. 合并之多5个改变缓存
+
+3. 日志缓存刷新到磁盘
+
+4. 删除无用的undo页
+
+5. 刷新可能最多 100个或者10个脏页到磁盘产生一个检查点
+
+lock timout thread
+
+物理层
+
+1. 系统表 ibdata文件，undo log文件
+
+2. 用户表空间 .ibd后缀的文件
+
+3. redo log文件,负责记录innodb中所有对buffer pool的物理修改，redo log大小影响了数据库的处理能力
+
+buffer pool 文件决定了sql执行的快慢，(内存缓存)
+
+1. 单机单实例 配置bufer pool为物理内存的60-80%
+
+2. 单机多实例，总量不要操过80%
+
+3. show global status like '%buffer_pool_wait%'
+
+
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-17-09-42-image.png)
+
+
+
+锁：
+
+1. 行锁
+   
+   1. 共享锁S
+   
+   2. 排他锁X
+   
+   3. 算法
+      
+      1. record lock  数据
+      
+      2. grap lock 间隙锁
+      
+      3. next-key lock 数据前面的grap + 数据
+
+2. 表锁
+   
+   1. 意向共享锁IS
+   
+   2. 意向排他锁IX
+   
+   3. 自增锁auto-inc lock
+
+
+
+不要存储图片等大文件，可以存储路径
+
+
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-18-44-01-image.png)
+
+
+
+redo log 配置
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-20-41-44-image.png)
+
+
+
+bin log 配置
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-20-42-12-image.png)
+
+
+
+数据复制
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-20-43-58-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-25-20-46-24-image.png)
