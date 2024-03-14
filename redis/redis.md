@@ -228,10 +228,6 @@ ReplicationBacklog 和从库一样共享一份复制缓冲区的数据，也避�
 
 ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-27-10-59-29-image.png)
 
-
-
-
-
 集群
 
 1. slot 16384(2^14)
@@ -246,13 +242,11 @@ ReplicationBacklog 和从库一样共享一份复制缓冲区的数据，也避�
 
 6. slot 曹位便于数据移动，以曹为单位移动
 
-7.  ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-27-12-04-30-image.png)
+7. ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-27-12-04-30-image.png)
 
 ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-27-12-06-18-image.png)
 
 ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-03-27-12-07-02-image.png)
-
-
 
 配置
 

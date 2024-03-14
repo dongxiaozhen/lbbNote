@@ -1,6 +1,5 @@
 helm是k8s的包管理工具，使用helm，可以使用更为简化和系统化的方式对k8s应用进行部署、升级。
 
-
 部署前
 
     repo: add, list, remove, update, and index chart repositories

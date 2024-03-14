@@ -21,8 +21,6 @@ Linux环境中常用的VXLAN实现有两种:
 VXLAN设备的表项与之类似，可以表达为:
     <MAC> <VNI> <REMOTE IP>
 
-
-
 vxlan
 
 node1

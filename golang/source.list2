@@ -191,3 +191,4 @@ https://github.com/robfig/cron                   定时器
 https://github.com/djherbis/times                File Times for #golang
 github.com/blevesearch/bleve                     倒排索引
 https://github.com/sourcegraph/conc              并发库
+github.com/avast/retry-go                        重试，支持次数，延迟，等参数

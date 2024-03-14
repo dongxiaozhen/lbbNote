@@ -56,3 +56,10 @@ pidof hello
 
 程序运行时间
 ps -p 20642 -o lstart,etime
+
+
+lsof
+    -p pid
+    -u uid
+    -i :port 
+    空 文件

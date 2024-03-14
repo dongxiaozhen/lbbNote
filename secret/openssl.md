@@ -20,3 +20,21 @@ x509是一个证书格式，证书的版本信息包含有：
 
 X509使用ASN.1进行描述，可以抽象为以下结构
     ASN.1语法可以类比为C语言中的结构体互相嵌套，其主体结构如下图所示
+
+
+
+1. 先生成自己的私钥(xxx.key), 
+    echo "generate key file..."
+    openssl genrsa -out $key_file_name $rsa_size
+2. 然后生成证书的请求文件(xxx.csr, 内容主要是自己的公司信息，国家信息等内容),之后这个文件就没用了
+    echo "generate csr file..."
+    openssl req -new -out $csr_file_name -key $key_file_name -subj "$default_subject"
+3. 最后拿这两个文件去机构申请证书(xxx.crt, 包括CA机构信息，自己公司信息，自己的公钥信息)
+    echo "sign crt file with ca root..."
+    openssl x509 -req -in $csr_file_name -out $crt_file_name -CA $root_ca_crt_file -CAkey $root_ca_key_file -CAcreateserial -days $key_remaining_days
+
+    3.1 也可以生成 pkcs1~pkcs12 格式信息，包括自己的证书和私钥，最好使用密码加码(--passout 这样别人拿到文件，没有密码也使用不了), 这种格式一般是给客户生成证书使用的
+        echo "generate p12 file..."
+        openssl pkcs12 -export -clcerts -in $crt_file_name -inkey $key_file_name -out $p12_file_name --passout pass:$p12_install_password
+
+

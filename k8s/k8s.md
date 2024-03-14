@@ -95,8 +95,4 @@ kubectl apply -f resources.yaml --record
 复制容器文件
     kubectl cp {namespaces}/{podname}:/storage/allocs ./allocs5
 
-
-
-
-
 iptables-save 可以查看iptable, 查看svc 配置的table转发

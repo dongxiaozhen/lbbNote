@@ -1,3 +1,17 @@
+compgen: 是bash内置命令，它将显示所有可用的命令，别名和函数
+      -a 列出所有别名；相关：alias
+      -b 列出bash内置命令
+      -c 列出所有可用命令
+      -d 列出当前目录下所有目录
+      -e 列出全局变量；相关：export
+      -f 列出当前目录所有文件
+      -g 列出系统所有的组
+      -j 列出后台执行的作业
+      -k 列出shell保留字
+      -s 列出所有的service
+      -u 列出系统所有的用户
+      -v 列出shell所有变量
+
 lsb_release：Linux 发行版信息
 
 https://github.com/onceupon/Bash-Oneliner  bash 在线文档

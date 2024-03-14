@@ -1,6 +1,5 @@
 GODEBUG=gctrace=1
 
-
 垃圾回收的是堆对象，栈上的对象不会参与混合写屏障。程序大部分时间是处理栈对象，如果栈对象需要处理，开销太大了。
 
 gc 过程说明 runtime/mgc.go
@@ -12,7 +11,6 @@ gc 过程说明 runtime/mgc.go
 //             shade(ptr)   // 弱三色, 保护了栈对象引用的对象不是白色,（原来堆里引用删除后赋值给栈）栈不需要重扫描(只要开始的时候暂停当前的G扫描一次)
 //         *slot = ptr
 
-
 stw 只是在开始和结束的时候设置一些全局变量
 mark/sweep  的时候，会一个一个goroutine的暂停扫描栈，从而不需要stw
 
@@ -20,18 +18,67 @@ mark/sweep  的时候，会一个一个goroutine的暂停扫描栈，从而不�
     强三色： 黑色不能之际引用白色的, 把白色修改成灰色
     弱三色   被删除的对象，如果自身为灰色或者白色，那么被标记为灰色(保护灰色对象到白色对象的路径不会断)
 
-
-
-
 #文章
+
 * https://www.kancloud.cn/aceld/golang/1958308#GC_376
 * https://blog.csdn.net/qiya2007/article/details/107622603?spm=1001.2014.3001.5501
 * http://legendtkl.com/2017/04/28/golang-gc/
 * https://mp.weixin.qq.com/s?__biz=MjM5MDUwNTQwMQ==&mid=2257484062&idx=1&sn=40a8cca15b9c215f8a29e60e6d8a3542&chksm=a53919c8924e90de345abb48b2e0789f8f8ca1557c607680ca366112fd4d7668e57c742700e3&mpshare=1&scene=1&srcid=&sharer_sharetime=1578283724418&sharer_shareid=4317d953c0b80e400bcd56fdb955a3af&key=da59564ba51e192af752ec80ebb40b4c64894a8a913bf8623c6b994e917c93459a9233d55673c20d3eb2a702cdd0baa77857e2462ad9a1fe9eff0f75039b8a849ba1ba08b013aa57c5a9023e296c8d02&ascene=1&uin=Mjg4ODUzNTIxMA==&devicetype=Windows%2010&version=62070158&lang=zh_CN&exportkey=A30CTDV02pfcL8T8JFLvxhI=&pass_ticket=ufMEdJKUyD8Vvp3LSMca126uYXD3VQoJby3SOOCx/FyQzRLri8CgBd/w1lMZFJnt##
 * https://www.imooc.com/article/323356
 
-
 根对象在垃圾回收的术语中又叫做根集合，它是垃圾回收器在标记过程时最先检查的对象，包括：
     全局变量：程序在编译期就能确定的那些存在于程序整个生命周期的变量。
     执行栈：每个 goroutine 都包含自己的执行栈，这些执行栈上包含栈上的变量及指向分配的堆内存区块的指针
     寄存器：寄存器的值可能表示一个指针，参与计算的这些指针可能指向某些赋值器分配的堆内存区块。
+
+slot = ptr
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-22-23-15-40-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-22-23-13-03-image.png)
+
+栈上对象slot = 堆上的白色对象
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-23-10-36-45-image.png)
+
+GC 开始前，以栈为单位分批扫描，将栈中所有对象置（也就是将栈指向堆的都放到gcw里）
+
+在混合写屏障机制中，核心是会将需要置灰的对象添加到当前P的wbBuf缓存中. 随后在并发标记缺灰、标记终止前置检查等时机会执行wbBufFlush1方法，批量地将wbBuf中的对象释放出来进行置灰，保证达到预期的效果.
+
+灰对象缓存队列分为两层：
+
+- • 每个P私有的gcWork，实现上由两条单向链表构成，采用轮换机制使用
+
+- • 全局队列workType.full，底层是一个通过CAS操作维护的栈结构，由所有P共享
+
+在前文 Golang内存模型与分配机制中聊过，每个对象会有其从属的mspan，在mspan中，有着两个bitmap存储着每个对象大小的内存的状态信息：
+
+- • allocBits：标识内存的闲忙状态，一个bit位对应一个object大小的内存块，值为1代表已使用；值为0代表未使用
+
+- • gcmakrBits：只在GC期间使用. 值为1代表占用该内存块的对象被标记存活.
+
+介绍完了bitmap设定之后，下面回到三种标记色的实现当中：
+
+- • 黑色：对象在mspan.gcmarkBits中bit位值为1，且对象已经离开灰对象缓存队列（4.4小节谈及）
+
+- • 灰色：对象在mspan.gcmarkBits中bit位值为1，且对象仍处于灰对象缓存队列中
+
+- • 白色：对象在mspan.gcmarkBits中bit位值位0.
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-23-10-41-28-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-23-11-01-50-image.png)
+
+![](./gogc.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-23-11-04-15-image.png)
+
+在gcDrain方法正式开始循环扫描前，还会先对根对象进行扫描标记. Golang中的根对象包括如下几项：
+
+- • .bss段内存中的未初始化全局变量
+
+- • .data段内存中的已初始化变量）
+
+- • span 中的 finalizer
+
+- • 各协程栈

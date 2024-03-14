@@ -16,6 +16,4 @@ sync.Map 包括两个map ，read(read里读取，删除已经存在的key),dirty
         2.1 如果再次更新的时候,直接更新read里的value,会导致dirty数据不全，下次dirty->read的时候就会丢失key, 因为不能删除read里的数据，如果要删除，read 也需要加锁了
         2.2 如果是read->dirty转换完之后删除key, 这时候都是nil key, 不需要考虑dirty里没有的情况
 
-
-
 ![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-09-18-18-51-image.png)

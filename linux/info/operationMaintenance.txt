@@ -67,12 +67,20 @@ lsblk
 剖析 oprofile perf DTrace systemTap cachegrind
 来源   /sys  /proc																			/proc
 
+strace 跟踪服务运行，使用参数
+    -tt 打印时间
+    -p pid  跟踪已经运行的服务
+    ./a.out  启动a.out服务并跟踪
+
+
+
+
 
 http://www.cnblogs.com/defias/p/3426976.html
 strace 底层系统调用
 pstack 函数调用栈
 pstree  进程关系图
-ps -L 线程
+ps -L 线程, 可以展示进程启动的线程已经线程号
 
 
 w 命令用于显示已经登录系统的用户的名称，以及他们正在做的事

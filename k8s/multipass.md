@@ -7,6 +7,7 @@ multipass launch --name k8snode2 --cpus 2 --mem 4096M --disk 20G 20.04
 1. 安装docker 
     1.1 安装 apt install docker.io
     1.2 修改docker ,systemd 启动
+   
         cat > /etc/docker/daemon.json  <<EOF
         {
         "registry-mirrors":[
@@ -18,7 +19,9 @@ multipass launch --name k8snode2 --cpus 2 --mem 4096M --disk 20G 20.04
         "exec-opts":["native.cgroupdriver=systemd"]
         }
         EOF
+   
     1.3 重启
+   
          systemctl restart docker.service
 
 2. 安装kubeadm,kubectl,kublet // https://developer.aliyun.com/mirror/kubernetes
@@ -39,6 +42,7 @@ multipass launch --name k8snode2 --cpus 2 --mem 4096M --disk 20G 20.04
     3.7 systemctl enable cri-docker.service
     3.8 systemctl enable --now cri-docker.socket
     3.9 修改 /etc/systemd/system/cri-docker.service
+   
         ExecStart=/usr/local/bin/cri-dockerd --container-runtime-endpoint fd:// --pod-infra-container-image registry.aliyuncs.com/google_containers/pause:3.7
 
 4. 拉取k8s
@@ -51,7 +55,3 @@ multipass launch --name k8snode2 --cpus 2 --mem 4096M --disk 20G 20.04
 
 6. 安装flannel // https://github.com/flannel-io/flannel
     kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
-
-
-
-

@@ -1,9 +1,9 @@
 源码安装
-	1>	设置变量GOROOT_BOOTSTRAP ，也就是go编译器的地址
-	2> cd src && ./all.bash
-	3>下载工具包 go get golang.org/x/tools/cmd/...
-	4>export GOROOT=/home/lbb/go
-	  export PATH=$PATH:$GOBIN:$GOPATH/bin
+    1>    设置变量GOROOT_BOOTSTRAP ，也就是go编译器的地址
+    2> cd src && ./all.bash
+    3>下载工具包 go get golang.org/x/tools/cmd/...
+    4>export GOROOT=/home/lbb/go
+      export PATH=$PATH:$GOBIN:$GOPATH/bin
       export GOPATH=/home/lbb/gowork
                  gopath设置多个路径，如果每个路径下都有一个相同的库，会引起这个库包含多次，有的方法初始化了，有的没有，，引起问题。
 
@@ -13,10 +13,12 @@ import 不同分组使用空行分割开, 组内按顺序排序
     的引用放在B 之前，如有A自动排在B之后，则需要空行来强行排序
 
 book 
-#	golang-china/gopl-zh/
+
+# golang-china/gopl-zh/
+
     https://github.com/gopl-zh/gopl-zh.github.com
-	https://tiancaiamao.gitbooks.io/go-internals/content/zh/
-	https://golang.org/doc/effective_go.html
+    https://tiancaiamao.gitbooks.io/go-internals/content/zh/
+    https://golang.org/doc/effective_go.html
     https://github.com/go-internals-cn/go-internals
     https://www.bookstack.cn/read/qcrao-Go-Questions/spilt.6.GC-GC.md
     http://legendtkl.com/2017/04/02/golang-alloc/
@@ -24,17 +26,15 @@ book
     https://golang.design/under-the-hood/zh-cn/part2runtime/ch06sched/preemption/
     (全面)
 
-
 条件编译
    1> 条件编译语句要和package 包语句之间有空行
    2> +build !linux
    3> // +build go1.6,!go1.7  go1.7以上的不编译次文件
 
-
 gdb 调试golang   
-	gdb -tui -d $GOROOT 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
-	dlv 调试
-	gom // xinneng  go get github.com/rakyll/gom/cmd/gom
+    gdb -tui -d $GOROOT 然后source /usr/local/go/src/runtime/runtime-gdb.py  就可以使用 info goroutine 
+    dlv 调试
+    gom // xinneng  go get github.com/rakyll/gom/cmd/gom
 
     go test -c -o rpc_test -gcflags="-N -l"
     go test -run TestSimpleClientReconn
@@ -44,7 +44,7 @@ gdb 调试golang
 int 字节长度和cpu位数有关
 
 slices, maps, and functions: these types cannot be compared using ==, and may not be used as map keys.
-	slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
+    slice,map里面存放数据的数组可能会调整大小，从而引起前后数据的不一致。
     []type slice = struct []type{ type *array; int len; int cap; }, 获取slice指定位置的ptr, &a[0] !=&a
     [num]type array   &a[0] == &a
 
@@ -53,9 +53,9 @@ string 值传参
 
 struct 匿名字段是结构体，也可以调用匿名字段的指针方法
 time
-	Timer定时完需要重置
-	ticker 就是一直循环定时
-	time有个goroutine，采用堆结构处理时间，当时间到期后会调用sendTime()无阻塞(select)的填充Timer里的chan。
+    Timer定时完需要重置
+    ticker 就是一直循环定时
+    time有个goroutine，采用堆结构处理时间，当时间到期后会调用sendTime()无阻塞(select)的填充Timer里的chan。
 
 select 里面定时不要在里边写time.After(d)，原因就是select每次执行都会重新执行case语句,并重新注册到select中。
 select // if some case be ready on one time, it random select one to run, be careful
@@ -64,13 +64,12 @@ switch不会自动从一个case子句跌落到下一个case子句。但是case�
 变量shadow问题  外部定义的变量，在其他范围{}内使用:=来赋值(情况多出现在和err同时赋值时),回出现变量隐藏的问题  go tool vet -shadow xx.go 可以发现这个问题
 
 channel src/runtime/chan.go   make(chan int) 返回的是一个指针 *hchan
-	只能在多个goroutine中使用
-	向关闭的channel 中发送数据会引发panic,在一个nil的channel上发送，接受数据会被永远阻塞(select中监听nil发送是可以的),一个channel关闭多次会panic,
-	监听关闭的channel，依然可以接受到之前成功发送的数据，如果已经没有数据会产生一个零值的数据。
-	v,ok:=<-ch ok==true:v数据有效，ok==false:chan关闭，可以直接使用range遍历数据
-	无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行
-	channel 类型可以比较,当且仅当两chan引用的是同一个对象。
-
+    只能在多个goroutine中使用
+    向关闭的channel 中发送数据会引发panic,在一个nil的channel上发送，接受数据会被永远阻塞(select中监听nil发送是可以的),一个channel关闭多次会panic,
+    监听关闭的channel，依然可以接受到之前成功发送的数据，如果已经没有数据会产生一个零值的数据。
+    v,ok:=<-ch ok==true:v数据有效，ok==false:chan关闭，可以直接使用range遍历数据
+    无缓存chan,接收端准备好后发布端才会继续执行，有缓存chan接收端可以放下就继续执行
+    channel 类型可以比较,当且仅当两chan引用的是同一个对象。
 
 range语句中的生成的数据是真实数据的拷贝，[],map,channel
 被defer的调用(函数)会在包含的函数的结尾执行，而不是代码块哦末尾(if,for)
@@ -89,26 +88,26 @@ panic,defer 都是保存在G 下面的，对G有效，多个G之间不影响，�
         类型断言
 
 map 
-	类型创建返回的是指针 type = struct hash<keyType,valueType> {
-	    int count;
-	    uint8 flags;
-	    uint8 B;
-	    uint32 hash0;
-	    struct bucket<keyType,valueType> *buckets;
-	    struct bucket<keyType,valueType> *oldbuckets;
-	    uintptr nevacuate;
-	    [2]*[]*runtime.bmap *overflow;
-	} *
-	
-	map 取不存在的key的value,返回零直
+    类型创建返回的是指针 type = struct hash<keyType,valueType> {
+        int count;
+        uint8 flags;
+        uint8 B;
+        uint32 hash0;
+        struct bucket<keyType,valueType> *buckets;
+        struct bucket<keyType,valueType> *oldbuckets;
+        uintptr nevacuate;
+        [2]*[]*runtime.bmap *overflow;
+    } *
 
+    map 取不存在的key的value,返回零直
+    
     // A header for a Go map.
     type hmap struct {
         count     int // # live cells == size of map.  Must be first (used by len() builtin)
         flags     uint8
         B         uint8  // 2^B == buckets数量
         hash0     uint32 // hash 种子
-
+    
         buckets    unsafe.Pointer // array of 2^B Buckets.能存放的数据量最大是 6.5(loadFactor 加载因子 float32(loadFactorNum) / float32(loadFactorDen)) * 2^B
         oldbuckets unsafe.Pointer // 扩容的时候使用，
         extra *mapextra // optional fields
@@ -120,7 +119,7 @@ map
         // nextOverflow holds a pointer to a free overflow bucket.
         nextOverflow *bmap // 存放提前生成的、未使用的bmap
     }
-
+    
     // A bucket for a Go map.
     type bmap struct {
         tophash [bucketCnt]uint8 // 每个key hash之后的高8位，如果高8位相同，再比较key
@@ -133,39 +132,36 @@ context 包实现了对多个派生go的管理，每个需要监听ctx.Done()退
    context 不要放在结构体里一直保存，随着WithValue的一直调用不释放，会引起大内存，还有就是deadline不取消引起的混乱,要当参数传递
 
 go net/http  
-	客户端 tcp请求完成后 response body指向con(需要自己调用read,close方法)
-		每个客户端里缓存之前的所有远程连接，每个con有两个goroutine:readloop,writeloop
-	服务器 tcp listen ,连接上后开启一个goroutine, 读取解析协议。读写用到了limitread , buffreader,buffwrite 
-	
+    客户端 tcp请求完成后 response body指向con(需要自己调用read,close方法)
+        每个客户端里缓存之前的所有远程连接，每个con有两个goroutine:readloop,writeloop
+    服务器 tcp listen ,连接上后开启一个goroutine, 读取解析协议。读写用到了limitread , buffreader,buffwrite 
 
 break
-	break只能中断当前最近的一个for,swtich,select;如果要跳出外面的for,switch,select需要使用标签。标签要放在for,switch,select的前面。
+    break只能中断当前最近的一个for,swtich,select;如果要跳出外面的for,switch,select需要使用标签。标签要放在for,switch,select的前面。
 goto
-	跳到goto指向的标签处
+    跳到goto指向的标签处
 
 闭包：
-	闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。ref不传，value传.
-	struct {F func, Arg args}
+    闭包函数传参和不传参，直接调用外面的变量，参数的拷贝。ref不传，value传.
+    struct {F func, Arg args}
 
 method(方法)只是添加对象为func(函数)的第一个参数
 
-
 signal 
-	Notify 可以多次调用，一个chan可以处理所有信号，一个信号可以放到多个chan里，底层h=map[chan<- os.Signal]*handler(bitmap原理),信号来了之后，遍历h，然后在handler中查看时候注册了改信号,如果注册了，就向该chan发送信号。 
-	往chan里发送信号是非阻塞的，信号会丢失，所以chan必须是非阻塞的，长度至少为1
+    Notify 可以多次调用，一个chan可以处理所有信号，一个信号可以放到多个chan里，底层h=map[chan<- os.Signal]*handler(bitmap原理),信号来了之后，遍历h，然后在handler中查看时候注册了改信号,如果注册了，就向该chan发送信号。 
+    往chan里发送信号是非阻塞的，信号会丢失，所以chan必须是非阻塞的，长度至少为1
 
 byte.Buffer  底层使用一块内从内存，内存扩大是2×cap()+n n为要写入的数据长度,使用reset重置会使写操作重头开始，底层内存不变
 bufio.Write  io缓存，flush 将buf中的数据写入文件(可能是先写在内存中的文件),sync 写入硬盘
 
-
 使用sync.WaitGroup的时候注意点，
-  1) Add()和Wait()操作要在同一个G里操作，要不会出现wait提前退出的情况，
-  2) 如果要传WaitGroup参数，一定要传指针
+
+1) Add()和Wait()操作要在同一个G里操作，要不会出现wait提前退出的情况，
+2) 如果要传WaitGroup参数，一定要传指针
 
 rand 
-	The default Source is safe for concurrent use by multiple goroutines.
-	NewSource returns a new pseudo-random Source seeded with the given value. Unlike the default Source used by top-level functions, this source is not safe for concurrent use by multiple goroutines.
-
+    The default Source is safe for concurrent use by multiple goroutines.
+    NewSource returns a new pseudo-random Source seeded with the given value. Unlike the default Source used by top-level functions, this source is not safe for concurrent use by multiple goroutines.
 
 string <------> []byte  复制转化
     runtime.slicebytetostring
@@ -176,15 +172,12 @@ md5
 
 高并发下网络读写设置超时，cpu利用率高的问题在cl/34784修改了， Go1.10代码里实现了
 
-
 sync.pool
     上层服务使用pool发送了数据，发送完就回收到pool，但是底层没有释放。所以使用pool的地方，需要看下一层函数怎么处理该变量。
-   
 
 go:linkname
     //go:linkname hello github.com/lastsweetop/testlinkname/hello.hellofunc
     go:linkname引导编译器将当前(私有)方法或者变量在编译时链接到指定的位置的方法或者变量
-
 
    linkname 包里需要有一个.s结尾的文件，需要导入 unsafe
         import _ "unsafe"
@@ -206,13 +199,13 @@ reflect 包里的slice,string有两种类型
           Data uintptr
           Len  int  
       }
-      
+
       // stringHeader is a safe version of StringHeader used within this package.
       type stringHeader struct {
           Data unsafe.Pointer
           Len  int  
       }
-      
+    
       // SliceHeader is the runtime representation of a slice.
       // It cannot be used safely or portably and its representation may
       // change in a later release.
@@ -224,7 +217,7 @@ reflect 包里的slice,string有两种类型
           Len  int  
           Cap  int  
       }
-      
+    
       // sliceHeader is a safe version of SliceHeader used within this package.
       type sliceHeader struct {
           Data unsafe.Pointer
@@ -234,13 +227,11 @@ reflect 包里的slice,string有两种类型
 
 for循环中append,需要注意：
     var a []byte
-	for i := byte(100); i < 109; i++ {
-		c := append(a, i)
-	}
+    for i := byte(100); i < 109; i++ {
+        c := append(a, i)
+    }
    如果a的容量不足，append会创建新的底层数据，c 每次都不一样
    如果a的容量满足，append不会新建底层，c 每次都是使用a, 和预想的不一样
-
-  
 
 iota  
   iota在const关键字出现时将被重置为0(const内部的第一行之前)，const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。
@@ -249,27 +240,23 @@ panic
     由于panic 所在的函数返回的参数不会设置给调用者
     panic之后的代码不回执行,然后依次退出调用层，直到遇到recover
 
-
 打印十六进制, 0补全未，#前缀0x, 2宽度, x 16进制
 cc := fmt.Sprintf("%0#2x ", b)
 
-
-
 go block
-	1. 锁消耗cpu,或者等待
-	2. fd 写有锁(udp,file),可以考虑1使用多个udp连接/多个文件，2使用buff_chan然后async
-	
-go high cpu
-	1. runtime 1调度 2gc（sync.pool）
-	2. app 1json 2app_logic
-		
-heap high
-	sync.pool
-	multi level pool
-	map-> slice
-	offheap
-	reuse everything
+    1. 锁消耗cpu,或者等待
+    2. fd 写有锁(udp,file),可以考虑1使用多个udp连接/多个文件，2使用buff_chan然后async
 
+go high cpu
+    1. runtime 1调度 2gc（sync.pool）
+    2. app 1json 2app_logic
+
+heap high
+    sync.pool
+    multi level pool
+    map-> slice
+    offheap
+    reuse everything
 
 regexp 正则表达式
     正则表达式不包含特定字符串 
@@ -277,10 +264,7 @@ regexp 正则表达式
     前瞻式否定式匹配 (?!匹配模式)
     golang 不支持前瞻式否定匹配，可以使用访问下面的这个网址生成其他方式的否定匹配 https://www.formauri.es/personal/pgimeno/misc/non-match-regex/?word=bdc
 
-
-
 如果一个函数调用另外一个函数，那么该函数被称为调用者函数，也叫做caller，而被调用的函数称为被调用者函数，也叫做callee。比如函数main中调用sum函数，那么main就是caller，而sum函数就是callee。
-
 
 encoding
     ASCII 是用128（2的8次方）个字符，对二进制数据进行编码的方式
@@ -291,5 +275,3 @@ encoding
     hex也称为base16，意思是使用16个可见字符来表示一个二进制数组，编码后数据大小将翻倍,因为1个字符需要用2个可见字符来表示。
     base32，意思是使用32个可见字符来表示一个二进制数组，编码后数据大小变成原来的8/5,也即5个字符用8个可见字符表示，但是最后如果不足8个字符，将用=来补充。
     base64，意思是使用64个可见字符来表示一个二进制数组，编码后数据大小变成原来的4/3,也即3个字符用4个可见字符来表示。
-
-

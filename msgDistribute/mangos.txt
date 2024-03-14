@@ -16,60 +16,56 @@ server <---socks <---bus <--conpipe <-- Pipe <--con
 
 bus (1.将消息发送给所有链接的客户端;2:读取客户端的请求)      
 bus       
-		|<------>per1 
-		|            
-		|            
-recv	|            
+        |<------>per1 
+        |            
+        |            
+recv    |            
  <----->|<------>per2 
-	    |              
-		|            
-		|            
-		|            
-		|<------>per3		
-		
+        |              
+        |            
+        |            
+        |            
+        |<------>per3        
+
 pub/sub(单方向,pub发送数据到所有sub,sub收到数据后过滤)
-				|----------->sub1
-				|
-				|
-				|
-				|----------->sub2
+                |----------->sub1
+                |
+                |
+                |
+                |----------->sub2
 -------->pub--> |
-				|
-				|
-				|
-				|----------->sub3
+                |
+                |
+                |
+                |----------->sub3
 
 pair
-	pair1<------------------->pair2
+    pair1<------------------->pair2
 
-	
 pull/push
              |<-----------push1
-			 |
-			 |
+             |
+             |
 pull<------- |<-----------push2
-			 |
-			 |
-			 |<-----------push3
-			 
-			 
-rep/req  (统一处理请求，然后将回复发给请求者,head(pipeid,seqid))
-		|<------ >req1 
-		|            
-		|            
-rep	    |            
-  <---->|<-------req2 
-	    |              
-		|            
-		|            
-		|            
-		|<-------req3
+             |
+             |
+             |<-----------push3
 
+rep/req  (统一处理请求，然后将回复发给请求者,head(pipeid,seqid))
+        |<------ >req1 
+        |            
+        |            
+rep        |            
+  <---->|<-------req2 
+        |              
+        |            
+        |            
+        |            
+        |<-------req3
 
 con(PipeInterface)
-	Recv() : *Message, error    sz:body
-	Send(msg *Message) : error
-	
-	
+    Recv() : *Message, error    sz:body
+    Send(msg *Message) : error
+
 socket
-	Send([]byte)error   sock.uwq <- msg
+    Send([]byte)error   sock.uwq <- msg

@@ -1,6 +1,7 @@
 
 线性代数
     https://www.monades.dev/notes-on-linear-transformations/
+    https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra/blob/main/README.md
 
 
 

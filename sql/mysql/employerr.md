@@ -66,7 +66,3 @@ CREATE TABLE `salaries` (
   KEY `emp_no` (`emp_no`),
   CONSTRAINT `titles_ibfk_1` FOREIGN KEY (`emp_no`) REFERENCES `employees` (`emp_no`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-
-
-
-

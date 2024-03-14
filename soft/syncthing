@@ -4,3 +4,11 @@
 ## 修改密码
     ./syncthing generate --gui-user=libinbin --gui-password=libinbin
 
+启动
+    syncthing
+
+mac 配置
+  /Users/libinbin/Library/Application Support/Syncthing
+
+gui
+    http://127.0.0.1:8384/

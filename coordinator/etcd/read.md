@@ -1,4 +1,3 @@
-
 raft
   Step
   campaign 切换为竞选状态

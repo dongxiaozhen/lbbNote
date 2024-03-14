@@ -1,6 +1,4 @@
-
 系统维护操作
-
 
 1 compaction 压缩,删除之前的revision
     1.1 etcd --auto-compaction-retention=1h | 3m |1000  时间策略是指每隔一段时间压缩一次，默认单位是h，
@@ -20,7 +18,6 @@
      etcdctl snapshot save
      etcdctl snapshot status 
      etcdctl snapshot restore
-
 
 5 runtime config 
    member add 添加新server

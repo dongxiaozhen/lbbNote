@@ -72,3 +72,7 @@ rust重写工具
         2. rip ==> rm 
         3. dust ==> du
 
+
+viddy watch 命令替换
+  space // Toggle time machine mode
+  d     // Toggle diff

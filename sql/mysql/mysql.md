@@ -14,6 +14,8 @@ Server 层：主要包括连接器、查询缓存、分析器、优化器、执�
    2 手动回表，强制走索性
    3 客户端带当前页最后一个id和排序字段，查询
 
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-10-22-43-image.png)
+
 子查询优化
 
 1. 使用表连接进行替换，尤其是子查询数据量大的时候
@@ -226,14 +228,6 @@ select * from performance_schema.data_locks;
 
 通过慢查询日志定位那些执行效率较低的 sql 语句，用 --log-slow-queries[=file_name] 选项启动时，mysqld 写一个包含所有执行时间超过 long_query_time 秒的 sql 语句的日志文件。
 
-explain
-    all、index、range、ref、eq_ref、const，system、null：
-    type=ALL，全表扫描，mysql 遍历全表来找到匹配的行：
-    type=index, 索引全扫描，mysql 遍历整个索引来查询匹配的行
-    type=range,索引范围扫描，常见于<、<=、>、>=、between等操作：
-    type=ref, 使用非唯一索引扫描或唯一索引的前缀扫描，返回匹配某个单独值的记录行，
-    type=eq_ref,类似 ref，区别就在使用的索引时唯一索引，对于每个索引的键值，表中只要一条记录匹配；简单的说，就是多表连接中使用 primary key 或者 unique index 作为关联条件。
-
 1、查询SQL尽量不要使用select *，而是select具体字段。
     只取需要的字段，节省资源、减少网络开销。
     select * 进行查询时，很可能就不会使用到覆盖索引了，就会造成回表查询。
@@ -317,3 +311,105 @@ binlog
         7.2 删除指定二进制日志编号之前的日志 purge binary logs to ''bin-log.00002
 
         7.3 根据创建日志删除 purge binary logs befor     
+
+非叶子 (16k, 刨除1k的系统数据) 15k / (8(主键id)+4(叶号)) = 1280
+
+叶子结点数据， 15k / 1k（数据大小） = 15, 或者 15k / 250(数据大小) = 60
+
+三层结构数据总量 = 1280^3 * 60 = 98304000 约等于1亿
+
+三层结构数据总量 = 1280^3 * 15 = 24576000 约等于2千万
+
+datetime 可以用datetime(3) 或datetime(6)，datetime(8)这样可以精确到毫秒或微秒，纳秒，默认是0，精确到秒
+
+CURRENT_TIMESTAMP CURRENT_TIMESTAMP(3) 也可以控制精度
+
+    
+
+```mysql
+   TIME4 DATETIME (8) NOT NULL DEFAULT CURRENT_TIMESTAMP (8) ON UPDATE CURRENT_TIMESTAMP (8) COMMENT '时间4',
+```
+
+timestamp  和数据库时区有关系，存储的是
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-23-17-22-28-image.png)
+
+navicat 安装
+
+1. 安装[mac M1 安装navicat亲测有效_m1 navicat_壹佰大多的博客-CSDN博客](https://blog.csdn.net/weixin_47068446/article/details/127031225)
+
+2. 修复 sudo xattr -r -d com.apple.quarantine "/Applications/Navicat Premium.app"
+
+explain
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-10-39-54-image.png)
+
+id
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-10-40-16-image.png)
+
+select_type
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-10-42-06-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-10-58-43-image.png)
+
+table 正在查询的表名
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-04-24-image.png)
+
+ all、index、range、ref、eq_ref、const，system、null：
+ type=ALL，全表扫描，mysql 遍历全表来找到匹配的行：
+ type=index, 索引全扫描，mysql 遍历整个索引来查询匹配的行
+ type=range,索引范围扫描，常见于<、<=、>、>=、between等操作：
+ type=ref, 使用非唯一索引扫描或唯一索引的前缀扫描，返回匹配某个单独值的记录行，
+ type=eq_ref,类似 ref，区别就在使用的索引时唯一索引，对于每个索引的键值，表中只要一条记录匹配；简单的说，就是多表连接中使用 primary key 或者 unique index 作为关联条件。
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-07-08-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-08-47-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-11-15-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-13-14-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-14-05-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-14-30-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-16-24-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-18-40-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-23-27-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-24-22-image.png)
+
+![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-05-09-11-25-38-image.png)
+
+**UNION的作用**
+
+UNION运算符用于组合两个或更多SELECT语句的结果集。
+
+**UNION使用前提**
+
+**UNION中的每个SELECT语句必须具有相同的列数**
+
+- 这些列的数据类型必须兼容：类型不必完全相同，但是必须可以隐式转换。
+- 每个SELECT语句中的列也必须以相同的顺序排列
+
+**UNION 语法**
+
+SELECT column_name(s) FROM table1  
+UNION  
+SELECT column_name(s) FROM table2;
+
+注释：默认情况下，UNION 运算符选择一个不同的值。如果允许重复值，请使用 UNION ALL。
+
+**UNION ALL 语法**
+
+SELECT column_name(s) FROM table1  
+UNION ALL  
+SELECT column_name(s) FROM table2;
+
+※ 注释：UNION结果集中的列名总是等于UNION中第一个SELECT语句中的列名。

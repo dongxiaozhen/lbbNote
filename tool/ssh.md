@@ -2,15 +2,16 @@
 交换秘钥 ssh-copy-id user@host
 
 -R参数指定远程端口转发
-    $ ssh -R 9999:targetServer:902 local
-    上面命令需在跳板服务器执行，指定本地计算机local监听自己的 9999 端口，所有发向这个端口的请求，都会转向 targetServer 的 902 端口
-
-        ssh -l root -p22 -N -R "*:9905:127.0.0.1:1087" 10.101.63.2
+    $ ssh -R sv1_port:sv2:sv2_port sv2
+     在sv1上执行命令, 在sv2上创建监听sv2_port, 将流量导向sv1_port (sv1_port 是一个已经服务端口，可以提供服务), 相当于在sv2上访问sv2_port就能访问到sv1上sv1_port 服务
 
 本地端口转发
-    ssh -L 2121:host2:21 host3
-        指定SSH绑定本地端口2121，然后指定host3将所有的数据，转发到目标主机host2的21端口
+    ssh -L sv1_port:sv2:sv2_port sv2
+      在sv1上执行，将sv2上的sv2_port 映射到sv1_port上，访问sv1_port就相当于访问sv2:sv2_port
 
+动态端口转发
+    ssh -D 3000 remote_host
+        发给本地端口3000的数据都转发到remote_host, 相当于sock5代理
 
 
 -1，-2

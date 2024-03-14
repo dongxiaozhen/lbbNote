@@ -9,3 +9,9 @@ nc
    https://github.com/Microsoft/Ethr
    服务器端： ethr -s
    客户端：   ethr -c localhost -n 64 -t c/b/p
+
+查看tcp socket缓存区
+netstat -nt 
+
+查看全连接数量
+ss -lnt

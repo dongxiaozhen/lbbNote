@@ -117,7 +117,7 @@ memory.memsw.failcnt    显示内存和 swap 空间总和达到 memory.memsw.lim
 memory.oom_control    可以为 cgroup 启用或者禁用“内存不足”（Out of Memory，OOM） 终止程序。默认为启用状态（0），尝试消耗超过其允许内存的任务会被 OOM 终止程序立即终止。设定为禁用状态（1）时，尝试使用超过其允许内存的任务会被暂停，直到有额外内存可用。
 更多文件的功能说明可以查看 kernel 文档中的 cgroup-v1/memory[4]    https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt
 
-![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-06-22-06-44-image.png)
+s![](/Users/libinbin/Library/Application%20Support/marktext/images/2023-04-06-22-06-44-image.png)
 
 ## cgroups tool
 

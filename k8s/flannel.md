@@ -16,7 +16,7 @@ host-gw模式
     限制：
        Node需要二层互通，否则下一条转发不出去（以我们的云主机为例，云主机之间转发靠流表，因此在云主机上搭建的k8s集群，如果采用flannel的host-gw模式，跨节点访问不通的）。
 
-vxlan模式
+vxlan模式（默认模式）
 
 ![vxlan模式](./flannel_vxlan.png)
 

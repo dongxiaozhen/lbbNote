@@ -36,3 +36,12 @@ ffmpeg -encoders
 
 转换rmkv视频
     ffmpeg -i 只有你.rmvb -c:v libx264 -strict -2 看不见的爱.mp4
+    ffmpeg -i 1.mkv  -c:v copy -c:a aac 1.mp4
+
+
+FFMPEG 的高质量音频编码指南建议 MP3 格式的高质量音频使用 192Kbps 或更高的比特率。
+FFMPEG 的高质量音频编码指南建议 Opus 格式的高质量音频使用 64Kbps 或更高的比特率
+FLAC is a popular lossless codec, also from the Xiph.org Foundation. So if possible, download in FLAC format.
+
+转换opus格式
+ffmpeg -y -loglevel "error" -i "$IN" -vn -acodec libopus -b:a $BITRATE "$OUT"

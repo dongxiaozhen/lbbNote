@@ -19,3 +19,4 @@ mac 配置 https://aaaaaashu.gitbooks.io/mac-dev-setup/content/iTerm/index.html
 上级目录 command+下箭头
 Option-Command-P：隐藏或显示“访达”窗口中的路径栏
 Shift-Command-G：打开“前往文件夹”窗口-- 可以输入路径
+截图/录屏 command-5
