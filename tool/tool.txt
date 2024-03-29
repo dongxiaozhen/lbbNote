@@ -30,6 +30,11 @@ json工具
     fx  
         go install github.com/antonmedv/fx@latest
 
+    jnv 
+      https://github.com/ynqa/jnv
+
+
+
 
 regex 使用 regex-vis.com 可视化正则表达式
     https://regex-vis.com/samples
