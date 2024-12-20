@@ -4,6 +4,8 @@
 	conda env list
 	conda info -e
 
+升级conda
+  conda install conda=24.5.0
 
 # 激活某个环境 
 conda activate [env_name] 

@@ -24,3 +24,7 @@ http://www.fooplot.com/
 
 计算公式
 https://mathb.in/1
+
+
+圆，cos, sin, 虚数
+https://www.andreinc.net/2024/04/24/from-the-circle-to-epicycles

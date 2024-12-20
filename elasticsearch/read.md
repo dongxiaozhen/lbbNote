@@ -42,6 +42,10 @@ bulk
 
                     upsert: 如果不存在，插入数据
 
+minimum_should_match
+1. minimum_should_match 参数用来指定 should 返回的文档必须匹配的条件的数量或百分比，如果 bool 查询包含至少一个 should 子句，而没有 must 或 filter 子句，则默认值为 1。
+2. 但是如果 bool 查询中同级子句中出现了 must 或者 filter 子句，则 minimum_should_match 的默认值将变为 0。
+
 
 
 开发模式和生产模式

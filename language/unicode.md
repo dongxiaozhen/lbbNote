@@ -1,5 +1,10 @@
 ## [unicode 字符集和字符编码](https://zhuanlan.zhihu.com/p/165524551)
 
+## go
+
+- %q 输出字符
+- %U 输出unicode
+
 # unicode 是字符集，相当于一个数据库，每个字都对应一个编码
 
 ````
@@ -32,17 +37,23 @@
 
 ## [归一化 Normalizeation Form（NF）](https://unicode.org/reports/tr15/)
 
+Unicode 等效性是 Unicode 字符编码标准规定的某些代码点序列表示基本相同的字符
+
+1. Unicode 提供了两个这样的概念，规范等效性和兼容性。定义为规范等效的码位序列在打印或显示时假定具有相同的外观和含义
+
+2. 被定义为兼容的序列被假定为可能具有不同的外观，但在某些上下文中具有相同的含义。
+3. 规范等效的序列也是兼容的，但反之则不一定正确。
+4. ![](/Users/libinbin/Downloads/lbbNote/language/3bc2d6840aa8137aca8a6accb4df39aa.png)
+
 类别
 
 - C 表示 组合(Composition)
 
   **组合(Composition),** 组合是尽量在Unicode的字符数据库中找到一个尽量短码点来表示上面结构的出的码点，
 
-
 - D 表示 解构(Decomposition)
 
   **解构(Decomposition)**, 指的是从Unicode字符数据库当中去查找更细的部分，尽量分成更多的码点，来拆解这个字符编码
-
 
 - K 表示 兼容(Compatibility)
 
@@ -52,12 +63,16 @@
 ### 种类
 
 - NFD：规范化分解
-
 - NFKD：兼容性分解
-
 - NFC：规范化分解后再规范化组合
-
 - NFKC：兼容性分解后再规范化组合
+
+go 代码
+
+```go
+ t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
+ normStr1, _, _ := transform.String(t, a)
+```
 
 [链接](https://unicode.org/reports/tr15/)
 
@@ -65,7 +80,7 @@
 
 - **Graphic** : 分为字母 (L, letter), 标记 (M, combining mark), 数组 (N, number), 标点 (P, punctuation), 符号 (S, symbol), 空格 (Zs, space separator) 六类.
 - **Format** : 一些不可见但对相邻字符起作用的字符, 如零宽连字  (zero width joiner, ZWJ), 零宽不连字 (zero width  
-   non joiner, ZWNJ) 等, 包括行和段分隔符. 有 Cf (format), Zl (line separators), Zp   
+  non joiner, ZWNJ) 等, 包括行和段分隔符. 有 Cf (format), Zl (line separators), Zp  
   (paragraph separators) 三类.
 - **Control** (Cc) : 控制字符, 没有明确作用, 常用于格式化字符, 如异体字选择器 (variation selector, VS) 等.
 - **Private-use** (Co) : 私人使用区, 未在规范中指定, 合作用户之间可根据自定义协定决定其用途.
@@ -80,4 +95,3 @@
 - 右至左符 (right-to-left mark) U+200F : 用于在混合文字方向的多种语言文本中，规定排版文字书写方向为右至左
 
 ### [unicode character categories](https://www.compart.com/en/unicode/category)
-
